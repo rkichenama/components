@@ -1,7 +1,8 @@
 import React from 'react';
 import '../global.scss';
 import Cube from './Cube';
-import { storiesOf, action } from '@kadira/storybook';
+import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 
 storiesOf('Cube', module)
   .addWithInfo('story', '', () => (

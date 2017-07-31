@@ -3,7 +3,8 @@ import '../global.scss';
 import Card from './Card';
 import StateDecorator from '../StateDecorator/StateDecorator';
 
-import { storiesOf, action } from '@kadira/storybook';
+import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 
 const CardExample = StateDecorator('flipped', [true, false], 1000)(Card);
 
