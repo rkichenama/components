@@ -9,7 +9,7 @@ export default class Card extends Component {
   }
   render () {
     const children = Children.toArray(this.props.children).slice(0, 2);
-    const className = `card${this.props.flipped ? ' flipped' : ''}`;
+    const className = `card${this.props.flipped ? ' flipped' : ''} ${this.props.className}`;
 
     return (
       <div {...{className}}>
@@ -25,12 +25,14 @@ export default class Card extends Component {
 Card.propTypes = {
   children: PropTypes.oneOf([PropTypes.string, PropTypes.element]).isRequired,
   onClick: PropTypes.func,
-  flipped: PropTypes.bool
+  flipped: PropTypes.bool,
+  className: PropTypes.string
 };
 
 const noop = () => {};
 
 Card.defaultProps = {
   flipped: false,
-  onClick: noop
+  onClick: noop,
+  className: ''
 }
