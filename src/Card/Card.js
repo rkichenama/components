@@ -14,8 +14,8 @@ export default class Card extends Component {
     return (
       <div {...{className}}>
         <div className='flip' onClick={this.props.onClick}>
-          <div className='front'>{ children[0] }</div>
-          <div className='back'>{ children[1] }</div>
+          <div className='front'>{ children.length > 1 ? children[0] : null }</div>
+          <div className='back'>{ children.length === 2 ? children[1] : null }</div>
         </div>
       </div>
     );
@@ -23,7 +23,7 @@ export default class Card extends Component {
 }
 
 Card.propTypes = {
-  children: PropTypes.oneOf([PropTypes.string, PropTypes.element]).isRequired,
+  children: PropTypes.node.isRequired,
   onClick: PropTypes.func,
   flipped: PropTypes.bool,
   className: PropTypes.string
