@@ -73,6 +73,7 @@ ol.target {
   }
 }
 
+.deck > span,
 .card.source {
   width: 128px;
   height: 128px;
@@ -80,5 +81,14 @@ ol.target {
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+}
+@supports (display: grid) {
+  .deck {
+    grid-template-columns: repeat(auto-fill, 128px);
+    grid-template-rows: repeat(auto-fill, 128px);    
+  }
+  .card.source {
+    margin: 0;
   }
 }

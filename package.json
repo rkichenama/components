@@ -4,10 +4,7 @@
   "description": "just a place to put components I make",
   "main": "index.js",
   "scripts": {
-    "build": "./script/build.sh",
-    "build-files": "webpack --config=config/webpack.config.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "storybook": "start-storybook -p 4200 -c storybook",
+    "start": "start-storybook -p 4200 -c storybook",
     "build-doc": "build-storybook -c storybook -o docs/",
     "make": "node scripts/new-component.js"
   },

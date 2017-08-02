@@ -3,23 +3,17 @@ import PropTypes from 'prop-types';
 
 import './Card.scss';
 
-export default class Card extends Component {
-  constructor (...args) {
-    super(...args);
-  }
-  render () {
-    const children = Children.toArray(this.props.children).slice(0, 2);
-    const className = `card${this.props.flipped ? ' flipped' : ''} ${this.props.className}`;
+const Card = ({children, onClick, flipped, className}) => {
+  const kids = Children.toArray(children).slice(0, 2);
 
-    return (
-      <div {...{className}}>
-        <div className='flip' onClick={this.props.onClick}>
-          <div className='front'>{ children.length > 1 ? children[0] : null }</div>
-          <div className='back'>{ children.length === 2 ? children[1] : null }</div>
-        </div>
+  return (
+    <div className={`card${flipped ? ' flipped' : ''} ${className}`}>
+      <div className='flip' onClick={onClick}>
+        <div className='front'>{ kids.length > 1 ? kids[0] : null }</div>
+        <div className='back'>{ kids.length === 2 ? kids[1] : null }</div>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 Card.propTypes = {
@@ -36,3 +30,5 @@ Card.defaultProps = {
   onClick: noop,
   className: ''
 }
+
+export default Card;
