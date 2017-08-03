@@ -10,9 +10,7 @@ const Cube = ({children, onClick, face, className}) => {
     <div className={`cube ${face} ${className}`}>
       <div className='flip' onClick={onClick}>
         {
-          [
-            'front', 'back', 'left', 'right', 'top', 'bottom'
-          ].map((side, s) => (
+          Cube.Faces.map((side, s) => (
             <div className={`side ${side}`} key={s}>{kids[s] || null }</div>
           ))
         }
@@ -22,9 +20,16 @@ const Cube = ({children, onClick, face, className}) => {
 }
 
 const firstLetter = str => `${str[0].toUpperCase()}${str.slice(1)}`;
-const faces = ['front', 'top', 'left', 'bottom', 'right', 'back'];
-faces.forEach(face => Cube[firstLetter(face)] = face);
+const faces = [
+  'front',
+  'back',
+  'left',
+  'right',
+  'top',
+  'bottom',
+];
 Cube.Faces = faces;
+faces.forEach(face => Cube[firstLetter(face)] = face);
 
 Cube.propTypes = {
   children: PropTypes.node.isRequired,
