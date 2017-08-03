@@ -13,7 +13,7 @@ const StateDecorator = (flag = 'f', values = [], delay = 500) => WrappedComponen
     }
     componentDidMount () {
       this.state.interval = setInterval(_ => {
-        const [next, values] = this.state.values;
+        const [next, ...values] = this.state.values;
         this.setState({[flag]: next, values: [...values, next]});
       }, delay);
     }

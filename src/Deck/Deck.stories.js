@@ -2,56 +2,67 @@ import React from 'react';
 import '../global.scss';
 import Deck from './Deck';
 import Card from '../Card/Card';
+import Cube from '../Cube/Cube';
 import StateDecorator, { ClickDecorator } from '../StateDecorator/StateDecorator';
 import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 import { action } from '@storybook/addon-actions';
 
-const CardExample = StateDecorator('flipped', [true, false], 1000)(Card);
 const Hiragana = ClickDecorator('flipped', [false, true])(Card);
 
 storiesOf('Deck', module)
-  .add('story',
+  .add('with cards',
     withInfo(null)(
-      () => (
-        <Deck>
-          <Card>
-            <div>This is some content Front</div>
-            <div>This is some content Back</div>
-          </Card>
-          <CardExample>
-            <div>This is some content Front</div>
-            <div>This is some content Back</div>
-          </CardExample>
-          <Card>
-            <div>This is some content Front</div>
-            <div>This is some content Back</div>
-          </Card>
-          <CardExample>
-            <div>This is some content Front</div>
-            <div>This is some content Back</div>
-          </CardExample>
-          <Card>
-            <div>This is some content Front</div>
-            <div>This is some content Back</div>
-          </Card>
-          <CardExample>
-          <div id="lipsum">
-          <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam quis augue sed est varius ultrices sit amet vel justo. Nunc nisi erat, consectetur sed lacus quis, laoreet sodales sapien. Praesent eu metus efficitur, pulvinar metus at, rutrum ipsum. Donec eget lacinia dui, eu elementum ligula. Donec consectetur et est eu laoreet. Donec porttitor, arcu ac semper faucibus, sapien mauris tristique nisl, quis posuere neque nibh a tortor. Donec ante ex, pharetra vel efficitur eu, elementum nec sapien. Sed scelerisque nisl quis bibendum blandit. Phasellus urna lorem, aliquam sit amet bibendum eu, tempor ac augue. Integer luctus iaculis dui. Proin diam neque, molestie non lacus ut, volutpat placerat risus. Morbi quis nibh porta, bibendum elit a, lacinia diam. Morbi non dui tellus. Cras nulla magna, rhoncus quis turpis at, volutpat iaculis neque. Praesent sed justo mattis nisi fringilla ullamcorper.
-          </p>
-          <p>
-          Praesent maximus sed dui sed tempor. Sed quis blandit dolor. Praesent rhoncus sit amet ex ut vehicula. Fusce condimentum velit nec hendrerit convallis. Pellentesque arcu augue, lacinia quis ligula quis, eleifend varius ex. Cras venenatis quis eros ut auctor. Duis molestie turpis ac nulla fermentum, vel volutpat sapien bibendum. Quisque quis malesuada massa, a elementum justo. Morbi iaculis massa sed aliquet aliquet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi.
-          </p>
-          <p>
-          Nunc maximus mattis ex in malesuada. Mauris sollicitudin libero sit amet sapien lobortis tempus. Donec vitae ullamcorper dolor. Fusce ut quam elementum, lacinia diam eget, faucibus libero. Phasellus condimentum sem in aliquam ornare. Sed luctus volutpat libero eget gravida. Curabitur lobortis efficitur mi, non rutrum dui auctor vitae. Mauris mollis dui id ante molestie, sit amet pulvinar nisl aliquet. Aenean sit amet ultrices ex. Pellentesque ultricies tellus efficitur justo egestas bibendum. Phasellus auctor tincidunt urna ut sodales.
-          </p></div>
-            <div>Back</div>
-          </CardExample>
-        </Deck>
-      )
+      () => {
+        const CardExample = StateDecorator('flipped', [true, false], 2500)(Card);
+        return (
+          <Deck>
+            <Card>
+              <div>This is some content Front</div>
+              <div>This is some content Back</div>
+            </Card>
+            <CardExample>
+              <div>This is some content Front</div>
+              <div>This is some content Back</div>
+            </CardExample>
+            <Card>
+              <div>This is some content Front</div>
+              <div>This is some content Back</div>
+            </Card>
+            <CardExample>
+              <div>This is some content Front</div>
+              <div>This is some content Back</div>
+            </CardExample>
+          </Deck>
+        )
+      }
     )
   )
+  .add('with cubes',
+    withInfo(null)(
+      () => {
+        const CubeExample = StateDecorator('face', Cube.Faces, 2500)(Cube);
+        const faces = [
+          (<span key={1}>1</span>),
+          (<span key={2}>2</span>),
+          (<span key={3}>3</span>),
+          (<span key={4}>4</span>),
+          (<span key={5}>5</span>),
+          (<span key={6}>6</span>)
+        ]
+        return (
+          <Deck>
+            <Cube>{faces}</Cube>
+            <CubeExample>{faces}</CubeExample>
+            <Cube>{faces}</Cube>
+            <CubeExample>{faces}</CubeExample>
+          </Deck>
+        )
+      }
+    )
+  )
+;
+/*
   .add('hiragana', () => (
     <Deck>
       {
@@ -114,4 +125,5 @@ storiesOf('Deck', module)
       }
     </Deck>
   ))
-;
+
+ */
