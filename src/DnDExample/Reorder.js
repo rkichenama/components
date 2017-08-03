@@ -117,7 +117,7 @@ export default class DnDExample2 extends Component {
     const { reorder } = this;
     return (
       <Panel>
-        <OrderedListContext>
+        <OrderedListContext className='reorder'>
             {
               this.state.items.map(([name, alias], i) => (
                 <ListItem {...{reorder}} key={i} ind={i}>

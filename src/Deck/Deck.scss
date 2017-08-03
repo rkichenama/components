@@ -1,6 +1,5 @@
 .deck {
   padding: 8px;
-  justify-content: center;
   display: grid;
   grid-gap: 8px;
   grid-template-columns: repeat(auto-fill, 96px);
@@ -10,6 +9,7 @@
 @supports not (display: grid) {
   .deck {
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     background-color: transparentize(black, .9);
 
