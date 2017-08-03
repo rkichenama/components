@@ -19,7 +19,9 @@
   },
   "homepage": "https://github.com/rkichenama/components#readme",
   "dependencies": {
+    "@storybook/addon-actions": "^3.2.0",
     "@storybook/addon-info": "^3.2.0",
+    "@storybook/addon-knobs": "^3.2.0",
     "@storybook/react": "^3.1.6",
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",

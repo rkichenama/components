@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 
 import './Cube.scss';
 
-const Cube = ({children, onClick, flipped, className}) => {
-  const kids = Children.toArray(children).slice(0, 6);
+const Cube = ({children, onClick, face, className}) => {
+  const kids = Children.toArray(children).slice(0, 5);
 
   return (
-    <div className={`cube ${className}`}>
+    <div className={`cube ${face} ${className}`}>
       <div className='flip' onClick={onClick}>
         {
           [
-            'front', 'back', 'left', 'right', 'top', 'bottom'
+            'front', 'left', 'right', 'top', 'bottom'
           ].map((side, s) => (
             <div className={side} key={s}>{kids[s] || null }</div>
           ))
@@ -21,10 +21,14 @@ const Cube = ({children, onClick, flipped, className}) => {
   );
 }
 
+const firstLetter = str => `${str[0].toUpperCase()}${str.slice(1)}`;
+const faces = ['front', 'top', 'left', 'bottom', 'right'];
+faces.forEach(face => Cube[firstLetter(face)] = face);
+
 Cube.propTypes = {
   children: PropTypes.node.isRequired,
   onClick: PropTypes.func,
-  flipped: PropTypes.bool,
+  face: PropTypes.oneOf(faces),
   className: PropTypes.string
 };
 
@@ -33,7 +37,9 @@ const noop = () => {};
 Cube.defaultProps = {
   flipped: false,
   onClick: noop,
+  face: 'front',
   className: ''
 }
+
 
 export default Cube;

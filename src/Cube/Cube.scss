@@ -4,10 +4,21 @@
   width: 96px;
   height: 96px;
 
-
-
-  &.flipped .flip {
-    transform: rotateY(180deg);
+  &.front .flip {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+  &.bottom .flip { // show bottom
+    transform: rotateX(180deg) rotateY(0deg);
+    // .bottom { z-index: 2; }
+  }
+  &.top .flip { // show top
+    transform: rotateX(-180deg) rotateY(0deg);
+  }
+  &.left .flip { // show left
+    transform: rotateX(0deg) rotateY(-180deg);
+  }
+  &.right .flip { // show right
+    transform: rotateX(0deg) rotateY(180deg);
   }
 
   .flip {
@@ -18,7 +29,7 @@
     height: 100%;
   }
 
-  .front, .back {
+  .front, .top, .bottom, .left, .right {
     border: 1px solid white;
     border-radius: 4px;
     background-color: white;
@@ -41,7 +52,10 @@
     z-index: 2;
     transform: rotateY(0deg);
   }
-  .back { transform: rotateY(180deg); }
+  .left { transform: rotateY(180deg); }
+  .right { transform: rotateY(-180deg); }
+  .top { transform: rotateX(180deg); }
+  .bottom { transform: rotateX(-180deg); }
 }
 
 @supports not (display: grid) {
