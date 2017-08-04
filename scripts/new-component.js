@@ -15,31 +15,35 @@ try {
   }
 }
 
-let fileTemplate = `import React, { Component } from 'react';
+let fileTemplate = `/* */
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import {
+  compose, withState, withHandlers,
+  defaultProps, lifecycle,
+  setDisplayName, setPropTypes
+} from 'recompose';
 
-export default class ${name} extends Component {
-  constructor (...args) {
-    super(...args);
-    [
-
-    ].map(fn => (this[fn] = this[fn].bind(this)));
-  }
-  render () {
-    return (
-      <div>
-        replace this with actual code
-      </div>
-    );
-  }
-}
-
-${name}.propTypes = {
-
+const ${name} = ({}) => {
+  return (
+    <div>
+      replace this with actual code
+    </div>
+  );
 };
+
+const enhance = compose(
+  setPropTypes({}),
+  defaultProps({}),
+  lifecycle({}),
+  setDisplayName('Stateless(${name})')
+);
+
+export default enhance(${name});
 `;
 
-let testTemplate = `import React from 'react';
+let testTemplate = `/* */
+import React from 'react';
 import { shallow } from 'enzyme';
 import jasmineEnzyme from 'jasmine-enzyme';
 
@@ -54,12 +58,16 @@ describe('${name}', () => {
 });
 `;
 
-let storyTemplate = `import React from 'react';
+let storyTemplate = `/* */
+import React from 'react';
 import '../global.scss';
 import ${name} from './${name}';
 import { storiesOf } from  '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
+import { withKnobs } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
+
+import StateDecorator from '../StateDecorator/StateDecorator';
 
 storiesOf('${name}', module)
   .add('story',
