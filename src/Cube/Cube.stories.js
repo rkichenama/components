@@ -8,7 +8,7 @@ import { withKnobs, select } from '@storybook/addon-knobs';
 import StateDecorator from '../StateDecorator/StateDecorator';
 import Centered from '../../storybook/Centered';
 
-const stories = storiesOf('Cube', module);
+const stories = storiesOf('Items.Cube', module);
 stories.addDecorator(withKnobs);
 stories.addDecorator(Centered);
 

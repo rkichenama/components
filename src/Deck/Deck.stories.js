@@ -6,12 +6,13 @@ import Cube from '../Cube/Cube';
 import StateDecorator, { ClickDecorator } from '../StateDecorator/StateDecorator';
 import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
+import { withNotes } from '@storybook/addon-notes';
 import { action } from '@storybook/addon-actions';
 
 
-storiesOf('Deck', module)
+storiesOf('Containers.Deck', module)
   .add('with cards',
-    withInfo(null)(
+    withNotes('try clicking on the odd numbered Cards')(
       () => {
         const FlippingCard = StateDecorator('flipped', [true, false], 2500)(Card);
         const ClickingCard = ClickDecorator('flipped', [false, true])(Card);
@@ -39,7 +40,7 @@ storiesOf('Deck', module)
     )
   )
   .add('with cubes',
-    withInfo(null)(
+    withNotes('try clicking on the odd numbered Cubes')(
       () => {
         const FlippingCube = StateDecorator('face', Cube.Faces, 2500)(Cube);
         const ClickingCube = ClickDecorator('face', Cube.Faces)(Cube);
