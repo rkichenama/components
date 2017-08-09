@@ -9,13 +9,84 @@ import { withInfo } from '@storybook/addon-info';
 import { withNotes } from '@storybook/addon-notes';
 import { action } from '@storybook/addon-actions';
 
+import axios from 'axios';
+
+const FlippingCard = StateDecorator('flipped', [false, true], 2500)(Card);
+const ClickingCard = ClickDecorator('flipped', [false, true])(Card);
+const FlippingCube = StateDecorator('face', Cube.Faces, 2500)(Cube);
+const ClickingCube = ClickDecorator('face', Cube.Faces)(Cube);
+
+class UserCards extends React.Component {
+  constructor (...args) {
+    super(...args);
+    this.state = {
+      results: []
+    };
+  }
+  componentDidMount () {
+    axios.get(`https://randomuser.me/api/?inc=name,picture&page=1&results=96&seed=abc`)
+      .then(({data: { results }}) => {
+        this.setState({results});
+      });
+  }
+  render () {
+    return (
+      <Deck>
+        {
+          this.state.results
+            .slice(0, 45)
+            .map(({name, picture}, u) => (
+              <FlippingCard key={u}>
+                <span><img src={picture.large} style={{maxWidth: '100%'}} /></span>
+                <div style={{height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center'}}>
+                  <div>{`${name.first} ${name.last}`}</div>
+                </div>
+              </FlippingCard>
+            ))
+        }
+      </Deck>
+    );
+  }
+}
+
+class UserCubes extends UserCards {
+  render () {
+    const { results } = this.state;
+    const groups = [...results]
+      .slice(0, results.length - (results.length % 6))
+      .reduce((t, c) => {
+        const l = Math.max(t.length, 1);
+        if (t[l - 1].length === 6) {
+          t[l] = [c];
+        } else {
+          t[l - 1].push(c);
+        }
+        return t;
+      }, [[]]);
+
+    return (
+      <Deck>
+        {
+          groups.map((users, u) => (
+            <FlippingCube key={u}>
+              {
+                users.map(({picture}, i) => (
+                  <span key={i}><img src={picture.large} style={{maxWidth: '100%'}} /></span>
+                ))
+              }
+            </FlippingCube>
+          ))
+        }
+      </Deck>
+    );
+  }
+}
+
 
 storiesOf('Containers.Deck', module)
   .add('with cards',
     withNotes('try clicking on the odd numbered Cards')(
       () => {
-        const FlippingCard = StateDecorator('flipped', [true, false], 2500)(Card);
-        const ClickingCard = ClickDecorator('flipped', [false, true])(Card);
         return (
           <Deck>
             <ClickingCard>
@@ -42,8 +113,6 @@ storiesOf('Containers.Deck', module)
   .add('with cubes',
     withNotes('try clicking on the odd numbered Cubes')(
       () => {
-        const FlippingCube = StateDecorator('face', Cube.Faces, 2500)(Cube);
-        const ClickingCube = ClickDecorator('face', Cube.Faces)(Cube);
         const faces = [
           (<span key={1}>1</span>),
           (<span key={2}>2</span>),
@@ -64,6 +133,12 @@ storiesOf('Containers.Deck', module)
         )
       }
     )
+  )
+  .add('mock users with cards',
+    () => (<UserCards />)
+  )
+  .add('mock users with cubes',
+    () => (<UserCubes />)
   )
 ;
 /*
