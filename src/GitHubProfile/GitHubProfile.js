@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  compose,
+  compose, withHandlers,
   defaultProps, lifecycle,
   setDisplayName, setPropTypes
 } from 'recompose';
@@ -32,27 +32,52 @@ const GitHubProfile = ({username, name, avatar_url, html_url, location, classNam
 );
 
 const enhance = compose(
+  setDisplayName('Stateless(GitHubProfile)'),
   setPropTypes({
     username: PropTypes.string,
     name: PropTypes.string,
     avatar_url: PropTypes.string,
-    html_url: PropTypes.string
+    html_url: PropTypes.string,
+    location: PropTypes.string,
+    className: PropTypes.string,
   }),
   defaultProps({
-    username: 'rkichenama'
+    username: ''
+  }),
+  withHandlers({
+    fetchUserInfo: ({username}) => async (component) => {
+      try {
+        let {
+          data: {avatar_url, name, html_url, location}
+        } = await axios.get(`https://api.github.com/users/${username}`);
+        component.setState({
+          avatar_url, name, html_url, location
+        });
+      } catch (e) {
+        // failed request
+      }
+    }
   }),
   lifecycle({
     componentDidMount () {
-      axios.get(`https://api.github.com/users/${this.props.username}`)
-        .then(({data, data: {avatar_url, name, html_url, location} }) => {
-          console.warn('/users', data);
-          this.setState({
-            avatar_url, name, html_url, location
-          });
+      this.props.fetchUserInfo(this);
+    },
+    componentWillUpdate ({ username }) {
+      if (username !== this.props.username) {
+        this.setState({
+          avatar_url: false,
+          name: false,
+          html_url: false,
+          location: false,
         });
+      }
+    },
+    componentDidUpdate ({ username }) {
+      if (username !== this.props.username) {
+        this.props.fetchUserInfo(this);
+      }
     }
   }),
-  setDisplayName('Stateless(GitHubProfile)')
 );
 
 export default enhance(GitHubProfile);
