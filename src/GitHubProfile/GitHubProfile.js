@@ -1,8 +1,8 @@
 /* */
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  compose, withState, withHandlers,
+  compose,
   defaultProps, lifecycle,
   setDisplayName, setPropTypes
 } from 'recompose';
@@ -29,7 +29,7 @@ const GitHubProfile = ({username, name, avatar_url, html_url, location, classNam
   <div style={Styles.container} {...{className}} >
     <div style={Styles.img}>
       <a href={html_url}>
-        <img src={avatar_url} width='48' />
+        <img src={avatar_url} width='48' alt='avatar' />
       </a>
     </div>
     <div style={Styles.text}>
