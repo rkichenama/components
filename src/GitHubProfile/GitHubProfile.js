@@ -9,35 +9,25 @@ import {
 
 import axios from 'axios';
 
-const Styles = {
-  container: {
-    display: 'inline-flex',
-    alignItems: 'center',
-  },
-  img: {
-    flex: '0 0 auto'
-  },
-  text: {
-    flex: '1 1 auto',
-    paddingLeft: '8px'
-  }
-};
+import './GitHubProfile.scss';
 
 const noWrap = str => (<span style={{whiteSpace: 'nowrap'}}>{str}</span>);
 
 const GitHubProfile = ({username, name, avatar_url, html_url, location, className = ''}) => (
-  <div style={Styles.container} {...{className}} >
-    <div style={Styles.img}>
-      <a href={html_url}>
-        <img src={avatar_url} width='48' alt='avatar' />
-      </a>
-    </div>
-    <div style={Styles.text}>
-      <div>
-        {noWrap(name)} {noWrap(<a href={html_url}>({username})</a>)}
-      </div>
-      <div>{noWrap(location)}</div>
-    </div>
+  <div className={`github-profile ${className}`} >
+    {(html_url && avatar_url) ? [
+      (<div className='img' key={1}>
+        <a href={html_url}>
+          <img src={avatar_url} width='48' alt='avatar' />
+        </a>
+      </div>),
+      (<div className='text' key={2}>
+        <div>
+          {noWrap(name)} {noWrap(<a href={html_url}>({username})</a>)}
+        </div>
+        <div>{noWrap(location)}</div>
+      </div>)
+    ] : null}
   </div>
 );
 
