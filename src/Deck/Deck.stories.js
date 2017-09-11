@@ -83,7 +83,7 @@ class UserCubes extends UserCards {
 }
 
 
-storiesOf('Containers.Deck', module)
+storiesOf('Containers/Deck', module)
   .add('with cards',
     withNotes('try clicking on the odd numbered Cards')(
       () => {

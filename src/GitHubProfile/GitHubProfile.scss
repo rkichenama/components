@@ -2,14 +2,17 @@ $tGray: rgba(0, 0, 0, .1);
 
 .github-profile {
   display: inline-flex;
-  align-items: center;
+  align-items: flex-start;
 
   .img {
     flex: 0 0 auto;
+    font-size: 0;
   }
   .text {
     flex: 1 1 auto;
     margin-left: 8px;
+    font-size: 20px;
+    line-height: 24px;
   }
 
   &:empty {
