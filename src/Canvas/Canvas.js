@@ -1,9 +1,9 @@
 /* */
-import { compose } from '../shared/functions';
+import { compose, pipe } from '../shared/functions';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
-  withState, withHandlers,
+  withState, withHandlers, withProps,
   defaultProps, lifecycle,
   setDisplayName, setPropTypes
 } from 'recompose';
@@ -19,32 +19,11 @@ const Canvas = ({className, setCanvas}) => (
   </canvas>
 );
 
-const enhance = compose(
-  setDisplayName('Stateless(Canvas)'),
-  setPropTypes({
-    className: PropTypes.string,
-    sequence: PropTypes.arrayOf(PropTypes.func)
-  }),
-  defaultProps({
-    className: '',
-    sequence: [],
-  }),
-  withState('canvas', 'setCanvas', false),
-  lifecycle({
-    componentWillReceiveProps (props) {
-      if (props.canvas) {
-        props.sequence.forEach(step => step(props));
-      }
-    }
-  }),
-);
-
-export default enhance(Canvas);
-
-const Context = ({canvas}) => {
+const Context = canvas => {
   const {width, height} = canvas.getBoundingClientRect();
   const context = canvas.getContext('2d');
-
+  const firstPixel = { x: 0, y: 0 };
+  const lastPixel = { x: width, y: height };
   const ctx = {
     clear: () => { ctx.rect.clear(0, 0, width, height); return ctx; },
     rect: {
@@ -60,41 +39,87 @@ const Context = ({canvas}) => {
     outline: () => { context.stroke(); return ctx; },
     path: {
       begin: () => { context.beginPath(); return ctx; },
-      arc: ({x, y}, r, start, end) => { context.arc(x, y, r, start, end); return ctx; },
+      arc: ({x, y}, r, {from, to}) => { context.arc(x, y, r, from, to); return ctx; },
     },
-    end: () => { context.closePath(); return ctx; }
+    end: () => { context.closePath(); return ctx; },
+    // not chainable
+    gradient: {
+      // add your own color stops
+      linear: ({x: x1, y: y1} = firstPixel, {x: x2, y: y2} = lastPixel) => context.createLinearGradient(x1, y1, x2, y2),
+      radial: ({x: x1, y: y1} = firstPixel, r1 = Math.min(width, height) / 2, {x: x2, y: y2} = lastPixel, r2 = Math.min(width, height) / 2) => context.createRadialGradient(x1, y1, r1, x2, y2, r2),
+    },
   };
   return ctx;
-}
+};
 
-export const Clear = () => props => Context(props).clear();
+const enhance = compose(
+  setDisplayName('Stateless(Canvas)'),
+  setPropTypes({
+    className: PropTypes.string,
+    sequence: PropTypes.arrayOf(PropTypes.func)
+  }),
+  defaultProps({
+    className: '',
+    sequence: [],
+  }),
+  withState('canvas', 'setCanvas', false),
+  lifecycle({
+    componentWillReceiveProps (props) {
+      if (props.canvas) {
+        let args = {...props, context: Context(props.canvas) };
+        props.sequence.forEach(step => step(args));
+      }
+    }
+  }),
+);
+
+export default enhance(Canvas);
+
+
+export const Clear = () => ({context}) => context.clear();
 
 /* no stroke but fill */
 export const FilledRect = (coords, color = 'transparent') => props => {
-  const context = Context(props);
+  const { context } = props;
   if (color) { context.style.fill(color).paint(); }
   context.rect.fill(coords);
-}
+  return props;
+};
 
 /* with stroke no fill*/
 export const BorderedRect = (coords, border = 'transparent') => props => {
-  let context = Context(props);
-  if (border) { context = context.style.stroke(border); }
+  const { context } = props;
+  if (border) { context.style.stroke(border); }
   context.rect.stroke(coords);
-}
+  return props;
+};
 
 export const Rect = (coord, border, color) => props => {
-  FilledRect(coord, color)(props);
-  BorderedRect(coord, border)(props);
-}
+  return pipe(
+    FilledRect(coord, color),
+    BorderedRect(coord, border)
+  )(props);
+};
 
-export const Circle = (center, radius, color, border) => props => {
-  let context = Context(props).path.begin();
-  context.path.arc(center, radius, 0, 2 * Math.PI);
+export const Arc = (center, radius, curve, color, border) => props => {
+  const { context } = props;
+  context.path.begin();
+  context.path.arc(center, radius, curve);
+  // const grad = context.gradient.linear();
+  // grad.addColorStop(0, 'rgba(255,0,0,.1)');
+  // grad.addColorStop(.5, 'rgba(0,0,255,.2)');
+  // grad.addColorStop(1, 'rgba(255,0,0,.1)');
+  // context.style.fill(grad).paint();
   if (color) { context.style.fill(color).paint(); }
-  if (border) { context = context.style.stroke(border); }
+  if (border) { context.style.stroke(border); }
   context.end();
-}
+  return props;
+};
+
+//let
+export const Circle = (center, radius, color, border) => props => {
+  return Arc(center, radius, {from: 0, to: 2 * Math.PI}, color, border)(props);
+};
 
 /*
 TEXT
