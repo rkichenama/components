@@ -3,11 +3,12 @@ import React, { Component } from 'react';
 import '../global.scss';
 import Canvas, { Clear, FilledRect, BorderedRect, Rect, Circle } from './Canvas';
 import { storiesOf } from  '@storybook/react';
-import { withKnobs } from '@storybook/addon-knobs';
+import { withKnobs, select } from '@storybook/addon-knobs';
 import { withNotes } from '@storybook/addon-notes';
 import { action } from '@storybook/addon-actions';
 
 import StateDecorator from '../StateDecorator/StateDecorator';
+import Centered from '../../storybook/Centered';
 
 const size = i => ({
   w: ((i+1) * 20),
@@ -73,6 +74,22 @@ class Saver extends Component {
   }
 }
 
+const center = {x: 150, y: 150};
+const add = ({x, y}, {x: cx, y: cy} = center) => ({x: cx + x, y: cy + y});
+const polygon = (sides, center = center, size = 75) => ({context}) => {
+  context
+    .begin()
+    .moveTo(add({x: size * Math.sin(0), y: -size * Math.cos(0)}));
+  for (let s = 1; s <= sides; s++) {
+    const angle = s * 2 * Math.PI / sides;
+    context.lineTo(add({
+      x: size * Math.sin(angle),
+      y: -size * Math.cos(angle)
+    }));
+  }
+  context.stroke().end()
+}
+
 storiesOf('Canvas/base', module)
   .add('basic canvas',
     withNotes(`The canvas should render an image based on the data passed.
@@ -86,13 +103,68 @@ The data should be a list of draw actions to be performed within the canvas cont
   .add('with a sequence canvas',
     withNotes(``)(
       () => (
-        <Saver />
+        <Canvas sequence={[
+          Clear(),
+          ({context}) => {
+            context
+              .style.stroke('black')
+          },
+          ...Array(18).fill(false)
+            .map((_, s) => polygon(s + 2)),
+        ]} />
       )
     )
   )
 ;
 
-storiesOf('Canvas/Shapes', module)
+const shapes = storiesOf('Canvas/Shapes', module);
+shapes.addDecorator(withKnobs);
+shapes.addDecorator(Centered);
+
+class D extends Component {
+  constructor (...args) {
+    super(...args);
+    this.state = {
+      sequence: [
+        Clear(),
+        ({context}) => {
+          context
+            .style.stroke('black')
+        },
+        ...Array(4).fill(false)
+          .map((_, s) => polygon(s + 2)),
+      ]
+    }
+  }
+  componentDidUpdate ({sides}) {
+    if (sides !== this.props.sides) {
+      this.setState({sequence: [
+        Clear(),
+        ({context}) => {
+          context
+          .style.stroke('black')
+        },
+        ...Array(Number(this.props.sides)).fill(false)
+        .map((_, s) => polygon(s + 2)),
+      ]});
+    }
+  }
+  render () {
+    const { sequence } = this.state;
+    return (
+      <Canvas {...{sequence}} />
+    );
+  }
+}
+
+shapes
+  .add('you choose',
+    withNotes(``)(
+      () => (
+        <D sides={select('number of polygons', ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'], '4')} />
+      )
+    )
+  )
   .add('with a concentric squares',
     () => (
       <Canvas sequence={[
