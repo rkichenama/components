@@ -109,10 +109,20 @@ The data should be a list of draw actions to be performed within the canvas cont
         <Canvas scene={[
             Clear(),
             ({context}) => {
-              const g = context.gradient.linear({x:75, y: 75}, {x:225, y:225});
-              g.addColorStop(0, 'red');
-              g.addColorStop(.5, 'green');
-              g.addColorStop(1, 'violet');
+              const g = context.gradient.linear({x:150, y: 75}, {x:150, y:225});
+              g.addColorStop(0.00, '#ff0000');
+              g.addColorStop(0.08, '#ff8000');
+              g.addColorStop(0.17, '#ffff00');
+              g.addColorStop(0.25, '#80ff00');
+              g.addColorStop(0.33, '#00ff00');
+              g.addColorStop(0.42, '#00ff80');
+              g.addColorStop(0.50, '#00ffff');
+              g.addColorStop(0.58, '#0080ff');
+              g.addColorStop(0.67, '#0000ff');
+              g.addColorStop(0.75, '#8000ff');
+              g.addColorStop(0.83, '#ff00ff');
+              g.addColorStop(0.92, '#ff0080');
+              g.addColorStop(1.00, '#ff0000');
               context
                 .style.stroke('black')
                 .style.fill(g)
