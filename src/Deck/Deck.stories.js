@@ -11,34 +11,37 @@ import { action } from '@storybook/addon-actions';
 
 import axios from 'axios';
 
+import ErrorBoundary from '../HOC/ErrorBoundary';
+
 const FlippingCard = StateDecorator('flipped', [false, true], 2500)(Card);
 const ClickingCard = ClickDecorator('flipped', [false, true])(Card);
 const FlippingCube = StateDecorator('face', Cube.Faces, 2500)(Cube);
 const ClickingCube = ClickDecorator('face', Cube.Faces)(Cube);
 
 class UserCards extends React.Component {
-  constructor (...args) {
+  constructor(...args) {
     super(...args);
     this.state = {
-      results: []
+      results: [],
+      error: false,
     };
   }
-  componentDidMount () {
-    axios.get(`https://randomuser.me/api/?inc=name,picture&page=1&results=96&seed=abc`)
-      .then(({data: { results }}) => {
-        this.setState({results});
+  componentDidMount() {
+    axios.get(`https://randomuser.me/api/?inc=name,picture&page=1&results=108&seed=abc`)
+      .then(({ data: { results } }) => {
+        this.setState({ results });
       });
   }
-  render () {
+  render() {
     return (
       <Deck>
         {
           this.state.results
             .slice(0, 45)
-            .map(({name, picture}, u) => (
+            .map(({ name, picture }, u) => (
               <FlippingCard key={u}>
-                <span><img src={picture.large} style={{maxWidth: '100%'}} /></span>
-                <div style={{height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center'}}>
+                <span><img src={picture.large} style={{ maxWidth: '100%' }} /></span>
+                <div style={{ height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
                   <div>{`${name.first} ${name.last}`}</div>
                 </div>
               </FlippingCard>
@@ -50,7 +53,7 @@ class UserCards extends React.Component {
 }
 
 class UserCubes extends UserCards {
-  render () {
+  render() {
     const { results } = this.state;
     const groups = [...results]
       .slice(0, results.length - (results.length % 6))
@@ -68,13 +71,17 @@ class UserCubes extends UserCards {
       <Deck>
         {
           groups.map((users, u) => (
-            <FlippingCube key={u}>
-              {
-                users.map(({picture}, i) => (
-                  <span key={i}><img src={picture.large} style={{maxWidth: '100%'}} /></span>
-                ))
-              }
-            </FlippingCube>
+            <ErrorBoundary key={u}>
+              <FlippingCube>
+                {
+                  users.map(({ picture }, i) => {
+                    return (
+                      <span key={i}><img src={picture.large} style={{ maxWidth: '100%' }} /></span>
+                    );
+                  })
+                }
+              </FlippingCube>
+            </ErrorBoundary>
           ))
         }
       </Deck>
@@ -84,63 +91,58 @@ class UserCubes extends UserCards {
 
 
 storiesOf('Containers/Deck', module)
-  .add('with cards',
-    withNotes('try clicking on the odd numbered Cards')(
-      () => {
-        return (
-          <Deck>
-            <ClickingCard>
-              <div>This is some content Front</div>
-              <div>This is some content Back</div>
-            </ClickingCard>
-            <FlippingCard>
-              <div>This is some content Front</div>
-              <div>This is some content Back</div>
-            </FlippingCard>
-            <ClickingCard>
-              <div>This is some content Front</div>
-              <div>This is some content Back</div>
-            </ClickingCard>
-            <FlippingCard>
-              <div>This is some content Front</div>
-              <div>This is some content Back</div>
-            </FlippingCard>
-          </Deck>
-        )
-      }
-    )
+  .add('with cards', withNotes('try clicking on the odd numbered Cards')(
+    () => {
+      return (
+        <Deck>
+          <ClickingCard>
+            <div>This is some content Front</div>
+            <div>This is some content Back</div>
+          </ClickingCard>
+          <FlippingCard>
+            <div>This is some content Front</div>
+            <div>This is some content Back</div>
+          </FlippingCard>
+          <ClickingCard>
+            <div>This is some content Front</div>
+            <div>This is some content Back</div>
+          </ClickingCard>
+          <FlippingCard>
+            <div>This is some content Front</div>
+            <div>This is some content Back</div>
+          </FlippingCard>
+        </Deck>
+      )
+    }
   )
-  .add('with cubes',
-    withNotes('try clicking on the odd numbered Cubes')(
-      () => {
-        const faces = [
-          (<span key={1}>1</span>),
-          (<span key={2}>2</span>),
-          (<span key={3}>3</span>),
-          (<span key={4}>4</span>),
-          (<span key={5}>5</span>),
-          (<span key={6}>6</span>)
-        ]
-        return (
-          <Deck>
-            <ClickingCube>{faces}</ClickingCube>
-            <FlippingCube>{faces}</FlippingCube>
-            <ClickingCube>{faces}</ClickingCube>
-            <FlippingCube>{faces}</FlippingCube>
-            <ClickingCube>{faces}</ClickingCube>
-            <FlippingCube>{faces}</FlippingCube>
-          </Deck>
-        )
-      }
-    )
   )
-  .add('mock users with cards',
-    () => (<UserCards />)
+  .add('with cubes', withNotes('try clicking on the odd numbered Cubes')(
+    () => {
+      const faces = [
+        (<span key={1}>1</span>),
+        (<span key={2}>2</span>),
+        (<span key={3}>3</span>),
+        (<span key={4}>4</span>),
+        (<span key={5}>5</span>),
+        (<span key={6}>6</span>)
+      ]
+      return (
+        <Deck>
+          <ClickingCube>{faces}</ClickingCube>
+          <FlippingCube>{faces}</FlippingCube>
+          <ClickingCube>{faces}</ClickingCube>
+          <FlippingCube>{faces}</FlippingCube>
+          <ClickingCube>{faces}</ClickingCube>
+          <FlippingCube>{faces}</FlippingCube>
+        </Deck>
+      )
+    }
   )
-  .add('mock users with cubes',
-    () => (<UserCubes />)
   )
-;
+  .add('mock users with cards', () => (<UserCards />)
+  )
+  .add('mock users with cubes', () => (<UserCubes />)
+  );
 /*
   .add('hiragana', () => (
     <Deck>
