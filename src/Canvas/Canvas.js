@@ -36,11 +36,13 @@ const Context = canvas => {
       stroke: style => { context.strokeStyle = style; return ctx; },
     },
     paint: () => { context.fill(); return ctx; },
+    fill: () => ctx.paint(),
     outline: () => { context.stroke(); return ctx; },
-    path: {
-      begin: () => { context.beginPath(); return ctx; },
-      arc: ({x, y}, r, {from, to}) => { context.arc(x, y, r, from, to); return ctx; },
-    },
+    stroke: () => ctx.outline(),
+    begin: () => { context.beginPath(); return ctx; },
+    arc: ({x, y}, r, {from, to}) => { context.arc(x, y, r, from, to); return ctx; },
+    moveTo: ({x, y}) => { context.moveTo(x, y); return ctx; },
+    lineTo: ({x, y}) => { context.lineTo(x, y); return ctx; },
     end: () => { context.closePath(); return ctx; },
     // not chainable
     gradient: {
@@ -103,8 +105,8 @@ export const Rect = (coord, border, color) => props => {
 
 export const Arc = (center, radius, curve, color, border) => props => {
   const { context } = props;
-  context.path.begin();
-  context.path.arc(center, radius, curve);
+  context.begin();
+  context.arc(center, radius, curve);
   // const grad = context.gradient.linear();
   // grad.addColorStop(0, 'rgba(255,0,0,.1)');
   // grad.addColorStop(.5, 'rgba(0,0,255,.2)');
@@ -116,7 +118,6 @@ export const Arc = (center, radius, curve, color, border) => props => {
   return props;
 };
 
-//let
 export const Circle = (center, radius, color, border) => props => {
   return Arc(center, radius, {from: 0, to: 2 * Math.PI}, color, border)(props);
 };
