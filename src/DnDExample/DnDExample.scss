@@ -84,9 +84,9 @@ ol.target {
   }
 }
 @supports (display: grid) {
-  .deck {
+  .deck.reorder {
     grid-template-columns: repeat(auto-fill, 128px);
-    grid-template-rows: repeat(auto-fill, 128px);    
+    grid-template-rows: repeat(auto-fill, 128px);
   }
   .card.source {
     margin: 0;
