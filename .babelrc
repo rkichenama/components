@@ -1,5 +1,5 @@
 {
-  "plugins": ["transform-decorators-legacy"],
+  "plugins": ["transform-decorators-legacy", "transform-async-to-generator", "transform-runtime"],
   "presets": [
     ["es2015", { "loose": true }],
     "stage-2",
