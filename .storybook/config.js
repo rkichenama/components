@@ -1,15 +1,15 @@
-import { configure, addDecorator } from '@storybook/react';
+import { configure } from '@storybook/react';
 import { setOptions } from '@storybook/addon-options';
-import Centered from './Centered';
 
-addDecorator(Centered);
+// function loadStories() {
+//   require('../stories');
+// }
 
 setOptions({
   name: 'Components',
   downPanelInRight: true,
   hierarchySeparator: /\//
 })
-
 
 const req = require.context('../src/', true, /.stories.js$/);
 

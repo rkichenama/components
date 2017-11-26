@@ -6,13 +6,11 @@ import { withInfo } from '@storybook/addon-info';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, select } from '@storybook/addon-knobs';
 import StateDecorator from '../StateDecorator/StateDecorator';
-import Centered from '../../storybook/Centered';
 
 import Die from './Die';
 
 const stories = storiesOf('Atomic/Cube', module);
 stories.addDecorator(withKnobs);
-stories.addDecorator(Centered);
 
 stories.add('with knobs',
   () => {

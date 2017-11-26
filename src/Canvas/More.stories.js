@@ -8,11 +8,9 @@ import { withNotes } from '@storybook/addon-notes';
 import { action } from '@storybook/addon-actions';
 
 import StateDecorator from '../StateDecorator/StateDecorator';
-import Centered from '../../storybook/Centered';
 
 const stories = storiesOf('Atomic/Canvas/more', module);
 stories.addDecorator(withKnobs);
-stories.addDecorator(Centered);
 
 const shadeColor2 = (color, percent) => {
   const f = parseInt(color.slice(1),16),

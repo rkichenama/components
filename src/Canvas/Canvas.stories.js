@@ -8,7 +8,6 @@ import { withNotes } from '@storybook/addon-notes';
 import { action } from '@storybook/addon-actions';
 
 import StateDecorator from '../StateDecorator/StateDecorator';
-import Centered from '../../storybook/Centered';
 
 const size = i => ({
   w: ((i+1) * 20),
@@ -137,9 +136,8 @@ The data should be a list of draw actions to be performed within the canvas cont
   )
 ;
 
-const shapes = storiesOf('Canvas/Shapes', module);
+const shapes = storiesOf('Atomic/Canvas/Shapes', module);
 shapes.addDecorator(withKnobs);
-shapes.addDecorator(Centered);
 
 class D extends Component {
   constructor (...args) {
