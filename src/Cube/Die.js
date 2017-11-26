@@ -3,18 +3,17 @@ import PropTypes from 'prop-types';
 
 import './Die.scss';
 
-const Dots = (n => {
-  const dots = [];
-  for (let i = 0; i < n; i++)
-    dots[i] = (
-      <div className='dot' key={i} />
-    );
-  return dots;
-})(9);
-
-const Die = ({value}) => (
-  <div className='die' value={`${value}`}>
-    { Dots }
+const Die = ({value} => (
+  <div className="die" value={value.toString()}>
+    <div className="dot" />
+    <div className="dot" />
+    <div className="dot" />
+    <div className="dot" />
+    <div className="dot" />
+    <div className="dot" />
+    <div className="dot" />
+    <div className="dot" />
+    <div className="dot" />
   </div>
 );
 
