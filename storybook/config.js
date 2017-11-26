@@ -7,6 +7,7 @@ addDecorator(Centered);
 setOptions({
   name: 'Components',
   downPanelInRight: true,
+  hierarchySeparator: /\./
 })
 
 

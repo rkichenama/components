@@ -65,6 +65,7 @@ import ${name} from './${name}';
 import { storiesOf } from  '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 import { withKnobs } from '@storybook/addon-knobs';
+import { withNotes } from '@storybook/addon-notes';
 import { action } from '@storybook/addon-actions';
 
 import StateDecorator from '../StateDecorator/StateDecorator';
