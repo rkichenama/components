@@ -1,13 +1,23 @@
 .deck {
-  display: flex;
-  flex-wrap: wrap;
+  padding: 8px;
   justify-content: center;
+  display: grid;
+  grid-gap: 8px;
+  grid-template-columns: repeat(auto-fill, 96px);
+  grid-template-rows: repeat(auto-fill, 96px);
   background-color: transparentize(black, .9);
+}
+@supports not (display: grid) {
+  .deck {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: transparentize(black, .9);
 
-  > .card {
-    $perRow: 5;
-    $p: (100% / $perRow);
-    $x: (2px * $perRow);
-    flex-basis: calc(#{$p} - #{$x});
+    > * {
+      $perRow: 5;
+      $p: (100% / $perRow);
+      $x: (2px * $perRow);
+      flex-basis: calc(#{$p} - #{$x});
+    }
   }
 }

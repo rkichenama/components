@@ -1,8 +1,10 @@
-.card {
+.cube {
   position: relative;
   perspective: 100vw;
   width: 96px;
   height: 96px;
+
+
 
   &.flipped .flip {
     transform: rotateY(180deg);
@@ -29,6 +31,10 @@
     width: inherit;
     right: 0;
     bottom: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .front {
@@ -39,7 +45,7 @@
 }
 
 @supports not (display: grid) {
-  .card {
+  .cube {
     margin: 4px;
   }
 }
