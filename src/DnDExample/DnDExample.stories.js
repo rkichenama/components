@@ -7,14 +7,14 @@ import { withInfo } from '@storybook/addon-info';
 import { action } from '@storybook/addon-actions';
 
 storiesOf('DnDExample', module)
-  .add('story1',
+  .add('dragging into buckets',
     withInfo(null)(
       () => (
         <DnDExample />
       )
     )
   )
-  .add('story2',
+  .add('dragging for reordering',
     withInfo(null)(
       () => (
         <DnDExample2 />
