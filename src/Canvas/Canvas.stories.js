@@ -1,5 +1,5 @@
 /* */
-import React from 'react';
+import React, { Component } from 'react';
 import '../global.scss';
 import Canvas, { Clear, FilledRect, BorderedRect, Rect, Circle } from './Canvas';
 import { storiesOf } from  '@storybook/react';
@@ -22,14 +22,56 @@ const concentricSquares = n => (
         y: 150 - ((i+1) * 10),
       }, 'rgba(0, 0, 128, 0.1)', 'rgba(128, 0, 0, 0.1)')
     ))
-)
+);
 const concentricCircles = n => (
   Array(n).fill('')
     .map((_, i) => (
       Circle({ x: 150, y: 150, }, ((i + 1) * 10),
         'rgba(128, 0, 0, 0.1)')
     ))
-)
+);
+
+class Saver extends Component {
+  constructor (...args) {
+    super(...args);
+    this.state = {
+      x: 13, y: 7, w: 40, h: 40,
+      avail: false, dx: 1, dy: 1
+    }
+
+    this.animate = this.animate.bind(this);
+  }
+  componentDidMount () {
+    this.state.avail = true;
+    this.animate();
+  }
+  animate () {
+    if (!this.state.avail) { return; }
+
+    let {x, y, dx, dy, w, h} = this.state;
+
+    if (x < 0 || x > (300 - w - Math.abs(dx))) { dx *= -1; }
+    if (y < 0 || y > (300 - h - Math.abs(dy))) { dy *= -1; }
+
+    [x, y] = [x + dx, y + dy];
+
+    this.setState({x, y, dx, dy}, () => {
+      requestAnimationFrame(this.animate);
+    });
+  }
+  componentWillUnmount () {
+    this.state.avail = false;
+  }
+  render () {
+    const {x, y, w, h} = this.state;
+    return (
+      <Canvas sequence={[
+        Clear(),
+        Rect({x, y, w, h}, 'purple', 'orange')
+      ]}/>
+    );
+  }
+}
 
 storiesOf('Canvas/base', module)
   .add('basic canvas',
@@ -44,11 +86,7 @@ The data should be a list of draw actions to be performed within the canvas cont
   .add('with a sequence canvas',
     withNotes(``)(
       () => (
-        <Canvas sequence={[
-          Clear(),
-          // ...concentricSquares(12),
-          ...concentricCircles(12),
-        ]}/>
+        <Saver />
       )
     )
   )
