@@ -4,73 +4,128 @@ import { Panel, Row, Col } from 'react-bootstrap';
 import { DragDropContext, DragSource, DropTarget } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 
+import Deck from '../Deck/Deck';
+import Card from '../Card/Card';
+import StateDecorator from '../StateDecorator/StateDecorator';
+
 import './DnDExample.scss';
 
-const ListItem = DragSource('listItem', {
-  beginDrag (props) { return { text: props.text }}
-}, (connect, monitor) => ({
+const FlippingCard = StateDecorator('flipped', [true, false], 6000)(Card);
+
+class LI extends Component {
+  static propTypes = {
+    children: PropTypes.node.isRequired,
+    // for dragging
+    connectDragSource: PropTypes.func.isRequired,
+    // for dropping
+    connectDropTarget: PropTypes.func.isRequired,
+  };
+  render () {
+    const { children, connectDragSource, connectDropTarget } = this.props;
+
+    // DragSource needs a native element
+    return connectDragSource(connectDropTarget(
+      <span>
+        <FlippingCard className='source'>
+          {children}
+        </FlippingCard>
+      </span>
+    ), { dropEffect: 'copy' });
+  }
+}
+
+const specTarget = {
+  hover (props, monitor, component) {
+    const {ind: overInd} = props;
+    const {ind: dragInd} = monitor.getItem();
+
+    if (dragInd !== overInd) {
+      monitor.getItem().ind = overInd;
+    }
+  }
+};
+const collectTarget = (connect, monitor) => ({
+  connectDropTarget: connect.dropTarget(),
+  canDrop: monitor.canDrop()
+});
+
+const specSource = {
+  beginDrag (props) { return { ind: props.ind }; },
+  isDragging (props, monitor) { return monitor.getItem().ind === props.ind},
+  endDrag (props, monitor, component) {
+    const {ind: dragInd} = props;
+    const {ind: dropInd} = monitor.getItem();
+
+    if (dragInd !== dropInd) {
+      return props.reorder(dragInd, dropInd);
+    }
+    return null;
+  }
+};
+const collectSource = (connect, monitor) => ({
   connectDragSource: connect.dragSource(),
   isDragging: monitor.isDragging()
-}))(
-  class extends Component {
-    render () {
-      const { text, connectDragSource, isDragging } = this.props;
-      return connectDragSource(
-        <li className='source'>{text}</li>
-      );
-    }
-  }
-);
+});
 
-const OrderedList = DropTarget('listItem', {
-  canDrop (props, monitor) {
-    return true;
-  }
-}, (connect, monitor) => ({
-  connectDropTarget: connect.dropTarget(),
-  isOver: monitor.isOver(),
-  isOverCurrent: monitor.isOver({ shallow: true }),
-  canDrop: monitor.canDrop(),
-  itemType: monitor.getItemType()
-}))(
-  class extends Component {
-    render () {
-      const { children, connectDropTarget } = this.props;
-      return connectDropTarget(
-        <ol className='target'>
-          {children}
-        </ol>
-      )
-    }
-  }
+const ListItem = DragSource('listItem', specSource, collectSource)(
+  DropTarget('listItem', specTarget, collectTarget)(
+    LI
+  )
 );
 
 const OrderedListContext = DragDropContext(HTML5Backend)(
-    ({children}) => (
-      <div>
-        {children}
-      </div>
-    )
+    Deck
 );
-
-
 
 export default class DnDExample2 extends Component {
   constructor (...args) {
     super(...args);
     [
-
+      'reorder'
     ].map(fn => (this[fn] = this[fn].bind(this)));
+    this.state = {
+      items: [
+        ['Bruce Banner', 'Hulk'],
+        ['Carl Lucas', 'Luke Cage'],
+        ['Carol Danvers', 'Captain Marvel'],
+        ['Danny Rand', 'Iron Fist'],
+        ['Doreen Alene Green', 'Squirrel Girl'],
+        ['Jessica Campbell', 'Jessica Jones'],
+        ['Matt Murdock', 'Daredevil'],
+        ['Neena Thurman', 'Domino'],
+        ['Pytor Rasputin', 'Colossus'],
+        ['Tony Stark', 'Iron Man'],
+        ['Wade Wilson', 'Deadpool'],
+      ]
+    }
+  }
+  reorder (src, dest) {
+    const { items } = this.state;
+    // move src to before dest
+    // remove src from items
+    const out = items.filter((item, i) => i !== src)
+    this.setState({items: [
+      // everything before dest
+      ...out.slice(0, dest),
+      // src
+      items[src],
+      // everything after dest
+      ...out.slice(dest)
+    ]});
   }
   render () {
+    const { reorder } = this;
     return (
       <Panel>
         <OrderedListContext>
-          <OrderedList>
             {
-              ['ha', 'he', 'hi'].map((text, i) => (<ListItem key={i} {...{text}} />))
+              this.state.items.map(([name, alias], i) => (
+                <ListItem {...{reorder}} key={i} ind={i}>
+                  <span>{name}</span>
+                  <span>{alias}</span>
+                </ListItem>
+              ))
             }
-          </OrderedList>
         </OrderedListContext>
       </Panel>
     );

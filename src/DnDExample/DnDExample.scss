@@ -28,10 +28,16 @@
   }
 }
 
+ol.target {
+  padding-left: 2em;
+  list-style-type: decimal-leading-zero;
+}
+
 .target {
   position: relative;
   overflow: hidden;
   padding: 4px;
+  border: 1px dotted lighten(#000, 60%);
 
   &:nth-child(1) {
     grid-column-end: span 2;
@@ -39,16 +45,16 @@
   }
 
   &.droppable {
-    border: 2px dotted lighten(#000, 60%);
     &.over {
       border-color: #428bca;
+      border-width: 2px;
     }
   }
 
   &.notDroppable {
-    border: 2px dotted lighten(#000, 60%);
     &.over {
       border-color: #d9534f;
+      border-width: 2px;
     }
   }
 
@@ -64,5 +70,15 @@
       display: block;
       margin: 10px;
     }
+  }
+}
+
+.card.source {
+  width: 128px;
+  height: 128px;
+  .front, .back {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
