@@ -41,7 +41,6 @@ Cube.propTypes = {
 const noop = () => {};
 
 Cube.defaultProps = {
-  flipped: false,
   onClick: noop,
   face: 'front',
   className: ''

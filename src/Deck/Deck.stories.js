@@ -8,31 +8,31 @@ import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 import { action } from '@storybook/addon-actions';
 
-const Hiragana = ClickDecorator('flipped', [false, true])(Card);
 
 storiesOf('Deck', module)
   .add('with cards',
     withInfo(null)(
       () => {
-        const CardExample = StateDecorator('flipped', [true, false], 2500)(Card);
+        const FlippingCard = StateDecorator('flipped', [true, false], 2500)(Card);
+        const ClickingCard = ClickDecorator('flipped', [false, true])(Card);
         return (
           <Deck>
-            <Card>
+            <ClickingCard>
               <div>This is some content Front</div>
               <div>This is some content Back</div>
-            </Card>
-            <CardExample>
+            </ClickingCard>
+            <FlippingCard>
               <div>This is some content Front</div>
               <div>This is some content Back</div>
-            </CardExample>
-            <Card>
+            </FlippingCard>
+            <ClickingCard>
               <div>This is some content Front</div>
               <div>This is some content Back</div>
-            </Card>
-            <CardExample>
+            </ClickingCard>
+            <FlippingCard>
               <div>This is some content Front</div>
               <div>This is some content Back</div>
-            </CardExample>
+            </FlippingCard>
           </Deck>
         )
       }
@@ -41,7 +41,8 @@ storiesOf('Deck', module)
   .add('with cubes',
     withInfo(null)(
       () => {
-        const CubeExample = StateDecorator('face', Cube.Faces, 2500)(Cube);
+        const FlippingCube = StateDecorator('face', Cube.Faces, 2500)(Cube);
+        const ClickingCube = ClickDecorator('face', Cube.Faces)(Cube);
         const faces = [
           (<span key={1}>1</span>),
           (<span key={2}>2</span>),
@@ -52,10 +53,12 @@ storiesOf('Deck', module)
         ]
         return (
           <Deck>
-            <Cube>{faces}</Cube>
-            <CubeExample>{faces}</CubeExample>
-            <Cube>{faces}</Cube>
-            <CubeExample>{faces}</CubeExample>
+            <ClickingCube>{faces}</ClickingCube>
+            <FlippingCube>{faces}</FlippingCube>
+            <ClickingCube>{faces}</ClickingCube>
+            <FlippingCube>{faces}</FlippingCube>
+            <ClickingCube>{faces}</ClickingCube>
+            <FlippingCube>{faces}</FlippingCube>
           </Deck>
         )
       }
