@@ -7,18 +7,20 @@
   &.front .flip {
     transform: rotateX(0deg) rotateY(0deg);
   }
-  &.bottom .flip { // show bottom
-    transform: rotateX(180deg) rotateY(0deg);
-    // .bottom { z-index: 2; }
-  }
-  &.top .flip { // show top
-    transform: rotateX(-180deg) rotateY(0deg);
-  }
-  &.left .flip { // show left
+  &.back .flip {
     transform: rotateX(0deg) rotateY(-180deg);
   }
+  &.bottom .flip { // show bottom
+    transform: rotateX(90deg) rotateY(0deg);
+  }
+  &.top .flip { // show top
+    transform: rotateX(-90deg) rotateY(0deg);
+  }
+  &.left .flip { // show left
+    transform: rotateX(0deg) rotateY(90deg);
+  }
   &.right .flip { // show right
-    transform: rotateX(0deg) rotateY(180deg);
+    transform: rotateX(0deg) rotateY(-90deg);
   }
 
   .flip {
@@ -29,7 +31,7 @@
     height: 100%;
   }
 
-  .front, .top, .bottom, .left, .right {
+  .front, .top, .bottom, .left, .right, .back {
     border: 1px solid white;
     border-radius: 4px;
     background-color: white;
@@ -52,10 +54,11 @@
     z-index: 2;
     transform: rotateY(0deg);
   }
-  .left { transform: rotateY(180deg); }
-  .right { transform: rotateY(-180deg); }
-  .top { transform: rotateX(180deg); }
-  .bottom { transform: rotateX(-180deg); }
+  .back { transform: rotateY(180deg); }
+  .left { transform: rotateY(-90deg); }
+  .right { transform: rotateY(90deg); }
+  .top { transform: rotateX(90deg); }
+  .bottom { transform: rotateX(-90deg); }
 }
 
 @supports not (display: grid) {

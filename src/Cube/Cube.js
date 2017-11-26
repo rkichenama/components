@@ -4,16 +4,16 @@ import PropTypes from 'prop-types';
 import './Cube.scss';
 
 const Cube = ({children, onClick, face, className}) => {
-  const kids = Children.toArray(children).slice(0, 5);
+  const kids = Children.toArray(children).slice(0, 6);
 
   return (
     <div className={`cube ${face} ${className}`}>
       <div className='flip' onClick={onClick}>
         {
           [
-            'front', 'left', 'right', 'top', 'bottom'
+            'front', 'back', 'left', 'right', 'top', 'bottom'
           ].map((side, s) => (
-            <div className={side} key={s}>{kids[s] || null }</div>
+            <div className={`side ${side}`} key={s}>{kids[s] || null }</div>
           ))
         }
       </div>
@@ -22,8 +22,9 @@ const Cube = ({children, onClick, face, className}) => {
 }
 
 const firstLetter = str => `${str[0].toUpperCase()}${str.slice(1)}`;
-const faces = ['front', 'top', 'left', 'bottom', 'right'];
+const faces = ['front', 'top', 'left', 'bottom', 'right', 'back'];
 faces.forEach(face => Cube[firstLetter(face)] = face);
+Cube.Faces = faces;
 
 Cube.propTypes = {
   children: PropTypes.node.isRequired,
