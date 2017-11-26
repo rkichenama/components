@@ -30,7 +30,7 @@ class LI extends Component {
           {children}
         </FlippingCard>
       </span>
-    ), { dropEffect: 'copy' });
+    ), { dropEffect: 'move' });
   }
 }
 
