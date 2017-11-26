@@ -1,0 +1,59 @@
+.die {
+ display: grid;
+ width: 300px;
+ height: 300px;
+ grid-template-columns: repeat(3, 1fr);
+ grid-template-rows: repeat(3, 1fr);
+ grid-gap: 10px;
+ padding: 10px;
+}
+
+.dot {
+ background-color: #444;
+ color: #fff;
+ border-radius: 50%;
+ opacity: 0;
+}
+
+[value='1'],
+[value='3'],
+[value='5'] {
+ .dot {
+  &:nth-child(5) {
+   opacity: 1;
+  }
+ }
+}
+
+[value='2'],
+[value='3'],
+[value='4'],
+[value='5'],
+[value='6'] {
+ .dot {
+  &:nth-child(9),
+  &:nth-child(1) {
+   opacity: 1;
+  }
+ }
+}
+
+[value='4'],
+[value='5'],
+[value='6'] {
+ .dot {
+  &:nth-child(3),
+  &:nth-child(7) {
+   opacity: 1;
+  }
+ }
+}
+
+[value='6'] {
+ .dot {
+  &:nth-child(4),
+  &:nth-child(6) {
+   opacity: 1;
+  }
+ }
+}
