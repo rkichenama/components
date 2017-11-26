@@ -10,7 +10,7 @@ import Centered from '../../storybook/Centered';
 
 import Die from './Die';
 
-const stories = storiesOf('Items.Cube', module);
+const stories = storiesOf('Items/Cube', module);
 stories.addDecorator(withKnobs);
 stories.addDecorator(Centered);
 
