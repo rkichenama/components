@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../global.scss';
 import Punchcard from './Punchcard';
 import { storiesOf } from '@storybook/react';
+import { withInfo } from '@storybook/addon-info';
 import { action } from '@storybook/addon-actions';
 
 const randoms = [];
@@ -44,6 +45,10 @@ class Container extends Component {
 }
 
 storiesOf('Punchcard', module)
-  .addWithInfo('story', '', () => (
-    <Container />
-  ));
+  .add('story',
+    withInfo(null)(
+      () => (
+        <Container />
+      )
+    )
+  );
