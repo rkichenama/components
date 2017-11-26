@@ -1,8 +1,6 @@
-import { configure, setAddon, addDecorator } from '@storybook/react';
-import infoAddon from '@storybook/addon-info';
+import { configure, addDecorator } from '@storybook/react';
 import Centered from './Centered';
 
-setAddon(infoAddon);
 addDecorator(Centered);
 
 const req = require.context('../src/', true, /.stories.js$/);

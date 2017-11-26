@@ -6,10 +6,18 @@ import { withInfo } from '@storybook/addon-info';
 import { action } from '@storybook/addon-actions';
 
 storiesOf('Cube', module)
+  // .addDecorator(withKnobs)
   .add('story',
-    withInfo('')(
-      () => (
-        <Cube />
-      )
-    )
-);
+      () => {
+        return (
+          <Cube onClick={action('clicked')} face={'front'}>
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+            <span>6</span>
+          </Cube>
+        )
+      })
+;
