@@ -1,6 +1,6 @@
 {
   "name": "components",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "just a place to put components I make",
   "main": "index.js",
   "scripts": {
