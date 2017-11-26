@@ -30,12 +30,14 @@
   }
 
   .dot {
+    opacity: 1;
     height: 0;
     padding-bottom: 100%;
     border-radius: 50%;
     border: 1px solid gray;
     position: relative;
     transition: background-color 1.8s ease;
+    background-color: transparent;
 
     &:before {
       content: '';

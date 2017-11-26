@@ -7,9 +7,6 @@ import './Punchcard.scss';
 export default class Punchcard extends Component {
   constructor (...args) {
     super(...args);
-    [
-
-    ].map(fn => (this[fn] = this[fn].bind(this)));
   }
   render () {
     const { active } = this.props;
