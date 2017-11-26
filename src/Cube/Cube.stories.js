@@ -8,6 +8,8 @@ import { withKnobs, select } from '@storybook/addon-knobs';
 import StateDecorator from '../StateDecorator/StateDecorator';
 import Centered from '../../storybook/Centered';
 
+import Die from './Die';
+
 const stories = storiesOf('Items.Cube', module);
 stories.addDecorator(withKnobs);
 stories.addDecorator(Centered);
@@ -33,12 +35,12 @@ stories.add('auto',
 
     return (
       <Cubed>
-        <span>1</span>
-        <span>2</span>
-        <span>3</span>
-        <span>4</span>
-        <span>5</span>
-        <span>6</span>
+        <Die value={1} />
+        <Die value={6} />
+        <Die value={2} />
+        <Die value={5} />
+        <Die value={4} />
+        <Die value={3} />
       </Cubed>
     )
   }
