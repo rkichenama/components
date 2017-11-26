@@ -1,7 +1,14 @@
 import { configure, addDecorator } from '@storybook/react';
+import { setOptions } from '@storybook/addon-options';
 import Centered from './Centered';
 
 addDecorator(Centered);
+
+setOptions({
+  name: 'Components',
+  downPanelInRight: true,
+})
+
 
 const req = require.context('../src/', true, /.stories.js$/);
 

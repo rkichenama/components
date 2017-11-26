@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-const StateDecorator = (flag = 'f', values = [], delay = 500) => WrappedComponent => (
+const StateDecorator = (flag = 'f', values = [], delay = 500, fn = () => {}) => WrappedComponent => (
   class StateDecorator extends Component {
     constructor (...args) {
       super(...args);
@@ -14,7 +14,7 @@ const StateDecorator = (flag = 'f', values = [], delay = 500) => WrappedComponen
     componentDidMount () {
       this.state.interval = setInterval(_ => {
         const [next, ...values] = this.state.values;
-        this.setState({[flag]: next, values: [...values, next]});
+        this.setState({[flag]: next, values: [...values, next]}, () => fn(this.state[flag]) );
       }, delay);
     }
     componentWillUnmount () {

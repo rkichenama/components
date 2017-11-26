@@ -29,7 +29,7 @@ stories.add('with knobs',
 
 stories.add('auto',
   () => {
-    const Cubed = StateDecorator('face', Cube.Faces, 2500)(Cube);
+    const Cubed = StateDecorator('face', Cube.Faces, 2500, action('face'))(Cube);
 
     return (
       <Cubed>
