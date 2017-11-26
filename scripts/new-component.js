@@ -15,69 +15,54 @@ try {
   }
 }
 
-let fileTemplate = `/* */
-import React, { Component } from 'react';
+let fileTemplate = `import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {
-  compose, withState, withHandlers,
-  defaultProps, lifecycle,
-  setDisplayName, setPropTypes
-} from 'recompose';
 
-const ${name} = ({}) => {
-  return (
-    <div>
-      replace this with actual code
-    </div>
-  );
-};
+export default class ${name} extends Component {
+  static propTypes = {};
+  static defaultProps = {};
 
-const enhance = compose(
-  setPropTypes({}),
-  defaultProps({}),
-  lifecycle({}),
-  setDisplayName('Stateless(${name})')
-);
-
-export default enhance(${name});
+  render () {
+    return (
+      <span>${name}</span>
+    );
+  }
+}
 `;
 
-let testTemplate = `/* */
-import React from 'react';
-import { shallow } from 'enzyme';
-import jasmineEnzyme from 'jasmine-enzyme';
+// TODO: need to make a jest template
+// let testTemplate = `/* */
+// import React from 'react';
+// import { shallow } from 'enzyme';
+// import jasmineEnzyme from 'jasmine-enzyme';
 
-import ${name} from './${name}';
+// import ${name} from './${name}';
 
-describe('${name}', () => {
-  beforeEach(jasmineEnzyme);
+// describe('${name}', () => {
+//   beforeEach(jasmineEnzyme);
 
-  it('can render', () => {
-    shallow(<${name} />);
-  });
-});
-`;
+//   it('can render', () => {
+//     shallow(<${name} />);
+//   });
+// });
+// `;
 
-let storyTemplate = `/* */
-import React from 'react';
-import '../global.scss';
-import ${name} from './${name}';
+let storyTemplate = `import React from 'react';
 import { storiesOf } from  '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
-import { withKnobs } from '@storybook/addon-knobs';
-import { withNotes } from '@storybook/addon-notes';
-import { action } from '@storybook/addon-actions';
+// import { withInfo } from '@storybook/addon-info';
+// import { withKnobs } from '@storybook/addon-knobs';
+// import { withNotes } from '@storybook/addon-notes';
+// import { action } from '@storybook/addon-actions';
+import ${name} from './${name}';
+// import StateDecorator from '../StateDecorator/StateDecorator';
 
-import StateDecorator from '../StateDecorator/StateDecorator';
+import '../global.scss';
 
-storiesOf('${name}', module)
-  .add('story',
-    withInfo('')(
-      () => (
-        <${name} />
-      )
-    )
-  );
+const stories = storiesOf('Atomic/${name}', module);
+
+stories.add('${name}', () => (
+  <${name} />
+));
 `;
 
 function writeFile (path, text) {
@@ -86,5 +71,5 @@ function writeFile (path, text) {
 }
 
 writeFile(path.join(componentDir, `${name}.js`), fileTemplate);
-writeFile(path.join(componentDir, `${name}.test.js`), testTemplate);
+// writeFile(path.join(componentDir, `${name}.test.js`), testTemplate);
 writeFile(path.join(componentDir, `${name}.stories.js`), storyTemplate);
