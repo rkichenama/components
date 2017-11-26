@@ -3,7 +3,8 @@ import '../global.scss';
 import Deck from './Deck';
 import Card from '../Card/Card';
 import StateDecorator, { ClickDecorator } from '../StateDecorator/StateDecorator';
-import { storiesOf, action } from '@kadira/storybook';
+import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 
 const CardExample = StateDecorator('flipped', [true, false], 1000)(Card);
 const Hiragana = ClickDecorator('flipped', [false, true])(Card);

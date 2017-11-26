@@ -1,23 +1,25 @@
-const path = require('path');
-
 module.exports = {
   module: {
-    loaders: [
+    rules: [
       {
-        test: /scss$/,
-        loaders: ["style", "css", "sass"],
-        include: path.resolve(__dirname, '../src')
+        test: /\.scss$/,
+        use: [
+          {loader: 'style-loader'},
+          {loader: 'css-loader'},
+          {loader: 'sass-loader'}
+        ]
       },
       {
-        test: /css$/,
-        loaders: ["style", "css"],
-        include: path.resolve(__dirname, '../node_modules')
+        test: /\.css$/,
+        use: [
+          {loader: 'style-loader'},
+          {loader: 'css-loader'}
+        ]
       },
       // images
       { test: /\.png$/, loader: 'url-loader?limit=10000' },
       { test: /\.gif$/, loader: 'url-loader?limit=10000' },
       // fonts
-      { test: /\.woff2/, loader: 'file-loader' },
       { test: /\.woff/, loader: 'file-loader' },
       { test: /\.svg/, loader: 'file-loader' },
       { test: /\.ttf/, loader: 'file-loader' },

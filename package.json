@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/rkichenama/components#readme",
   "dependencies": {
-    "@storybook/addon-info": "^3.1.6",
+    "@storybook/addon-info": "^3.2.0",
     "@storybook/react": "^3.1.6",
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
@@ -50,12 +50,11 @@
     "react-bootstrap": "^0.31.0",
     "react-dom": "^15.5.4",
     "react-onclickoutside": "^6.0.1",
-    "react-storybook": "^1.0.0",
-    "react-storybook-addon-info": "^3.5.0",
     "react-test-renderer": "^15.5.4",
     "sass-loader": "^6.0.5",
     "style-loader": "^0.18.2",
     "url-loader": "^0.5.8",
+    "uuid": "^3.1.0",
     "webpack": "^2.6.1",
     "webpack-dev-server": "^2.4.5",
     "yallist": "^3.0.2"

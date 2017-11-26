@@ -57,7 +57,7 @@ describe('${name}', () => {
 let storyTemplate = `import React from 'react';
 import '../global.scss';
 import ${name} from './${name}';
-import { storiesOf, action } from '@kadira/storybook';
+import { storiesOf, action } from '@storybook/react';
 
 storiesOf('${name}', module)
   .addWithInfo('story', '', () => (
