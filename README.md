@@ -17,3 +17,30 @@ else
 	exit 1
 fi
 ```
+
+## TODO
+http://www.koalastothemax.com/
+
+https://github.com/modernserf/chers-closet
+```javascript
+
+const template = new Proxy(
+  {},
+  get: (target, key) => (id, ...params) => ([id, key, ...params])
+);
+
+const data = [
+  template.is_a('white_shirt', 'top'); // ['white_shirts', 'is_a', 'top']
+];
+```
+
+An iterable List interface
+```javascript
+class ListClass {
+  constructor () {
+    this._items = ['a', 1, 2];
+    // iterating over List gives the items in order
+    this[Symbol.iterator] = function* () { for (let i of this._items) yield i; }
+  }
+}
+```

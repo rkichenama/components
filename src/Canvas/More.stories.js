@@ -326,28 +326,6 @@ const outline3DBox = (multiplier = 1.0, X = sideX, Y = sideY, Z = 2 * .612 * Y) 
 };
 
 const T = ({Rx, Ry, Rz}) => ({x, y, z = 0}) => {
-  /*
-  First, apply the x-axis rotation to transform coordinates (x, y, z)
-  into coordinates (x0, y0, z0).
-
-      x0  =  x
-      y0  =  y*cos(Rx) + z*sin(Rx)
-      z0  =  z*cos(Rx) - y*sin(Rx)
-
-  Then apply the y-axis rotation to (x0, y0, z0) to obtain (x1, y1, z1).
-
-      x1  =  x0*cos(Ry) - z0*sin(Ry)
-      y1  =  y0
-      z1  =  z0*cos(Ry) + x0*sin(Ry)
-
-  Finally, apply the z-axis rotation to obtain the point (x2, y2).
-
-      x2  =  x1*cos(Rz) + y1*sin(Rz)
-      y2  =  y1*cos(Rz) - x1*sin(Rz)
-
-  Hey presto, you can now plot (x2, y2) in two dimensions.
-
-   */
   const [sx, cx, sy, cy, sz, cz] = [Rx, Ry, Rz]
     .map(angle => ([Math.sin(angle), Math.cos(angle)]))
     .reduce((t, c) => ([...t, ...c]), []);
