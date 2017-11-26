@@ -10,6 +10,8 @@ import {
 
 import './Canvas.scss';
 
+
+//TODO: rewrite without recompose since I need state in order to cancle AniFrame
 const Canvas = ({className, setCanvas}) => (
   <canvas
     ref={setCanvas}
@@ -58,18 +60,54 @@ const enhance = compose(
   setDisplayName('Stateless(Canvas)'),
   setPropTypes({
     className: PropTypes.string,
-    sequence: PropTypes.arrayOf(PropTypes.func)
+    scene: PropTypes.arrayOf(PropTypes.func),
+    sequence: PropTypes.arrayOf(PropTypes.func),
   }),
   defaultProps({
     className: '',
+    scene: [],
     sequence: [],
   }),
-  withState('canvas', 'setCanvas', false),
+  pipe(
+    withState('canvas', 'setCanvas', false),
+    withState('animating', 'setAnim', false),
+  ),
+  withHandlers({
+    animate: props => () => {
+      const { scene, sequence: seq } = props;
+      const args = {...props, context: Context(props.canvas) };
+      let sequence = [...seq];
+      const doAnim = () => {
+        // draw thee scene
+        props.scene.forEach(layer => layer(args));
+        debugger;
+        // do the next animation step
+        if (sequence.length) {
+          let [step, ...rest] = sequence;
+          step(args);
+          // set up animation
+          sequence = [...rest, step];
+          requestAnimationFrame(doAnim);
+        }
+      };
+      requestAnimationFrame(doAnim);
+    }
+  }),
   lifecycle({
-    componentWillReceiveProps (props) {
-      if (props.canvas) {
-        let args = {...props, context: Context(props.canvas) };
-        props.sequence.forEach(step => step(args));
+    componentWillReceiveProps ({scene, sequence, animating}) {
+      // if (
+      //   (animating !== this.props.animating) &&
+      //   (sequence !== this.props.sequence) &&
+      //   (scene !== this.props.scene)
+      // ) {
+      //   this.props.setAnim(false);
+      // } else {
+      //   this.props.setAnim(true);
+      // }
+    },
+    componentDidUpdate () {
+      if (this.props.canvas && !this.props.animating) {
+        this.props.animate();
       }
     }
   }),

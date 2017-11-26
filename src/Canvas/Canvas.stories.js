@@ -66,7 +66,7 @@ class Saver extends Component {
   render () {
     const {x, y, w, h} = this.state;
     return (
-      <Canvas sequence={[
+      <Canvas scene={[
         Clear(),
         Rect({x, y, w, h}, 'purple', 'orange')
       ]}/>
@@ -87,8 +87,11 @@ const polygon = (sides, center = center, size = 75) => ({context}) => {
       y: -size * Math.cos(angle)
     }));
   }
-  context.stroke().end()
+  context.stroke().fill().end()
 }
+
+let silly = Array(360).fill(false)
+  .map((_, s) => polygon(Number.parseInt(s / 10) + 2));
 
 storiesOf('Canvas/base', module)
   .add('basic canvas',
@@ -100,18 +103,25 @@ The data should be a list of draw actions to be performed within the canvas cont
       )
     )
   )
-  .add('with a sequence canvas',
+  .add('with a scene canvas',
     withNotes(``)(
       () => (
-        <Canvas sequence={[
-          Clear(),
-          ({context}) => {
-            context
-              .style.stroke('black')
-          },
-          ...Array(18).fill(false)
-            .map((_, s) => polygon(s + 2)),
-        ]} />
+        <Canvas scene={[
+            Clear(),
+            ({context}) => {
+              const g = context.gradient.linear({x:75, y: 75}, {x:225, y:225});
+              g.addColorStop(0, 'red');
+              g.addColorStop(.5, 'green');
+              g.addColorStop(1, 'violet');
+              context
+                .style.stroke('black')
+                .style.fill(g)
+            },
+          ]}
+          sequence={[
+            ...silly,
+            ...[...silly].reverse().slice(20),
+          ]} />
       )
     )
   )
@@ -125,11 +135,12 @@ class D extends Component {
   constructor (...args) {
     super(...args);
     this.state = {
-      sequence: [
+      scene: [
         Clear(),
         ({context}) => {
           context
             .style.stroke('black')
+            .style.fill('transparent');
         },
         ...Array(4).fill(false)
           .map((_, s) => polygon(s + 2)),
@@ -138,7 +149,7 @@ class D extends Component {
   }
   componentDidUpdate ({sides}) {
     if (sides !== this.props.sides) {
-      this.setState({sequence: [
+      this.setState({scene: [
         Clear(),
         ({context}) => {
           context
@@ -150,9 +161,9 @@ class D extends Component {
     }
   }
   render () {
-    const { sequence } = this.state;
+    const { scene } = this.state;
     return (
-      <Canvas {...{sequence}} />
+      <Canvas {...{scene}} />
     );
   }
 }
@@ -167,7 +178,7 @@ shapes
   )
   .add('with a concentric squares',
     () => (
-      <Canvas sequence={[
+      <Canvas scene={[
         Clear(),
         ...concentricSquares(12),
       ]}/>
@@ -175,7 +186,7 @@ shapes
   )
   .add('with a concentric circles',
     () => (
-      <Canvas sequence={[
+      <Canvas scene={[
         Clear(),
         ...concentricCircles(12),
       ]}/>
