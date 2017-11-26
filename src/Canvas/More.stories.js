@@ -10,7 +10,7 @@ import { action } from '@storybook/addon-actions';
 import StateDecorator from '../StateDecorator/StateDecorator';
 import Centered from '../../storybook/Centered';
 
-const stories = storiesOf('Canvas/more', module);
+const stories = storiesOf('Atomic/Canvas/more', module);
 stories.addDecorator(withKnobs);
 stories.addDecorator(Centered);
 

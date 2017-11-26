@@ -93,7 +93,7 @@ const polygon = (sides, center = center, size = 75) => ({context}) => {
 let silly = Array(360).fill(false)
   .map((_, s) => polygon(Number.parseInt(s / 10) + 2));
 
-storiesOf('Canvas/base', module)
+storiesOf('Atomic/Canvas/base', module)
   .add('basic canvas',
     withNotes(`The canvas should render an image based on the data passed.
 

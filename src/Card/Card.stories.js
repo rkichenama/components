@@ -9,7 +9,7 @@ import { action } from '@storybook/addon-actions';
 
 const FlippingCard = StateDecorator('flipped', [true, false], 1000)(Card);
 
-storiesOf('Items/Card', module)
+storiesOf('Atomic/Card', module)
   .add('with info',
     withInfo('')(
       () => (
