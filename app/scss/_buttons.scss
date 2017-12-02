@@ -1,0 +1,12 @@
+.btn {
+  background-color: var(--clr-link);
+  color: var(--clr-white);
+  border: 1px solid var(--clr-white);
+  padding: 4px 16px;
+
+  &:hover {
+    color: var(--clr-link);
+    background-color: var(--clr-white);
+    border-color: 1px solid var(--clr-link);
+  }
+}

@@ -1,0 +1,19 @@
+#root {
+  @extend %flex-stretch-fill;
+}
+
+.sidebar-container,
+.content-container {
+  border-radius: 4px;
+  padding: 8px;
+}
+
+.sidebar-container {
+  flex: 0 0 196px;
+  // background-color: var(--clr-bg);
+}
+
+.content-container {
+  flex: 1 1 auto;
+  background-color: var(--clr-bg);
+}
