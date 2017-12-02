@@ -15,7 +15,8 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --config ./config/webpack-prod.config.js",
-    "dev": "webpack-dev-server --config ./config/webpack-devl.config.js --open --hot"
+    "dev": "webpack-dev-server --config ./config/webpack-devl.config.js --open --hot",
+    "build:metadata": "node doc-gen.js"
   },
   "dependencies": {},
   "devDependencies": {

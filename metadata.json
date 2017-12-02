@@ -1,1 +1,239 @@
-{"src/Canvas/Canvas.js":{"description":"","displayName":"Canvas","methods":[{"name":"animate","docblock":null,"modifiers":[],"params":[],"returns":null}],"props":{"className":{"type":{"name":"string"},"required":false,"description":"","defaultValue":{"value":"''","computed":false}},"scene":{"type":{"name":"arrayOf","value":{"name":"func"}},"required":false,"description":"","defaultValue":{"value":"[]","computed":false}},"sequence":{"type":{"name":"arrayOf","value":{"name":"func"}},"required":false,"description":"","defaultValue":{"value":"[]","computed":false}}}},"src/Card/Card.js":{"description":"","methods":[],"props":{"children":{"type":{"name":"node"},"required":true,"description":""},"onClick":{"type":{"name":"func"},"required":false,"description":"","defaultValue":{"value":"() => {}","computed":false}},"flipped":{"type":{"name":"bool"},"required":false,"description":"","defaultValue":{"value":"false","computed":false}},"className":{"type":{"name":"string"},"required":false,"description":"","defaultValue":{"value":"''","computed":false}}}},"src/Cube/Cube.js":{"description":"","methods":[],"props":{"children":{"type":{"name":"node"},"required":true,"description":""},"onClick":{"type":{"name":"func"},"required":false,"description":"","defaultValue":{"value":"() => {}","computed":false}},"face":{"type":{"name":"enum","value":[{"value":"'front'","computed":false},{"value":"'back'","computed":false},{"value":"'left'","computed":false},{"value":"'right'","computed":false},{"value":"'top'","computed":false},{"value":"'bottom'","computed":false}]},"required":false,"description":"","defaultValue":{"value":"'front'","computed":false}},"className":{"type":{"name":"string"},"required":false,"description":"","defaultValue":{"value":"''","computed":false}}}},"src/Cube/Die.js":{"description":"","methods":[],"props":{"value":{"type":{"name":"number"},"required":false,"description":"","defaultValue":{"value":"1","computed":false}}}},"src/Deck/Deck.js":{"description":"","methods":[],"props":{"children":{"type":{"name":"node"},"required":true,"description":""},"className":{"type":{"name":"string"},"required":false,"description":"","defaultValue":{"value":"''","computed":false}}}},"src/DnDExample/DnDExample.js":{"description":"","displayName":"DnDExample","methods":[]},"src/DnDExample/Form.js":{"description":"","displayName":"Form","methods":[]},"src/DnDExample/Image.js":{"description":"","methods":[],"props":{"category":{"defaultValue":{"value":"'sports'","computed":false}}}},"src/DnDExample/List.js":{"description":"","displayName":"List","methods":[]},"src/DnDExample/Reorder.js":{"description":"","displayName":"DnDExample2","methods":[{"name":"reorder","docblock":null,"modifiers":[],"params":[{"name":"src","type":null},{"name":"dest","type":null}],"returns":null}]},"src/GitHubProfile/GitHubProfile.js":{"description":"","methods":[],"props":{"className":{"defaultValue":{"value":"''","computed":false}}}},"src/HOC/ErrorBoundary.js":{"description":"","displayName":"ErrorBoundary","methods":[{"name":"componentDidCatch","docblock":null,"modifiers":[],"params":[{"name":"error","type":null},{"name":"info","type":null}],"returns":null}]},"src/ProgressBar/ProgressBar.js":{"description":"","displayName":"ProgressBar","methods":[],"props":{"barColor":{"type":{"name":"string"},"required":false,"description":"","defaultValue":{"value":"'green'","computed":false}},"value":{"type":{"name":"number"},"required":false,"description":"","defaultValue":{"value":"0","computed":false}}}}}
+{
+  "src/Canvas/Canvas.jsx": {
+    "description": "",
+    "displayName": "Canvas",
+    "methods": [
+      {
+        "name": "animate",
+        "docblock": null,
+        "modifiers": [],
+        "params": [],
+        "returns": null
+      }
+    ],
+    "props": {
+      "className": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "''",
+          "computed": false
+        }
+      },
+      "scene": {
+        "type": {
+          "name": "arrayOf",
+          "value": {
+            "name": "func"
+          }
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "[]",
+          "computed": false
+        }
+      },
+      "sequence": {
+        "type": {
+          "name": "arrayOf",
+          "value": {
+            "name": "func"
+          }
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "[]",
+          "computed": false
+        }
+      }
+    }
+  },
+  "src/Card/Card.jsx": {
+    "description": "",
+    "methods": [],
+    "props": {
+      "children": {
+        "type": {
+          "name": "node"
+        },
+        "required": true,
+        "description": ""
+      },
+      "onClick": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "() => {}",
+          "computed": false
+        }
+      },
+      "flipped": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "false",
+          "computed": false
+        }
+      },
+      "className": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "''",
+          "computed": false
+        }
+      }
+    }
+  },
+  "src/Cube/Cube.jsx": {
+    "description": "",
+    "methods": [],
+    "props": {
+      "children": {
+        "type": {
+          "name": "node"
+        },
+        "required": true,
+        "description": ""
+      },
+      "onClick": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "() => {}",
+          "computed": false
+        }
+      },
+      "face": {
+        "type": {
+          "name": "enum",
+          "value": [
+            {
+              "value": "'front'",
+              "computed": false
+            },
+            {
+              "value": "'back'",
+              "computed": false
+            },
+            {
+              "value": "'left'",
+              "computed": false
+            },
+            {
+              "value": "'right'",
+              "computed": false
+            },
+            {
+              "value": "'top'",
+              "computed": false
+            },
+            {
+              "value": "'bottom'",
+              "computed": false
+            }
+          ]
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "'front'",
+          "computed": false
+        }
+      },
+      "className": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "''",
+          "computed": false
+        }
+      }
+    }
+  },
+  "src/Deck/Deck.jsx": {
+    "description": "",
+    "methods": [],
+    "props": {
+      "children": {
+        "type": {
+          "name": "node"
+        },
+        "required": true,
+        "description": ""
+      },
+      "className": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "''",
+          "computed": false
+        }
+      }
+    }
+  },
+  "src/GitHubProfile/GitHubProfile.jsx": {
+    "description": "",
+    "methods": [],
+    "props": {
+      "className": {
+        "defaultValue": {
+          "value": "''",
+          "computed": false
+        }
+      }
+    }
+  },
+  "src/ProgressBar/ProgressBar.jsx": {
+    "description": "",
+    "displayName": "ProgressBar",
+    "methods": [],
+    "props": {
+      "barColor": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "'green'",
+          "computed": false
+        }
+      },
+      "value": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "0",
+          "computed": false
+        }
+      }
+    }
+  }
+}

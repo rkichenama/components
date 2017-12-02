@@ -3,3 +3,8 @@
 * implement redux store with generated docs
 * react components that will generate pages based on data in redux
 * react-routing based on metadata
+* configure theme switching based on dev / prod
+  * querystring?
+* examples with 'knobs'
+* allow the import of a local readme.md to supplant description
+* include results of a test run?
