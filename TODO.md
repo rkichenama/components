@@ -8,3 +8,4 @@
 * examples with 'knobs'
 * allow the import of a local readme.md to supplant description
 * include results of a test run?
+* convert table.js to be based off an array and normalize props table to be an array

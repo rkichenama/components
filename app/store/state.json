@@ -6,10 +6,19 @@
       "methods": [
         {
           "name": "animate",
-          "docblock": null,
+          "docblock": "trigger animating of the scene\n@param {string} a - something\n@returns",
           "modifiers": [],
-          "params": [],
-          "returns": null
+          "params": [
+            {
+              "name": "a",
+              "description": "something",
+              "type": {
+                "name": "string"
+              }
+            }
+          ],
+          "returns": null,
+          "description": "trigger animating of the scene"
         }
       ],
       "props": {

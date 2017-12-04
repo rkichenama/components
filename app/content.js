@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 
 import Introduction from './introduction';
 import PropTable from './proptable';
+import MethodTable from './methodtable';
 
 class Content extends PureComponent {
   static propTypes = {
@@ -23,6 +24,7 @@ class Content extends PureComponent {
       <article className='floating-column'>
         <Introduction {...documentation} />
         <PropTable {...documentation} />
+        <MethodTable {...documentation} />
       </article>
     );
   }

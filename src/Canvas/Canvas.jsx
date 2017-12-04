@@ -66,7 +66,12 @@ export default class Canvas extends Component {
     this.state.animating && cancelAnimationFrame(this.state.animating);
   }
 
-  animate () {
+  /**
+   * trigger animating of the scene
+   * @param {string} a - something
+   * @returns
+   */
+  animate (a) {
     const { scene, sequence: seq } = this.props;
     const args = {...this.props, context: Context(this.state.canvas) };
     let sequence = [...seq];

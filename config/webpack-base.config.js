@@ -12,7 +12,6 @@ module.exports = {
       'react-dom',
       'react-markdown',
       'react-redux',
-      'react-redux',
       'react',
       'redux-thunk',
       'redux',
@@ -53,7 +52,8 @@ module.exports = {
               'react'
             ],
             plugins: [
-              'transform-class-properties'
+              'transform-class-properties',
+              'transform-object-rest-spread',
             ],
           }
         },

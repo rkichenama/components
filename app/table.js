@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
+
+
 export default class Table extends PureComponent {
   static propTypes = {
     props: PropTypes.object,
@@ -22,7 +24,8 @@ export default class Table extends PureComponent {
       case name === 'name': return key;
       case name === 'defaultValue': return (value && value.value) || (<i>none</i>);
       case type === 'bool': return value ? <span style={{color: 'var(--clr-accent, #900)'}}>✔</span> : null;
-      default: return value;
+      // case /array/.test(typeof(value)): return <Table props={} columns={['name']}/>
+      default: return JSON.stringify(value, null, 2);
     }
   }
   render () {
