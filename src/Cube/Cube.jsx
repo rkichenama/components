@@ -40,6 +40,8 @@ Cube.propTypes = {
 
 const noop = () => {};
 
+Cube.displayName = 'Cube';
+
 Cube.defaultProps = {
   onClick: noop,
   face: 'front',

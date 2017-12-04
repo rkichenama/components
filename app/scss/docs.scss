@@ -1,6 +1,11 @@
 @import "placeholders";
 @import "themes";
+/* html */
 @import "reset";
+@import "headings";
 @import "buttons";
+@import "table";
+/* components */
 @import "root";
 @import "sidebar";
+@import "floating-column";

@@ -14,7 +14,9 @@ const Card = ({children, onClick, flipped, className}) => {
       </div>
     </div>
   );
-}
+};
+
+Card.displayName = 'Card';
 
 Card.propTypes = {
   children: PropTypes.node.isRequired,

@@ -13,6 +13,10 @@ import Context from './Context';
 
 import './Canvas.scss';
 
+/**
+ * A canvas component that I made
+ * * stupidly
+ **/
 export default class Canvas extends Component {
   static propTypes = {
     className: PropTypes.string,

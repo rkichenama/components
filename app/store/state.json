@@ -1,0 +1,244 @@
+{
+  "components": {
+    "Canvas": {
+      "description": "A canvas component that I made\n* stupidly",
+      "displayName": "Canvas",
+      "methods": [
+        {
+          "name": "animate",
+          "docblock": null,
+          "modifiers": [],
+          "params": [],
+          "returns": null
+        }
+      ],
+      "props": {
+        "className": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "",
+          "defaultValue": {
+            "value": "''",
+            "computed": false
+          }
+        },
+        "scene": {
+          "type": {
+            "name": "arrayOf",
+            "value": {
+              "name": "func"
+            }
+          },
+          "required": false,
+          "description": "",
+          "defaultValue": {
+            "value": "[]",
+            "computed": false
+          }
+        },
+        "sequence": {
+          "type": {
+            "name": "arrayOf",
+            "value": {
+              "name": "func"
+            }
+          },
+          "required": false,
+          "description": "",
+          "defaultValue": {
+            "value": "[]",
+            "computed": false
+          }
+        }
+      },
+      "filename": "src/Canvas/Canvas.jsx"
+    },
+    "Card": {
+      "description": "",
+      "displayName": "Card",
+      "methods": [],
+      "props": {
+        "children": {
+          "type": {
+            "name": "node"
+          },
+          "required": true,
+          "description": ""
+        },
+        "onClick": {
+          "type": {
+            "name": "func"
+          },
+          "required": false,
+          "description": "",
+          "defaultValue": {
+            "value": "() => {}",
+            "computed": false
+          }
+        },
+        "flipped": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "",
+          "defaultValue": {
+            "value": "false",
+            "computed": false
+          }
+        },
+        "className": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "",
+          "defaultValue": {
+            "value": "''",
+            "computed": false
+          }
+        }
+      },
+      "filename": "src/Card/Card.jsx"
+    },
+    "Cube": {
+      "description": "",
+      "displayName": "Cube",
+      "methods": [],
+      "props": {
+        "children": {
+          "type": {
+            "name": "node"
+          },
+          "required": true,
+          "description": ""
+        },
+        "onClick": {
+          "type": {
+            "name": "func"
+          },
+          "required": false,
+          "description": "",
+          "defaultValue": {
+            "value": "() => {}",
+            "computed": false
+          }
+        },
+        "face": {
+          "type": {
+            "name": "enum",
+            "value": [
+              {
+                "value": "'front'",
+                "computed": false
+              },
+              {
+                "value": "'back'",
+                "computed": false
+              },
+              {
+                "value": "'left'",
+                "computed": false
+              },
+              {
+                "value": "'right'",
+                "computed": false
+              },
+              {
+                "value": "'top'",
+                "computed": false
+              },
+              {
+                "value": "'bottom'",
+                "computed": false
+              }
+            ]
+          },
+          "required": false,
+          "description": "",
+          "defaultValue": {
+            "value": "'front'",
+            "computed": false
+          }
+        },
+        "className": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "",
+          "defaultValue": {
+            "value": "''",
+            "computed": false
+          }
+        }
+      },
+      "filename": "src/Cube/Cube.jsx"
+    },
+    "Deck": {
+      "description": "",
+      "displayName": "Deck",
+      "methods": [],
+      "props": {
+        "children": {
+          "type": {
+            "name": "node"
+          },
+          "required": true,
+          "description": ""
+        },
+        "className": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "",
+          "defaultValue": {
+            "value": "''",
+            "computed": false
+          }
+        }
+      },
+      "filename": "src/Deck/Deck.jsx"
+    },
+    "ProgressBar": {
+      "description": "",
+      "displayName": "ProgressBar",
+      "methods": [],
+      "props": {
+        "barColor": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "",
+          "defaultValue": {
+            "value": "'green'",
+            "computed": false
+          }
+        },
+        "value": {
+          "type": {
+            "name": "number"
+          },
+          "required": false,
+          "description": "",
+          "defaultValue": {
+            "value": "0",
+            "computed": false
+          }
+        }
+      },
+      "filename": "src/ProgressBar/ProgressBar.jsx"
+    }
+  },
+  "keys": [
+    "Canvas",
+    "Card",
+    "Cube",
+    "Deck",
+    "ProgressBar"
+  ]
+}

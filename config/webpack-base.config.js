@@ -8,8 +8,14 @@ module.exports = {
       './app/index.js',
     ],
     vendor: [
-      'react',
+      'highlight.js',
       'react-dom',
+      'react-markdown',
+      'react-redux',
+      'react-redux',
+      'react',
+      'redux-thunk',
+      'redux',
     ],
   },
   output: {

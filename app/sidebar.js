@@ -1,45 +1,50 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
-const Item = ({lbl, slug, onClick}) => (
+const Item = ({lbl, onClick}) => (
   <li className='sidebar-item'>
-    <button className='btn' {...{onClick}} data-link={slug}>{lbl}</button>
+    <button className='btn' {...{onClick}} data-link={lbl}>
+      {lbl}
+    </button>
   </li>
 );
 
-export default class Sidebar extends PureComponent {
+class Sidebar extends PureComponent {
 
-  handleClick = ({target}) => { console.log(target.getAttribute('data-link'))};
+  static propTypes = {
+    components: PropTypes.arrayOf(PropTypes.string).isRequired,
+    history: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+  };
+
+  handleClick = ({currentTarget}) => {
+    const newPath = `/${currentTarget.getAttribute('data-link')}`;
+    if (newPath !== this.props.location.pathname) {
+      this.props.history.push(`/${currentTarget.getAttribute('data-link')}`);
+    }
+  };
 
   render () {
+    const { props: { components }} = this;
+
     return (
       <ul className='sidebar'>
         {
-          [
-            {lbl: 'Component', slug: '#'},
-            {lbl: 'Component', slug: '#'},
-            {lbl: 'Component', slug: '#'},
-            {lbl: 'Component', slug: '#'},
-            {lbl: 'Component', slug: '#'},
-            {lbl: 'Component', slug: '#'},
-            {lbl: 'Component', slug: '#'},
-            {lbl: 'Component', slug: '#'},
-            {lbl: 'Component', slug: '#'},
-            {lbl: 'Component', slug: '#'},
-            {lbl: 'Component', slug: '#'},
-            {lbl: 'Component', slug: '#'},
-            {lbl: 'Component', slug: '#'},
-            {lbl: 'Component', slug: '#'},
-            {lbl: 'Component', slug: '#'},
-            {lbl: 'Component', slug: '#'},
-            {lbl: 'Component', slug: '#'},
-            {lbl: 'Component', slug: '#'},
-            {lbl: 'Component', slug: '#'},
-          ].map((item, i) => (
-            <Item key={i} {...item} onClick={this.handleClick} />
+          components.map((item, i) => (
+            <Item key={i} lbl={item} onClick={this.handleClick} />
           ))
         }
       </ul>
     );
   }
 }
+
+const mapStateToProps = ({ keys: components }) => ({
+  components
+});
+
+export default withRouter(connect(
+  mapStateToProps
+)(Sidebar));

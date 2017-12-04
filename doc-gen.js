@@ -33,11 +33,25 @@ walk(
   file => /\.jsx$/.test(file)
 )
   .then(jsxs => (
-    jsxs.reduce((metadata, jsx) => ({
-      ...metadata,
-      [jsx]: reactDocs.parse(fs.readFileSync(jsx).toString()),
-    }), {})
+    // jsxs.map(filename => ())
+    jsxs.reduce((obj, filename) => {
+      const metadata = reactDocs.parse(fs.readFileSync(filename).toString());
+      return {
+        ...obj,
+        [metadata.displayName]: {
+          ...metadata,
+          filename,
+        },
+      };
+    }, {})
   ))
+  .then(components => {
+    // normalize the data
+    return {
+      components,
+      keys: Object.keys(components),
+    };
+  })
   .then(metadata => {
-    fs.writeFileSync('metadata.json', JSON.stringify(metadata, null, 2));
+    fs.writeFileSync('app/store/state.json', JSON.stringify(metadata, null, 2));
   });

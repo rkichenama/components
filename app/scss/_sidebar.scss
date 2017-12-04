@@ -14,11 +14,7 @@
 
   &-item {
     @extend %flex-column-center;
-    margin-bottom: 8px;
+    margin: 4px 0;
     max-width: 96%;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
   }
 }

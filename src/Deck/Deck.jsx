@@ -14,6 +14,8 @@ Deck.propTypes = {
   className: PropTypes.string
 };
 
+Deck.displayName = 'Deck';
+
 Deck.defaultProps = {
   className: ''
 };

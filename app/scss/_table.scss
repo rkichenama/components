@@ -1,0 +1,25 @@
+table {
+  width: 100%;
+
+  th,
+  td {
+    padding: 4px;
+
+    &.bool {
+      width: 1px;
+      text-align: center;
+    }
+  }
+
+  td {
+    border-bottom: 1px solid var(--clr-white);
+  }
+
+  th {
+    border: 1px solid var(--clr-white);
+    background-color: transparentize(#000000, .6);
+    text-align: center;
+    font-weight: normal;
+    text-transform: capitalize;
+  }
+}

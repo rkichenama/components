@@ -32,7 +32,6 @@ const GitHubProfile = ({username, name, avatar_url, html_url, location, classNam
 );
 
 const enhance = compose(
-  setDisplayName('Stateless(GitHubProfile)'),
   setPropTypes({
     username: PropTypes.string,
     name: PropTypes.string,
@@ -80,4 +79,4 @@ const enhance = compose(
   }),
 );
 
-export default enhance(GitHubProfile);
+export default setDisplayName('Stateless(GitHubProfile)', enhance(GitHubProfile));
