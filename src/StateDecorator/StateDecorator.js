@@ -139,6 +139,8 @@ class Decorator extends PureComponent {
 }
 
 export default class StateDecorator extends Decorator {
+  static instances = 0;
+
   static propTypes = {
     ...Decorator.propTypes,
     delay: PropTypes.number,
@@ -154,6 +156,7 @@ export default class StateDecorator extends Decorator {
   }
 
   componentDidMount () {
+    const instance = StateDecorator.instances = (StateDecorator.instances + 1) % 8;
     this.state.interval = setInterval(
       () => {
         const [n, ...v] = this.state.values;
@@ -162,7 +165,7 @@ export default class StateDecorator extends Decorator {
           values: [...v, n]
         }))
       },
-      this.props.delay
+      this.props.delay + (instance * 200)
     );
   }
 

@@ -1,0 +1,27 @@
+.demo {
+  display: flex;
+  flex-direction: column;
+  
+  > div,
+  > pre {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+
+  > div {
+    align-self: center;
+    background-color: var(--clr-overlay);
+    padding: 16px;
+    max-height: 242px;
+    overflow-y: auto;
+  }
+  
+  > pre {
+    height: 242px;
+    overflow-y: auto;
+  }
+
+  & + & {
+    margin-top: 8px;
+  }
+}

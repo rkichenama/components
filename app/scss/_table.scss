@@ -21,6 +21,10 @@ table {
     border-bottom: 1px solid var(--clr-white);
   }
 
+  tr:nth-child(odd) {
+    background-color: var(--clr-overlay);
+  }
+
   td {
     vertical-align: top;
 
@@ -29,6 +33,7 @@ table {
       text-align: center;
       font-weight: bold;
     }
+
   }
 
   th {

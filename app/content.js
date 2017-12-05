@@ -6,6 +6,7 @@ import { withRouter } from 'react-router-dom';
 import Introduction from './introduction';
 import PropTable from './proptable';
 import MethodTable from './methodtable';
+import Demos from './demos';
 
 class Content extends PureComponent {
   static propTypes = {
@@ -25,6 +26,7 @@ class Content extends PureComponent {
         <Introduction {...documentation} />
         <PropTable {...documentation} />
         <MethodTable {...documentation} />
+        <Demos />
       </article>
     );
   }
