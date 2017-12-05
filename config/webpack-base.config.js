@@ -78,4 +78,13 @@ module.exports = {
       exclude: ['vendor.js']
     }),
   ],
+  resolve: {
+    alias: {
+      components: path.resolve(__dirname, '../src/'),
+    },
+    extensions: [
+      '.jsx',
+      '.js',
+    ],
+  },
 };

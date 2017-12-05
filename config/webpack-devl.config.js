@@ -29,5 +29,5 @@ config.plugins = [
   }),
   new webpack.HotModuleReplacementPlugin(),
 ];
-
+console.log(JSON.stringify(config.resolve));
 module.exports = config;
