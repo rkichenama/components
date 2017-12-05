@@ -5,20 +5,25 @@ import Table from './table';
 
 export default class PropTable extends PureComponent {
   static propTypes = {
-    props: PropTypes.object,
+    props: PropTypes.array,
   }
   render () {
-    const { props: { props }} = this;
+    const { props: { props: data }} = this;
 
-    if (!props) { return null; }
+    if (!data) { return null; }
+
+    // const data = Object.keys(props).map(name => ({
+    //   ...props[name],
+    //   name,
+    // }));
     
     return (
         <section className='propTable'>
           <h3>Props</h3>
-          <Table {...{columns: [
+         <Table {...{columns: [
             { name: 'required', type: 'bool' },
             'name', 'type', 'defaultValue', 'description'
-          ], props}} />
+          ], data}} />
         </section>
       );
   }

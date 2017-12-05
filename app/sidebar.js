@@ -36,6 +36,8 @@ class Sidebar extends PureComponent {
             <Item key={i} lbl={item} onClick={this.handleClick} />
           ))
         }
+        <li><a>Link</a></li>
+        <li><a href="#">Link</a></li>
       </ul>
     );
   }

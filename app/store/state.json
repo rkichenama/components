@@ -6,23 +6,28 @@
       "methods": [
         {
           "name": "animate",
-          "docblock": "trigger animating of the scene\n@param {string} a - something\n@returns",
+          "docblock": "trigger animating of the scene\n\n@param {string} a - firey\n@returns {string} - something to write home about",
           "modifiers": [],
           "params": [
             {
               "name": "a",
-              "description": "something",
+              "description": "firey",
               "type": {
                 "name": "string"
               }
             }
           ],
-          "returns": null,
+          "returns": {
+            "description": "something to write home about",
+            "type": {
+              "name": "string"
+            }
+          },
           "description": "trigger animating of the scene"
         }
       ],
-      "props": {
-        "className": {
+      "props": [
+        {
           "type": {
             "name": "string"
           },
@@ -31,9 +36,10 @@
           "defaultValue": {
             "value": "''",
             "computed": false
-          }
+          },
+          "name": "className"
         },
-        "scene": {
+        {
           "type": {
             "name": "arrayOf",
             "value": {
@@ -45,9 +51,10 @@
           "defaultValue": {
             "value": "[]",
             "computed": false
-          }
+          },
+          "name": "scene"
         },
-        "sequence": {
+        {
           "type": {
             "name": "arrayOf",
             "value": {
@@ -59,24 +66,26 @@
           "defaultValue": {
             "value": "[]",
             "computed": false
-          }
+          },
+          "name": "sequence"
         }
-      },
+      ],
       "filename": "src/Canvas/Canvas.jsx"
     },
     "Card": {
       "description": "",
       "displayName": "Card",
       "methods": [],
-      "props": {
-        "children": {
+      "props": [
+        {
           "type": {
             "name": "node"
           },
           "required": true,
-          "description": ""
+          "description": "",
+          "name": "children"
         },
-        "onClick": {
+        {
           "type": {
             "name": "func"
           },
@@ -85,9 +94,10 @@
           "defaultValue": {
             "value": "() => {}",
             "computed": false
-          }
+          },
+          "name": "onClick"
         },
-        "flipped": {
+        {
           "type": {
             "name": "bool"
           },
@@ -96,9 +106,10 @@
           "defaultValue": {
             "value": "false",
             "computed": false
-          }
+          },
+          "name": "flipped"
         },
-        "className": {
+        {
           "type": {
             "name": "string"
           },
@@ -107,24 +118,26 @@
           "defaultValue": {
             "value": "''",
             "computed": false
-          }
+          },
+          "name": "className"
         }
-      },
+      ],
       "filename": "src/Card/Card.jsx"
     },
     "Cube": {
       "description": "",
       "displayName": "Cube",
       "methods": [],
-      "props": {
-        "children": {
+      "props": [
+        {
           "type": {
             "name": "node"
           },
           "required": true,
-          "description": ""
+          "description": "",
+          "name": "children"
         },
-        "onClick": {
+        {
           "type": {
             "name": "func"
           },
@@ -133,9 +146,10 @@
           "defaultValue": {
             "value": "() => {}",
             "computed": false
-          }
+          },
+          "name": "onClick"
         },
-        "face": {
+        {
           "type": {
             "name": "enum",
             "value": [
@@ -170,9 +184,10 @@
           "defaultValue": {
             "value": "'front'",
             "computed": false
-          }
+          },
+          "name": "face"
         },
-        "className": {
+        {
           "type": {
             "name": "string"
           },
@@ -181,24 +196,26 @@
           "defaultValue": {
             "value": "''",
             "computed": false
-          }
+          },
+          "name": "className"
         }
-      },
+      ],
       "filename": "src/Cube/Cube.jsx"
     },
     "Deck": {
       "description": "",
       "displayName": "Deck",
       "methods": [],
-      "props": {
-        "children": {
+      "props": [
+        {
           "type": {
             "name": "node"
           },
           "required": true,
-          "description": ""
+          "description": "",
+          "name": "children"
         },
-        "className": {
+        {
           "type": {
             "name": "string"
           },
@@ -207,17 +224,18 @@
           "defaultValue": {
             "value": "''",
             "computed": false
-          }
+          },
+          "name": "className"
         }
-      },
+      ],
       "filename": "src/Deck/Deck.jsx"
     },
     "ProgressBar": {
       "description": "",
       "displayName": "ProgressBar",
       "methods": [],
-      "props": {
-        "barColor": {
+      "props": [
+        {
           "type": {
             "name": "string"
           },
@@ -226,9 +244,10 @@
           "defaultValue": {
             "value": "'green'",
             "computed": false
-          }
+          },
+          "name": "barColor"
         },
-        "value": {
+        {
           "type": {
             "name": "number"
           },
@@ -237,9 +256,10 @@
           "defaultValue": {
             "value": "0",
             "computed": false
-          }
+          },
+          "name": "value"
         }
-      },
+      ],
       "filename": "src/ProgressBar/ProgressBar.jsx"
     }
   },

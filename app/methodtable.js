@@ -8,20 +8,21 @@ export default class MethodTable extends PureComponent {
     methods: PropTypes.array,
   }
   render () {
-    const { props: { methods }} = this;
+    const { props: { methods: data }} = this;
 
-    if (!methods) { return null; }
+    if (!data) { return null; }
 
-    const props = methods.reduce((fns, {name, ...method}) => ({
-      ...fns, [name]: method
-    }), {});
-    
     return (
         <section className='propTable'>
           <h3>Methods</h3>
           <Table {...{columns: [
-            'name', 'docblock', /* 'modifiers',*/ 'params', 'returns',
-          ], props}} />
+            'name', /* 'modifiers',*/ {
+              name: 'params', type: 'table'
+            },
+            {
+              name: 'returns', type: 'table'
+            }, 'docblock',
+          ], data}} />
         </section>
       );
   }

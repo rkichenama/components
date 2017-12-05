@@ -19,7 +19,7 @@ module.exports = {
   },
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, '../doc'),
+    path: path.resolve(__dirname, '../docs'),
   },
   module: {
     rules: [

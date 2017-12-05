@@ -1,7 +1,12 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import Markdown from './markdown';
 
-
+const DefaultValues = {
+  [`''`]: 'empty string',
+  ['[]']: 'empty array',
+  ['{}']: 'empty object',
+}
 
 export default class Table extends PureComponent {
   static propTypes = {
@@ -21,22 +26,27 @@ export default class Table extends PureComponent {
     const { type = 'string', name = column } = ((/object/.test(typeof(column)) && column )|| {});
     switch (true) {
       case name === 'type': return value.name;
-      case name === 'name': return key;
-      case name === 'defaultValue': return (value && value.value) || (<i>none</i>);
+      case /(description|docblock)/i.test(name): return <Markdown source={value} />;
+      case name === 'defaultValue':
+        const v = (value && value.value) || (<i>none</i>);
+        return (Object.keys(DefaultValues).includes(v)) ? DefaultValues[v] : v;
       case type === 'bool': return value ? <span style={{color: 'var(--clr-accent, #900)'}}>✔</span> : null;
+      case (value instanceof Array): return (<Table columns={Object.keys(value[0])} data={value} />);
+      case (value instanceof Object): return (<Table columns={Object.keys(value)} data={[value]} />);
       // case /array/.test(typeof(value)): return <Table props={} columns={['name']}/>
-      default: return JSON.stringify(value, null, 2);
+      default: return value;
     }
   }
   render () {
-    const { props: { props, columns }} = this;
+    const { props: { data, columns }} = this;
 
-    if (!props) { return null; }
+    if (!data) { return null; }
     
-    const propNames = Object.keys(props).sort((a, b) => {
-      const [x, y] = [props[a], props[b]];
-      if (x.required === y.required) { return a.localeCompare(b); }
-      if (x.required) { return -1; }
+    const rows = [...data].sort((a, b) => {
+      if (a.required === b.required) {
+        return a.name ? a.name.localeCompare(b.name) : a.description.localeCompare(b.description);
+      }
+      if (a.required) { return -1; }
       return 1;
     });
 
@@ -55,12 +65,12 @@ export default class Table extends PureComponent {
         </thead>
         <tbody>
           {
-            propNames.length ? propNames.map(prop => (
-              <tr key={prop}>
+            rows.length ? rows.map((row, r) => (
+              <tr key={r}>
                 {
                   columns.map((column, c) => (
                     <td key={c} className={ column.type || '' }>
-                      { this.renderValueForType(column, props[prop][(column.name || column)], prop) }
+                      { this.renderValueForType(column, row[(column.name || column)]) }
                     </td>
                   ))
                 }

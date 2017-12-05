@@ -68,8 +68,9 @@ export default class Canvas extends Component {
 
   /**
    * trigger animating of the scene
-   * @param {string} a - something
-   * @returns
+   *
+   * @param {string} a - firey
+   * @returns {string} - something to write home about
    */
   animate (a) {
     const { scene, sequence: seq } = this.props;

@@ -36,6 +36,10 @@ walk(
     // jsxs.map(filename => ())
     jsxs.reduce((obj, filename) => {
       const metadata = reactDocs.parse(fs.readFileSync(filename).toString());
+      metadata.props = Object.keys(metadata.props).map((name) => ({
+        ...(metadata.props[name]),
+        name,
+      }));
       return {
         ...obj,
         [metadata.displayName]: {

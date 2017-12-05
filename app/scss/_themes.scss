@@ -3,29 +3,48 @@ $gray900: #212121;
 $gray850: #303030;
 $gray800: #424242;
 $black: #000;
-$red: #ff0000;
-$orange: #ffa500;
-$yellow: #ffff00;
-$green: #00ff00;
-$blue: #00ffff;
-$indigo: #4b0082;
-$violet: #ff00ff;
+$red: #800000;
+$orange: #805200;
+$yellow: #808000;
+$green: #008000;
+$blue: #008080;
+$indigo: #520080;
+$violet: #800080;
 
-$font: 16px;
+$font: 14px;
 $font-sm: $font * .8;
 $font-lg: $font * 1.5;
 
 body {
-  --clr-white: $white;
-  --clr-black: $black;
-  
-  --clr-bg: $gray900;
-  --clr-accent: mix($white, $red);
-  --clr-highlight: mix($white, $green);
-  
-  --clr-link: mix($white, $indigo);
-  
-  --fnt-small: $font-sm;
-  --fnt-normal: $font;
-  --fnt-large: $font-lg;
+  &.dev {
+    --clr-white: $white;
+    --clr-black: $black;
+    
+    --clr-bg: $gray900;
+    --clr-accent: mix($white, $red);
+    --clr-highlight: mix($white, $green);
+    
+    --clr-btn-bg: mix($white, $indigo);
+    --clr-btn-fg: $white;
+    
+    --fnt-small: $font-sm;
+    --fnt-normal: $font;
+    --fnt-large: $font-lg;
+  }
+  &.prod {
+    --clr-white: $black;
+    --clr-black: $white;
+    
+    --clr-bg: darken($white, 10);
+
+    --clr-accent: $green;
+    --clr-highlight: $blue;
+    
+    --clr-btn-bg: $white;
+    --clr-btn-fg: $blue;
+    
+    --fnt-small: $font-sm;
+    --fnt-normal: $font;
+    --fnt-large: $font-lg;
+  }
 }

@@ -1,5 +1,8 @@
 .floating-column {
   display: block;
-  max-width: 1024px;
-  margin: 0 auto;
+  margin: 0 8px;
+  @media screen and (min-width: 1200px) {
+    max-width: 1024px;
+    margin: 0 auto;
+  }
 }

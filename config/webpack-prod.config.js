@@ -14,6 +14,7 @@ config.plugins = [
   ...config.plugins,
   new HtmlWebpackPlugin({
     title: 'Components by Richard Kichenama',
+    bodyCls: 'prod',
     template: 'app/index.tmpl',
     filename: 'index.html',
     inject: 'body',

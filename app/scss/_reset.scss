@@ -12,11 +12,11 @@ body {
 }
 
 a {
-  color: var(--clr-white);
+  color: var(--clr-accent);
   text-decoration: none;
   
   &:link, &:visited, &:active, &:hover {
-    color: var(--clr-link);
+    color: var(--clr-highlight);
     text-decoration: none;
   }
 }

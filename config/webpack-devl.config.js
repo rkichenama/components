@@ -4,7 +4,7 @@ const NpmInstallPlugin = require('npm-install-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 config.devServer = {
-  contentBase: './doc'
+  contentBase: './docs'
 };
 
 config.plugins = [
@@ -15,6 +15,7 @@ config.plugins = [
   }),
   new HtmlWebpackPlugin({
     title: '(dev) Components',
+    bodyCls: 'dev',
     template: 'app/index.tmpl',
     filename: 'index.html',
     inject: 'body',
