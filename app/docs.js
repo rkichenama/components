@@ -6,18 +6,19 @@ import {
 } from 'react-router-dom';
 import Sidebar from './sidebar';
 import Content from './content';
-import Catcher from './error';
+
+const ID = ({children}) => children;
 
 const Docs = () => (
   <Router>
-    <Catcher>
+    <ID>
       <section className='sidebar-container'>
         <Sidebar />
       </section>
       <section className='content-container'>
         <Route component={Content} />
       </section>
-    </Catcher>
+    </ID>
   </Router>
 );
 

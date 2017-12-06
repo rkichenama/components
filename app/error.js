@@ -14,6 +14,7 @@ export default class ErrorBoundary extends PureComponent {
   }
 
   render () {
+    
     return this.state.error ? (
       <div className='errorMessage'>
         <h1>{ this.state.error.toString() }</h1>
