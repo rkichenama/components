@@ -8,10 +8,11 @@ module.exports = {
       './app/index.js',
     ],
     vendor: [
-      'highlight.js',
       'react-dom',
       'react-markdown',
       'react-redux',
+      'react-router-dom',
+      'react-syntax-highlighter',
       'react',
       'redux-thunk',
       'redux',
@@ -22,11 +23,16 @@ module.exports = {
     path: path.resolve(__dirname, '../docs'),
   },
   module: {
+    noParse: /(\.min\.)/,
     rules: [
       { // images
         test: /\.(jpe?g|gif|svg|png)$/,
         use: {
-          loader: 'raw-loader',
+          loader: 'url-loader',
+          options: {
+            limit: 10000,
+            name: 'media/[name].[hash:8].[ext]'
+          }
         }
       },
       { // fonts
@@ -61,7 +67,6 @@ module.exports = {
       { // stylesheets
         test: /\.s?css$/,
         use: [
-          { loader: 'style-loader' },
           { loader: 'css-loader' },
           { loader: 'sass-loader' },
         ]
@@ -86,5 +91,10 @@ module.exports = {
       '.jsx',
       '.js',
     ],
+  },
+  node: {
+    fs: 'empty',
+    net: 'empty',
+    tls: 'empty'
   },
 };

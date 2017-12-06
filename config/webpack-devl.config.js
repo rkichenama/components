@@ -7,6 +7,13 @@ config.devServer = {
   contentBase: './docs'
 };
 
+config.module.rules
+  .filter(({ test }) => test && test.test('.css'))
+  .forEach(rule => {
+    let { use } = rule;
+    rule.use = [require.resolve('style-loader'), ...use];
+  });
+
 config.plugins = [
   ...config.plugins,
   new NpmInstallPlugin({
