@@ -16,9 +16,11 @@ if (process.env.NODE_ENV === 'production') {
 export default class Demo extends PureComponent {
   render () {
     const { props: { file } } = this;
+    const demo = file.replace(/^app\/examples/, '');
+
     try {
-      const Component = require('./examples/' + file).default;
-      const source = require('!raw-loader!./examples/' + file);
+      const Component = require('./examples' + demo).default;
+      const source = require('!raw-loader!./examples' + demo);
       return (
         <section className='demo'>
           <h4>{ file }</h4>

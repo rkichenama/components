@@ -18,15 +18,22 @@ class Content extends PureComponent {
 
   render () {
     const { props: { data, location: { pathname } }} = this;
-
-    const documentation = data[pathname.substring(1)] || {};
+    const documentation = data[pathname.substring(1)] || false;
+    
+    let k = 0;
 
     return (
       <article className='floating-column'>
         <Introduction {...documentation} />
-        <PropTable {...documentation} />
-        <MethodTable {...documentation} />
-        <Demos />
+        {
+          documentation ? ([
+            <PropTable {...documentation} key={k++} />,
+            <MethodTable {...documentation} key={k++} />,
+            <Demos {...documentation} key={k++} />,
+          ]) : (
+            null
+          )
+        }
       </article>
     );
   }

@@ -10,4 +10,14 @@
     background-color: var(--clr-btn-fg);
     border-color: 1px solid var(--clr-btn-bg);
   }
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+.active {
+  .btn, .btn:hover {
+    background-color: var(--clr-bg);
+  }
 }

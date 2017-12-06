@@ -11,11 +11,6 @@ export default class PropTable extends PureComponent {
     const { props: { props: data }} = this;
 
     if (!data) { return null; }
-
-    // const data = Object.keys(props).map(name => ({
-    //   ...props[name],
-    //   name,
-    // }));
     
     return (
         <section className='propTable'>

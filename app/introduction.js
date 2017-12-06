@@ -18,7 +18,13 @@ export default class Introduction extends PureComponent {
           {displayName}
         </h1>
         <h2>{filename}</h2>
-        <Markdown source={description} />
+        {
+          description ? (
+            <Markdown source={description} />
+          ) : (
+            <div className='empty-dataset'>no description given</div>
+          )
+        }
       </section>
     ) : (
       `Please select one of the components to the left`

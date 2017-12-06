@@ -1,7 +1,6 @@
 const fs = require('fs');
 const path = require('path');
 const reactDocs = require('react-docgen');
-// var componentInfo = reactDocs.parse(src);
 
 /*
   recursively go through the given directory and collect a listing of all files
@@ -10,7 +9,7 @@ const reactDocs = require('react-docgen');
   @param dir - directory to walk through
   @param cond - condition to match for files found
   @param filelist - array of directory entries to process
-  @retruns array of matching files found recursively
+  @returns array of matching files found recursively
  */
 const walk = (dir, cond) => new Promise((resolve, reject, files = []) => {
   const further = d => {
@@ -28,34 +27,54 @@ const walk = (dir, cond) => new Promise((resolve, reject, files = []) => {
   resolve(files);
 });
 
+// find all the example files in ./app/examples
+const examplesPath = 'app/examples';
+const srcFldr = path.join(__dirname, 'src');
+const storeJson = path.join(__dirname, 'app/store/state.json');
+const examplesFldr = path.join(__dirname, examplesPath);
 walk(
-  path.join(__dirname, 'src'),
-  file => /\.jsx$/.test(file)
+  examplesFldr,
+  file => /\.jsx?$/.test(file)
 )
-  .then(jsxs => (
-    // jsxs.map(filename => ())
-    jsxs.reduce((obj, filename) => {
-      const metadata = reactDocs.parse(fs.readFileSync(filename).toString());
-      metadata.props = Object.keys(metadata.props).map((name) => ({
-        ...(metadata.props[name]),
-        name,
-      }));
-      return {
-        ...obj,
-        [metadata.displayName]: {
-          ...metadata,
-          filename,
-        },
-      };
-    }, {})
-  ))
-  .then(components => {
-    // normalize the data
-    return {
-      components,
-      keys: Object.keys(components),
-    };
-  })
-  .then(metadata => {
-    fs.writeFileSync('app/store/state.json', JSON.stringify(metadata, null, 2));
+  .then(demoFiles => {
+    /*
+    search the local src directory for all the jsx files. assumed to be Components
+    */
+    walk(
+      srcFldr,
+      file => /\.jsx$/.test(file)
+    )
+      .then(jsxs => (// run them through react-gendoc
+        jsxs.reduce((obj, filename) => {
+          const metadata = reactDocs.parse(fs.readFileSync(filename).toString());
+          metadata.props = Object.keys(metadata.props).map((name) => ({
+            ...(metadata.props[name]),
+            name,
+          }));
+          return {
+            ...obj,
+            [metadata.displayName]: {
+              ...metadata,
+              filename,
+            },
+          };
+        }, {})
+      ))
+      .then(components => {// normalize the data
+        return {
+          components,
+          keys: Object.keys(components),
+        };
+      })
+      .then(metadata => {// append the list of examples from ./app
+        metadata.keys.forEach(component => {
+          metadata.components[component].demos = demoFiles.filter(
+            file => (new RegExp(`^${examplesPath}/${component}`)).test(file)
+          );
+        });
+        return metadata;
+      })
+      .then(metadata => {// write the store
+        fs.writeFileSync(storeJson, JSON.stringify(metadata, null, 2));
+      });
   });

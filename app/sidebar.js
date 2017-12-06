@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-const Item = ({lbl, onClick}) => (
-  <li className='sidebar-item'>
+const Item = ({lbl, onClick, className}) => (
+  <li className={`sidebar-item ${className}`}>
     <button className='btn' {...{onClick}} data-link={lbl}>
       {lbl}
     </button>
@@ -27,13 +27,16 @@ class Sidebar extends PureComponent {
   };
 
   render () {
-    const { props: { components }} = this;
+    const { props: { components, location: { pathname } }} = this;
+    const currentPage = pathname.substring(1);
 
     return (
       <ul className='sidebar'>
         {
           components.map((item, i) => (
-            <Item key={i} lbl={item} onClick={this.handleClick} />
+            <Item key={i} lbl={item} onClick={this.handleClick} className={
+              currentPage === item ? 'active' : null
+            } />
           ))
         }
         <li><a>Link</a></li>

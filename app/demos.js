@@ -5,27 +5,25 @@ import Demo from './demo';
 
 export default class Demos extends PureComponent {
   static propTypes = {
-    files: PropTypes.arrayOf(
+    demos: PropTypes.arrayOf(
       PropTypes.string
     ),
   };
 
-  static defaultProps = {
-    files: [
-      'ProgressBar/index.js',
-    ],
-  }
-
   render () {
-    const { props: { files }} = this;
+    const { props: { demos }} = this;
 
     return (
       <div>
         <h3>Demos</h3>
         {
-          files.map(file => (
-            <Demo {...{key: file, file}} />
-          ))
+          demos.length ? (
+            demos.map(file => (
+              <Demo {...{key: file, file}} />
+            ))
+          ) : (
+            <div className='empty-dataset'>no demos available</div>
+          )
         }
       </div>
     )
