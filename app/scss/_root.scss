@@ -4,9 +4,6 @@
   position: relative;
   width: 100%;
   height: 100%;
-}
-
-#root > div {
   @extend %flex-stretch-fill;
 }
 
@@ -24,4 +21,14 @@
 .content-container {
   flex: 1 1 auto;
   background-color: var(--clr-bg);
+}
+
+/* transitions */
+.fade-enter {
+  opacity: 0;
+  z-index: 1;
+}
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 250ms ease-in;
 }

@@ -1,10 +1,7 @@
 import React, { PureComponent } from 'react';
 
+import Catcher from './error';
 import Highlighter from 'react-syntax-highlighter/prism';
-// import { xcode as style } from 'react-syntax-highlighter/styles';
-// import js from 'react-syntax-highlighter/languages/prism/javascript';
-
-// registerLanguage('javascript', js);
 
 let style;
 if (process.env.NODE_ENV === 'production') {
@@ -17,25 +14,21 @@ export default class Demo extends PureComponent {
   render () {
     const { props: { file } } = this;
     const demo = file.replace(/^app\/examples/, '');
+    const Component = require('./examples' + demo).default;
+    const source = require('!raw-loader!./examples' + demo);
 
-    try {
-      const Component = require('./examples' + demo).default;
-      const source = require('!raw-loader!./examples' + demo);
-      return (
-        <section className='demo'>
-          <h4>{ file }</h4>
-          <div>
+    return (
+      <section className='demo'>
+        <h4>{ file }</h4>
+        <div>
+          <Catcher>
             <Component key={0} />
-          </div>
-          <Highlighter key={1} language='javascript' {...{ style }} showLineNumbers wrapLines>
-            { source }
-          </Highlighter>
-        </section>
-      );
-    } catch (err) {
-      return (
-        <span >no examples available</span>
-      );
-    }
+          </Catcher>
+        </div>
+        <Highlighter key={1} language='javascript' {...{ style }} showLineNumbers wrapLines>
+          { source }
+        </Highlighter>
+      </section>
+    );
   }
 }

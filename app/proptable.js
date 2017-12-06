@@ -13,13 +13,13 @@ export default class PropTable extends PureComponent {
     if (!data) { return null; }
     
     return (
-        <section className='propTable'>
-          <h3>Props</h3>
-         <Table {...{columns: [
-            { name: 'required', type: 'bool' },
-            'name', 'type', 'defaultValue', 'description'
-          ], data}} />
-        </section>
-      );
+      <section>
+        <h3>Props</h3>
+        <Table {...{columns: [
+          { name: 'required', type: 'bool' },
+          'name', 'type', 'defaultValue', 'description'
+        ], data}} />
+      </section>
+    );
   }
 }

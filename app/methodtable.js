@@ -13,17 +13,17 @@ export default class MethodTable extends PureComponent {
     if (!data) { return null; }
 
     return (
-        <section className='propTable'>
-          <h3>Methods</h3>
-          <Table {...{columns: [
-            'name', /* 'modifiers',*/ {
-              name: 'params', type: 'table'
-            },
-            {
-              name: 'returns', type: 'table'
-            }, 'docblock',
-          ], data}} />
-        </section>
-      );
+      <section>
+        <h3>Methods</h3>
+        <Table {...{columns: [
+          'name', /* 'modifiers',*/ {
+            name: 'params', type: 'table'
+          },
+          {
+            name: 'returns', type: 'table'
+          }, 'docblock',
+        ], data}} />
+      </section>
+    );
   }
 }

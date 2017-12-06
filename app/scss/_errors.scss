@@ -1,0 +1,19 @@
+.has {
+  &-error {
+    color: lighten($red, .25);
+  }
+  &-warning {
+    color: lighten(mix($red, $orange), .25);
+  }
+}
+
+.errorMessage {
+  h1 {
+    color: lighten($red, .25);
+    text-align: center;
+  }
+  details {
+    border: 1px solid $white;
+    padding: 16px;
+  }
+}

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
+import Catcher from './error';
 import Introduction from './introduction';
 import PropTable from './proptable';
 import MethodTable from './methodtable';
@@ -24,16 +25,18 @@ class Content extends PureComponent {
 
     return (
       <article className='floating-column'>
-        <Introduction {...documentation} />
-        {
-          documentation ? ([
-            <PropTable {...documentation} key={k++} />,
-            <MethodTable {...documentation} key={k++} />,
-            <Demos {...documentation} key={k++} />,
-          ]) : (
-            null
-          )
-        }
+        <Catcher>
+          <Introduction {...documentation} />
+          {
+            documentation ? ([
+              <PropTable {...documentation} key={k++} />,
+              <MethodTable {...documentation} key={k++} />,
+              <Demos {...documentation} key={k++} />,
+            ]) : (
+              null
+            )
+          }
+        </Catcher>
       </article>
     );
   }

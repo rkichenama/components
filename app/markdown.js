@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import ReactMarkdown from 'react-markdown';
+import Catcher from './error';
 
 export default class Markdown extends PureComponent {
   static propTypes = {
@@ -13,7 +14,9 @@ export default class Markdown extends PureComponent {
     const source = src.replace(/^@.*$/mg, '').trim();
 
     return (
-      <ReactMarkdown {...{source}} />
+      <Catcher>
+        <ReactMarkdown {...{source}} />
+      </Catcher>
     );
   }
 }
