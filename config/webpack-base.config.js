@@ -23,7 +23,6 @@ module.exports = {
     path: path.resolve(__dirname, '../docs'),
   },
   module: {
-    noParse: /(\.min\.)/,
     rules: [
       { // images
         test: /\.(jpe?g|gif|svg|png)$/,
