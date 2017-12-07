@@ -22,7 +22,7 @@ class Sidebar extends PureComponent {
   handleClick = ({currentTarget}) => {
     const newPath = `/${currentTarget.getAttribute('data-link')}`;
     if (newPath !== this.props.location.pathname) {
-      this.props.history.push(`/${currentTarget.getAttribute('data-link')}`);
+      this.props.history.push(`/${currentTarget.getAttribute('data-link')}${this.props.location.search}`);
     }
   };
 

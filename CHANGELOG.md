@@ -6,8 +6,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 
 ## [Unreleased]
 ### Added
-* Ability to export all components to a npm package for publication
-* jest testing
+* 
 ### Changed
 * Redirecting focus of this repo 
 * Began new webpack solution for developing and showcasing components

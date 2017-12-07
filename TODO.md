@@ -5,12 +5,12 @@
 * ~~react-routing based on metadata~~
 * ~~convert table.js to be based off an array and normalize props table to be an array~~
 * ~~add error boundaries~~
-* configure theme switching based on dev / prod
-  * querystring?
-* examples with 'knobs'
-* allow the import of a local readme.md to supplant description
-* include results of a test run?
+* ~~combine components back into content~~
+* ~~configure theme switching based on dev / prod~~
 * document current components
 * convert existing demos
+* export all components into flat npm package
+* allow the import of a local readme.md to supplant description
+* demos with 'knobs'
+* include results of a test run?
 * if supports grid, custom layout; else flexbox
-* combine components back into content

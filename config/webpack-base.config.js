@@ -31,14 +31,17 @@ module.exports = {
           loader: 'url-loader',
           options: {
             limit: 10000,
-            name: 'media/[name].[hash:8].[ext]'
+            name: 'media/[name].[hash:8].[ext]',
           }
         }
       },
       { // fonts
-        test: /\.(woff|ttf|oft|eot)$/,
+        test: /\.(woff2?|ttf|eot)$/,
         use: {
-          loader: 'raw-loader',
+          loader: 'file-loader',
+          options: {
+            name: 'fonts/[name].[ext]',
+          }
         }
       },
       { // code
