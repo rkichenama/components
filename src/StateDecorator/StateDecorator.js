@@ -157,16 +157,18 @@ export default class StateDecorator extends Decorator {
 
   componentDidMount () {
     const instance = StateDecorator.instances = (StateDecorator.instances + 1) % 8;
-    this.state.interval = setInterval(
-      () => {
-        const [n, ...v] = this.state.values;
-        this.setState(({values: [n, ...v]}) => ({
-          value: n,
-          values: [...v, n]
-        }))
-      },
-      this.props.delay + (instance * 200)
-    );
+    setTimeout(() => {
+      this.state.interval = setInterval(
+        () => {
+          const [n, ...v] = this.state.values;
+          this.setState(({values: [n, ...v]}) => ({
+            value: n,
+            values: [...v, n]
+          }))
+        },
+        this.props.delay
+      );
+    }, (instance * 200));
   }
 
   componentWillUnmount () { this.state.interval && clearInterval(this.state.interval) }
