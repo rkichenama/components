@@ -70,8 +70,7 @@
           "name": "sequence"
         }
       ],
-      "filename": "src/Canvas/Canvas.jsx",
-      "demos": []
+      "filename": "src/Canvas/Canvas.jsx"
     },
     "Card": {
       "description": "",
@@ -123,8 +122,7 @@
           "name": "className"
         }
       ],
-      "filename": "src/Card/Card.jsx",
-      "demos": []
+      "filename": "src/Card/Card.jsx"
     },
     "Cube": {
       "description": "",
@@ -202,8 +200,7 @@
           "name": "className"
         }
       ],
-      "filename": "src/Cube/Cube.jsx",
-      "demos": []
+      "filename": "src/Cube/Cube.jsx"
     },
     "Deck": {
       "description": "",
@@ -231,8 +228,7 @@
           "name": "className"
         }
       ],
-      "filename": "src/Deck/Deck.jsx",
-      "demos": []
+      "filename": "src/Deck/Deck.jsx"
     },
     "ProgressBar": {
       "description": "",
@@ -264,10 +260,7 @@
           "name": "value"
         }
       ],
-      "filename": "src/ProgressBar/ProgressBar.jsx",
-      "demos": [
-        "app/examples/ProgressBar/01.js"
-      ]
+      "filename": "src/ProgressBar/ProgressBar.jsx"
     }
   },
   "keys": [
