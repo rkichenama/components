@@ -266,7 +266,7 @@
       ],
       "filename": "src/ProgressBar/ProgressBar.jsx",
       "demos": [
-        "app/examples/ProgressBar/index.js"
+        "app/examples/ProgressBar/01.js"
       ]
     }
   },

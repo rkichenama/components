@@ -7,7 +7,7 @@ import {
 import Sidebar from './sidebar';
 import Content from './content';
 
-const ID = ({children}) => children;
+import ID from './children';
 
 const Docs = () => (
   <Router>
