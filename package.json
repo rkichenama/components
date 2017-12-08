@@ -21,10 +21,7 @@
     "metadata:watch": "chokidar './src/**/*.{js|jsx}' './app/examples/**/*.{js|jsx}' -c 'npm run metadata:build'",
     "dev": "run-p -l metadata:watch dev:server"
   },
-  "dependencies": {
-    "children": "^0.2.3",
-    "react-transition-group": "^2.2.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
