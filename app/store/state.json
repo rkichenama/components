@@ -230,6 +230,74 @@
       ],
       "filename": "src/Deck/Deck.jsx"
     },
+    "GitHubProfile": {
+      "description": "",
+      "displayName": "GitHubProfile",
+      "methods": [
+        {
+          "name": "fetchUserInfo",
+          "docblock": "Using `props.username`, will retrieve github info using v3 API\n@param {Object} props - component props\n@param {string} {username} - the github username to pull\n@return {Object} sets new state",
+          "modifiers": [
+            "async"
+          ],
+          "params": [
+            {
+              "name": "props",
+              "description": "component props",
+              "type": {
+                "name": "Object"
+              }
+            }
+          ],
+          "returns": {
+            "description": "sets new state",
+            "type": {
+              "name": "Object"
+            }
+          },
+          "description": "Using `props.username`, will retrieve github info using v3 API"
+        }
+      ],
+      "props": [
+        {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "",
+          "defaultValue": {
+            "value": "''",
+            "computed": false
+          },
+          "name": "username"
+        },
+        {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "",
+          "defaultValue": {
+            "value": "''",
+            "computed": false
+          },
+          "name": "className"
+        },
+        {
+          "type": {
+            "name": "object"
+          },
+          "required": false,
+          "description": "",
+          "defaultValue": {
+            "value": "{}",
+            "computed": false
+          },
+          "name": "style"
+        }
+      ],
+      "filename": "src/GitHubProfile/GitHubProfile.jsx"
+    },
     "ProgressBar": {
       "description": "",
       "displayName": "ProgressBar",
@@ -268,6 +336,7 @@
     "Card",
     "Cube",
     "Deck",
+    "GitHubProfile",
     "ProgressBar"
   ]
 }

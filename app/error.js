@@ -7,8 +7,6 @@ export default class ErrorBoundary extends PureComponent {
   componentDidCatch (error, { componentStack: info}) {
     this.setState({ error, info }, () => {
       // do internally after error caught.
-      console.log('err', error);
-      console.log('info', info);
     });
     // do externally after error caught
   }

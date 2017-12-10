@@ -45,7 +45,7 @@ class Content extends PureComponent {
               <h2>{doc.filename}</h2>
               {
                 doc.description ? (
-                  <Markdown source={doc.description} />
+                  <Markdown source={doc.description || ''} />
                 ) : (
                   <div className='empty-dataset'>no description given</div>
                 )
@@ -63,7 +63,7 @@ class Content extends PureComponent {
             <section>
               <h3>Methods</h3>
               <Table {...{columns: [
-                'name', /* 'modifiers',*/ {
+                'name', 'modifiers', {
                   name: 'params', type: 'table'
                 },
                 {

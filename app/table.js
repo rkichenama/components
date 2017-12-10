@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Markdown from './markdown';
+import Catcher from './error';
 
 const DefaultValues = {
   [`''`]: 'empty string',
@@ -26,7 +27,7 @@ export default class Table extends PureComponent {
   renderValueForType = (column, value, key) => {
     const { type = 'string', name = column } = ((/object/.test(typeof(column)) && column )|| {});
     switch (true) {
-      case /(description|docblock)/i.test(name): return <Markdown source={value} />;
+      case /(description|docblock)/i.test(name): return <Markdown source={value || ''} />;
       case name === 'defaultValue':
         const v = (value && value.value) || (<i>none</i>);
         return (Object.keys(DefaultValues).includes(v)) ? DefaultValues[v] : v;
@@ -39,9 +40,14 @@ export default class Table extends PureComponent {
         if (value instanceof Object && Object.keys(value).length > 1) {
           return (<Table columns={Object.keys(value)} data={[value]} />);
         }
-        return value.name || value;
+        return (value && (value.name || value)) || (<i>unknown</i>);
       case type === 'bool':
       case /computed/i.test(name): return value ? <span style={{color: 'var(--clr-accent, #900)'}}>✔</span> : null;
+      case /(modifiers)/i.test(name): return (
+        <ul className='unstyled'>
+          { value.map(v => (<li key={v}>{ v }</li>))}
+        </ul>
+      );
       case (Array.isArray(value)): return (<Table columns={Object.keys(value[0])} data={value} />);
       case (value instanceof Object): return (<Table columns={Object.keys(value)} data={[value]} />);
       // case /array/.test(typeof(value)): return <Table props={} columns={['name']}/>
@@ -82,7 +88,9 @@ export default class Table extends PureComponent {
                 {
                   columns.map((column, c) => (
                     <td key={c} className={ column.type || '' }>
+                      <Catcher>
                       { this.renderValueForType(column, row[(column.name || column)]) }
+                      </Catcher>
                     </td>
                   ))
                 }
