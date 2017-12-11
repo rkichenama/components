@@ -7,8 +7,7 @@
 * ~~add error boundaries~~
 * ~~combine components back into content~~
 * ~~configure theme switching based on dev / prod~~
-* document current components
-* convert existing demos
+* document current componentsand convert existing demos
 * export all components into flat npm package
 * allow the import of a local readme.md to supplant description
 * demos with 'knobs'
