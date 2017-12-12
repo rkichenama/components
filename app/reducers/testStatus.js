@@ -1,6 +1,6 @@
 import initial from '../store/state';
 
-export const components = (state = initial.components, action) => {
+export const testStatus = (state = initial.testStatus, action) => {
   // there should be nothing that changes
   return state;
 };

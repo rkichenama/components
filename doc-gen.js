@@ -28,7 +28,7 @@ const walk = (dir, cond) => new Promise((resolve, reject, files = []) => {
 });
 
 const srcFldr = path.join(__dirname, 'src');
-const storeJson = path.join(__dirname, 'app/store/state.json');
+const storeJson = path.join(__dirname, 'app/store/metadata.json');
 
 /*
 search the local src directory for all the jsx files. assumed to be Components

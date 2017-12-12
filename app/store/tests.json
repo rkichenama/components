@@ -1,0 +1,40 @@
+{
+  "meta": {
+    "failed": 0,
+    "passed": 3,
+    "pending": 0,
+    "n": 3
+  },
+  "tests": {
+    "ProgressBar": {
+      "n": 3,
+      "passed": 3,
+      "failed": 0,
+      "pending": 0,
+      "fools run": {
+        "n": 2,
+        "passed": 2,
+        "failed": 0,
+        "pending": 0,
+        "ProgressBar fools run should be true": {
+          "status": "passed",
+          "errors": []
+        },
+        "ProgressBar fools run might be true": {
+          "status": "passed",
+          "errors": []
+        }
+      },
+      "electric bugaloo": {
+        "n": 1,
+        "passed": 1,
+        "failed": 0,
+        "pending": 0,
+        "ProgressBar electric bugaloo should be true": {
+          "status": "passed",
+          "errors": []
+        }
+      }
+    }
+  }
+}
