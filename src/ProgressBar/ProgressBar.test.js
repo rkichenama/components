@@ -1,15 +1,18 @@
+import React from 'react';
+import { mount } from 'enzyme';
+import ProgressBar from './ProgressBar';
+
 describe('ProgressBar', () => {
-  describe('fools run', () => {
-    it('should be true', () => {
-      expect(true).toBe(true);
-    });
-    it('might be true', () => {
-      expect(true).toBe(true);
-    });
+  let bar;
+
+  beforeEach(() => { bar = mount(<ProgressBar />) });
+
+  it('should have zero value', () => {
+    expect(bar.prop('value')).toBe(0);
   });
-  describe('electric bugaloo', () => {
-    it('should be true', () => {
-      expect(true).toBe(true);
-    });
+
+  it('should changes value on props', () => {
+    bar.setProps({ value: .25 });
+    expect(bar.find('.status-progress-bar').prop('style').width).toMatch(/25%/);
   });
 });
