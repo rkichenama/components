@@ -92,7 +92,7 @@ class Content extends PureComponent {
   }
 }
 
-const mapStateToProps = ({ components: data, testStatus: status }) => ({
+const mapStateToProps = ({ components: data, testStatus: { meta: status } }) => ({
   data,
   status
 });
