@@ -1,23 +1,39 @@
 {
   "meta": {
-    "failed": 0,
+    "failed": 1,
     "passed": 2,
     "pending": 0,
-    "n": 2
+    "n": 3
   },
   "tests": {
     "ProgressBar": {
-      "n": 2,
+      "n": 3,
       "passed": 2,
-      "failed": 0,
+      "failed": 1,
       "pending": 0,
-      "ProgressBar should have zero value": {
-        "status": "passed",
-        "errors": []
-      },
-      "ProgressBar should changes value on props": {
-        "status": "passed",
-        "errors": []
+      "tests": {
+        "ProgressBar should have zero value": {
+          "status": "passed",
+          "errors": []
+        },
+        "ProgressBar should changes value on props": {
+          "status": "passed",
+          "errors": []
+        },
+        "nested": {
+          "n": 1,
+          "passed": 0,
+          "failed": 1,
+          "pending": 0,
+          "tests": {
+            "ProgressBar nested should pass": {
+              "status": "failed",
+              "errors": [
+                "Error: expect(received).toBeTruthy()\n\nExpected value to be truthy, instead received\n  false\n    at Object.<anonymous> (/home/richard/env/code/components/src/ProgressBar/ProgressBar.test.js:20:50)\n    at Object.asyncFn (/home/richard/env/code/components/node_modules/jest-jasmine2/build/jasmine_async.js:124:345)\n    at resolve (/home/richard/env/code/components/node_modules/jest-jasmine2/build/queue_runner.js:46:12)\n    at new Promise (<anonymous>)\n    at mapper (/home/richard/env/code/components/node_modules/jest-jasmine2/build/queue_runner.js:34:499)\n    at promise.then (/home/richard/env/code/components/node_modules/jest-jasmine2/build/queue_runner.js:74:39)\n    at <anonymous>"
+              ]
+            }
+          }
+        }
       }
     }
   }

@@ -7,6 +7,7 @@ import Catcher from './error';
 import Markdown from './markdown';
 import Table from './table';
 import Demos from './demos';
+import Tests from './tests';
 
 class Content extends PureComponent {
   static propTypes = {
@@ -50,6 +51,9 @@ class Content extends PureComponent {
                   <div className='empty-dataset'>no description given</div>
                 )
               }
+              <Catcher>
+                <Tests {...doc} />
+              </Catcher>
             </section>
             {/* prop table */}
             <section>

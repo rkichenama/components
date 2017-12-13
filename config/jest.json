@@ -10,5 +10,10 @@
     "<rootDir>/../config/jest.setup.js"
   ],
   "coverageDirectory": "<rootDir>/../app/store/",
-  "coverageReporters": ["json", "text"]
+  "coverageReporters": ["json", "text"],
+  "collectCoverage": true,
+  "collectCoverageFrom": [
+    "**/*.jsx",
+    "!**/node_modules/**"
+  ]
 }

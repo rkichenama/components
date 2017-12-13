@@ -4,14 +4,17 @@ const path = require('path');
 const createObjectPath = (obj, path, value) => {
   if (path.length) {
     const suite = path.shift();
-    if (!obj[suite]) { obj[suite] = { n: 0, passed: 0, failed: 0, pending: 0 } }
+    if (!obj[suite]) { obj[suite] = { n: 0, passed: 0, failed: 0, pending: 0, tests: {} } }
     obj[suite].n++;
-    const status = createObjectPath(obj[suite], path, value);
+    const status = createObjectPath(obj[suite].tests, path, value);
     obj[suite][status]++;
     return status;
   } else {
     const { fullName, failureMessages: errors, status } = value;
-    obj[fullName] = { status, errors };
+    obj[fullName] = { status, errors: errors.map(err => err.toString().replace(
+      /[\u001b\u009b][[()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-ORZcf-nqry=><]/g,
+      ''
+    )) };
     return status;
   }
 };
@@ -19,26 +22,34 @@ const createObjectPath = (obj, path, value) => {
 class MyCustomReporter {
   onRunComplete(contexts, aggregate) {
     const {
-      numFailedTests: failed,
-      numPassedTests: passed,
-      numPendingTests: pending,
-      numTotalTests: n,
+      numFailedTests,
+      numPassedTests,
+      numPendingTests,
+      numTotalTests,
       testResults
     } = aggregate;
+    const { tests } = testResults.reduce(
+      (tests, test) => {
+        test.testResults.forEach(it => {
+          const { ancestorTitles } = it;
+          if (ancestorTitles.length) {
+            !tests['tests'] && (tests['tests'] = {});
+            createObjectPath(tests.tests, ancestorTitles, it);
+          }
+        });
+        return tests;
+      },
+      {}
+    );
+
     const json = {
-      meta: { failed, passed, pending, n },
-      tests: testResults.reduce(
-        (tests, test) => {
-          test.testResults.forEach(it => {
-            const { ancestorTitles } = it;
-            if (ancestorTitles.length) {
-              createObjectPath(tests, ancestorTitles, it);
-            }
-          });
-          return tests;
-        },
-        {}
-      ),
+      meta: {
+        failed: numFailedTests,
+        passed: numPassedTests,
+        pending: numPendingTests,
+        n: numTotalTests,
+      },
+      tests,
     };
     fs.writeFileSync(path.join(process.cwd(), 'app/store/tests.json'), JSON.stringify(json, null, 2), { encoding: 'UTF-8' });
     // aggregate.snapshot ?

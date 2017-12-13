@@ -6,7 +6,10 @@ const usernames = [
 ];
 
 export default class extends React.Component {
-  componentWillMount () { this.state = { username: '' } }
+  constructor (...args) {
+    super(...args);
+    this.state = { username: '' };
+  }
 
   handleOnChange = (evt) => { this.setState({username: evt.currentTarget.value}); };
 

@@ -14,14 +14,12 @@ export default class ErrorBoundary extends PureComponent {
   render () {
     
     return this.state.error ? (
-      <div className='errorMessage'>
-        <h1>{ this.state.error.toString() }</h1>
-        <details open>
-          <pre>
-            { this.state.info }
-          </pre>
-        </details>
-      </div>
+      <details className='errorMessage' open>
+        <summary>{ this.state.error.toString() }</summary>
+        <pre>
+          { this.state.info }
+        </pre>
+      </details>
     ) : (
       this.props.children
     );
