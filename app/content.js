@@ -8,10 +8,12 @@ import Markdown from './markdown';
 import Table from './table';
 import Demos from './demos';
 import Tests from './tests';
+import Stats from './stats';
 
 class Content extends PureComponent {
   static propTypes = {
     data: PropTypes.object.isRequired,
+    status: PropTypes.object.isRequired,
     location: PropTypes.shape({
        pathname: PropTypes.string.isRequired,
        search: PropTypes.string,
@@ -30,7 +32,7 @@ class Content extends PureComponent {
   }
 
   render () {
-    const { props: { data, location: { pathname } }} = this;
+    const { props: { data, location: { pathname }, status }} = this;
     const doc = data[pathname.substring(1)] || false;
     
     let k = 0;
@@ -79,7 +81,10 @@ class Content extends PureComponent {
             <Demos {...doc} key={k++} />
           </Catcher>
         ) : (
-          `Please select one of the components to the left`
+          <Catcher>
+            <h2>Please select one of the components to the left</h2>
+            <Stats {...status} />
+          </Catcher>
         )
       }
       </article>
@@ -87,8 +92,9 @@ class Content extends PureComponent {
   }
 }
 
-const mapStateToProps = ({ components: data }) => ({
-  data
+const mapStateToProps = ({ components: data, testStatus: status }) => ({
+  data,
+  status
 });
 
 export default withRouter(connect(

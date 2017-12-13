@@ -15,8 +15,4 @@ describe('ProgressBar', () => {
     bar.setProps({ value: .25 });
     expect(bar.find('.status-progress-bar').prop('style').width).toMatch(/25%/);
   });
-
-  describe('nested', () => {
-    it('should pass', () => { expect(false).toBeTruthy() });
-  });
 });

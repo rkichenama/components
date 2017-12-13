@@ -27,6 +27,7 @@ export default class Table extends PureComponent {
   renderValueForType = (column, value, key) => {
     const { type = 'string', name = column } = ((/object/.test(typeof(column)) && column )|| {});
     switch (true) {
+      case /number/.test(type): return (<div className='text-right'>{ value }</div>);
       case /(description|docblock)/i.test(name): return <Markdown source={value || ''} />;
       case name === 'defaultValue':
         const v = (value && value.value) || (<i>none</i>);

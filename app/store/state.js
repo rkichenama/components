@@ -19,7 +19,13 @@ keys.forEach(key => {
       components[key].testCoverage = {
         statements: ccco(cov.s),
         functions: ccco(cov.f),
-        branches: ccco(cov.b),
+        branches: Object.keys(cov.b).reduce((t, key) => {
+          const { covered, all } = ccco(cov.b[key]);
+          return {
+            covered: t.covered + covered,
+            all: t.all + all,
+          };
+        }, { covered: 0, all: 0 }),
       };
     });
 });

@@ -5,6 +5,9 @@
   &-warning {
     color: lighten(mix($red, $orange), .25);
   }
+  &-nothing {
+    color: lighten(mix($green, $blue), .25);
+  }
 }
 
 .errorMessage {

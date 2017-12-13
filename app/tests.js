@@ -1,11 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Children from './children';
-
-const coverageShape = {
-  covered: PropTypes.number.isRequired,
-  all: PropTypes.number.isRequired,
-};
+import Coverage, { coverageShape } from './coverage';
 
 const statusShape = {
   n: PropTypes.number,
@@ -15,20 +11,6 @@ const statusShape = {
   tests: PropTypes.object,
 };
 
-class Coverage extends PureComponent {
-  static propTypes = Object.assign({}, coverageShape, { title: PropTypes.string.isRequired });
-
-  render () {
-    const { props: { title, covered, all } } = this
-    return (
-      <div className='code-coverage'>
-        <div>{ title }</div>
-        <div>{ ((all ? (covered / all) : 1) * 100).toFixed(2) }%</div>
-      </div>
-    );
-  }
-}
-
 const Iconify = status => {
   if (/pass/i.test(status)) { return '✔' }
   if (/fail/i.test(status)) { return '✘' }
@@ -36,20 +18,17 @@ const Iconify = status => {
 };
 
 const IT = ({title, status, errors}) => (
-  <section className='it'>
-    <div className={status}>
-      <span>{ Iconify(status) }</span>
-      <span>{ title }</span>
-    </div>
+  <details className='it'>
+    <summary className={status}>
+      <span className='status-icon'>{ Iconify(status) }</span>
+      <span className='status-title'>{ title }</span>
+    </summary>
     {
       errors.length ? (
-        <details className=''>
-          <summary>Errors</summary>
-          { errors.map((error, e) => (<pre key={e}>{ error }</pre>))}
-        </details>
-        ) : null
+        errors.map((error, e) => (<pre key={e}>{ error }</pre>))
+      ) : <div className='empty-dataset'>No details</div>
     }
-  </section>
+  </details>
 );
 
 class Status extends PureComponent {
@@ -98,7 +77,7 @@ export default class Tests extends PureComponent {
   render () {
     const { props: { testCoverage, testStatus, displayName }} = this;
     return (
-      <details className='tests'>
+      <details className='tests' open>
         <summary>Test Results</summary>
         {
           testCoverage ? Object.keys(testCoverage).map(title => (

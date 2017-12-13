@@ -282,14 +282,14 @@ ol.unstyled {
   flex: 1 1 auto;
   background-color: var(--clr-bg); }
 
-/* transitions */
-.fade-enter {
-  opacity: 0;
-  z-index: 1; }
+.text-left {
+  text-align: left; }
 
-.fade-enter.fade-enter-active {
-  opacity: 1;
-  transition: opacity 250ms ease-in; }
+.text-center {
+  text-align: center; }
+
+.text-right {
+  text-align: right; }
 
 .sidebar {
   list-style: none;
@@ -337,6 +337,7 @@ ol.unstyled {
     margin-top: 8px; }
 
 .tests .code-coverage {
+  text-transform: capitalize;
   height: 18px;
   width: 240px;
   border-bottom: 1px solid #fff; }
@@ -354,11 +355,20 @@ ol.unstyled {
   .tests .test-suite .it {
     margin-left: 12px; }
     .tests .test-suite .it .pending {
-      color: #818100; }
+      color: #ffff34;
+      text-shadow: 0px 0px 1px var(--clr-white); }
     .tests .test-suite .it .failed {
-      color: #810000; }
+      color: #ff3434;
+      text-shadow: 0px 0px 1px var(--clr-white); }
     .tests .test-suite .it .passed {
-      color: #008100; }
+      color: #34ff34;
+      text-shadow: 0px 0px 1px var(--clr-white); }
+    .tests .test-suite .it .status-title, .tests .test-suite .it .status-icon {
+      display: inline-block;
+      vertical-align: middle; }
+    .tests .test-suite .it .status-icon {
+      margin-right: 8px;
+      font-size: 1.2em; }
 
 /* */
 .has-error {
@@ -366,6 +376,9 @@ ol.unstyled {
 
 .has-warning {
   color: #812900; }
+
+.has-nothing {
+  color: #008141; }
 
 .errorMessage summary {
   color: #810000;

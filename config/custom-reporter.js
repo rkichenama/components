@@ -10,8 +10,8 @@ const createObjectPath = (obj, path, value) => {
     obj[suite][status]++;
     return status;
   } else {
-    const { fullName, failureMessages: errors, status } = value;
-    obj[fullName] = { status, errors: errors.map(err => err.toString().replace(
+    const { title, failureMessages: errors, status } = value;
+    obj[title] = { status, errors: errors.map(err => err.toString().replace(
       /[\u001b\u009b][[()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-ORZcf-nqry=><]/g,
       ''
     )) };
