@@ -53,6 +53,9 @@ class Content extends PureComponent {
                   <div className='empty-dataset'>no description given</div>
                 )
               }
+            </section>
+            {/* tests table */}
+            <section>
               <Catcher>
                 <Tests {...doc} />
               </Catcher>
@@ -62,7 +65,9 @@ class Content extends PureComponent {
               <h3>Props</h3>
               <Table {...{columns: [
                 { name: 'required', type: 'bool' },
-                'name', 'type', 'defaultValue', 'description'
+                'name',
+                { name: 'type', type: 'table' },
+                'defaultValue', 'description'
               ], data: doc.props}} />
             </section>
             {/* method table */}
@@ -83,7 +88,9 @@ class Content extends PureComponent {
         ) : (
           <Catcher>
             <h2>Please select one of the components to the left</h2>
-            <Stats {...status} />
+            <section>
+              <Stats {...status} />
+            </section>
           </Catcher>
         )
       }

@@ -15,38 +15,37 @@ export default class Stats extends PureComponent {
 
   render () {
     const { props: { n: totalTests, failed, passed, pending } } = this;
-    // will want to change the fill="#ffffff" to something else for chart
-    return (
-      <Chart
-        chartType='PieChart'
-        data={[
-          ['Type', 'Count'],
-          ['Passing', passed],
-          ['Failing', failed],
-          ['Pending', pending],
-        ]}
-        options={{
-          pieHole: 0,
-          is3D: false,
-        }}
-        graph_id='Tests'
-        width='100%'
-        height='320px'
-        legend_toggle
-      />
-    );
     // return (
-    //   <Table {...{
-    //     columns: [
-    //       { name: 'totalTests', type: 'number' },
-    //       { name: 'passed', type: 'number' },
-    //       { name: 'failed', type: 'number' },
-    //       { name: 'pending', type: 'number' }
-    //     ],
-    //     data: [{
-    //       totalTests, passed, failed, pending
-    //     }]
-    //   }} />
+    //   <Chart
+    //     chartType='PieChart'
+    //     data={[
+    //       ['Type', 'Count'],
+    //       ['Passing', passed],
+    //       ['Failing', failed],
+    //       ['Pending', pending],
+    //     ]}
+    //     options={{
+    //       pieHole: 0,
+    //       is3D: false,
+    //     }}
+    //     graph_id='Tests'
+    //     width='100%'
+    //     height='320px'
+    //     legend_toggle
+    //   />
     // );
+    return (
+      <Table {...{
+        columns: [
+          { name: 'totalTests', type: 'number' },
+          { name: 'passed', type: 'number' },
+          { name: 'failed', type: 'number' },
+          { name: 'pending', type: 'number' }
+        ],
+        data: [{
+          totalTests, passed, failed, pending
+        }]
+      }} />
+    );
   }
 }

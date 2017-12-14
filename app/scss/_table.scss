@@ -26,14 +26,24 @@ table {
   }
 
   td {
-    vertical-align: top;
+    &:not(.table) {
+      vertical-align: center;
+    }
+
+    &.table {
+      vertical-align: top;
+    }
 
     &.empty-table-state {
-      vertical-align: center;
       text-align: center;
       font-weight: bold;
     }
 
+  }
+
+  tbody th {
+    word-wrap: break-word;
+    width: 2em;
   }
 
   th {

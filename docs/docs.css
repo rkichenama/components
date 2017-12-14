@@ -119,7 +119,6 @@ body {
     --fnt-normal: 14px;
     --fnt-large: 28px; }
 
-/* html */
 html,
 body {
   margin: 0;
@@ -216,12 +215,19 @@ table tr:not(:last-child) > td {
 table tr:nth-child(odd) {
   background-color: var(--clr-overlay); }
 
-table td {
+table td:not(.table) {
+  vertical-align: center; }
+
+table td.table {
   vertical-align: top; }
-  table td.empty-table-state {
-    vertical-align: center;
-    text-align: center;
-    font-weight: bold; }
+
+table td.empty-table-state {
+  text-align: center;
+  font-weight: bold; }
+
+table tbody th {
+  word-wrap: break-word;
+  width: 2em; }
 
 table th {
   border: 1px solid var(--clr-white);
@@ -262,7 +268,6 @@ ol.unstyled {
   padding: 0;
   list-style: none; }
 
-/* components */
 #root {
   margin: 0;
   padding: 0;
@@ -370,7 +375,6 @@ ol.unstyled {
       margin-right: 8px;
       font-size: 1.2em; }
 
-/* */
 .has-error {
   color: #810000; }
 
@@ -387,5 +391,15 @@ ol.unstyled {
 .errorMessage details {
   border: 1px solid #fff;
   padding: 16px; }
+
+@supports (display: grid) {
+  .floating-column, .tests section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); }
+  .floating-column > section:last-child {
+    grid-column: 1 / -1; }
+  section > table {
+    width: 100%;
+    max-width: 100%; } }
 
 /*# sourceMappingURL=docs.js.map*/

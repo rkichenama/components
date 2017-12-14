@@ -1,67 +1,17 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Children from './children';
-import Coverage, { coverageShape } from './coverage';
+import Table from './table';
+import Status, { statusShape } from './status';
 
-const statusShape = {
-  n: PropTypes.number,
-  passed: PropTypes.number,
-  failed: PropTypes.number,
-  pending: PropTypes.number,
-  tests: PropTypes.object,
+const coverageShape = {
+  covered: PropTypes.number.isRequired,
+  all: PropTypes.number.isRequired,
 };
 
-const Iconify = status => {
-  if (/pass/i.test(status)) { return '✔' }
-  if (/fail/i.test(status)) { return '✘' }
-  return '⁇';
-};
+const hasCoverage = coverage => ( coverage && Math.max.apply(Math, Object.keys(coverage).map(key => coverage[key].covered)) );
 
-const IT = ({title, status, errors}) => (
-  <details className='it'>
-    <summary className={status}>
-      <span className='status-icon'>{ Iconify(status) }</span>
-      <span className='status-title'>{ title }</span>
-    </summary>
-    {
-      errors.length ? (
-        errors.map((error, e) => (<pre key={e}>{ error }</pre>))
-      ) : <div className='empty-dataset'>No details</div>
-    }
-  </details>
-);
-
-class Status extends PureComponent {
-  static propTypes = Object.assign({},
-    statusShape,
-    { title: PropTypes.string }
-  );
-
-  render () {
-    const { props: { n, passed, failed, pending, tests, title } } = this;
-
-    return tests ? (
-      <details className='test-suite' open>
-        <summary>{ title }</summary>
-        {
-          tests.hasOwnProperty('tests') ? (
-            <Status {...(tests.tests)} />
-          ) : (
-            Object.keys(tests).map(test => (
-              tests[test].hasOwnProperty('tests') ? (
-                <Status {...(tests[test])} key={test} title={test} />
-              ) : (
-                <IT {...(tests[test])} title={test} key={test} />
-              )
-            ))
-          )
-        }
-      </details>
-    ) : (
-      <div className='empty-dataset'>No tests</div>
-    );
-  }
-}
+const calcCoverage = ({all, covered}) => ((all ? (covered / all) : 1) * 100);
 
 export default class Tests extends PureComponent {
   static propTypes = {
@@ -79,14 +29,22 @@ export default class Tests extends PureComponent {
     return (
       <details className='tests' open>
         <summary>Test Results</summary>
-        {
-          testCoverage ? Object.keys(testCoverage).map(title => (
-            <Coverage {...{key: title, title, ...(testCoverage[title])}} />
-          )) : (
-            <div className='empty-dataset'>No coverage</div>
-          )
-        }
-        <Status {...testStatus} title={ displayName } />
+        <section>
+          {
+            hasCoverage(testCoverage) ? (
+              <Table columns={[
+                'name', {name: 'percent', type: 'percent' }
+              ]} data={
+                Object.keys(testCoverage).map(name => ({
+                  name, percent: calcCoverage(testCoverage[name])
+                }))
+              } />
+            ) : (
+              <div className='empty-dataset'>No coverage</div>
+            )
+          }
+          <Status {...testStatus} title={ displayName } />
+        </section>
       </details>
     );
   }
