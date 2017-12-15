@@ -26,13 +26,13 @@ table {
   }
 
   td {
-    &:not(.table) {
-      vertical-align: center;
-    }
+    // &:not(.table) {
+    //   vertical-align: center;
+    // }
 
-    &.table {
-      vertical-align: top;
-    }
+    // &.table {
+    //   vertical-align: top;
+    // }
 
     &.empty-table-state {
       text-align: center;

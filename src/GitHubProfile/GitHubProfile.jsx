@@ -8,6 +8,9 @@ const noWrap = str => (<span style={{whiteSpace: 'nowrap'}}>{str}</span>);
 
 export default class GitHubProfile extends PureComponent {
   static propTypes = {
+    /**
+     * user on github whose profile information to display
+     */
     username: PropTypes.string,
     className: PropTypes.string,
     style: PropTypes.object,

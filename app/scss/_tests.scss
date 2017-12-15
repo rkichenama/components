@@ -14,14 +14,16 @@
     }
   }
 
-  .test-suite {
+  details.test-suite {
     padding-left: 12px;
     > summary {
       margin-left: -12px;
     }
     & > .test-suite {
-      margin-left: 20px;
+      margin-left: 10px;
     }
+  }
+  .test-suite {
     .it {
       margin-left: 12px;
       
@@ -30,7 +32,7 @@
       .passed { color: lighten($green, 35%); text-shadow: 0px 0px 1px var(--clr-white); }
 
       .status-title, .status-icon {
-        display: inline-block;
+        display: inline;
         vertical-align: middle;
       }
       .status-icon {

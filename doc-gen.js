@@ -44,6 +44,13 @@ walk(
         ...(metadata.props[name]),
         name,
       }));
+      
+      // if there is a readme.md file parallel to the component, then load it as the description
+      const readme = path.join(__dirname, filename.replace(`${metadata.displayName}.jsx`, 'readme.md'));
+      if (fs.existsSync(readme)) {
+        metadata.description = fs.readFileSync(readme).toString();
+      }
+
       return {
         ...obj,
         [metadata.displayName]: {

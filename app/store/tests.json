@@ -1,9 +1,9 @@
 {
   "meta": {
     "failed": 0,
-    "passed": 5,
+    "passed": 10,
     "pending": 0,
-    "n": 5
+    "n": 10
   },
   "tests": {
     "GitHubProfile": {
@@ -23,6 +23,50 @@
         "changes state when updated with new props": {
           "status": "passed",
           "errors": []
+        }
+      }
+    },
+    "Card": {
+      "n": 5,
+      "passed": 5,
+      "failed": 0,
+      "pending": 0,
+      "tests": {
+        "properly rendered": {
+          "n": 2,
+          "passed": 2,
+          "failed": 0,
+          "pending": 0,
+          "tests": {
+            "should trigger a callback when clicked": {
+              "status": "passed",
+              "errors": []
+            },
+            "should toggle a class when prop changes": {
+              "status": "passed",
+              "errors": []
+            }
+          }
+        },
+        "improperly rendered": {
+          "n": 3,
+          "passed": 3,
+          "failed": 0,
+          "pending": 0,
+          "tests": {
+            "should render no children": {
+              "status": "passed",
+              "errors": []
+            },
+            "should render one child": {
+              "status": "passed",
+              "errors": []
+            },
+            "should render two children": {
+              "status": "passed",
+              "errors": []
+            }
+          }
         }
       }
     },

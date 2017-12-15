@@ -73,7 +73,7 @@
       "filename": "src/Canvas/Canvas.jsx"
     },
     "Card": {
-      "description": "",
+      "description": "One of those swt where you have a card on a page and, on click, it flips in 3d to a hidden back side",
       "displayName": "Card",
       "methods": [],
       "props": [
@@ -82,7 +82,7 @@
             "name": "node"
           },
           "required": true,
-          "description": "",
+          "description": "the structure of this component requires at least 1 child, no more than 2",
           "name": "children"
         },
         {
@@ -90,9 +90,9 @@
             "name": "func"
           },
           "required": false,
-          "description": "",
+          "description": "callback to notify parent, which decides on whether the `flipped` prop should change",
           "defaultValue": {
-            "value": "() => {}",
+            "value": "() => { }",
             "computed": false
           },
           "name": "onClick"
@@ -102,7 +102,7 @@
             "name": "bool"
           },
           "required": false,
-          "description": "",
+          "description": "the current state, whether the front is shown (`false`) or the back (`true`)",
           "defaultValue": {
             "value": "false",
             "computed": false
@@ -202,36 +202,8 @@
       ],
       "filename": "src/Cube/Cube.jsx"
     },
-    "Deck": {
-      "description": "",
-      "displayName": "Deck",
-      "methods": [],
-      "props": [
-        {
-          "type": {
-            "name": "node"
-          },
-          "required": true,
-          "description": "",
-          "name": "children"
-        },
-        {
-          "type": {
-            "name": "string"
-          },
-          "required": false,
-          "description": "",
-          "defaultValue": {
-            "value": "''",
-            "computed": false
-          },
-          "name": "className"
-        }
-      ],
-      "filename": "src/Deck/Deck.jsx"
-    },
     "GitHubProfile": {
-      "description": "",
+      "description": "This component was initially born out of an attempt to use the Github GraphQL api to pull user profile data. With the richness of v4, I had hoped to pull info like current PRs, any issues raised or answered, along with commit history.\n\nUnforutnately, not only would v4 require oauth, but creating the query seemed beyond what I could straigtforwardly do. That said, I settled for the v3 public version that is rate limited and gives extremely basic information.\n",
       "displayName": "GitHubProfile",
       "methods": [
         {
@@ -264,7 +236,7 @@
             "name": "string"
           },
           "required": false,
-          "description": "",
+          "description": "user on github whose profile information to display",
           "defaultValue": {
             "value": "''",
             "computed": false
@@ -299,7 +271,7 @@
       "filename": "src/GitHubProfile/GitHubProfile.jsx"
     },
     "ProgressBar": {
-      "description": "",
+      "description": "A simple progress bar that moves from left to right when given a value between\n0 and 1. Basically, most of the css can be overriden besides the props to set colors.\nOne line of text is expected for the status, which will be center white with black outline.",
       "displayName": "ProgressBar",
       "methods": [],
       "props": [
@@ -308,7 +280,7 @@
             "name": "string"
           },
           "required": false,
-          "description": "",
+          "description": "color the filled progress bar should be",
           "defaultValue": {
             "value": "'green'",
             "computed": false
@@ -320,7 +292,7 @@
             "name": "number"
           },
           "required": false,
-          "description": "",
+          "description": "the percentage to display, given as a positive value `[0, 1]`",
           "defaultValue": {
             "value": "0",
             "computed": false
@@ -335,7 +307,6 @@
     "Canvas",
     "Card",
     "Cube",
-    "Deck",
     "GitHubProfile",
     "ProgressBar"
   ]
