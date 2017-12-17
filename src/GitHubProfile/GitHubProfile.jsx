@@ -29,8 +29,7 @@ export default class GitHubProfile extends PureComponent {
   /**
    * Using `props.username`, will retrieve github info using v3 API
    * @param {Object} props - component props
-   * @param {string} {username} - the github username to pull
-   * @return {Object} sets new state
+   * @param {string} props.username - the github username to pull
    */
   fetchUserInfo = async (props) => {
     const { username } = props;
