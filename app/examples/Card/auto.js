@@ -1,32 +1,27 @@
 import React from 'react';
 import StateDecorator from 'components/StateDecorator/StateDecorator';
-import axios from 'axios';
+import Stage from '../stage';
+import RandomUsers from '../randomUsers';
 import Card from 'components/Card/Card';
 
 const centered = {
-  display: 'flex', 'align-items': 'center', 'justify-content': 'center', height: '100%'
+  display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%'
 }
 export default class extends React.Component {
-  constructor(...args) {
-    super(...args);
-    this.state = {
-      results: [],
-    };
-  }
-  componentDidMount() {
-    axios.get(`https://randomuser.me/api/?inc=name,picture&page=1&results=3&seed=abc`)
-      .then(({ data: { results } }) => {
-        this.setState({ results });
-      });
-  }
-    render () {
+  render () {
     return (
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <div style={{ flexBasis: '80%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <Stage>
+        <RandomUsers count={20} component={users => users.reduce(
+          (t, c, i) => {
+            if (i % 2) { t[t.length - 1].push(c) }
+            else { t.push([c]) }
+            return t;
+          }, []
+        ).map(results => (
           <StateDecorator values={[false, true]} delay={2500} component={flipped => (
             <Card flipped={flipped}>
               {
-                this.state.results.map(({ name, picture }, u) => (
+                results.map(({ name, picture }, u) => (
                   <div key={u} style={centered}>
                     <img src={picture.large} style={{ maxWidth: '100%' }} title={`${name.first} ${name.last}`} />
                   </div>
@@ -34,8 +29,8 @@ export default class extends React.Component {
               }
             </Card>
           )} />
-        </div>
-      </div>
+        ))} />
+      </Stage>
     );
   }
 }

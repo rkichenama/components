@@ -1,9 +1,9 @@
 {
   "meta": {
     "failed": 0,
-    "passed": 10,
+    "passed": 14,
     "pending": 0,
-    "n": 10
+    "n": 14
   },
   "tests": {
     "GitHubProfile": {
@@ -21,6 +21,22 @@
           "errors": []
         },
         "changes state when updated with new props": {
+          "status": "passed",
+          "errors": []
+        }
+      }
+    },
+    "StateDecorator": {
+      "n": 2,
+      "passed": 2,
+      "failed": 0,
+      "pending": 0,
+      "tests": {
+        "should push down the next value to component": {
+          "status": "passed",
+          "errors": []
+        },
+        "should change saved values list": {
           "status": "passed",
           "errors": []
         }
@@ -81,6 +97,22 @@
           "errors": []
         },
         "should changes value on props": {
+          "status": "passed",
+          "errors": []
+        }
+      }
+    },
+    "ClickDecorator": {
+      "n": 2,
+      "passed": 2,
+      "failed": 0,
+      "pending": 0,
+      "tests": {
+        "should push down the next value to component": {
+          "status": "passed",
+          "errors": []
+        },
+        "should change saved values list": {
           "status": "passed",
           "errors": []
         }

@@ -74,12 +74,16 @@ class Content extends PureComponent {
             <section>
               <h3>Methods</h3>
               <Table {...{columns: [
-                'name', 'modifiers', {
+                'name', {
+                  name: 'modifiers', type: 'list'
+                }, {
                   name: 'params', type: 'table'
                 },
                 {
                   name: 'returns', type: 'table'
-                }, 'docblock',
+                }, {
+                  name: 'docblock', type: 'markdown'
+                },
               ], data: doc.methods}} />
             </section>
             {/* demos */}

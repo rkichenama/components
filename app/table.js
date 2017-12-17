@@ -8,6 +8,7 @@ const DefaultValues = {
   ['[]']: 'empty array',
   ['{}']: 'empty object',
   ['() => {}']: 'noop',
+  ['() => { }']: 'noop',
 };
 
 const figureOutBest = (name, value) => {
@@ -62,7 +63,7 @@ const renderForColumn = (column, value) => {
 };
 
 const renderNumber = (value, percent) => (
-  <div className='text-right'>{ percent ? `${value.toFixed(2)}%` : value }</div>
+  <Catcher><div className='text-right'>{ percent ? `${ Number(value).toFixed(2) }%` : value }</div></Catcher>
 );
 const renderMarkdown = value => (
   <Markdown source={value || ''} />
@@ -76,21 +77,43 @@ const renderDefaultValue = value => {
 };
 const renderList = value => {
   return (
-    <ul className='unstyled'>
-      { value.map(v => (<li key={v}>{ v }</li>))}
-    </ul>
+    <Catcher>
+      <ul className='unstyled'>
+        { value.map(v => (<li key={v}>{ v }</li>))}
+      </ul>
+    </Catcher>
   );
 };
+const fixUnknowns = value => {
+  if (value === null || value === undefined) { return '' }
+  return value;
+}
 const transposeData = data => {
   const heads = Object.keys(data[0]);
   return data.reduce((t, c) => {
     heads.forEach((head, h) => {
       t[h] = [...t[h], Array.isArray(c[head]) ? (
-        c[head].map(({value}) => value)
-      ) : c[head]];
+        c[head].map(({value}) => fixUnknowns(value))
+      ) : fixUnknowns(c[head])];
     });
     return t;
   }, heads.map(head => ([head])));
+};
+const renderDataColumn = (col, c) => {
+  let value = col;
+  
+  if (col instanceof Object) {
+    value = Array.isArray(col) ? renderList(col) : col.name;
+  }
+  return (
+    <Catcher key={c}><td>{ value }</td></Catcher>
+  );
+};
+const renderColumn = (col, c) => {
+  if (c) {
+    return renderDataColumn(col, c)
+  }
+  return (<Catcher key={c}><th>{ col }</th></Catcher>);
 };
 const renderTable = value => {
   if (!Array.isArray(value)) { return renderTable([value]) }
@@ -102,13 +125,7 @@ const renderTable = value => {
             transposeData(value).map((row, r) => (
               <tr key={r}>
                 {
-                  row.map((col, c) => (
-                    !c ? (
-                      <th key={c}>{ col.name || col }</th>
-                    ) : (
-                      <td key={c}>{ col.name || (Array.isArray(col) ? renderList(col) : col) }</td>
-                    )
-                  ))
+                  row.map(renderColumn)
                 }
               </tr>
             ))
@@ -134,9 +151,11 @@ const renderHeaderRow = columns => (
     <tr>
       {
         columns.map((column, c) => (
-          <th key={c} className={ column.type || '' }>
-            { column.name || column }
-          </th>
+          <Catcher key={c}>
+            <th className={ column.type || '' }>
+              { column.name || column }
+            </th>
+          </Catcher>
         ))
       }
     </tr>
@@ -147,13 +166,16 @@ const renderTableColumn = (column, value) => (
     <Catcher>{ renderForColumn(column, value) }</Catcher>
   </td>
 );
-const renderTableRow = columns => (row, r) => (
-  <tr key={r}>
-    {
-      columns.map(column => renderTableColumn(column, row[(column.name || column)]))
-    }
-  </tr>
-);
+const renderTableRow = columns => (row, r) =>{
+
+  return (
+    <tr key={r}>
+      {
+        columns.map(column => renderTableColumn(column, fixUnknowns(row[(column.name || column)])))
+      }
+    </tr>
+  );
+};
 export default class Table extends PureComponent {
   static propTypes = {
     props: PropTypes.object,
@@ -180,7 +202,6 @@ export default class Table extends PureComponent {
       <table>
         { renderHeaderRow(columns) }
         <tbody>
-          <Catcher>
           {
             rows.length ? rows.map(row) : (
               <tr>
@@ -190,7 +211,6 @@ export default class Table extends PureComponent {
               </tr>
             )
           }
-          </Catcher>
         </tbody>
       </table>
     );
