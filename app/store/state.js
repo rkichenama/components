@@ -28,6 +28,7 @@ const parseCoverageReport = (obj, k = Object.keys(obj)) => ({
   covered: k.reduce((t, c) => (t + (obj[c] > 0 ? 1 : 0)), 0),
   all: k.length,
 });
+
 const addCoverageResultsToComponentMetadata = key => {
   const match = new RegExp(`${key}/${key}.jsx$`);
   coveredFiles
@@ -47,6 +48,7 @@ const addCoverageResultsToComponentMetadata = key => {
       };
     });
 };
+
 const normalizeCoverageResults = key => {
   const match = new RegExp(`${key}/${key}.jsx$`);
   coveredFiles
