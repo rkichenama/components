@@ -33,6 +33,61 @@
 @supports not (display: grid) {
   .card {
     margin: 4px; } }
+.cube {
+  position: relative;
+  perspective: 100vw;
+  width: 96px;
+  height: 96px; }
+  .cube.front .flip {
+    transform: rotateX(0deg) rotateY(0deg); }
+  .cube.back .flip {
+    transform: rotateX(0deg) rotateY(-180deg); }
+  .cube.bottom .flip {
+    transform: rotateX(90deg) rotateY(0deg); }
+  .cube.top .flip {
+    transform: rotateX(-90deg) rotateY(0deg); }
+  .cube.left .flip {
+    transform: rotateX(0deg) rotateY(90deg); }
+  .cube.right .flip {
+    transform: rotateX(0deg) rotateY(-90deg); }
+  .cube .flip {
+    transition: 0.6s;
+    transform-style: preserve-3d;
+    position: relative;
+    width: 100%;
+    height: 100%; }
+  .cube .front, .cube .top, .cube .bottom, .cube .left, .cube .right, .cube .back {
+    border: 1px solid white;
+    border-radius: 4px;
+    background-color: white;
+    padding: 8px;
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: inherit;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+  .cube .front {
+    z-index: 2;
+    transform: rotateY(0deg); }
+  .cube .back {
+    transform: rotateY(180deg); }
+  .cube .left {
+    transform: rotateY(-90deg); }
+  .cube .right {
+    transform: rotateY(90deg); }
+  .cube .top {
+    transform: rotateX(90deg); }
+  .cube .bottom {
+    transform: rotateX(-90deg); }
+
+@supports not (display: grid) {
+  .cube {
+    margin: 4px; } }
 .github-profile {
   display: inline-flex;
   align-items: flex-start;
@@ -119,7 +174,8 @@
          url(fonts/FiraCode-Bold.ttf) format('truetype');
     font-weight: 700;
     font-style: normal;
-}.sidebar-item {
+}@charset "UTF-8";
+.sidebar .folderName:after {
   display: flex;
   flex-direction: column;
   align-items: center; }
@@ -296,6 +352,9 @@ ol.unstyled {
   margin: 0;
   padding: 0;
   list-style: none; }
+  ul.unstyled > li > .unstyled,
+  ol.unstyled > li > .unstyled {
+    padding-left: 8px; }
 
 #root {
   margin: 0;
@@ -326,19 +385,37 @@ ol.unstyled {
   text-align: right; }
 
 .sidebar {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  position: fixed;
-  width: 200px;
-  max-height: 100%;
-  overflow-y: auto; }
+  margin-right: 12px; }
   .sidebar-container {
     padding-top: 0;
     padding-bottom: 0; }
+  .sidebar .folderName {
+    padding-right: 16px;
+    position: relative; }
+    .sidebar .folderName:not(.open) + .treeList {
+      display: none; }
+    .sidebar .folderName.open + .treeList {
+      display: block; }
+    .sidebar .folderName:after {
+      content: '\25B2'; }
+    .sidebar .folderName.open:after {
+      content: '\25BC'; }
+    .sidebar .folderName:after {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 16px; }
   .sidebar-item {
-    margin: 4px 0;
-    max-width: 96%; }
+    padding: 4px 0;
+    cursor: pointer; }
+    .sidebar-item:not(.fldr):hover {
+      background-color: var(--clr-overlay); }
+    .sidebar-item:not(:last-child) {
+      border-bottom: 1px solid var(--clr-white); }
+    .sidebar-item.active {
+      color: var(--clr-accent);
+      font-style: italic; }
 
 .floating-column {
   display: block;

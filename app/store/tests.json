@@ -70,22 +70,6 @@
         }
       }
     },
-    "ClickDecorator": {
-      "n": 2,
-      "passed": 2,
-      "failed": 0,
-      "pending": 0,
-      "tests": {
-        "should push down the next value to component": {
-          "status": "passed",
-          "errors": []
-        },
-        "should change saved values list": {
-          "status": "passed",
-          "errors": []
-        }
-      }
-    },
     "ProgressBar": {
       "n": 2,
       "passed": 2,
@@ -97,6 +81,22 @@
           "errors": []
         },
         "should changes value on props": {
+          "status": "passed",
+          "errors": []
+        }
+      }
+    },
+    "ClickDecorator": {
+      "n": 2,
+      "passed": 2,
+      "failed": 0,
+      "pending": 0,
+      "tests": {
+        "should push down the next value to component": {
+          "status": "passed",
+          "errors": []
+        },
+        "should change saved values list": {
           "status": "passed",
           "errors": []
         }
