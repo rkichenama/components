@@ -2,8 +2,8 @@
   "meta": {
     "failed": 0,
     "passed": 14,
-    "pending": 0,
-    "n": 14
+    "pending": 9,
+    "n": 23
   },
   "tests": {
     "GitHubProfile": {
@@ -70,7 +70,7 @@
         }
       }
     },
-    "StateDecorator": {
+    "ClickDecorator": {
       "n": 2,
       "passed": 2,
       "failed": 0,
@@ -102,7 +102,7 @@
         }
       }
     },
-    "ClickDecorator": {
+    "StateDecorator": {
       "n": 2,
       "passed": 2,
       "failed": 0,
@@ -115,6 +115,66 @@
         "should change saved values list": {
           "status": "passed",
           "errors": []
+        }
+      }
+    },
+    "Cube": {
+      "n": 9,
+      "passed": 0,
+      "failed": 0,
+      "pending": 9,
+      "tests": {
+        "properly rendered": {
+          "n": 2,
+          "passed": 0,
+          "failed": 0,
+          "pending": 2,
+          "tests": {
+            "should trigger a callback when clicked": {
+              "status": "pending",
+              "errors": []
+            },
+            "should toggle a class when prop changes": {
+              "status": "pending",
+              "errors": []
+            }
+          }
+        },
+        "improperly rendered": {
+          "n": 7,
+          "passed": 0,
+          "failed": 0,
+          "pending": 7,
+          "tests": {
+            "should render 0 children": {
+              "status": "pending",
+              "errors": []
+            },
+            "should render 1 children": {
+              "status": "pending",
+              "errors": []
+            },
+            "should render 2 children": {
+              "status": "pending",
+              "errors": []
+            },
+            "should render 3 children": {
+              "status": "pending",
+              "errors": []
+            },
+            "should render 4 children": {
+              "status": "pending",
+              "errors": []
+            },
+            "should render 5 children": {
+              "status": "pending",
+              "errors": []
+            },
+            "should render 7 children": {
+              "status": "pending",
+              "errors": []
+            }
+          }
         }
       }
     }

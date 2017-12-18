@@ -2,7 +2,7 @@ import React from 'react';
 import StateDecorator from 'components/StateDecorator/StateDecorator';
 import Stage from '../stage';
 import RandomUsers from '../randomUsers';
-import Card from 'components/Card/Card';
+import Cube from 'components/Cube/Cube';
 
 const centered = {
   display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%'
@@ -11,15 +11,15 @@ export default class extends React.Component {
   render () {
     return (
       <Stage>
-        <RandomUsers count={20} component={users => users.reduce(
+        <RandomUsers count={60} component={users => users.reduce(
           (t, c, i) => {
-            if (i % 2) { t[t.length - 1].push(c) }
+            if (i % 6) { t[t.length - 1].push(c) }
             else { t.push([c]) }
             return t;
           }, []
         ).map((results, r) => (
-          <StateDecorator key={r} values={[false, true]} delay={2500} component={flipped => (
-            <Card flipped={flipped}>
+          <StateDecorator key={r} values={['front', 'back', 'left', 'right', 'top', 'bottom']} delay={2500} component={face => (
+            <Cube face={face}>
               {
                 results.map(({ name, picture }, u) => (
                   <div key={u} style={centered}>
@@ -27,7 +27,7 @@ export default class extends React.Component {
                   </div>
                 ))
               }
-            </Card>
+            </Cube>
           )} />
         ))} />
       </Stage>

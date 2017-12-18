@@ -166,7 +166,7 @@
       "filename": "src/ClickDecorator/ClickDecorator.jsx"
     },
     "Cube": {
-      "description": "",
+      "description": "A card type component that has 6 faces and rotates about the shared center via given prop and has an onClick event to notify parent to take action. The animation is handled via css transforms with a perspective of the viewport and seems to handle stuttering well.",
       "displayName": "Cube",
       "methods": [],
       "props": [
@@ -180,15 +180,15 @@
         },
         {
           "type": {
-            "name": "func"
+            "name": "string"
           },
           "required": false,
           "description": "",
           "defaultValue": {
-            "value": "() => {}",
+            "value": "''",
             "computed": false
           },
-          "name": "onClick"
+          "name": "className"
         },
         {
           "type": {
@@ -221,7 +221,7 @@
             ]
           },
           "required": false,
-          "description": "",
+          "description": "one of the enum values, either in Cube.Faces or as a static named constant off Cube",
           "defaultValue": {
             "value": "'front'",
             "computed": false
@@ -230,15 +230,15 @@
         },
         {
           "type": {
-            "name": "string"
+            "name": "func"
           },
           "required": false,
-          "description": "",
+          "description": "function that is triggered on click to nofiy that action can be taken",
           "defaultValue": {
-            "value": "''",
+            "value": "() => {}",
             "computed": false
           },
-          "name": "className"
+          "name": "onClick"
         }
       ],
       "filename": "src/Cube/Cube.jsx"
