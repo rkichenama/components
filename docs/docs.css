@@ -193,6 +193,7 @@ body {
     --clr-bg: rgba(0, 127, 127, 0.2);
     --clr-accent: #c08080;
     --clr-highlight: #80c080;
+    --clr-screen: rgba(0, 0, 0, 0.25);
     --clr-btn-bg: #a980c0;
     --clr-btn-fg: #fff;
     --fnt-small: 11.2px;
@@ -204,6 +205,7 @@ body {
     --clr-bg: rgba(0, 129, 129, 0.2);
     --clr-accent: #008000;
     --clr-highlight: #008080;
+    --clr-screen: rgba(255, 255, 255, 0.25);
     --clr-btn-bg: #fff;
     --clr-btn-fg: #008080;
     --fnt-small: 11.2px;
@@ -466,18 +468,23 @@ ol.unstyled {
 
 .tests .test-suite .it {
   margin-left: 12px; }
-  .tests .test-suite .it .pending {
-    color: #ffff34;
-    text-shadow: 0px 0px 1px var(--clr-white); }
-  .tests .test-suite .it .failed {
-    color: #ff3434;
-    text-shadow: 0px 0px 1px var(--clr-white); }
+  .tests .test-suite .it .pending,
+  .tests .test-suite .it .failed,
   .tests .test-suite .it .passed {
-    color: #34ff34;
-    text-shadow: 0px 0px 1px var(--clr-white); }
+    background-color: var(--clr-screen);
+    padding-left: 1.2em;
+    text-indent: -1.2em; }
+  .tests .test-suite .it .pending {
+    color: #ffff34; }
+  .tests .test-suite .it .failed {
+    color: #ff3434; }
+  .tests .test-suite .it .passed {
+    color: #34ff34; }
   .tests .test-suite .it .status-title, .tests .test-suite .it .status-icon {
     display: inline;
-    vertical-align: middle; }
+    vertical-align: middle;
+    font-family: 'Fira Code';
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; }
   .tests .test-suite .it .status-icon {
     margin-right: 8px;
     font-size: 1.2em; }

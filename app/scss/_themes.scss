@@ -26,6 +26,7 @@ body {
 
     --clr-accent: mix($white, $red);
     --clr-highlight: mix($white, $green);
+    --clr-screen: transparentize($black, .75);
     
     --clr-btn-bg: mix($white, $indigo);
     --clr-btn-fg: $white;
@@ -42,6 +43,7 @@ body {
 
     --clr-accent: $green;
     --clr-highlight: $blue;
+    --clr-screen: transparentize($white, .75);
     
     --clr-btn-bg: $white;
     --clr-btn-fg: $blue;

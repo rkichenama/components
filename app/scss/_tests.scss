@@ -27,13 +27,29 @@
     .it {
       margin-left: 12px;
       
-      .pending { color: lighten($yellow, 35%); text-shadow: 0px 0px 1px var(--clr-white); }
-      .failed { color: lighten($red, 35%); text-shadow: 0px 0px 1px var(--clr-white); }
-      .passed { color: lighten($green, 35%); text-shadow: 0px 0px 1px var(--clr-white); }
+      .pending,
+      .failed,
+      .passed {
+        background-color: var(--clr-screen);
+        padding-left: 1.2em;
+        text-indent: -1.2em;
+      }
+
+      .pending { color: lighten($yellow, 35%); }
+      .failed  { color: lighten($red, 35%); }
+      .passed  { color: lighten($green, 35%); }
 
       .status-title, .status-icon {
         display: inline;
         vertical-align: middle;
+        font-family: 'Fira Code';
+        text-shadow:
+          // 2px 2px 0 #000,
+          -1px -1px 0 #000,
+          1px -1px 0 #000,
+          -1px 1px 0 #000,
+          1px 1px 0 #000,
+          ;
       }
       .status-icon {
         margin-right: 8px;

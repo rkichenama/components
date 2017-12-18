@@ -70,22 +70,6 @@
         }
       }
     },
-    "ProgressBar": {
-      "n": 2,
-      "passed": 2,
-      "failed": 0,
-      "pending": 0,
-      "tests": {
-        "should have zero value": {
-          "status": "passed",
-          "errors": []
-        },
-        "should changes value on props": {
-          "status": "passed",
-          "errors": []
-        }
-      }
-    },
     "ClickDecorator": {
       "n": 2,
       "passed": 2,
@@ -113,6 +97,22 @@
           "errors": []
         },
         "should change saved values list": {
+          "status": "passed",
+          "errors": []
+        }
+      }
+    },
+    "ProgressBar": {
+      "n": 2,
+      "passed": 2,
+      "failed": 0,
+      "pending": 0,
+      "tests": {
+        "should have zero value": {
+          "status": "passed",
+          "errors": []
+        },
+        "should changes value on props": {
           "status": "passed",
           "errors": []
         }
