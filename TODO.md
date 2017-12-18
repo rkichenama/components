@@ -10,9 +10,9 @@
 * ~~include results of a test run~~
 * ~~allow the import of a local readme.md to supplant description~~
 * ~~if supports grid, custom layout; else flexbox~~
+* ~~set up a way of nesting the components in navigation according to atom, molecule, organism, separate from metadata~~
 * document current components and convert existing demos
 * export all components into flat npm package
 * demos with 'knobs', a SelectDecorator (single and multiple) and InputDecorator
   * need to work off propTypes for component
 * replace the details / summary html tags with something similar that is compatible with IE
-* set up a way of nesting the compnoents in navigation according to atom, molecule, organism, separate from metadata

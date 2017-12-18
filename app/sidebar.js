@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 const dictionary = {
-  // key: path -> path.key
   'ClickDecorator': ['Decorators'],
   'StateDecorator': ['Decorators'],
 };
@@ -86,20 +85,17 @@ class Sidebar extends PureComponent {
   }
 
   normalize (components = this.props.components) {
-    // take each string and add to its place in a nested tree
     const tree = components.reduce(
       (tree, component) => {
         if (keys.indexOf(component) !== -1) {
-          /* */
           createObjectPath(tree, [...dictionary[component]], component);
         } else {
-          // add to root of tree
           tree[component] = false;
         }
         return tree;
       }, {}
     );
-    this.setState({tree}, () => { console.info(tree)});
+    this.setState({tree});
   }
 
   handleClick = (evt, component) => {
@@ -119,22 +115,10 @@ class Sidebar extends PureComponent {
 
     return (
       <div className='sidebar'>
+        <a href='#/'>Home</a>
         { List(tree, currentPage, this.handleClick) }
       </div>
     );
-    // return (
-    //   <ul className='sidebar'>
-    //     {
-    //       components.map((item, i) => (
-    //         <Item key={i} lbl={item} onClick={this.handleClick} className={
-    //           currentPage === item ? 'active' : null
-    //         } />
-    //       ))
-    //     }
-    //     <li><a>Link</a></li>
-    //     <li><a href="#">Link</a></li>
-    //   </ul>
-    // );
   }
 }
 
