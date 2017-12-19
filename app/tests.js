@@ -29,22 +29,20 @@ export default class Tests extends PureComponent {
     return (
       <details className='tests' open>
         <summary>Test Results</summary>
-        <section>
-          {
-            hasCoverage(testCoverage) ? (
-              <Table columns={[
-                'name', {name: 'percent', type: 'percent' }
-              ]} data={
-                Object.keys(testCoverage).map(name => ({
-                  name, percent: calcCoverage(testCoverage[name])
-                }))
-              } />
-            ) : (
-              <div className='empty-dataset'>No coverage</div>
-            )
-          }
-          <Status {...testStatus} title={ displayName } />
-        </section>
+        {
+          hasCoverage(testCoverage) ? (
+            <Table full columns={[
+              'name', {name: 'percent', type: 'percent' }
+            ]} data={
+              Object.keys(testCoverage).map(name => ({
+                name, percent: calcCoverage(testCoverage[name])
+              }))
+            } />
+          ) : (
+            <div className='empty-dataset'>No coverage</div>
+          )
+        }
+        <Status {...testStatus} title={ displayName } />
       </details>
     );
   }

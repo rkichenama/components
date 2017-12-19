@@ -178,7 +178,7 @@ const renderTableRow = columns => (row, r) =>{
 };
 export default class Table extends PureComponent {
   static propTypes = {
-    props: PropTypes.object,
+    data: PropTypes.arrayOf(PropTypes.object).isRequired,
     columns: PropTypes.arrayOf(
       PropTypes.oneOfType([
         PropTypes.string,
@@ -188,9 +188,15 @@ export default class Table extends PureComponent {
         })
       ])
     ).isRequired,
-  }
+    full: PropTypes.bool,
+  };
+
+  static defaultProps = {
+    full: false,
+  };
+
   render () {
-    const { props: { data, columns }} = this;
+    const { props: { data, columns, full }} = this;
 
     if (!data) { return null; }
     
@@ -198,8 +204,10 @@ export default class Table extends PureComponent {
 
     const row = renderTableRow(columns);
 
+    const width = full ? { width: '100%' } : {};
+
     return (
-      <table>
+      <table {...width}>
         { renderHeaderRow(columns) }
         <tbody>
           {

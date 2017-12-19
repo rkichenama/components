@@ -18,7 +18,7 @@ export default class Demo extends PureComponent {
     const source = require('!raw-loader!./examples' + demo);
 
     return (
-      <section className='demo'>
+      <div className='demo'>
         <h4>{ file }</h4>
         <div>
           <Catcher>
@@ -28,7 +28,7 @@ export default class Demo extends PureComponent {
         <Highlighter key={1} language='javascript' {...{ style }} showLineNumbers wrapLines>
           { source }
         </Highlighter>
-      </section>
+      </div>
     );
   }
 }
