@@ -1,9 +1,9 @@
 {
   "meta": {
     "failed": 0,
-    "passed": 14,
-    "pending": 9,
-    "n": 23
+    "passed": 23,
+    "pending": 4,
+    "n": 27
   },
   "tests": {
     "GitHubProfile": {
@@ -23,6 +23,66 @@
         "changes state when updated with new props": {
           "status": "passed",
           "errors": []
+        }
+      }
+    },
+    "Cube": {
+      "n": 9,
+      "passed": 9,
+      "failed": 0,
+      "pending": 0,
+      "tests": {
+        "properly rendered": {
+          "n": 2,
+          "passed": 2,
+          "failed": 0,
+          "pending": 0,
+          "tests": {
+            "should trigger a callback when clicked": {
+              "status": "passed",
+              "errors": []
+            },
+            "should change a class when prop changes": {
+              "status": "passed",
+              "errors": []
+            }
+          }
+        },
+        "improperly rendered": {
+          "n": 7,
+          "passed": 7,
+          "failed": 0,
+          "pending": 0,
+          "tests": {
+            "should render 0 children": {
+              "status": "passed",
+              "errors": []
+            },
+            "should render 1 children": {
+              "status": "passed",
+              "errors": []
+            },
+            "should render 2 children": {
+              "status": "passed",
+              "errors": []
+            },
+            "should render 3 children": {
+              "status": "passed",
+              "errors": []
+            },
+            "should render 4 children": {
+              "status": "passed",
+              "errors": []
+            },
+            "should render 5 children": {
+              "status": "passed",
+              "errors": []
+            },
+            "should render 7 children": {
+              "status": "passed",
+              "errors": []
+            }
+          }
         }
       }
     },
@@ -70,17 +130,17 @@
         }
       }
     },
-    "ClickDecorator": {
+    "ProgressBar": {
       "n": 2,
       "passed": 2,
       "failed": 0,
       "pending": 0,
       "tests": {
-        "should push down the next value to component": {
+        "should have zero value": {
           "status": "passed",
           "errors": []
         },
-        "should change saved values list": {
+        "should changes value on props": {
           "status": "passed",
           "errors": []
         }
@@ -102,75 +162,55 @@
         }
       }
     },
-    "ProgressBar": {
+    "ClickDecorator": {
       "n": 2,
       "passed": 2,
       "failed": 0,
       "pending": 0,
       "tests": {
-        "should have zero value": {
+        "should push down the next value to component": {
           "status": "passed",
           "errors": []
         },
-        "should changes value on props": {
+        "should change saved values list": {
           "status": "passed",
           "errors": []
         }
       }
     },
-    "Cube": {
-      "n": 9,
+    "Canvas": {
+      "n": 4,
       "passed": 0,
       "failed": 0,
-      "pending": 9,
+      "pending": 4,
       "tests": {
-        "properly rendered": {
-          "n": 2,
+        "will render a scene": {
+          "status": "pending",
+          "errors": []
+        },
+        "will render an animation": {
+          "status": "pending",
+          "errors": []
+        },
+        "Context": {
+          "n": 1,
           "passed": 0,
           "failed": 0,
-          "pending": 2,
+          "pending": 1,
           "tests": {
-            "should trigger a callback when clicked": {
-              "status": "pending",
-              "errors": []
-            },
-            "should toggle a class when prop changes": {
+            "wraps context2d": {
               "status": "pending",
               "errors": []
             }
           }
         },
-        "improperly rendered": {
-          "n": 7,
+        "Helpers": {
+          "n": 1,
           "passed": 0,
           "failed": 0,
-          "pending": 7,
+          "pending": 1,
           "tests": {
-            "should render 0 children": {
-              "status": "pending",
-              "errors": []
-            },
-            "should render 1 children": {
-              "status": "pending",
-              "errors": []
-            },
-            "should render 2 children": {
-              "status": "pending",
-              "errors": []
-            },
-            "should render 3 children": {
-              "status": "pending",
-              "errors": []
-            },
-            "should render 4 children": {
-              "status": "pending",
-              "errors": []
-            },
-            "should render 5 children": {
-              "status": "pending",
-              "errors": []
-            },
-            "should render 7 children": {
+            "provides some sugar": {
               "status": "pending",
               "errors": []
             }

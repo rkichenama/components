@@ -120,7 +120,7 @@
     align-items: center;
     justify-content: center;
     color: white;
-    text-shadow: 0 0 1px black, 0 0 1px black, 0 0 1px black;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
     z-index: 2;
     overflow: hidden;
     text-align: center; }
@@ -358,6 +358,12 @@ ol.unstyled {
   ol.unstyled > li > .unstyled {
     padding-left: 8px; }
 
+.stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap; }
+
 #root {
   margin: 0;
   padding: 0;
@@ -432,20 +438,18 @@ ol.unstyled {
 
 .demo {
   display: flex;
-  flex-direction: column; }
-  .demo > div,
-  .demo > pre {
-    flex: 1 1 auto;
-    width: 100%; }
+  flex-direction: column;
+  max-width: 100%; }
   .demo > div {
+    flex: 1 1 auto;
+    width: 100%;
     align-self: center;
     background-color: var(--clr-overlay);
     padding: 16px;
     max-height: 242px;
-    overflow-y: auto; }
+    overflow: auto; }
   .demo > pre {
-    height: 242px;
-    overflow-y: auto; }
+    max-height: 242px; }
   .demo + .demo {
     margin-top: 8px; }
 
@@ -507,13 +511,20 @@ ol.unstyled {
   padding: 16px; }
 
 @supports (display: grid) {
-  .floating-column, .tests section {
+  .floating-column {
     display: grid;
     grid-template-columns: repeat(2, 1fr); }
+    @media screen and (max-width: 800px) {
+      .floating-column {
+        grid-template-columns: repeat(1, 1fr); } }
   .floating-column > section:last-child {
     grid-column: 1 / -1; }
   section > table {
     width: 100%;
-    max-width: 100%; } }
+    max-width: 100%; }
+  .demo {
+    display: grid;
+    grid-template-columns: 1fr;
+    position: relative; } }
 
 /*# sourceMappingURL=docs.js.map*/

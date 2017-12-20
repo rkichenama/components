@@ -2,25 +2,20 @@
 import { compose, pipe } from '../shared/functions';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {
-  withState, withHandlers, withProps,
-  defaultProps, lifecycle,
-  setDisplayName, setPropTypes
-} from 'recompose';
-
 import Context from './Context';
-// import { Clear, FilledRect, BorderedRect, Rect, Arc, Circle } from './Helpers';
 
 import './Canvas.scss';
 
-/**
- * A canvas component that I made
- * * stupidly
- **/
 export default class Canvas extends Component {
   static propTypes = {
     className: PropTypes.string,
+    /**
+     * An array of functions that will draw within the canvas intially after render. See __animation function__ for details
+     */
     scene: PropTypes.arrayOf(PropTypes.func),
+    /**
+     * An array of functions that will draw within the canvas in a looping sequence where each slide function is drawn after the complete scene array. See __animation function__ for details
+     */
     sequence: PropTypes.arrayOf(PropTypes.func),
   };
 
@@ -30,21 +25,9 @@ export default class Canvas extends Component {
     sequence: [],
   };
 
-  constructor (...args) {
-    super(...args);
-
-    this.state = {
-      canvas: false,
-      frame: false,
-    };
-
-    this.setCanvas = canvas => this.setState({canvas});
-    this.stopAnimating = () => {
-      if (this.state.animating) {
-        cancelAnimationFrame(this.state.animating);
-        this.state.animating = false;
-      }
-    };
+  state = {
+    canvas: false,
+    frame: false,
   }
 
   componentWillReceiveProps ({scene, sequence}) {
@@ -67,12 +50,28 @@ export default class Canvas extends Component {
   }
 
   /**
-   * trigger animating of the scene
+   * remember the rendered canvas tag for later processing
    *
-   * @param {string} a - firey
-   * @returns {string} - something to write home about
+   * does not check to see if the canvas is part of this component, however is called on each render.
+   *
+   * @param {HTMLElement} canvas - ref to the rendered canvas tag
    */
-  animate (a) {
+  setCanvas = canvas => this.setState({ canvas });
+
+  /**
+   * cause whatever animation currently in progress to stop asap
+   */
+  stopAnimating = () => {
+    if (this.state.animating) {
+      cancelAnimationFrame(this.state.animating);
+      this.state.animating = false;
+    }
+  }
+
+  /**
+   * trigger animating of the scene
+   */
+  animate () {
     const { scene, sequence: seq } = this.props;
     const args = {...this.props, context: Context(this.state.canvas) };
     let sequence = [...seq];

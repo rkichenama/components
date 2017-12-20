@@ -1,28 +1,39 @@
 {
   "components": {
     "Canvas": {
-      "description": "A canvas component that I made\n* stupidly",
+      "description": "A component wrapper for the html5 Canvas tag. It will render a canvas as the root element, processing passed props to render image and/or animation. To assist in this, there are helper functions also exported.\n\n### Animation function\nThe functions passed at props to this component will receive each named prop given to the component as well as an additional argument `context`. This last argument is a convenience wrapper for the context2d of the rendered canvas that provides chainable functions for drawing. The aim is to enable creating an array of functions that draw layers on the canvas.\n\n### Helpers\n* Clear\n* FilledRect\n* BorderedRect\n* Rect\n* Arc\n* Circle\n",
       "displayName": "Canvas",
       "methods": [
         {
-          "name": "animate",
-          "docblock": "trigger animating of the scene\n\n@param {string} a - firey\n@returns {string} - something to write home about",
+          "name": "setCanvas",
+          "docblock": "remember the rendered canvas tag for later processing\n\ndoes not check to see if the canvas is part of this component, however is called on each render.\n\n@param {HTMLElement} canvas - ref to the rendered canvas tag",
           "modifiers": [],
           "params": [
             {
-              "name": "a",
-              "description": "firey",
+              "name": "canvas",
+              "description": "ref to the rendered canvas tag",
               "type": {
-                "name": "string"
+                "name": "HTMLElement"
               }
             }
           ],
-          "returns": {
-            "description": "something to write home about",
-            "type": {
-              "name": "string"
-            }
-          },
+          "returns": null,
+          "description": "remember the rendered canvas tag for later processing\n\ndoes not check to see if the canvas is part of this component, however is called on each render."
+        },
+        {
+          "name": "stopAnimating",
+          "docblock": "cause whatever animation currently in progress to stop asap",
+          "modifiers": [],
+          "params": [],
+          "returns": null,
+          "description": "cause whatever animation currently in progress to stop asap"
+        },
+        {
+          "name": "animate",
+          "docblock": "trigger animating of the scene",
+          "modifiers": [],
+          "params": [],
+          "returns": null,
           "description": "trigger animating of the scene"
         }
       ],
@@ -47,7 +58,7 @@
             }
           },
           "required": false,
-          "description": "",
+          "description": "An array of functions that will draw within the canvas intially after render. See __animation function__ for details",
           "defaultValue": {
             "value": "[]",
             "computed": false
@@ -62,7 +73,7 @@
             }
           },
           "required": false,
-          "description": "",
+          "description": "An array of functions that will draw within the canvas in a looping sequence where each slide function is drawn after the complete scene array. See __animation function__ for details",
           "defaultValue": {
             "value": "[]",
             "computed": false
