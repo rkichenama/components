@@ -317,6 +317,101 @@
       ],
       "filename": "src/GitHubProfile/GitHubProfile.jsx"
     },
+    "Info": {
+      "description": "Intended as a replacement for the Details / Summary pair, duplicating the ease of a cross browser collapsible element.",
+      "displayName": "Info",
+      "methods": [
+        {
+          "name": "preloadOpenState",
+          "docblock": "if an open prop is given, use it to load into state\n@param {Object} props - component props\n@param {bool} props.open - open state for section",
+          "modifiers": [],
+          "params": [
+            {
+              "name": "props",
+              "description": "component props",
+              "type": {
+                "name": "Object"
+              }
+            }
+          ],
+          "returns": null,
+          "description": "if an open prop is given, use it to load into state"
+        },
+        {
+          "name": "handleToggleClick",
+          "docblock": "internally handle clicking on the header\n@param {Event} evt - a click event",
+          "modifiers": [],
+          "params": [
+            {
+              "name": "evt",
+              "description": "a click event",
+              "type": {
+                "name": "Event"
+              }
+            }
+          ],
+          "returns": null,
+          "description": "internally handle clicking on the header"
+        }
+      ],
+      "props": [
+        {
+          "type": {
+            "name": "custom",
+            "raw": "renderableType"
+          },
+          "required": false,
+          "description": "the replacement for `summary` tag, should accept a string or nodes",
+          "name": "title"
+        },
+        {
+          "type": {
+            "name": "custom",
+            "raw": "renderableType"
+          },
+          "required": false,
+          "description": "",
+          "name": "children"
+        },
+        {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "",
+          "defaultValue": {
+            "value": "''",
+            "computed": false
+          },
+          "name": "className"
+        },
+        {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "toggles whether the caret should be on the right if present and/or true",
+          "defaultValue": {
+            "value": "false",
+            "computed": false
+          },
+          "name": "right"
+        },
+        {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "",
+          "defaultValue": {
+            "value": "false",
+            "computed": false
+          },
+          "name": "open"
+        }
+      ],
+      "filename": "src/Info/Info.jsx"
+    },
     "ProgressBar": {
       "description": "A simple progress bar that moves from left to right when given a value between\n0 and 1. Basically, most of the css can be overriden besides the props to set colors.\nOne line of text is expected for the status, which will be center white with black outline.",
       "displayName": "ProgressBar",
@@ -392,6 +487,7 @@
     "ClickDecorator",
     "Cube",
     "GitHubProfile",
+    "Info",
     "ProgressBar",
     "StateDecorator"
   ]

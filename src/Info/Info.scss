@@ -1,0 +1,56 @@
+.information {
+  border: 1px solid;
+
+  &,
+  > header,
+  > section {
+    display: block;
+    position: relative;
+    padding: 4px;
+  }
+
+  > header {
+    &:after {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    &.right {
+      padding-right: 20px;
+      &:after {
+        // content: '◀';
+        content: '◑';
+        right: 0;
+      }
+    }
+
+    &.left {
+      padding-left: 20px;
+      &:after {
+        // content: '▶';
+        content: '◐';
+        left: 0;
+      }
+    }
+
+  }
+  > section {
+    padding: 6px 4px;
+    display: none;
+  }
+  &.open {
+    // header:after { content: '▼'; }
+    header:after { content: '◓'; }
+
+    > section {
+      display: block;
+    }
+  }
+}

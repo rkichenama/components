@@ -79,7 +79,7 @@ const renderList = value => {
   return (
     <Catcher>
       <ul className='unstyled'>
-        { value.map(v => (<li key={v}>{ v }</li>))}
+        { value.map((v, i) => (<li key={i}>{ v }</li>))}
       </ul>
     </Catcher>
   );
@@ -88,20 +88,23 @@ const fixUnknowns = value => {
   if (value === null || value === undefined) { return '' }
   return value;
 }
+const xData = data => {
+  if (Array.isArray(data)) {
+    return data.map(({value, name}) => fixUnknowns(value || name));
+  }
+  return fixUnknowns(data);
+};
 const transposeData = data => {
   const heads = Object.keys(data[0]);
   return data.reduce((t, c) => {
     heads.forEach((head, h) => {
-      t[h] = [...t[h], Array.isArray(c[head]) ? (
-        c[head].map(({value}) => fixUnknowns(value))
-      ) : fixUnknowns(c[head])];
+      t[h] = [...t[h], xData(c[head])];
     });
     return t;
   }, heads.map(head => ([head])));
 };
 const renderDataColumn = (col, c) => {
   let value = col;
-  
   if (col instanceof Object) {
     value = Array.isArray(col) ? renderList(col) : col.name;
   }

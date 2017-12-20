@@ -106,6 +106,42 @@
     background-size: 48px 48px, 136px 16px, 136px 16px;
     background-position: 0px 0px, 56px 4px, 56px 28px;
     background-repeat: no-repeat; }
+@charset "UTF-8";
+.information {
+  border: 1px solid; }
+  .information,
+  .information > header,
+  .information > section {
+    display: block;
+    position: relative;
+    padding: 4px; }
+  .information > header:after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px; }
+  .information > header.right {
+    padding-right: 20px; }
+    .information > header.right:after {
+      content: '\25D1';
+      right: 0; }
+  .information > header.left {
+    padding-left: 20px; }
+    .information > header.left:after {
+      content: '\25D0';
+      left: 0; }
+  .information > section {
+    padding: 6px 4px;
+    display: none; }
+  .information.open header:after {
+    content: '\25D3'; }
+  .information.open > section {
+    display: block; }
 .status-progress {
   position: relative;
   width: 100%;
@@ -178,7 +214,8 @@
 .sidebar .folderName:after {
   display: flex;
   flex-direction: column;
-  align-items: center; }
+  align-items: center;
+  justify-content: center; }
 
 #root, .tests .code-coverage {
   display: flex;
@@ -514,7 +551,7 @@ ol.unstyled {
   .floating-column {
     display: grid;
     grid-template-columns: repeat(2, 1fr); }
-    @media screen and (max-width: 800px) {
+    @media screen and (max-width: 1200px) {
       .floating-column {
         grid-template-columns: repeat(1, 1fr); } }
   .floating-column > section:last-child {
