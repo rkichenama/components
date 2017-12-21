@@ -12,14 +12,6 @@
       "failed": 0,
       "pending": 4,
       "tests": {
-        "will render a scene": {
-          "status": "pending",
-          "errors": []
-        },
-        "will render an animation": {
-          "status": "pending",
-          "errors": []
-        },
         "Helpers": {
           "n": 1,
           "passed": 0,
@@ -43,6 +35,14 @@
               "errors": []
             }
           }
+        },
+        "will render a scene": {
+          "status": "pending",
+          "errors": []
+        },
+        "will render an animation": {
+          "status": "pending",
+          "errors": []
         }
       }
     },

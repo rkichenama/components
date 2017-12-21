@@ -79,6 +79,30 @@
             "computed": false
           },
           "name": "sequence"
+        },
+        {
+          "type": {
+            "name": "number"
+          },
+          "required": false,
+          "description": "",
+          "defaultValue": {
+            "value": "300",
+            "computed": false
+          },
+          "name": "width"
+        },
+        {
+          "type": {
+            "name": "number"
+          },
+          "required": false,
+          "description": "",
+          "defaultValue": {
+            "value": "300",
+            "computed": false
+          },
+          "name": "height"
         }
       ],
       "filename": "src/Canvas/Canvas.jsx"
@@ -318,7 +342,7 @@
       "filename": "src/GitHubProfile/GitHubProfile.jsx"
     },
     "Info": {
-      "description": "Intended as a replacement for the Details / Summary pair, duplicating the ease of a cross browser collapsible element.",
+      "description": "Intended as a replacement for the Details / Summary pair, duplicating the ease of a cross browser collapsible element.\n\nTODO: rewrite as a render prop",
       "displayName": "Info",
       "methods": [
         {

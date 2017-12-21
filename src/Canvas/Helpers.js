@@ -1,3 +1,5 @@
+import { pipe } from '../shared/functions';
+
 export const Clear = () => ({context}) => context.clear();
 
 /* no stroke but fill */

@@ -1,5 +1,4 @@
 /* */
-import { compose, pipe } from '../shared/functions';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Context from './Context';
@@ -17,17 +16,22 @@ export default class Canvas extends Component {
      * An array of functions that will draw within the canvas in a looping sequence where each slide function is drawn after the complete scene array. See __animation function__ for details
      */
     sequence: PropTypes.arrayOf(PropTypes.func),
+    width: PropTypes.number,
+    height: PropTypes.number,
   };
 
   static defaultProps = {
     className: '',
     scene: [],
     sequence: [],
+    width: 300,
+    height: 300,
   };
 
   state = {
     canvas: false,
     frame: false,
+    animating: false,
   }
 
   componentWillReceiveProps ({scene, sequence}) {
@@ -91,13 +95,12 @@ export default class Canvas extends Component {
   }
 
   render () {
-    const { className } = this.props;
+    const { className, width, height } = this.props;
     return (
       <canvas
         ref={this.setCanvas}
         className={`canvas ${className}`}
-        width="300"
-        height="300">
+        {...{ width, height }}>
       </canvas>
     );
   }

@@ -8,8 +8,11 @@ const renderableType = PropTypes.oneOfType([
   PropTypes.node,
   PropTypes.array, // string or nodes, assumed to be renderable
 ]);
+
 /**
  * Intended as a replacement for the Details / Summary pair, duplicating the ease of a cross browser collapsible element.
+ *
+ * TODO: rewrite as a render prop
  */
 export default class Info extends PureComponent {
   static propTypes = {
