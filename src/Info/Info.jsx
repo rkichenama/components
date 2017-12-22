@@ -22,13 +22,23 @@ export default class Info extends PureComponent {
     className: PropTypes.string,
     /** toggles whether the caret should be on the right if present and/or true */
     right: PropTypes.bool,
+    /**
+     * allows pre-setting the open state.
+     *
+     * could be used to change state programmatically
+     */
     open: PropTypes.bool,
+    /**
+     * callback triggered after open state has changed.
+     */
+    onStateChanged: PropTypes.func,
   };
 
   static defaultProps = {
     className: '',
     right: false,
     open: false,
+    onStateChanged: () => {},
   };
 
   state = {
@@ -55,7 +65,9 @@ export default class Info extends PureComponent {
    */
   handleToggleClick = evt => {
     evt.preventDefault();
-    this.setState(({open}) => ({ open: !open }));
+    this.setState(({open}) => ({ open: !open }), () => {
+      this.props.onStateChanged(this.state.open);
+    });
   };
 
   render () {

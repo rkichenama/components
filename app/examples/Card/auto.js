@@ -1,7 +1,7 @@
 import React from 'react';
 import StateDecorator from 'components/StateDecorator/StateDecorator';
-import Stage from '../stage';
-import RandomUsers from '../randomUsers';
+import { Stage } from '../';
+import { RandomUsers } from '../';
 import Card from 'components/Card/Card';
 
 const centered = {

@@ -18,6 +18,7 @@ export default class Canvas extends Component {
     sequence: PropTypes.arrayOf(PropTypes.func),
     width: PropTypes.number,
     height: PropTypes.number,
+    style: PropTypes.object,
   };
 
   static defaultProps = {
@@ -26,6 +27,7 @@ export default class Canvas extends Component {
     sequence: [],
     width: 300,
     height: 300,
+    style: {},
   };
 
   state = {
@@ -95,12 +97,12 @@ export default class Canvas extends Component {
   }
 
   render () {
-    const { className, width, height } = this.props;
+    const { className, width, height, style } = this.props;
     return (
       <canvas
         ref={this.setCanvas}
         className={`canvas ${className}`}
-        {...{ width, height }}>
+        {...{ width, height, style }}>
       </canvas>
     );
   }

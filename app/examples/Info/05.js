@@ -1,5 +1,5 @@
 import React from 'react';
-import Stage from '../stage';
+import { Stage } from '../';
 import Info from 'components/Info/Info';
 
 const Title = () => (

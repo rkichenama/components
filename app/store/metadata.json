@@ -103,6 +103,18 @@
             "computed": false
           },
           "name": "height"
+        },
+        {
+          "type": {
+            "name": "object"
+          },
+          "required": false,
+          "description": "",
+          "defaultValue": {
+            "value": "{}",
+            "computed": false
+          },
+          "name": "style"
         }
       ],
       "filename": "src/Canvas/Canvas.jsx"
@@ -426,12 +438,24 @@
             "name": "bool"
           },
           "required": false,
-          "description": "",
+          "description": "allows pre-setting the open state.\n\ncould be used to change state programmatically",
           "defaultValue": {
             "value": "false",
             "computed": false
           },
           "name": "open"
+        },
+        {
+          "type": {
+            "name": "func"
+          },
+          "required": false,
+          "description": "callback triggered after open state has changed.",
+          "defaultValue": {
+            "value": "() => {}",
+            "computed": false
+          },
+          "name": "onStateChanged"
         }
       ],
       "filename": "src/Info/Info.jsx"

@@ -1,9 +1,9 @@
 {
   "meta": {
     "failed": 0,
-    "passed": 23,
+    "passed": 25,
     "pending": 4,
-    "n": 27
+    "n": 29
   },
   "tests": {
     "Canvas": {
@@ -61,6 +61,22 @@
           "errors": []
         },
         "changes state when updated with new props": {
+          "status": "passed",
+          "errors": []
+        }
+      }
+    },
+    "Info": {
+      "n": 2,
+      "passed": 2,
+      "failed": 0,
+      "pending": 0,
+      "tests": {
+        "should handle click events": {
+          "status": "passed",
+          "errors": []
+        },
+        "should change state based on props": {
           "status": "passed",
           "errors": []
         }
@@ -170,7 +186,7 @@
         }
       }
     },
-    "ClickDecorator": {
+    "StateDecorator": {
       "n": 2,
       "passed": 2,
       "failed": 0,
@@ -202,7 +218,7 @@
         }
       }
     },
-    "StateDecorator": {
+    "ClickDecorator": {
       "n": 2,
       "passed": 2,
       "failed": 0,

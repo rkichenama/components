@@ -1,5 +1,5 @@
 import React from 'react';
-import Stage from '../stage';
+import { Stage } from '../';
 import ClickDecorator from 'components/ClickDecorator/ClickDecorator';
 
 export default class extends React.PureComponent {

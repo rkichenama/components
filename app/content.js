@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
+import Children from './children';
 import Catcher from './error';
 import Markdown from './markdown';
 import Table from './table';
@@ -38,67 +39,67 @@ class Content extends PureComponent {
     let k = 0;
 
     return (
-      <article className='floating-column'>
-      {
-        doc ? (
-          <Catcher>
-            {/* introduction */}
-            <section>
-              <h1>{doc.displayName}</h1>
-              <h2>{doc.filename}</h2>
-              {
-                doc.description ? (
-                  <Markdown source={doc.description || ''} />
-                ) : (
-                  <div className='empty-dataset'>no description given</div>
-                )
-              }
-            </section>
-            {/* tests table */}
-            <section>
+      <Children>
+        <article className='floating-column'>
+          {
+            doc ? (
               <Catcher>
-                <Tests {...doc} />
+                {/* introduction */}
+                <section>
+                  <h1>{doc.displayName}</h1>
+                  <h2>{doc.filename}</h2>
+                  {
+                    doc.description ? (
+                      <Markdown source={doc.description || ''} />
+                    ) : (
+                      <div className='empty-dataset'>no description given</div>
+                    )
+                  }
+                </section>
+                {/* tests table */}
+                <section>
+                  <Catcher>
+                    <Tests {...doc} />
+                  </Catcher>
+                </section>
+                {/* prop table */}
+                <section>
+                  <h3>Props</h3>
+                  <Table {...{columns: [
+                    { name: 'required', type: 'bool' },
+                    'name',
+                    { name: 'type', type: 'table' },
+                    'defaultValue', 'description'
+                  ], data: doc.props}} />
+                </section>
+                {/* method table */}
+                <section>
+                  <h3>Methods</h3>
+                  <Table {...{columns: [
+                    'name', {
+                      name: 'modifiers', type: 'list'
+                    }, {
+                      name: 'params', type: 'table'
+                    },
+                    {
+                      name: 'returns', type: 'table'
+                    }, {
+                      name: 'docblock', type: 'markdown'
+                    },
+                  ], data: doc.methods}} />
+                </section>
+                {/* demos */}
+                <Demos {...doc} key={k++} />
               </Catcher>
-            </section>
-            {/* prop table */}
-            <section>
-              <h3>Props</h3>
-              <Table {...{columns: [
-                { name: 'required', type: 'bool' },
-                'name',
-                { name: 'type', type: 'table' },
-                'defaultValue', 'description'
-              ], data: doc.props}} />
-            </section>
-            {/* method table */}
-            <section>
-              <h3>Methods</h3>
-              <Table {...{columns: [
-                'name', {
-                  name: 'modifiers', type: 'list'
-                }, {
-                  name: 'params', type: 'table'
-                },
-                {
-                  name: 'returns', type: 'table'
-                }, {
-                  name: 'docblock', type: 'markdown'
-                },
-              ], data: doc.methods}} />
-            </section>
-            {/* demos */}
-            <Demos {...doc} key={k++} />
-          </Catcher>
-        ) : (
-          <Catcher>
-            <h2>Please select one of the components to the left</h2>
-            <section>
-              <Stats {...status} />
-            </section>
-          </Catcher>
-        )
-      }
-      </article>
+            ) : (
+              <Catcher>
+                <h2>Please select one of the components to the left</h2>
+              </Catcher>
+            )
+          }
+        </article>
+        <Stats {...status} />
+      </Children>
     );
   }
 }
