@@ -1,3 +1,6 @@
+canvas.canvas {
+  border: 1px solid gray;
+  max-width: 100%; }
 .card {
   position: relative;
   perspective: 100vw;

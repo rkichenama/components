@@ -1,6 +1,9 @@
 import { pipe } from '../shared/functions';
 
-export const Clear = () => ({context}) => context.clear();
+export const Clear = () => props => {
+  props.context.clear();
+  return props;
+}
 
 /* no stroke but fill */
 export const FilledRect = (coords, color = 'transparent') => props => {
@@ -45,77 +48,77 @@ export const Circle = (center, radius, color, border) => props => {
 };
 
 /*
-TEXT
-  fillText()
-  strokeText()
-  measureText()
+  TEXT
+    fillText()
+    strokeText()
+    measureText()
 
-  font
-  textAlign
-  textBaseline
-  direction
+    font
+    textAlign
+    textBaseline
+    direction
 
-lineWidth
-lineCap
-lineJoin
-miterLimit
-getLineDash()
-setLineDash()
-lineDashOffset
+  lineWidth
+  lineCap
+  lineJoin
+  miterLimit
+  getLineDash()
+  setLineDash()
+  lineDashOffset
 
 
-GRADIENTS
-  createLinearGradient()
-  createRadialGradient()
-  createPattern()
+  GRADIENTS
+    createLinearGradient()
+    createRadialGradient()
+    createPattern()
 
-shadowBlur
-shadowColor
-shadowOffsetX
-shadowOffsetY
+  shadowBlur
+  shadowColor
+  shadowOffsetX
+  shadowOffsetY
 
-beginPath()
-closePath()
-moveTo()
-lineTo()
-bezierCurveTo()
-quadraticCurveTo()
-arc()
-arcTo()
-ellipse()
-rect()
+  beginPath()
+  closePath()
+  moveTo()
+  lineTo()
+  bezierCurveTo()
+  quadraticCurveTo()
+  arc()
+  arcTo()
+  ellipse()
+  rect()
 
-fill()
-stroke()
-drawFocusIfNeeded()
-scrollPathIntoView()
-clip()
-isPointInPath()
-isPointInStroke()
+  fill()
+  stroke()
+  drawFocusIfNeeded()
+  scrollPathIntoView()
+  clip()
+  isPointInPath()
+  isPointInStroke()
 
-currentTransform
-rotate()
-scale()
-translate()
-transform()
-setTransform()
-resetTransform()
+  currentTransform
+  rotate()
+  scale()
+  translate()
+  transform()
+  setTransform()
+  resetTransform()
 
-globalAlpha
-globalCompositeOperation
+  globalAlpha
+  globalCompositeOperation
 
-drawImage()
+  drawImage()
 
-createImageData()
-getImageData()
-putImageData()
+  createImageData()
+  getImageData()
+  putImageData()
 
-imageSmoothingEnabled
+  imageSmoothingEnabled
 
-save()
-restore()
+  save()
+  restore()
 
-addHitRegion()
-removeHitRegion()
-clearHitRegions()
- */
+  addHitRegion()
+  removeHitRegion()
+  clearHitRegions()
+*/
