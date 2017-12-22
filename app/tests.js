@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import Children from './children';
 import Table from './table';
 import Status, { statusShape } from './status';
@@ -13,7 +14,7 @@ const hasCoverage = coverage => ( coverage && Math.max.apply(Math, Object.keys(c
 
 const calcCoverage = ({all, covered}) => ((all ? (covered / all) : 1) * 100);
 
-export default class Tests extends PureComponent {
+class Tests extends PureComponent {
   static propTypes = {
     testCoverage: PropTypes.shape({
       statements: PropTypes.shape(coverageShape),
@@ -47,3 +48,36 @@ export default class Tests extends PureComponent {
     );
   }
 }
+
+class TestsWrapper extends PureComponent {
+  static propTypes = {
+    data: PropTypes.object.isRequired,
+    component: PropTypes.string.isRequired,
+    components: PropTypes.arrayOf(PropTypes.string).isRequired,
+  }
+
+  render () {
+    const { props: { data, component, components }} = this;
+
+    if (components.indexOf(component) === -1) {
+      return (
+        <div className='empty-dataset'>Unknown Component</div>
+      );
+    }
+    
+    const { tests, coverage } = data[component];
+
+    return (
+      <Tests testStatus={tests} testCoverage={coverage} displayName={component} />
+    );
+  }
+}
+
+const mapStateToProps = ({ keys: components, testStatus: { components: data } }) => ({
+  data,
+  components
+});
+
+export default connect(
+  mapStateToProps
+)(TestsWrapper);

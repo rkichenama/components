@@ -59,7 +59,7 @@ class Content extends PureComponent {
                 {/* tests table */}
                 <section>
                   <Catcher>
-                    <Tests {...doc} />
+                    <Tests component={doc.displayName} />
                   </Catcher>
                 </section>
                 {/* prop table */}
