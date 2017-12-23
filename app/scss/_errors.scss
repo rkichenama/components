@@ -11,12 +11,12 @@
 }
 
 .errorMessage {
-  summary {
+  > header {
     color: lighten($red, .25);
     text-align: center;
   }
-  details {
-    border: 1px solid $white;
-    padding: 16px;
-  }
+  // details {
+  //   border: 1px solid $white;
+  //   padding: 16px;
+  // }
 }
