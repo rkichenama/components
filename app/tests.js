@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import Info from 'components/Info/Info';
 import { connect } from 'react-redux';
 import Children from './children';
 import Table from './table';
@@ -28,8 +29,7 @@ class Tests extends PureComponent {
   render () {
     const { props: { testCoverage, testStatus, displayName }} = this;
     return (
-      <details className='tests' open>
-        <summary>Test Results</summary>
+      <Info className='tests' title='Test Results' open>
         {
           hasCoverage(testCoverage) ? (
             <Table full columns={[
@@ -44,7 +44,7 @@ class Tests extends PureComponent {
           )
         }
         <Status {...testStatus} title={ displayName } />
-      </details>
+      </Info>
     );
   }
 }
