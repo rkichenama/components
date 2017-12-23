@@ -1,4 +1,12 @@
 # TODO
+* export all components into flat npm package
+* demos with 'knobs'
+  * need to work off propTypes for component, already available through doc-gen
+    * is connected to store
+  * uses above to dynamically create 'prop form' for demo
+  * acts as render prop HOC
+
+# DONE
 * ~~create metadata about components and examples with react-docgen~~
 * ~~implement redux store with generated docs~~
 * ~~react components that will generate pages based on data in redux~~
@@ -12,7 +20,4 @@
 * ~~if supports grid, custom layout; else flexbox~~
 * ~~set up a way of nesting the components in navigation according to atom, molecule, organism, separate from metadata~~
 * ~~replace the details / summary html tags with something similar that is compatible with IE~~
-* document current components and convert existing demos
-* export all components into flat npm package
-* demos with 'knobs', a SelectDecorator (single and multiple) and InputDecorator
-  * need to work off propTypes for component
+* ~~document current components and convert existing demos~~
