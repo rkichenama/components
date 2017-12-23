@@ -86,6 +86,50 @@
         }
       }
     },
+    "Card": {
+      "n": 5,
+      "passed": 5,
+      "failed": 0,
+      "pending": 0,
+      "tests": {
+        "properly rendered": {
+          "n": 2,
+          "passed": 2,
+          "failed": 0,
+          "pending": 0,
+          "tests": {
+            "should trigger a callback when clicked": {
+              "status": "passed",
+              "errors": []
+            },
+            "should toggle a class when prop changes": {
+              "status": "passed",
+              "errors": []
+            }
+          }
+        },
+        "improperly rendered": {
+          "n": 3,
+          "passed": 3,
+          "failed": 0,
+          "pending": 0,
+          "tests": {
+            "should render no children": {
+              "status": "passed",
+              "errors": []
+            },
+            "should render one child": {
+              "status": "passed",
+              "errors": []
+            },
+            "should render two children": {
+              "status": "passed",
+              "errors": []
+            }
+          }
+        }
+      }
+    },
     "Canvas": {
       "n": 23,
       "passed": 23,
@@ -99,38 +143,6 @@
         "will render an animation": {
           "status": "passed",
           "errors": []
-        },
-        "Helpers": {
-          "n": 6,
-          "passed": 6,
-          "failed": 0,
-          "pending": 0,
-          "tests": {
-            "Clear": {
-              "status": "passed",
-              "errors": []
-            },
-            "FilledRect": {
-              "status": "passed",
-              "errors": []
-            },
-            "BorderedRect": {
-              "status": "passed",
-              "errors": []
-            },
-            "Rect": {
-              "status": "passed",
-              "errors": []
-            },
-            "Arc": {
-              "status": "passed",
-              "errors": []
-            },
-            "Circle": {
-              "status": "passed",
-              "errors": []
-            }
-          }
         },
         "Context": {
           "n": 15,
@@ -223,46 +235,34 @@
               }
             }
           }
-        }
-      }
-    },
-    "Card": {
-      "n": 5,
-      "passed": 5,
-      "failed": 0,
-      "pending": 0,
-      "tests": {
-        "properly rendered": {
-          "n": 2,
-          "passed": 2,
-          "failed": 0,
-          "pending": 0,
-          "tests": {
-            "should trigger a callback when clicked": {
-              "status": "passed",
-              "errors": []
-            },
-            "should toggle a class when prop changes": {
-              "status": "passed",
-              "errors": []
-            }
-          }
         },
-        "improperly rendered": {
-          "n": 3,
-          "passed": 3,
+        "Helpers": {
+          "n": 6,
+          "passed": 6,
           "failed": 0,
           "pending": 0,
           "tests": {
-            "should render no children": {
+            "Clear": {
               "status": "passed",
               "errors": []
             },
-            "should render one child": {
+            "FilledRect": {
               "status": "passed",
               "errors": []
             },
-            "should render two children": {
+            "BorderedRect": {
+              "status": "passed",
+              "errors": []
+            },
+            "Rect": {
+              "status": "passed",
+              "errors": []
+            },
+            "Arc": {
+              "status": "passed",
+              "errors": []
+            },
+            "Circle": {
               "status": "passed",
               "errors": []
             }
