@@ -1,0 +1,60 @@
+.tests {
+  .code-coverage {
+    text-transform: capitalize;
+    @extend %flex-stretch-fill;
+    height: 18px;
+    width: 240px;
+    border-bottom: 1px solid $white;
+    > div {
+      flex-basis: 50%;
+
+      &:not(:first-child) {
+        text-align: right;
+      }
+    }
+  }
+
+  details.test-suite {
+    padding-left: 12px;
+    > summary {
+      margin-left: -12px;
+    }
+    & > .test-suite {
+      margin-left: 10px;
+    }
+  }
+  .test-suite {
+    .it {
+      margin-left: 12px;
+      
+      .pending,
+      .failed,
+      .passed {
+        background-color: var(--clr-screen);
+        padding-left: 1.2em;
+        text-indent: -1.2em;
+      }
+
+      .pending { color: lighten($yellow, 35%); }
+      .failed  { color: lighten($red, 35%); }
+      .passed  { color: lighten($green, 35%); }
+
+      .status-title, .status-icon {
+        display: inline;
+        vertical-align: middle;
+        font-family: 'Fira Code';
+        text-shadow:
+          // 2px 2px 0 #000,
+          -1px -1px 0 #000,
+          1px -1px 0 #000,
+          -1px 1px 0 #000,
+          1px 1px 0 #000,
+          ;
+      }
+      .status-icon {
+        margin-right: 8px;
+        font-size: 1.2em;
+      }
+    }
+  }
+}

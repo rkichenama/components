@@ -1,0 +1,24 @@
+.demo {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  
+  > div {
+    flex: 1 1 auto;
+    width: 100%;
+    align-self: center;
+    background-color: var(--clr-overlay);
+    padding: 16px;
+    max-height: 242px;
+    overflow: auto;
+
+  }
+
+  > pre {
+    max-height: 242px;
+  }
+
+  & + & {
+    margin-top: 8px;
+  }
+}

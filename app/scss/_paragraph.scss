@@ -1,0 +1,13 @@
+p {
+  margin: 0;
+  margin-bottom: .5em;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.empty-dataset {
+  font-style: italic;
+  text-align: center;
+}

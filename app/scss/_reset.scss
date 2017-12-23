@@ -1,0 +1,26 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: var(--clr-black);
+  color: var(--clr-white);
+  font-size: var(--fnt-normal);
+  line-height: 1.2em;
+}
+
+a {
+  color: var(--clr-accent);
+  text-decoration: none;
+  
+  &:link, &:visited, &:active, &:hover {
+    color: var(--clr-highlight);
+    text-decoration: none;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}

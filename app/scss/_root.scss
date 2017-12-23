@@ -1,0 +1,30 @@
+#root {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  width: 100%;
+  min-height: 100%;
+  @extend %flex-stretch-fill;
+}
+
+.sidebar-container,
+.content-container {
+  border-radius: 4px;
+  padding: 0 4px;
+}
+
+.sidebar-container {
+  flex: 0 0 196px;
+  // background-color: var(--clr-bg);
+}
+
+.content-container {
+  flex: 1 1 auto;
+  background-color: var(--clr-bg);
+}
+
+.text {
+  &-left { text-align: left; }
+  &-center { text-align: center; }
+  &-right { text-align: right; }
+}

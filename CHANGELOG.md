@@ -5,6 +5,18 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 
 
 ## [Unreleased]
+### Added
+* 
+### Changed
+* Redirecting focus of this repo 
+* Began new webpack solution for developing and showcasing components
+### Deprecated
+### Removed
+* React Storybook
+* recompose
+* 'Homage' components
+### Fixed
+* 'Production' build
 
 [comment]: # (## [version] - date)
 [comment]: # (### Added)

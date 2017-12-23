@@ -1,0 +1,10 @@
+@for $i from 1 through 6 {
+  h#{$i} {
+    font-size: calc(var(--fnt-large) - (#{$i - 1} * 5px));
+    margin: .25em 0;
+    font-family: serif;
+    font-style: normal;
+  }
+}
+
+h3 { font-style: italic; }

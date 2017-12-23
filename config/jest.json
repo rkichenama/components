@@ -1,0 +1,19 @@
+{
+  "rootDir": "../src",
+  "reporters": ["default", "../config/custom-reporter.js"],
+  "moduleNameMapper": {
+    "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/config/mocks/fileTransformer.js",
+    "\\.(css|less|sass|scss)$": "identity-obj-proxy"
+  },
+  "setupFiles": [
+    "<rootDir>/../config/mocks/rafMock.js",
+    "<rootDir>/../config/jest.setup.js"
+  ],
+  "coverageDirectory": "<rootDir>/../app/store/",
+  "coverageReporters": ["json", "text"],
+  "collectCoverage": true,
+  "collectCoverageFrom": [
+    "**/*.jsx",
+    "!**/node_modules/**"
+  ]
+}

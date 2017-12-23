@@ -1,0 +1,31 @@
+// if the browser supports grid, override layout of the page
+@supports (display: grid) {
+  %grid-columns {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    
+    @media screen and (max-width: 1200px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+
+  .floating-column {
+    @extend %grid-columns;
+
+    > section:last-child {
+      grid-column: 1 / -1;
+    }
+  }
+
+  section > table {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .demo {
+    display: grid;
+    grid-template-columns: 1fr;
+    position: relative;
+
+  }
+}

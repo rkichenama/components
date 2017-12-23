@@ -1,5 +1,5 @@
 export default canvas => {
-  const {width, height} = canvas.getBoundingClientRect();
+  const { width, height } = canvas.getBoundingClientRect();
   const context = canvas.getContext('2d');
   const firstPixel = { x: 0, y: 0 };
   const lastPixel = { x: width, y: height };

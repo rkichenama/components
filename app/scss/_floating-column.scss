@@ -1,0 +1,14 @@
+.floating-column {
+  display: block;
+  margin: 0 8px;
+  padding: 8px;
+
+  @media screen and (min-width: 1200px) {
+    max-width: 1024px;
+    margin: 0 auto;
+  }
+
+  > section + section {
+    margin-top: 12px;
+  }
+}

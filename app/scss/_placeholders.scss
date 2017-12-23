@@ -1,0 +1,12 @@
+%flex-column-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+%flex-stretch-fill {
+  display: flex;
+  align-items: stretch;
+  min-height: 100%;
+}
