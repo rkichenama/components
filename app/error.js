@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import Info from 'components/Info/Info';
 
 export default class ErrorBoundary extends PureComponent {
   state = { error: false, info: '' };
@@ -14,12 +15,11 @@ export default class ErrorBoundary extends PureComponent {
   render () {
     
     return this.state.error ? (
-      <details className='errorMessage' open>
-        <summary>{ this.state.error.toString() }</summary>
+      <Info className='errorMessage' title={ this.state.error.toString() } open>
         <pre>
           { this.state.info }
         </pre>
-      </details>
+      </Info>
     ) : (
       this.props.children
     );
