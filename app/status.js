@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import Info from 'components/Info/Info';
 
 export const statusShape = {
   n: PropTypes.number,
@@ -17,15 +18,16 @@ const Iconify = status => {
 
 const IT = ({title, status, errors}) => (
   errors.length ? (
-    <details className='it'>
-      <summary className={status}>
+    <Info className='it' right title={(
+      <div className={status}>
         <span className='status-title'>
           <span className='status-icon'>{ Iconify(status) }</span>
           { title }
         </span>
-      </summary>
+      </div>
+    )} >
       { errors.map((error, e) => (<pre key={e}>{ error }</pre>)) }
-    </details>
+    </Info>
   ) : (
     <div className='it'>
       <div className={status}>
@@ -57,10 +59,9 @@ export default class Status extends PureComponent {
           // ) : (
             Object.keys(tests).map(test => (
               tests[test].hasOwnProperty('tests') ? (
-                <details className='test-suite' key={test} open>
-                  <summary>{ test }</summary>
+                <Info className='test-suite' key={test} open title={ test }>
                   <Status {...(tests[test])} />
-                </details>
+                </Info>
                 ) : (
                 <IT {...(tests[test])} title={test} key={test} />
               )
