@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
+## [Unreleased]
+### Changed
+* Replaced non IE compatible Details/Summary tags with Info component
+
 ## [1.0.0]
 ### Added
 * ProgressBar
@@ -40,5 +44,6 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 * React DnD example
 * Punchcard tribute
 
+[Unreleased]: https://github.com/rkichenama/components/compare/1.0.0...HEAD
 [1.0.0]: https://github.com/rkichenama/components/compare/0.1.0...1.0.0
 [0.1.0]: https://github.com/rkichenama/components/compare/0.0.1...0.1.0
