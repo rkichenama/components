@@ -14,18 +14,19 @@
     }
   }
 
-  details.test-suite {
+  .information.test-suite {
     padding-left: 12px;
-    > summary {
+    > header {
       margin-left: -12px;
     }
-    & > .test-suite {
+    & > section > .test-suite {
       margin-left: 10px;
     }
   }
   .test-suite {
     .it {
-      margin-left: 12px;
+      // margin-left: 12px;
+      padding: 0;
       
       .pending,
       .failed,

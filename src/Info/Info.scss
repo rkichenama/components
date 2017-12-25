@@ -47,7 +47,7 @@
   }
   &.open {
     // header:after { content: '▼'; }
-    header:after { content: '◓'; }
+    > header:after { content: '◓'; }
 
     > section {
       display: block;
