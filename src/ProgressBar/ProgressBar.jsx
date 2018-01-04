@@ -12,6 +12,7 @@ import './ProgressBar.scss';
 export default class ProgressBar extends Component {
   static defaultProps = {
     barColor: 'green',
+    className: '',
     value: 0,
   };
 
@@ -20,6 +21,7 @@ export default class ProgressBar extends Component {
      * color the filled progress bar should be
      */
     barColor: PropTypes.string,
+    className: PropTypes.string,
     /**
      * the percentage to display, given as a positive value `[0, 1]`
      */
@@ -27,9 +29,9 @@ export default class ProgressBar extends Component {
   };
 
   render () {
-    const { props: { barColor, value, children } } = this;
+    const { props: { barColor, value, children, className } } = this;
     return (
-      <section className='status-progress' >
+      <section className={`status-progress${className ? ` ${className}` : ''}`} >
         <div className='status-progress-text'>{ children }</div>
         <div className='status-progress-bar' style={{
           width: `${(value * 100)}%`, backgroundColor: barColor
