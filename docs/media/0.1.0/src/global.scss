@@ -1,0 +1,46 @@
+@import 'shared/css/bootstrap.min.css';
+@import 'shared/variables';
+
+html, body {
+  margin: 0;
+  font-size: $font-size;
+  color: $Black;
+  background-color: $Cloudy;
+  width: 100%;
+  height: 100%;
+}
+
+.centered {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  > * {
+    max-width: 1024px;
+    min-width: 600px;
+    flex-basis: 100%;
+  }
+}
+
+#root {
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+  // height: 100%;
+  @include SourceSerifPro();
+
+  [style *= "font-family: sans-serif"] {
+    @include SourceSansPro();
+  }
+  [style *= "font-family: serif"] {
+    @include SourceSerifPro();
+  }
+  [style *= "font-family: Menlo, Monaco"] {
+    @include SourceCodePro();
+  }
+}
