@@ -1,0 +1,23 @@
+.deck {
+  padding: 8px;
+  display: grid;
+  grid-gap: 8px;
+  grid-template-columns: repeat(auto-fill, 96px);
+  grid-template-rows: repeat(auto-fill, 96px);
+  background-color: transparentize(black, .9);
+}
+@supports not (display: grid) {
+  .deck {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: transparentize(black, .9);
+
+    > * {
+      $perRow: 5;
+      $p: (100% / $perRow);
+      $x: (2px * $perRow);
+      flex-basis: calc(#{$p} - #{$x});
+    }
+  }
+}
