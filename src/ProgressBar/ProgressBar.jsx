@@ -34,7 +34,7 @@ export default class ProgressBar extends Component {
       <section className={`status-progress${className ? ` ${className}` : ''}`} >
         <div className='status-progress-text'>{ children }</div>
         <div className='status-progress-bar' style={{
-          flexBasis: `${(value * 100)}%`, backgroundColor: barColor
+          transform: `translateX(${-100 + (value * 100)}%)`, backgroundColor: barColor
         }} />
       </section>
     );
