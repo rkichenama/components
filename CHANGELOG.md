@@ -16,10 +16,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-# [Unreleased]
-## Added
+## [Unreleased]
+### Added
 * Spinner - text spinner for blocking ui
-## Changed
+### Changed
+* add `title` prop to ProgressBar
 * updated packages
 
 ## [1.0.1] - 2018-03-01
@@ -30,6 +31,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
   * CSS Transforms to improve responsiveness
   * Enforce range [0, 1]
 * Cube - remove false errors during testing.
+* Use css transform for ProgressBar instead of adjusting width or flex-basis
 
 ## [1.0.0] - 2017-12-22
 ### Added
