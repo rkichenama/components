@@ -32,12 +32,6 @@ describe('Card', () => {
   });
 
   describe('improperly rendered', () => {
-    it('should render no children', () => {
-      card = mount(<Card />);
-      expect(card.find('.flip > .front').children().length).toBe(0);
-      expect(card.find('.flip > .back').children().length).toBe(0);
-    });
-
     it('should render one child', () => {
       card = mount(<Card><div>1</div></Card>);
       expect(card.find('.flip > .front').children().length).toBe(1);
