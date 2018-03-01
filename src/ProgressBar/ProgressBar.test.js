@@ -13,6 +13,6 @@ describe('ProgressBar', () => {
 
   it('should changes value on props', () => {
     bar.setProps({ value: .25 });
-    expect(bar.find('.status-progress-bar').prop('style').width).toMatch(/25%/);
+    expect(bar.find('.status-progress-bar').prop('style').transform).toMatch(/translateX\(-75%\)/);
   });
 });

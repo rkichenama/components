@@ -221,7 +221,7 @@
           "type": {
             "name": "node"
           },
-          "required": true,
+          "required": false,
           "description": "",
           "name": "children"
         },
@@ -476,6 +476,18 @@
             "computed": false
           },
           "name": "barColor"
+        },
+        {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "",
+          "defaultValue": {
+            "value": "''",
+            "computed": false
+          },
+          "name": "className"
         },
         {
           "type": {

@@ -1,3 +1,39 @@
+@charset "UTF-8";
+.information {
+  border: 1px solid; }
+  .information,
+  .information > header,
+  .information > section {
+    display: block;
+    position: relative;
+    padding: 4px; }
+  .information > header:after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px; }
+  .information > header.right {
+    padding-right: 20px; }
+    .information > header.right:after {
+      content: '\25D1';
+      right: 0; }
+  .information > header.left {
+    padding-left: 20px; }
+    .information > header.left:after {
+      content: '\25D0';
+      left: 0; }
+  .information > section {
+    padding: 6px 4px;
+    display: none; }
+  .information.open > header:after {
+    content: '\25D3'; }
+  .information.open > section {
+    display: block; }
 canvas.canvas {
   border: 1px solid gray;
   max-width: 100%; }
@@ -109,44 +145,9 @@ canvas.canvas {
     background-size: 48px 48px, 136px 16px, 136px 16px;
     background-position: 0px 0px, 56px 4px, 56px 28px;
     background-repeat: no-repeat; }
-@charset "UTF-8";
-.information {
-  border: 1px solid; }
-  .information,
-  .information > header,
-  .information > section {
-    display: block;
-    position: relative;
-    padding: 4px; }
-  .information > header:after {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 16px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px; }
-  .information > header.right {
-    padding-right: 20px; }
-    .information > header.right:after {
-      content: '\25D1';
-      right: 0; }
-  .information > header.left {
-    padding-left: 20px; }
-    .information > header.left:after {
-      content: '\25D0';
-      left: 0; }
-  .information > section {
-    padding: 6px 4px;
-    display: none; }
-  .information.open header:after {
-    content: '\25D3'; }
-  .information.open > section {
-    display: block; }
 .status-progress {
   position: relative;
+  display: flex;
   width: 100%;
   height: 32px;
   padding: 6px 0;
@@ -162,11 +163,14 @@ canvas.canvas {
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
     z-index: 2;
     overflow: hidden;
-    text-align: center; }
+    text-align: center;
+    flex-basis: 100%; }
   .status-progress-bar {
     background-color: purple;
-    z-index: 1; }
-  .status-progress-text, .status-progress-bar {
+    z-index: 1;
+    flex-basis: 100%;
+    transform: translateX(-100%); }
+  .status-progress-text {
     position: absolute;
     top: 0;
     left: 0;
@@ -503,15 +507,15 @@ ol.unstyled {
     .tests .code-coverage > div:not(:first-child) {
       text-align: right; }
 
-.tests details.test-suite {
+.tests .information.test-suite {
   padding-left: 12px; }
-  .tests details.test-suite > summary {
+  .tests .information.test-suite > header {
     margin-left: -12px; }
-  .tests details.test-suite > .test-suite {
+  .tests .information.test-suite > section > .test-suite {
     margin-left: 10px; }
 
 .tests .test-suite .it {
-  margin-left: 12px; }
+  padding: 0; }
   .tests .test-suite .it .pending,
   .tests .test-suite .it .failed,
   .tests .test-suite .it .passed {
@@ -542,13 +546,9 @@ ol.unstyled {
 .has-nothing {
   color: #008141; }
 
-.errorMessage summary {
+.errorMessage > header {
   color: #810000;
   text-align: center; }
-
-.errorMessage details {
-  border: 1px solid #fff;
-  padding: 16px; }
 
 @supports (display: grid) {
   .floating-column {

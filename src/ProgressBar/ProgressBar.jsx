@@ -29,7 +29,8 @@ export default class ProgressBar extends Component {
   };
 
   render () {
-    const { props: { barColor, value, children, className } } = this;
+    const { props: { barColor, value: v, children, className } } = this;
+    const value = Math.max(0, Math.min(v, 1));
     return (
       <section className={`status-progress${className ? ` ${className}` : ''}`} >
         <div className='status-progress-text'>{ children }</div>

@@ -39,9 +39,9 @@ describe('Cube', () => {
   });
 
   describe('improperly rendered', () => {
-    [0,1,2,3,4,5,7]
+    [1,2,3,4,5,7]
       .forEach(n => {
-        const kids = n ? Array(n).fill(false).map(() => (<div>child</div>)) : null;
+        const kids = n ? Array(n).fill(false).map((_, i) => (<div key={i}>child</div>)) : null;
         it(`should render ${n} children`, () => {
           cube = mount(<Cube>{ kids }</Cube>);
           Cube.Faces.forEach((side, s) => {
