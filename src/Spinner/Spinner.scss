@@ -1,0 +1,48 @@
+$glyphSize: 48px;
+
+.rrk-spinner {
+  position: relative;
+  min-height: $glyphSize * 2;
+  --shade-color: transparentize(#fff, .85);
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    bottom: 0; right: 0;
+  }
+  &:before {
+    background-color: var(--shade-color, transparentize(#fff, .85));
+  }
+  .spinner {
+    position: absolute;
+    top: 50%; left: 50%;
+    bottom: 50%; right: 50%;
+    margin-top: ($glyphSize / -2);
+    display: inline-block;
+    font-size: $glyphSize;
+    line-height: $glyphSize;
+    height: $glyphSize;
+    width: $glyphSize;
+    // vertical-align: baseline;
+    overflow: hidden;
+    color: orange;
+
+    &:after {
+      display: inline-table;
+      white-space: pre;
+      text-align: center;
+
+      content: "⠋\A⠙\A⠹\A⠸\A⠼\A⠴\A⠦\A⠧\A⠇\A⠏";
+      animation: spin10 1s steps(10) infinite;
+    }
+  }
+}
+
+@for $i from 1 through 12 {
+  @keyframes spin#{$i} { to { transform: translateY($i * $glyphSize * -1); } }
+  %spin#{$i} {
+    animation: spin#{$i} 1s steps(#{$i}) infinite;
+  }
+}
