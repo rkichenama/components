@@ -175,6 +175,88 @@ canvas.canvas {
     top: 0;
     left: 0;
     bottom: 0; }
+@charset "UTF-8";
+.rrk-spinner {
+  position: relative;
+  min-height: 96px;
+  --shade-color: rgba(255, 255, 255, 0.15); }
+  .rrk-spinner:before, .rrk-spinner:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0; }
+  .rrk-spinner:before {
+    background-color: var(--shade-color, rgba(255, 255, 255, 0.15)); }
+  .rrk-spinner .spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    bottom: 50%;
+    right: 50%;
+    margin-top: -24px;
+    display: inline-block;
+    font-size: 48px;
+    line-height: 48px;
+    height: 48px;
+    width: 48px;
+    overflow: hidden;
+    color: orange; }
+    .rrk-spinner .spinner:after {
+      display: inline-table;
+      white-space: pre;
+      text-align: center;
+      content: "\280B\A\2819\A\2839\A\2838\A\283C\A\2834\A\2826\A\2827\A\2807\A\280F";
+      animation: spin10 1s steps(10) infinite; }
+
+@keyframes spin1 {
+  to {
+    transform: translateY(-48px); } }
+
+@keyframes spin2 {
+  to {
+    transform: translateY(-96px); } }
+
+@keyframes spin3 {
+  to {
+    transform: translateY(-144px); } }
+
+@keyframes spin4 {
+  to {
+    transform: translateY(-192px); } }
+
+@keyframes spin5 {
+  to {
+    transform: translateY(-240px); } }
+
+@keyframes spin6 {
+  to {
+    transform: translateY(-288px); } }
+
+@keyframes spin7 {
+  to {
+    transform: translateY(-336px); } }
+
+@keyframes spin8 {
+  to {
+    transform: translateY(-384px); } }
+
+@keyframes spin9 {
+  to {
+    transform: translateY(-432px); } }
+
+@keyframes spin10 {
+  to {
+    transform: translateY(-480px); } }
+
+@keyframes spin11 {
+  to {
+    transform: translateY(-528px); } }
+
+@keyframes spin12 {
+  to {
+    transform: translateY(-576px); } }
 @font-face{
     font-family: 'Fira Code';
     src: url(fonts/FiraCode-Light.eot);

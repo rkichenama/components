@@ -1,9 +1,9 @@
 {
   "meta": {
     "failed": 0,
-    "passed": 46,
+    "passed": 49,
     "pending": 0,
-    "n": 46
+    "n": 49
   },
   "tests": {
     "GitHubProfile": {
@@ -26,43 +26,23 @@
         }
       }
     },
-    "Card": {
-      "n": 4,
-      "passed": 4,
+    "Spinner": {
+      "n": 3,
+      "passed": 3,
       "failed": 0,
       "pending": 0,
       "tests": {
-        "properly rendered": {
-          "n": 2,
-          "passed": 2,
-          "failed": 0,
-          "pending": 0,
-          "tests": {
-            "should trigger a callback when clicked": {
-              "status": "passed",
-              "errors": []
-            },
-            "should toggle a class when prop changes": {
-              "status": "passed",
-              "errors": []
-            }
-          }
+        "should pass to a component pruned props": {
+          "status": "passed",
+          "errors": []
         },
-        "improperly rendered": {
-          "n": 2,
-          "passed": 2,
-          "failed": 0,
-          "pending": 0,
-          "tests": {
-            "should render one child": {
-              "status": "passed",
-              "errors": []
-            },
-            "should render two children": {
-              "status": "passed",
-              "errors": []
-            }
-          }
+        "should cover a component with a spinner": {
+          "status": "passed",
+          "errors": []
+        },
+        "should not cover a component with a spinner": {
+          "status": "passed",
+          "errors": []
         }
       }
     },
@@ -262,6 +242,46 @@
         }
       }
     },
+    "Card": {
+      "n": 4,
+      "passed": 4,
+      "failed": 0,
+      "pending": 0,
+      "tests": {
+        "properly rendered": {
+          "n": 2,
+          "passed": 2,
+          "failed": 0,
+          "pending": 0,
+          "tests": {
+            "should trigger a callback when clicked": {
+              "status": "passed",
+              "errors": []
+            },
+            "should toggle a class when prop changes": {
+              "status": "passed",
+              "errors": []
+            }
+          }
+        },
+        "improperly rendered": {
+          "n": 2,
+          "passed": 2,
+          "failed": 0,
+          "pending": 0,
+          "tests": {
+            "should render one child": {
+              "status": "passed",
+              "errors": []
+            },
+            "should render two children": {
+              "status": "passed",
+              "errors": []
+            }
+          }
+        }
+      }
+    },
     "ClickDecorator": {
       "n": 2,
       "passed": 2,
@@ -278,22 +298,6 @@
         }
       }
     },
-    "ProgressBar": {
-      "n": 2,
-      "passed": 2,
-      "failed": 0,
-      "pending": 0,
-      "tests": {
-        "should have zero value": {
-          "status": "passed",
-          "errors": []
-        },
-        "should changes value on props": {
-          "status": "passed",
-          "errors": []
-        }
-      }
-    },
     "Info": {
       "n": 2,
       "passed": 2,
@@ -305,6 +309,22 @@
           "errors": []
         },
         "should change state based on props": {
+          "status": "passed",
+          "errors": []
+        }
+      }
+    },
+    "ProgressBar": {
+      "n": 2,
+      "passed": 2,
+      "failed": 0,
+      "pending": 0,
+      "tests": {
+        "should have zero value": {
+          "status": "passed",
+          "errors": []
+        },
+        "should changes value on props": {
           "status": "passed",
           "errors": []
         }

@@ -221,7 +221,7 @@
           "type": {
             "name": "node"
           },
-          "required": false,
+          "required": true,
           "description": "",
           "name": "children"
         },
@@ -504,6 +504,30 @@
       ],
       "filename": "src/ProgressBar/ProgressBar.jsx"
     },
+    "Spinner": {
+      "description": "A simple spinner",
+      "displayName": "Spinner",
+      "methods": [],
+      "props": [
+        {
+          "type": {
+            "name": "func"
+          },
+          "required": true,
+          "description": "",
+          "name": "for"
+        },
+        {
+          "type": {
+            "name": "func"
+          },
+          "required": true,
+          "description": "function that, if result is true, will show spinner",
+          "name": "test"
+        }
+      ],
+      "filename": "src/Spinner/Spinner.jsx"
+    },
     "StateDecorator": {
       "description": "This render prop HOC iterates over a list of values, pushing the current to the given component prop\nand moving it to the end of the list, endlessly looping with no user interaction.",
       "displayName": "StateDecorator",
@@ -549,6 +573,7 @@
     "GitHubProfile",
     "Info",
     "ProgressBar",
+    "Spinner",
     "StateDecorator"
   ]
 }
