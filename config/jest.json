@@ -6,6 +6,7 @@
     "\\.(css|less|sass|scss)$": "identity-obj-proxy"
   },
   "setupFiles": [
+    "jest-canvas-mock",
     "<rootDir>/../config/mocks/rafMock.js",
     "<rootDir>/../config/jest.setup.js"
   ],

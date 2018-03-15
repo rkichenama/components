@@ -26,82 +26,6 @@
         }
       }
     },
-    "Spinner": {
-      "n": 3,
-      "passed": 3,
-      "failed": 0,
-      "pending": 0,
-      "tests": {
-        "should pass to a component pruned props": {
-          "status": "passed",
-          "errors": []
-        },
-        "should cover a component with a spinner": {
-          "status": "passed",
-          "errors": []
-        },
-        "should not cover a component with a spinner": {
-          "status": "passed",
-          "errors": []
-        }
-      }
-    },
-    "Cube": {
-      "n": 8,
-      "passed": 8,
-      "failed": 0,
-      "pending": 0,
-      "tests": {
-        "properly rendered": {
-          "n": 2,
-          "passed": 2,
-          "failed": 0,
-          "pending": 0,
-          "tests": {
-            "should trigger a callback when clicked": {
-              "status": "passed",
-              "errors": []
-            },
-            "should change a class when prop changes": {
-              "status": "passed",
-              "errors": []
-            }
-          }
-        },
-        "improperly rendered": {
-          "n": 6,
-          "passed": 6,
-          "failed": 0,
-          "pending": 0,
-          "tests": {
-            "should render 1 children": {
-              "status": "passed",
-              "errors": []
-            },
-            "should render 2 children": {
-              "status": "passed",
-              "errors": []
-            },
-            "should render 3 children": {
-              "status": "passed",
-              "errors": []
-            },
-            "should render 4 children": {
-              "status": "passed",
-              "errors": []
-            },
-            "should render 5 children": {
-              "status": "passed",
-              "errors": []
-            },
-            "should render 7 children": {
-              "status": "passed",
-              "errors": []
-            }
-          }
-        }
-      }
-    },
     "Canvas": {
       "n": 23,
       "passed": 23,
@@ -242,6 +166,94 @@
         }
       }
     },
+    "Cube": {
+      "n": 8,
+      "passed": 8,
+      "failed": 0,
+      "pending": 0,
+      "tests": {
+        "properly rendered": {
+          "n": 2,
+          "passed": 2,
+          "failed": 0,
+          "pending": 0,
+          "tests": {
+            "should trigger a callback when clicked": {
+              "status": "passed",
+              "errors": []
+            },
+            "should change a class when prop changes": {
+              "status": "passed",
+              "errors": []
+            }
+          }
+        },
+        "improperly rendered": {
+          "n": 6,
+          "passed": 6,
+          "failed": 0,
+          "pending": 0,
+          "tests": {
+            "should render 1 children": {
+              "status": "passed",
+              "errors": []
+            },
+            "should render 2 children": {
+              "status": "passed",
+              "errors": []
+            },
+            "should render 3 children": {
+              "status": "passed",
+              "errors": []
+            },
+            "should render 4 children": {
+              "status": "passed",
+              "errors": []
+            },
+            "should render 5 children": {
+              "status": "passed",
+              "errors": []
+            },
+            "should render 7 children": {
+              "status": "passed",
+              "errors": []
+            }
+          }
+        }
+      }
+    },
+    "StateDecorator": {
+      "n": 2,
+      "passed": 2,
+      "failed": 0,
+      "pending": 0,
+      "tests": {
+        "should push down the next value to component": {
+          "status": "passed",
+          "errors": []
+        },
+        "should change saved values list": {
+          "status": "passed",
+          "errors": []
+        }
+      }
+    },
+    "Info": {
+      "n": 2,
+      "passed": 2,
+      "failed": 0,
+      "pending": 0,
+      "tests": {
+        "should handle click events": {
+          "status": "passed",
+          "errors": []
+        },
+        "should change state based on props": {
+          "status": "passed",
+          "errors": []
+        }
+      }
+    },
     "Card": {
       "n": 4,
       "passed": 4,
@@ -298,17 +310,21 @@
         }
       }
     },
-    "Info": {
-      "n": 2,
-      "passed": 2,
+    "Spinner": {
+      "n": 3,
+      "passed": 3,
       "failed": 0,
       "pending": 0,
       "tests": {
-        "should handle click events": {
+        "should pass to a component pruned props": {
           "status": "passed",
           "errors": []
         },
-        "should change state based on props": {
+        "should cover a component with a spinner": {
+          "status": "passed",
+          "errors": []
+        },
+        "should not cover a component with a spinner": {
           "status": "passed",
           "errors": []
         }
@@ -325,22 +341,6 @@
           "errors": []
         },
         "should changes value on props": {
-          "status": "passed",
-          "errors": []
-        }
-      }
-    },
-    "StateDecorator": {
-      "n": 2,
-      "passed": 2,
-      "failed": 0,
-      "pending": 0,
-      "tests": {
-        "should push down the next value to component": {
-          "status": "passed",
-          "errors": []
-        },
-        "should change saved values list": {
           "status": "passed",
           "errors": []
         }
