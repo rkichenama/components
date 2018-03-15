@@ -21,3 +21,5 @@
 * ~~set up a way of nesting the components in navigation according to atom, molecule, organism, separate from metadata~~
 * ~~replace the details / summary html tags with something similar that is compatible with IE~~
 * ~~document current components and convert existing demos~~
+
+https://gist.github.com/sokra/1522d586b8e5c0f5072d7565c2bee693
