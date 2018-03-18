@@ -15,12 +15,13 @@ import './Toggle.scss';
 export default class Toggle extends PureComponent {
   static propTypes = {
     /** the value, true or false, of the underlying state */
-    value: PropTypes.bool.isRequired,
+    value: PropTypes.bool,
     /** function that is notified when the sttae changes */
     onValueChange: PropTypes.func,
   };
 
   static defaultProps = {
+    value: false,
     onValueChange: () => {},
   }
 

@@ -179,84 +179,134 @@ canvas.canvas {
 .rrk-spinner {
   position: relative;
   min-height: 96px;
-  --shade-color: rgba(255, 255, 255, 0.15); }
-  .rrk-spinner:before, .rrk-spinner:after {
+  --shade-color: rgba(255, 255, 255, 0.4);
+  --spinner-color: white;
+  --spinner-shaodw: black; }
+  .rrk-spinner:before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
+    background-color: var(--shade-color, rgba(255, 255, 255, 0.4));
     bottom: 0;
     right: 0; }
-  .rrk-spinner:before {
-    background-color: var(--shade-color, rgba(255, 255, 255, 0.15)); }
   .rrk-spinner .spinner {
     position: absolute;
-    top: 50%;
+    top: 24px;
     left: 50%;
-    bottom: 50%;
-    right: 50%;
-    margin-top: -24px;
-    display: inline-block;
     font-size: 48px;
-    line-height: 48px;
-    height: 48px;
-    width: 48px;
+    line-height: 57.6px;
+    height: 1em;
     overflow: hidden;
-    color: orange; }
+    color: var(--spinner-color, white);
+    text-shadow: 0 1px 0 var(--spinner-shadow, black), 1px 0 0 var(--spinner-shadow, black), 0 -1px 0 var(--spinner-shadow, black), -1px 0 0 var(--spinner-shadow, black), 1px 1px 0 var(--spinner-shadow, black), -1px -1px 0 var(--spinner-shadow, black), 1px -1px 0 var(--spinner-shadow, black), -1px 1px 0 var(--spinner-shadow, black); }
     .rrk-spinner .spinner:after {
       display: inline-table;
       white-space: pre;
-      text-align: center;
-      content: "\280B\A\2819\A\2839\A\2838\A\283C\A\2834\A\2826\A\2827\A\2807\A\280F";
-      animation: spin10 1s steps(10) infinite; }
+      content: "\280B\A\2819\A\2839\A\2838\A\283C\A\2834\A\2826\A\2827\A\2807\A\280F"; }
 
 @keyframes spin1 {
   to {
-    transform: translateY(-48px); } }
+    transform: translateY(-57.6px); } }
 
 @keyframes spin2 {
   to {
-    transform: translateY(-96px); } }
+    transform: translateY(-115.2px); } }
 
 @keyframes spin3 {
   to {
-    transform: translateY(-144px); } }
+    transform: translateY(-172.8px); } }
 
 @keyframes spin4 {
   to {
-    transform: translateY(-192px); } }
+    transform: translateY(-230.4px); } }
 
 @keyframes spin5 {
   to {
-    transform: translateY(-240px); } }
+    transform: translateY(-288px); } }
 
 @keyframes spin6 {
   to {
-    transform: translateY(-288px); } }
+    transform: translateY(-345.6px); } }
 
 @keyframes spin7 {
   to {
-    transform: translateY(-336px); } }
+    transform: translateY(-403.2px); } }
 
 @keyframes spin8 {
   to {
-    transform: translateY(-384px); } }
+    transform: translateY(-460.8px); } }
 
 @keyframes spin9 {
   to {
-    transform: translateY(-432px); } }
+    transform: translateY(-518.4px); } }
 
 @keyframes spin10 {
   to {
-    transform: translateY(-480px); } }
+    transform: translateY(-576px); } }
+
+.rrk-spinner .spinner:after {
+  animation: spin10 1.45s steps(10) infinite; }
 
 @keyframes spin11 {
   to {
-    transform: translateY(-528px); } }
+    transform: translateY(-633.6px); } }
 
 @keyframes spin12 {
   to {
-    transform: translateY(-576px); } }
+    transform: translateY(-691.2px); } }
+4px, 4px, 4px, 4px, 4px, 4px, 4px
+::root {
+  --toggle-track-padding: 4px;
+  --toggle-animation-duration: 750ms;
+  --toggle-switch-color: white;
+  --toggle-track-color: rgba(0, 0, 0, 0.2); }
+
+.toggle-container {
+  color: blue;
+  position: relative;
+  padding: var(--toggle-track-padding, 4px) 1em;
+  border-radius: 2em;
+  background-color: var(--toggle-track-color, rgba(0, 0, 0, 0.2));
+  border: 1px solid var(--toggle-switch-color, white);
+  overflow: hidden; }
+
+.toggle-track {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 100%;
+  border-radius: calc( (1em + (var(--toggle-track-padding, 4px) * 2)) / 2); }
+  .toggle-track.off {
+    animation-timing-function: ease-out;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-duration: var(--toggle-animation-duration, 750ms);
+    animation-name: slideOff; }
+  .toggle-track.on {
+    animation-timing-function: ease-out;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-duration: var(--toggle-animation-duration, 750ms);
+    animation-name: slideOn; }
+
+.toggle-switch {
+  border-radius: .5em;
+  height: 1em;
+  width: 1em;
+  background-color: var(--toggle-switch-color, white); }
+
+@keyframes slideOn {
+  from {
+    transform: translateX(-50%); }
+  to {
+    transform: translateX(50%); } }
+
+@keyframes slideOff {
+  from {
+    transform: translateX(50%); }
+  to {
+    transform: translateX(-50%); } }
 @font-face{
     font-family: 'Fira Code';
     src: url(fonts/FiraCode-Light.eot);

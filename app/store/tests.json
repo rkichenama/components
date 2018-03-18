@@ -1,11 +1,27 @@
 {
   "meta": {
     "failed": 0,
-    "passed": 49,
+    "passed": 51,
     "pending": 0,
-    "n": 49
+    "n": 51
   },
   "tests": {
+    "Toggle": {
+      "n": 2,
+      "passed": 2,
+      "failed": 0,
+      "pending": 0,
+      "tests": {
+        "should handle click events": {
+          "status": "passed",
+          "errors": []
+        },
+        "should change state based on props": {
+          "status": "passed",
+          "errors": []
+        }
+      }
+    },
     "GitHubProfile": {
       "n": 3,
       "passed": 3,
@@ -298,17 +314,17 @@
         }
       }
     },
-    "ProgressBar": {
+    "StateDecorator": {
       "n": 2,
       "passed": 2,
       "failed": 0,
       "pending": 0,
       "tests": {
-        "should have zero value": {
+        "should push down the next value to component": {
           "status": "passed",
           "errors": []
         },
-        "should changes value on props": {
+        "should change saved values list": {
           "status": "passed",
           "errors": []
         }
@@ -330,17 +346,17 @@
         }
       }
     },
-    "StateDecorator": {
+    "ProgressBar": {
       "n": 2,
       "passed": 2,
       "failed": 0,
       "pending": 0,
       "tests": {
-        "should push down the next value to component": {
+        "should have zero value": {
           "status": "passed",
           "errors": []
         },
-        "should change saved values list": {
+        "should changes value on props": {
           "status": "passed",
           "errors": []
         }
