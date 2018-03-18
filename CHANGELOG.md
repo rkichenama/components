@@ -19,6 +19,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 ## [Unreleased]
 ### Added
 * Spinner - text spinner for blocking ui
+* Toggle - A horizontal toggle component
 ### Changed
 * add `title` prop to ProgressBar
 * updated packages
