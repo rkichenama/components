@@ -491,6 +491,18 @@
         },
         {
           "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "",
+          "defaultValue": {
+            "value": "null",
+            "computed": false
+          },
+          "name": "title"
+        },
+        {
+          "type": {
             "name": "number"
           },
           "required": false,
@@ -500,15 +512,31 @@
             "computed": false
           },
           "name": "value"
+        },
+        {
+          "type": {
+            "name": "node"
+          },
+          "required": false,
+          "description": "",
+          "name": "children"
         }
       ],
       "filename": "src/ProgressBar/ProgressBar.jsx"
     },
     "Spinner": {
-      "description": "A simple spinner",
+      "description": "A simple spinner that uses a font based animation that scrolls vertically through an infinite transform animation. It should be used as a wrapper for a component which will block the UI if the test returns true. The actual spinner is an offset from the top of the rendered component with a minimum height of double the font size.",
       "displayName": "Spinner",
       "methods": [],
       "props": [
+        {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "",
+          "name": "blockingClass"
+        },
         {
           "type": {
             "name": "func"
@@ -563,6 +591,58 @@
         }
       ],
       "filename": "src/StateDecorator/StateDecorator.jsx"
+    },
+    "Toggle": {
+      "description": "A simple toggle component.\n\nIn order to customize, you can use CSS variables below to change colors and timings\n* `--toggle-track-padding` - the vertical padding of the track, 4px default\n* `--toggle-animation-duration` - the time of the slide transition, 750ms default\n* `--toggle-switch-color` - color of the disc in the center and the border around the track, white default\n* `--toggle-track-color` - color of the track the disc travels on, 20% black default",
+      "displayName": "Toggle",
+      "methods": [
+        {
+          "name": "preloadValue",
+          "docblock": "use the value prop to load into statepreloadValue\n@param {Object} props - component props\n@param {bool} props.value - toggle state",
+          "modifiers": [],
+          "params": [
+            {
+              "name": "props",
+              "description": "component props",
+              "type": {
+                "name": "Object"
+              }
+            }
+          ],
+          "returns": null,
+          "description": "use the value prop to load into statepreloadValue"
+        },
+        {
+          "name": "handleClick",
+          "docblock": null,
+          "modifiers": [],
+          "params": [],
+          "returns": null
+        }
+      ],
+      "props": [
+        {
+          "type": {
+            "name": "bool"
+          },
+          "required": true,
+          "description": "the value, true or false, of the underlying state",
+          "name": "value"
+        },
+        {
+          "type": {
+            "name": "func"
+          },
+          "required": false,
+          "description": "function that is notified when the sttae changes",
+          "defaultValue": {
+            "value": "() => {}",
+            "computed": false
+          },
+          "name": "onValueChange"
+        }
+      ],
+      "filename": "src/Toggle/Toggle.jsx"
     }
   },
   "keys": [
@@ -574,6 +654,7 @@
     "Info",
     "ProgressBar",
     "Spinner",
-    "StateDecorator"
+    "StateDecorator",
+    "Toggle"
   ]
 }
