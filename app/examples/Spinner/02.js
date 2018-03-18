@@ -1,7 +1,6 @@
 import React from 'react';
 import { Stage } from '../';
 import Spinner from 'components/Spinner/Spinner.jsx';
-import StateDecorator from 'components/StateDecorator/StateDecorator';
 
 const Dummy = props => (
   <pre style={{ minHeight: '44px', backgroundColor: 'rgba(0, 0, 0, 0.6)', color: 'white' }}>
@@ -15,7 +14,7 @@ export default class extends React.PureComponent {
       <Stage style={{ flexBasis: '80%' }}>
         <div style={{ width: '100%' }}>
           <Spinner
-            test={() => true} {...{ hide: true }} for={Dummy}
+            test={() => false} {...{ hide: false }} for={Dummy}
             ironman='tony stark' thor='odinson'
           />
         </div>

@@ -16,7 +16,7 @@ $glyphSize: 48px;
   }
   .spinner {
     position: absolute;
-    top: calc(50% - #{ $glyphSize / 2 }); left: 50%;
+    top: $glyphSize / 2; left: 50%;
     // bottom: 50%; right: 50%;
     // margin-top: -0.3em;
     font-size: $glyphSize;
