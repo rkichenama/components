@@ -75,11 +75,19 @@ const renderDefaultValue = value => {
   const v = (value && value.value) || (<i>none</i>);
   return (Object.keys(DefaultValues).includes(v)) ? (<i>{DefaultValues[v]}</i>) : v;
 };
-const renderList = value => {
+const renderListItem = (value, index) => (
+  <li key={index}>{ value }</li>
+)
+const renderList = (value, index = false) => {
   return (
     <Catcher>
       <ul className='unstyled'>
-        { value.map((v, i) => (<li key={i}>{ v }</li>))}
+        { value.map((v, i) => {
+          if (/object/.test(typeof v)) {
+            return (<li key={i}>{ JSON.stringify(v) }</li>)
+          }
+          return renderListItem(v, i);
+        })}
       </ul>
     </Catcher>
   );
@@ -105,6 +113,7 @@ const transposeData = data => {
 };
 const renderDataColumn = (col, c) => {
   let value = col;
+  debugger;
   if (col instanceof Object) {
     value = Array.isArray(col) ? renderList(col) : col.name;
   }
@@ -202,7 +211,7 @@ export default class Table extends PureComponent {
     const { props: { data, columns, full }} = this;
 
     if (!data) { return null; }
-    
+
     const rows = sortData(data);
 
     const row = renderTableRow(columns);

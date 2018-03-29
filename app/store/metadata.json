@@ -460,6 +460,12 @@
       ],
       "filename": "src/Info/Info.jsx"
     },
+    "Odometer": {
+      "description": "An odometer that would display a positive numer ina rolling fashion",
+      "displayName": "Odometer",
+      "methods": [],
+      "filename": "src/Odometer/Odometer.jsx"
+    },
     "ProgressBar": {
       "description": "A simple progress bar that moves from left to right when given a value between\n0 and 1. Basically, most of the css can be overriden besides the props to set colors.\nOne line of text is expected for the status, which will be center white with black outline.",
       "displayName": "ProgressBar",
@@ -503,7 +509,18 @@
         },
         {
           "type": {
-            "name": "number"
+            "name": "union",
+            "value": [
+              {
+                "name": "number"
+              },
+              {
+                "name": "arrayOf",
+                "value": {
+                  "name": "number"
+                }
+              }
+            ]
           },
           "required": false,
           "description": "the percentage to display, given as a positive value `[0, 1]`",
@@ -625,8 +642,12 @@
           "type": {
             "name": "bool"
           },
-          "required": true,
+          "required": false,
           "description": "the value, true or false, of the underlying state",
+          "defaultValue": {
+            "value": "false",
+            "computed": false
+          },
           "name": "value"
         },
         {
@@ -652,6 +673,7 @@
     "Cube",
     "GitHubProfile",
     "Info",
+    "Odometer",
     "ProgressBar",
     "Spinner",
     "StateDecorator",

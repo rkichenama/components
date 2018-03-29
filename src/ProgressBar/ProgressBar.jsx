@@ -27,19 +27,31 @@ export default class ProgressBar extends Component {
     /**
      * the percentage to display, given as a positive value `[0, 1]`
      */
-    value: PropTypes.number,
+    value: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.arrayOf(PropTypes.number),
+    ]),
     children: PropTypes.node,
   };
 
   render () {
     const { props: { barColor, value: v, children, className, title } } = this;
-    const value = Math.max(0, Math.min(v, 1));
+    const value = Array.prototype.concat(...[v])
+      .map(val => Math.max(0, Math.min(val, 1)));
+    // TODO: set up for different segments of the bar with separate classNames for status
+    // TODO: maybe allow for proportional sizes of the segments
     return (
       <section className={`status-progress${className ? ` ${className}` : ''}`} {...{ title }}>
         <div className='status-progress-text'>{ children }</div>
-        <div className='status-progress-bar' style={{
-          transform: `translateX(${-100 + (value * 100)}%)`, backgroundColor: barColor
-        }} />
+        {
+          value.map((val, i) => (
+            <div key={i} className='status-progress-bar'>
+              <div className='status-progress-bar-value' style={{
+                transform: `translateX(${-100 + (val * 100)}%)`, backgroundColor: barColor
+              }} />
+            </div>
+          ))
+        }
       </section>
     );
   }
