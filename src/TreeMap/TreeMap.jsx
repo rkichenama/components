@@ -22,7 +22,7 @@ export default class TreeMap extends Component {
   }
 
   static defaultProps = {
-    depth: 1,
+    depth: 0,
     tree: [],
     className: '',
     style: {},
