@@ -1,0 +1,26 @@
+.tree-map {
+
+  &, & .tree-node {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-basis: 100%;
+    position: relative;
+    background-color: rgba(0, 0, 0, .1);
+  }
+
+  &.alt { flex-direction: column; }
+
+  .tree-node {
+    border: 1px solid #ffffff;
+    padding: 1em 2px 2px 2px;
+    overflow: hidden;
+
+    &:before {
+      content: attr( alt );
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      text-align: center;
+    }
+  }
+}

@@ -113,7 +113,6 @@ const transposeData = data => {
 };
 const renderDataColumn = (col, c) => {
   let value = col;
-  debugger;
   if (col instanceof Object) {
     value = Array.isArray(col) ? renderList(col) : col.name;
   }

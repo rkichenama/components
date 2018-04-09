@@ -467,7 +467,7 @@
       "filename": "src/Odometer/Odometer.jsx"
     },
     "ProgressBar": {
-      "description": "A simple progress bar that moves from left to right when given a value between\n0 and 1. Basically, most of the css can be overriden besides the props to set colors.\nOne line of text is expected for the status, which will be center white with black outline.",
+      "description": "A simple progress bar that moves from left to right when given a value(s) between\n0 and 1. Basically, most of the css can be overriden besides the props to set colors.\nOne line of text is expected for the status, which will be center white with black outline.",
       "displayName": "ProgressBar",
       "methods": [],
       "props": [
@@ -488,12 +488,27 @@
             "name": "string"
           },
           "required": false,
-          "description": "",
+          "description": "class to apply to the container `section`",
           "defaultValue": {
             "value": "''",
             "computed": false
           },
           "name": "className"
+        },
+        {
+          "type": {
+            "name": "arrayOf",
+            "value": {
+              "name": "string"
+            }
+          },
+          "required": false,
+          "description": "list of classes to apply to each value bar",
+          "defaultValue": {
+            "value": "[]",
+            "computed": false
+          },
+          "name": "classNames"
         },
         {
           "type": {
@@ -523,7 +538,7 @@
             ]
           },
           "required": false,
-          "description": "the percentage to display, given as a positive value `[0, 1]`",
+          "description": "the percentage to display, given as a positive value `[0, 1]`. can be either a single float or an array of floats denoting a list of segments progress",
           "defaultValue": {
             "value": "0",
             "computed": false
@@ -664,6 +679,66 @@
         }
       ],
       "filename": "src/Toggle/Toggle.jsx"
+    },
+    "TreeMap": {
+      "description": "My interpretation of a treemap",
+      "displayName": "TreeMap",
+      "methods": [],
+      "props": [
+        {
+          "type": {
+            "name": "number"
+          },
+          "required": false,
+          "description": "used internally, denoted the levels deep this render is and limits how far down the hole we go",
+          "defaultValue": {
+            "value": "1",
+            "computed": false
+          },
+          "name": "depth"
+        },
+        {
+          "type": {
+            "name": "arrayOf",
+            "value": {
+              "name": "custom",
+              "raw": "TreeNode"
+            }
+          },
+          "required": false,
+          "description": "",
+          "defaultValue": {
+            "value": "[]",
+            "computed": false
+          },
+          "name": "tree"
+        },
+        {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "",
+          "defaultValue": {
+            "value": "''",
+            "computed": false
+          },
+          "name": "className"
+        },
+        {
+          "type": {
+            "name": "object"
+          },
+          "required": false,
+          "description": "",
+          "defaultValue": {
+            "value": "{}",
+            "computed": false
+          },
+          "name": "style"
+        }
+      ],
+      "filename": "src/TreeMap/TreeMap.jsx"
     }
   },
   "keys": [
@@ -677,6 +752,7 @@
     "ProgressBar",
     "Spinner",
     "StateDecorator",
-    "Toggle"
+    "Toggle",
+    "TreeMap"
   ]
 }

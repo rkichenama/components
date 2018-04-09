@@ -6,12 +6,96 @@
     "n": 51
   },
   "tests": {
+    "GitHubProfile": {
+      "n": 3,
+      "passed": 3,
+      "failed": 0,
+      "pending": 0,
+      "tests": {
+        "will silently handle errors": {
+          "status": "passed",
+          "errors": []
+        },
+        "will load some github profile info when given a username prop": {
+          "status": "passed",
+          "errors": []
+        },
+        "changes state when updated with new props": {
+          "status": "passed",
+          "errors": []
+        }
+      }
+    },
+    "Cube": {
+      "n": 8,
+      "passed": 8,
+      "failed": 0,
+      "pending": 0,
+      "tests": {
+        "properly rendered": {
+          "n": 2,
+          "passed": 2,
+          "failed": 0,
+          "pending": 0,
+          "tests": {
+            "should trigger a callback when clicked": {
+              "status": "passed",
+              "errors": []
+            },
+            "should change a class when prop changes": {
+              "status": "passed",
+              "errors": []
+            }
+          }
+        },
+        "improperly rendered": {
+          "n": 6,
+          "passed": 6,
+          "failed": 0,
+          "pending": 0,
+          "tests": {
+            "should render 1 children": {
+              "status": "passed",
+              "errors": []
+            },
+            "should render 2 children": {
+              "status": "passed",
+              "errors": []
+            },
+            "should render 3 children": {
+              "status": "passed",
+              "errors": []
+            },
+            "should render 4 children": {
+              "status": "passed",
+              "errors": []
+            },
+            "should render 5 children": {
+              "status": "passed",
+              "errors": []
+            },
+            "should render 7 children": {
+              "status": "passed",
+              "errors": []
+            }
+          }
+        }
+      }
+    },
     "Canvas": {
       "n": 23,
       "passed": 23,
       "failed": 0,
       "pending": 0,
       "tests": {
+        "will render a scene": {
+          "status": "passed",
+          "errors": []
+        },
+        "will render an animation": {
+          "status": "passed",
+          "errors": []
+        },
         "Context": {
           "n": 15,
           "passed": 15,
@@ -135,14 +219,6 @@
               "errors": []
             }
           }
-        },
-        "will render a scene": {
-          "status": "passed",
-          "errors": []
-        },
-        "will render an animation": {
-          "status": "passed",
-          "errors": []
         }
       }
     },
@@ -186,77 +262,49 @@
         }
       }
     },
-    "Cube": {
-      "n": 8,
-      "passed": 8,
+    "Toggle": {
+      "n": 2,
+      "passed": 2,
       "failed": 0,
       "pending": 0,
       "tests": {
-        "properly rendered": {
-          "n": 2,
-          "passed": 2,
-          "failed": 0,
-          "pending": 0,
-          "tests": {
-            "should trigger a callback when clicked": {
-              "status": "passed",
-              "errors": []
-            },
-            "should change a class when prop changes": {
-              "status": "passed",
-              "errors": []
-            }
-          }
+        "should handle click events": {
+          "status": "passed",
+          "errors": []
         },
-        "improperly rendered": {
-          "n": 6,
-          "passed": 6,
-          "failed": 0,
-          "pending": 0,
-          "tests": {
-            "should render 1 children": {
-              "status": "passed",
-              "errors": []
-            },
-            "should render 2 children": {
-              "status": "passed",
-              "errors": []
-            },
-            "should render 3 children": {
-              "status": "passed",
-              "errors": []
-            },
-            "should render 4 children": {
-              "status": "passed",
-              "errors": []
-            },
-            "should render 5 children": {
-              "status": "passed",
-              "errors": []
-            },
-            "should render 7 children": {
-              "status": "passed",
-              "errors": []
-            }
-          }
+        "should change state based on props": {
+          "status": "passed",
+          "errors": []
         }
       }
     },
-    "GitHubProfile": {
-      "n": 3,
-      "passed": 3,
+    "Info": {
+      "n": 2,
+      "passed": 2,
       "failed": 0,
       "pending": 0,
       "tests": {
-        "will silently handle errors": {
+        "should handle click events": {
           "status": "passed",
           "errors": []
         },
-        "will load some github profile info when given a username prop": {
+        "should change state based on props": {
+          "status": "passed",
+          "errors": []
+        }
+      }
+    },
+    "ClickDecorator": {
+      "n": 2,
+      "passed": 2,
+      "failed": 0,
+      "pending": 0,
+      "tests": {
+        "should push down the next value to component": {
           "status": "passed",
           "errors": []
         },
-        "changes state when updated with new props": {
+        "should change saved values list": {
           "status": "passed",
           "errors": []
         }
@@ -293,54 +341,6 @@
           "errors": []
         },
         "should change saved values list": {
-          "status": "passed",
-          "errors": []
-        }
-      }
-    },
-    "ClickDecorator": {
-      "n": 2,
-      "passed": 2,
-      "failed": 0,
-      "pending": 0,
-      "tests": {
-        "should push down the next value to component": {
-          "status": "passed",
-          "errors": []
-        },
-        "should change saved values list": {
-          "status": "passed",
-          "errors": []
-        }
-      }
-    },
-    "Info": {
-      "n": 2,
-      "passed": 2,
-      "failed": 0,
-      "pending": 0,
-      "tests": {
-        "should handle click events": {
-          "status": "passed",
-          "errors": []
-        },
-        "should change state based on props": {
-          "status": "passed",
-          "errors": []
-        }
-      }
-    },
-    "Toggle": {
-      "n": 2,
-      "passed": 2,
-      "failed": 0,
-      "pending": 0,
-      "tests": {
-        "should handle click events": {
-          "status": "passed",
-          "errors": []
-        },
-        "should change state based on props": {
           "status": "passed",
           "errors": []
         }
