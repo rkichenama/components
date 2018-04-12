@@ -222,6 +222,22 @@
         }
       }
     },
+    "Toggle": {
+      "n": 2,
+      "passed": 2,
+      "failed": 0,
+      "pending": 0,
+      "tests": {
+        "should handle click events": {
+          "status": "passed",
+          "errors": []
+        },
+        "should change state based on props": {
+          "status": "passed",
+          "errors": []
+        }
+      }
+    },
     "Card": {
       "n": 4,
       "passed": 4,
@@ -262,22 +278,6 @@
         }
       }
     },
-    "Toggle": {
-      "n": 2,
-      "passed": 2,
-      "failed": 0,
-      "pending": 0,
-      "tests": {
-        "should handle click events": {
-          "status": "passed",
-          "errors": []
-        },
-        "should change state based on props": {
-          "status": "passed",
-          "errors": []
-        }
-      }
-    },
     "Info": {
       "n": 2,
       "passed": 2,
@@ -289,22 +289,6 @@
           "errors": []
         },
         "should change state based on props": {
-          "status": "passed",
-          "errors": []
-        }
-      }
-    },
-    "ClickDecorator": {
-      "n": 2,
-      "passed": 2,
-      "failed": 0,
-      "pending": 0,
-      "tests": {
-        "should push down the next value to component": {
-          "status": "passed",
-          "errors": []
-        },
-        "should change saved values list": {
           "status": "passed",
           "errors": []
         }
@@ -330,6 +314,22 @@
         }
       }
     },
+    "ProgressBar": {
+      "n": 2,
+      "passed": 2,
+      "failed": 0,
+      "pending": 0,
+      "tests": {
+        "should have zero value": {
+          "status": "passed",
+          "errors": []
+        },
+        "should changes value on props": {
+          "status": "passed",
+          "errors": []
+        }
+      }
+    },
     "StateDecorator": {
       "n": 2,
       "passed": 2,
@@ -346,17 +346,17 @@
         }
       }
     },
-    "ProgressBar": {
+    "ClickDecorator": {
       "n": 2,
       "passed": 2,
       "failed": 0,
       "pending": 0,
       "tests": {
-        "should have zero value": {
+        "should push down the next value to component": {
           "status": "passed",
           "errors": []
         },
-        "should changes value on props": {
+        "should change saved values list": {
           "status": "passed",
           "errors": []
         }

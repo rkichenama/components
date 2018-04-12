@@ -1,0 +1,36 @@
+$glyphHeight: 48px;
+::root {
+  --glpyh: 48px;
+}
+
+.odometer {
+  height: var(--glyph, $glyphHeight);
+  min-width: var(--glyph, $glyphHeight);
+  overflow: hidden;
+  padding: 0 8px;
+  border-radius: 6px;
+  box-shadow:
+    0 0 12px black,
+    inset 0 0 calc(var(--glyph) / 4) black;
+  display: flex;
+  justify-content: flex-end;
+
+  .column {
+    overflow: visible;
+    font-size: var(--glyph, $glyphHeight);
+    line-height: 1;
+    transform: translateY(0);
+    margin-left: 4px;
+
+    .digit {
+      text-align: center;
+      height: var(--glyph, $glyphHeight);
+      padding: 0 4px;
+      border-left: 1px solid black;
+    }
+
+    &.animating {
+      transition: transform .5s ease-out;
+    }
+  }
+}

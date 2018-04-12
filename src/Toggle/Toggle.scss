@@ -2,7 +2,7 @@ $padding: 4px;
 $duration: 750ms;
 $switch-color: white;
 $track-color: rgba(0, 0, 0, .2);
-, #{$padding}, #{$padding}, #{$padding}, #{$padding}, #{$padding}, #{$padding}, #{$padding}
+
 ::root {
   --toggle-track-padding: $padding;
   --toggle-animation-duration: $duration;

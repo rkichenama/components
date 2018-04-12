@@ -463,7 +463,90 @@
     "Odometer": {
       "description": "An odometer that would display a positive numer ina rolling fashion",
       "displayName": "Odometer",
-      "methods": [],
+      "methods": [
+        {
+          "name": "stringify",
+          "docblock": "make the value into a string, front padded with zeros\n@param {number} value\n@param {number} digits - the width of the string",
+          "modifiers": [],
+          "params": [
+            {
+              "name": "value",
+              "description": null,
+              "type": {
+                "name": "number"
+              }
+            },
+            {
+              "name": "digits",
+              "description": "the width of the string",
+              "type": {
+                "name": "number"
+              }
+            }
+          ],
+          "returns": null,
+          "description": "make the value into a string, front padded with zeros"
+        },
+        {
+          "name": "renderColumns",
+          "docblock": "render c columns\n@param {number} c - number of columns to render\n@return {Node} - multiple column nodes",
+          "modifiers": [],
+          "params": [
+            {
+              "name": "c",
+              "description": "number of columns to render",
+              "type": {
+                "name": "number"
+              }
+            }
+          ],
+          "returns": {
+            "description": "multiple column nodes",
+            "type": {
+              "name": "Node"
+            }
+          },
+          "description": "render c columns"
+        }
+      ],
+      "props": [
+        {
+          "type": {
+            "name": "number"
+          },
+          "required": false,
+          "description": "",
+          "defaultValue": {
+            "value": "0",
+            "computed": false
+          },
+          "name": "value"
+        },
+        {
+          "type": {
+            "name": "number"
+          },
+          "required": false,
+          "description": "",
+          "defaultValue": {
+            "value": "7",
+            "computed": false
+          },
+          "name": "digits"
+        },
+        {
+          "type": {
+            "name": "number"
+          },
+          "required": false,
+          "description": "",
+          "defaultValue": {
+            "value": "96",
+            "computed": false
+          },
+          "name": "size"
+        }
+      ],
       "filename": "src/Odometer/Odometer.jsx"
     },
     "ProgressBar": {
@@ -692,7 +775,7 @@
           "required": false,
           "description": "used internally, denoted the levels deep this render is and limits how far down the hole we go",
           "defaultValue": {
-            "value": "1",
+            "value": "0",
             "computed": false
           },
           "name": "depth"
