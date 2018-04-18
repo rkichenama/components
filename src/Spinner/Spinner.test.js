@@ -28,6 +28,6 @@ describe('Spinner', () => {
 
   it('should not cover a component with a spinner', () => {
     const spinner = render(false);
-    expect(spinner.find('.spinner')).toHaveLength(0);
+    expect(spinner.find('.rrk-spinner .spinner')).toHaveLength(0);
   });
 });

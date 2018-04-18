@@ -19,21 +19,21 @@ export default class Spinner extends PureComponent {
   }
 
   componentWillReceiveProps (props) {
-    this.setState(Object.keys(props).reduce((state, key) => {
-      if (!/^(for|test|blockingClass)$/.test(key)) { state[key] = props[key] }
-      return state;
-    }, {}));
+    const { for: ignoredFor, test, blockingClass, ...state } = props;
+    this.setState(() => state);
   }
 
   render () {
     const { for: Component, test, blockingClass } = this.props;
-    return test(this.props) ? (
-      <div className={`rrk-spinner${blockingClass ? ` ${blockingClass}`: ''}`}>
+    return (
+      <div className={
+        test(this.props)
+          ? `rrk-spinner${blockingClass ? ` ${blockingClass}`: ''}`
+          : undefined
+      }>
         <Component {...(this.state)} />
         <span className='spinner' />
       </div>
-    ) : (
-      <Component {...(this.state)} />
     );
   }
 }
