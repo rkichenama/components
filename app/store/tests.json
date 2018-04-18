@@ -6,19 +6,179 @@
     "n": 51
   },
   "tests": {
-    "StateDecorator": {
+    "GitHubProfile": {
+      "n": 3,
+      "passed": 3,
+      "failed": 0,
+      "pending": 0,
+      "tests": {
+        "will silently handle errors": {
+          "status": "passed",
+          "errors": []
+        },
+        "will load some github profile info when given a username prop": {
+          "status": "passed",
+          "errors": []
+        },
+        "changes state when updated with new props": {
+          "status": "passed",
+          "errors": []
+        }
+      }
+    },
+    "Info": {
       "n": 2,
       "passed": 2,
       "failed": 0,
       "pending": 0,
       "tests": {
-        "should push down the next value to component": {
+        "should handle click events": {
           "status": "passed",
           "errors": []
         },
-        "should change saved values list": {
+        "should change state based on props": {
           "status": "passed",
           "errors": []
+        }
+      }
+    },
+    "Canvas": {
+      "n": 23,
+      "passed": 23,
+      "failed": 0,
+      "pending": 0,
+      "tests": {
+        "will render a scene": {
+          "status": "passed",
+          "errors": []
+        },
+        "will render an animation": {
+          "status": "passed",
+          "errors": []
+        },
+        "Helpers": {
+          "n": 6,
+          "passed": 6,
+          "failed": 0,
+          "pending": 0,
+          "tests": {
+            "Clear": {
+              "status": "passed",
+              "errors": []
+            },
+            "FilledRect": {
+              "status": "passed",
+              "errors": []
+            },
+            "BorderedRect": {
+              "status": "passed",
+              "errors": []
+            },
+            "Rect": {
+              "status": "passed",
+              "errors": []
+            },
+            "Arc": {
+              "status": "passed",
+              "errors": []
+            },
+            "Circle": {
+              "status": "passed",
+              "errors": []
+            }
+          }
+        },
+        "Context": {
+          "n": 15,
+          "passed": 15,
+          "failed": 0,
+          "pending": 0,
+          "tests": {
+            "wraps clearRect via clear": {
+              "status": "passed",
+              "errors": []
+            },
+            "wraps fill via paint": {
+              "status": "passed",
+              "errors": []
+            },
+            "wraps stroke via outline": {
+              "status": "passed",
+              "errors": []
+            },
+            "wraps beginPath via begin": {
+              "status": "passed",
+              "errors": []
+            },
+            "wraps closePath via end": {
+              "status": "passed",
+              "errors": []
+            },
+            "wraps moveTo via moveTo": {
+              "status": "passed",
+              "errors": []
+            },
+            "wraps lineTo via lineTo": {
+              "status": "passed",
+              "errors": []
+            },
+            "wraps arc with arc": {
+              "status": "passed",
+              "errors": []
+            },
+            "gradients (not chainable)": {
+              "n": 2,
+              "passed": 2,
+              "failed": 0,
+              "pending": 0,
+              "tests": {
+                "wraps createLinearGradient with gradient.linear": {
+                  "status": "passed",
+                  "errors": []
+                },
+                "wraps createRadialGradient with gradient.radial": {
+                  "status": "passed",
+                  "errors": []
+                }
+              }
+            },
+            "rect": {
+              "n": 3,
+              "passed": 3,
+              "failed": 0,
+              "pending": 0,
+              "tests": {
+                "wraps clearRect with rect.clear": {
+                  "status": "passed",
+                  "errors": []
+                },
+                "wraps fillRect with rect.fill": {
+                  "status": "passed",
+                  "errors": []
+                },
+                "wraps strokeRect with rect.stroke": {
+                  "status": "passed",
+                  "errors": []
+                }
+              }
+            },
+            "style": {
+              "n": 2,
+              "passed": 2,
+              "failed": 0,
+              "pending": 0,
+              "tests": {
+                "wraps fillStyle with style.fill": {
+                  "status": "passed",
+                  "errors": []
+                },
+                "wraps strokeStyle with style.stroke": {
+                  "status": "passed",
+                  "errors": []
+                }
+              }
+            }
+          }
         }
       }
     },
@@ -134,177 +294,37 @@
         }
       }
     },
-    "Canvas": {
-      "n": 23,
-      "passed": 23,
-      "failed": 0,
-      "pending": 0,
-      "tests": {
-        "will render a scene": {
-          "status": "passed",
-          "errors": []
-        },
-        "will render an animation": {
-          "status": "passed",
-          "errors": []
-        },
-        "Context": {
-          "n": 15,
-          "passed": 15,
-          "failed": 0,
-          "pending": 0,
-          "tests": {
-            "wraps clearRect via clear": {
-              "status": "passed",
-              "errors": []
-            },
-            "wraps fill via paint": {
-              "status": "passed",
-              "errors": []
-            },
-            "wraps stroke via outline": {
-              "status": "passed",
-              "errors": []
-            },
-            "wraps beginPath via begin": {
-              "status": "passed",
-              "errors": []
-            },
-            "wraps closePath via end": {
-              "status": "passed",
-              "errors": []
-            },
-            "wraps moveTo via moveTo": {
-              "status": "passed",
-              "errors": []
-            },
-            "wraps lineTo via lineTo": {
-              "status": "passed",
-              "errors": []
-            },
-            "wraps arc with arc": {
-              "status": "passed",
-              "errors": []
-            },
-            "gradients (not chainable)": {
-              "n": 2,
-              "passed": 2,
-              "failed": 0,
-              "pending": 0,
-              "tests": {
-                "wraps createLinearGradient with gradient.linear": {
-                  "status": "passed",
-                  "errors": []
-                },
-                "wraps createRadialGradient with gradient.radial": {
-                  "status": "passed",
-                  "errors": []
-                }
-              }
-            },
-            "rect": {
-              "n": 3,
-              "passed": 3,
-              "failed": 0,
-              "pending": 0,
-              "tests": {
-                "wraps clearRect with rect.clear": {
-                  "status": "passed",
-                  "errors": []
-                },
-                "wraps fillRect with rect.fill": {
-                  "status": "passed",
-                  "errors": []
-                },
-                "wraps strokeRect with rect.stroke": {
-                  "status": "passed",
-                  "errors": []
-                }
-              }
-            },
-            "style": {
-              "n": 2,
-              "passed": 2,
-              "failed": 0,
-              "pending": 0,
-              "tests": {
-                "wraps fillStyle with style.fill": {
-                  "status": "passed",
-                  "errors": []
-                },
-                "wraps strokeStyle with style.stroke": {
-                  "status": "passed",
-                  "errors": []
-                }
-              }
-            }
-          }
-        },
-        "Helpers": {
-          "n": 6,
-          "passed": 6,
-          "failed": 0,
-          "pending": 0,
-          "tests": {
-            "Clear": {
-              "status": "passed",
-              "errors": []
-            },
-            "FilledRect": {
-              "status": "passed",
-              "errors": []
-            },
-            "BorderedRect": {
-              "status": "passed",
-              "errors": []
-            },
-            "Rect": {
-              "status": "passed",
-              "errors": []
-            },
-            "Arc": {
-              "status": "passed",
-              "errors": []
-            },
-            "Circle": {
-              "status": "passed",
-              "errors": []
-            }
-          }
-        }
-      }
-    },
-    "GitHubProfile": {
-      "n": 3,
-      "passed": 3,
-      "failed": 0,
-      "pending": 0,
-      "tests": {
-        "will silently handle errors": {
-          "status": "passed",
-          "errors": []
-        },
-        "will load some github profile info when given a username prop": {
-          "status": "passed",
-          "errors": []
-        },
-        "changes state when updated with new props": {
-          "status": "passed",
-          "errors": []
-        }
-      }
-    },
-    "Info": {
+    "StateDecorator": {
       "n": 2,
       "passed": 2,
       "failed": 0,
       "pending": 0,
       "tests": {
-        "should handle click events": {
+        "should push down the next value to component": {
           "status": "passed",
           "errors": []
         },
-        "should change state based on props": {
+        "should change saved values list": {
+          "status": "passed",
+          "errors": []
+        }
+      }
+    },
+    "Spinner": {
+      "n": 3,
+      "passed": 3,
+      "failed": 0,
+      "pending": 0,
+      "tests": {
+        "should pass to a component pruned props": {
+          "status": "passed",
+          "errors": []
+        },
+        "should cover a component with a spinner": {
+          "status": "passed",
+          "errors": []
+        },
+        "should not cover a component with a spinner": {
           "status": "passed",
           "errors": []
         }
@@ -337,26 +357,6 @@
           "errors": []
         },
         "should change state based on props": {
-          "status": "passed",
-          "errors": []
-        }
-      }
-    },
-    "Spinner": {
-      "n": 3,
-      "passed": 3,
-      "failed": 0,
-      "pending": 0,
-      "tests": {
-        "should pass to a component pruned props": {
-          "status": "passed",
-          "errors": []
-        },
-        "should cover a component with a spinner": {
-          "status": "passed",
-          "errors": []
-        },
-        "should not cover a component with a spinner": {
           "status": "passed",
           "errors": []
         }

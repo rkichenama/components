@@ -114,7 +114,7 @@ const transposeData = data => {
 const renderDataColumn = (col, c) => {
   let value = col;
   if (col instanceof Object) {
-    value = Array.isArray(col) ? renderList(col) : col.name;
+    value = Array.isArray(col) ? renderList(col) : (col.raw || col.name || col.toString());
   }
   return (
     <Catcher key={c}><td>{ value }</td></Catcher>

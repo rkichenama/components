@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import './Info.scss';
 
-const renderableType = PropTypes.oneOfType([
+const RenderableType = PropTypes.oneOfType([
   PropTypes.string,
   PropTypes.node,
   PropTypes.array, // string or nodes, assumed to be renderable
@@ -17,8 +17,8 @@ const renderableType = PropTypes.oneOfType([
 export default class Info extends PureComponent {
   static propTypes = {
     /** the replacement for `summary` tag, should accept a string or nodes */
-    title: renderableType,
-    children: renderableType,
+    title: RenderableType,
+    children: RenderableType,
     className: PropTypes.string,
     /** toggles whether the caret should be on the right if present and/or true */
     right: PropTypes.bool,
@@ -46,7 +46,7 @@ export default class Info extends PureComponent {
   };
 
   componentWillMount () { this.preloadOpenState() }
-  
+
   componentWillReceiveProps (props) { this.preloadOpenState(props) }
 
   /**

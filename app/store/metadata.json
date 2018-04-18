@@ -394,7 +394,7 @@
         {
           "type": {
             "name": "custom",
-            "raw": "renderableType"
+            "raw": "RenderableType"
           },
           "required": false,
           "description": "the replacement for `summary` tag, should accept a string or nodes",
@@ -403,7 +403,7 @@
         {
           "type": {
             "name": "custom",
-            "raw": "renderableType"
+            "raw": "RenderableType"
           },
           "required": false,
           "description": "",
@@ -766,7 +766,45 @@
     "TreeMap": {
       "description": "My interpretation of a treemap",
       "displayName": "TreeMap",
-      "methods": [],
+      "methods": [
+        {
+          "name": "renderTreeNodes",
+          "docblock": "recursively render the tree into Nodes\n@param {number} depth - how deep is this current level\n@param {Array} tree - list of nodes at this level of the tree\n@param {nunber} totalSize - size of the root\n@return {array} - list of renderable nodes",
+          "modifiers": [
+            "static"
+          ],
+          "params": [
+            {
+              "name": "depth",
+              "description": "how deep is this current level",
+              "type": {
+                "name": "number"
+              }
+            },
+            {
+              "name": "tree",
+              "description": "list of nodes at this level of the tree",
+              "type": {
+                "name": "Array"
+              }
+            },
+            {
+              "name": "totalSize",
+              "description": "size of the root",
+              "type": {
+                "name": "nunber"
+              }
+            }
+          ],
+          "returns": {
+            "description": "list of renderable nodes",
+            "type": {
+              "name": "array"
+            }
+          },
+          "description": "recursively render the tree into Nodes"
+        }
+      ],
       "props": [
         {
           "type": {
@@ -775,7 +813,7 @@
           "required": false,
           "description": "used internally, denoted the levels deep this render is and limits how far down the hole we go",
           "defaultValue": {
-            "value": "0",
+            "value": "1",
             "computed": false
           },
           "name": "depth"
@@ -784,8 +822,21 @@
           "type": {
             "name": "arrayOf",
             "value": {
-              "name": "custom",
-              "raw": "TreeNode"
+              "name": "shape",
+              "value": {
+                "size": {
+                  "name": "number",
+                  "required": false
+                },
+                "name": {
+                  "name": "string",
+                  "required": false
+                },
+                "tree": {
+                  "name": "array",
+                  "required": false
+                }
+              }
             }
           },
           "required": false,

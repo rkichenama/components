@@ -16,17 +16,48 @@ export default class TreeMap extends Component {
   static propTypes = {
     /** used internally, denoted the levels deep this render is and limits how far down the hole we go */
     depth: PropTypes.number,
-    tree: PropTypes.arrayOf(TreeNode),
+    tree: PropTypes.arrayOf(PropTypes.shape({
+      size: PropTypes.number,
+      name: PropTypes.string,
+      tree: PropTypes.array
+    })),
     className: PropTypes.string,
     style: PropTypes.object,
   }
 
   static defaultProps = {
-    depth: 0,
+    depth: 1,
     tree: [],
     className: '',
     style: {},
   }
+
+  /**
+   * recursively render the tree into Nodes
+   * @param {number} depth - how deep is this current level
+   * @param {Array} tree - list of nodes at this level of the tree
+   * @param {nunber} totalSize - size of the root
+   * @return {array} - list of renderable nodes
+   */
+  static renderTreeNodes = (
+    depth,
+    tree,
+    totalSize = totalSize = tree.reduce((t, { size }) => (t + size), 0)
+  ) => tree.map(({ name, size, tree}) => {
+    const basis = (size / totalSize * 100);
+    return basis > 5 ? (
+      <article
+        key={name}
+        alt={name}
+        className={`tree-node${depth % 2 ? '' : ' alt'}`}
+        style={{
+          flexBasis: `${basis.toFixed(2)}%`
+        }}
+      >
+        { TreeMap.renderTreeNodes(depth + 1, tree, totalSize) }
+      </article>
+    ) : null;
+  });
 
   render () {
     const {
@@ -36,26 +67,10 @@ export default class TreeMap extends Component {
     const totalSize = tree.reduce((t, { size }) => (t + size), 0);
     return (
       <div
-        className={`tree-map${depth % 2 ? '' : ' alt'} ${className}`}
+        className={`tree-map ${className}`}
         {...{style}}
       >
-        {
-          tree.map(({ name, size, tree}) => {
-            const basis = (size / totalSize * 100);
-            return basis > 5 ? (
-              <article
-                key={name}
-                alt={name}
-                className='tree-node'
-                style={{
-                  flexBasis: `${basis.toFixed(2)}%`
-                }}
-              >
-                <TreeMap depth={depth + 1} {...{ tree }} />
-              </article>
-            ) : null
-          })
-        }
+        { TreeMap.renderTreeNodes(depth, tree) }
       </div>
     );
   }
