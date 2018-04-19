@@ -16,8 +16,8 @@ class Content extends PureComponent {
     data: PropTypes.object.isRequired,
     status: PropTypes.object.isRequired,
     location: PropTypes.shape({
-       pathname: PropTypes.string.isRequired,
-       search: PropTypes.string,
+      pathname: PropTypes.string.isRequired,
+      search: PropTypes.string,
     }).isRequired,
   };
 
@@ -27,7 +27,7 @@ class Content extends PureComponent {
   switchBodyClass ({ search }) {
     if (search) {
       // theme
-      const theme = /theme\=(\w+)/i.exec(search);
+      const theme = /theme=(\w+)/i.exec(search);
       theme && (document.body.className = theme[1]);
     }
   }

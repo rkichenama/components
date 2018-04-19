@@ -20,10 +20,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 ### Added
 * Spinner - text spinner for blocking ui
 * Toggle - A horizontal toggle component
+* TreeMap - A flexbox based alternating row / column chart of relative nesting sizes
+* Odometer - A vertically scrolling counter with variable with and css animations
 ### Changed
 * add `title` prop to ProgressBar
 * updated packages
 * Updated ProgressBar to accept `value` prop to be an array of values
+* Implemented a Union type to translate propTypes to be more readable
 
 ## [1.0.1] - 2018-03-01
 ### Changed

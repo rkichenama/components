@@ -56,7 +56,7 @@ const handlers = {
   custom: (_, { raw }) => `'${raw}' type`,
   arrayOf: ({ name, value, required }) => `${required ? 'required ': ''}Array of ${handlers[name](value)}`,
   objectOf: ({ name, value, required }) => `${required ? 'required ': ''}Object of ${handlers[name](value)}`,
-}
+};
 
 
 const PropsTypes = Union(Object.keys(handlers));

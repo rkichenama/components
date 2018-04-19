@@ -23,7 +23,7 @@ const figureOutBest = (name, value) => {
     return renderTable([value]);
   }
   return value; //string
-}
+};
 
 const fixTypeForName = name => {
   switch (true) {
@@ -47,7 +47,7 @@ const dealWithColumn = column => {
     name,
     type: (type || fixTypeForName(name)),
   };
-}
+};
 
 const renderForColumn = (column, value) => {
   let { type, name } = dealWithColumn(column);
@@ -81,14 +81,14 @@ const renderDefaultValue = value => {
 };
 const renderListItem = (value, index) => (
   <li key={index}>{ value }</li>
-)
-const renderList = (value, index = false) => {
+);
+const renderList = value => {
   return (
     <Catcher>
       <ul className='unstyled'>
         { value.map((v, i) => {
           if (/object/.test(typeof v)) {
-            return (<li key={i}>{ JSON.stringify(v) }</li>)
+            return ( <li key={i}>{ JSON.stringify(v) }</li> );
           }
           return renderListItem(v, i);
         })}
@@ -99,7 +99,7 @@ const renderList = (value, index = false) => {
 const fixUnknowns = value => {
   if (value === null || value === undefined) { return '' }
   return value;
-}
+};
 const xData = data => {
   if (Array.isArray(data)) {
     return data.map(({value, name}) => fixUnknowns(value || name));
@@ -126,7 +126,7 @@ const renderDataColumn = (col, c) => {
 };
 const renderColumn = (col, c) => {
   if (c) {
-    return renderDataColumn(col, c)
+    return renderDataColumn(col, c);
   }
   return (<Catcher key={c}><th>{ col }</th></Catcher>);
 };
@@ -154,10 +154,13 @@ const renderTable = value => {
 
 const sortData = data => [...data].sort((a, b) => {
   if (a.required === b.required) {
-    return a.name ? a.name.localeCompare(b.name) :
-    a.description ? a.description.localeCompare(b.description) : a.value.localeCompare(b.value);
+    return a.name
+      ? a.name.localeCompare(b.name)
+      : a.description
+        ? a.description.localeCompare(b.description)
+        : a.value.localeCompare(b.value);
   }
-  if (a.required) { return -1; }
+  if (a.required) { return -1 }
   return 1;
 });
 
@@ -181,16 +184,21 @@ const renderTableColumn = (column, value) => (
     <Catcher>{ renderForColumn(column, value) }</Catcher>
   </td>
 );
-const renderTableRow = columns => (row, r) =>{
+/* eslint-disable react/display-name */
+const renderTableRow = columns => (row, r) => (
+  <tr key={r}>
+    {
+      columns.map(
+        column => renderTableColumn(
+          column,
+          fixUnknowns(row[(column.name || column)])
+        )
+      )
+    }
+  </tr>
+);
+/* eslint-enable react/display-name */
 
-  return (
-    <tr key={r}>
-      {
-        columns.map(column => renderTableColumn(column, fixUnknowns(row[(column.name || column)])))
-      }
-    </tr>
-  );
-};
 export default class Table extends PureComponent {
   static propTypes = {
     data: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -213,7 +221,7 @@ export default class Table extends PureComponent {
   render () {
     const { props: { data, columns, full }} = this;
 
-    if (!data) { return null; }
+    if (!data) { return null }
 
     const rows = sortData(data);
 
