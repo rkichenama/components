@@ -6,12 +6,184 @@
     "n": 51
   },
   "tests": {
+    "GitHubProfile": {
+      "n": 3,
+      "passed": 3,
+      "failed": 0,
+      "pending": 0,
+      "tests": {
+        "will silently handle errors": {
+          "status": "passed",
+          "errors": []
+        },
+        "will load some github profile info when given a username prop": {
+          "status": "passed",
+          "errors": []
+        },
+        "changes state when updated with new props": {
+          "status": "passed",
+          "errors": []
+        }
+      }
+    },
+    "Cube": {
+      "n": 8,
+      "passed": 8,
+      "failed": 0,
+      "pending": 0,
+      "tests": {
+        "properly rendered": {
+          "n": 2,
+          "passed": 2,
+          "failed": 0,
+          "pending": 0,
+          "tests": {
+            "should trigger a callback when clicked": {
+              "status": "passed",
+              "errors": []
+            },
+            "should change a class when prop changes": {
+              "status": "passed",
+              "errors": []
+            }
+          }
+        },
+        "improperly rendered": {
+          "n": 6,
+          "passed": 6,
+          "failed": 0,
+          "pending": 0,
+          "tests": {
+            "should render 1 children": {
+              "status": "passed",
+              "errors": []
+            },
+            "should render 2 children": {
+              "status": "passed",
+              "errors": []
+            },
+            "should render 3 children": {
+              "status": "passed",
+              "errors": []
+            },
+            "should render 4 children": {
+              "status": "passed",
+              "errors": []
+            },
+            "should render 5 children": {
+              "status": "passed",
+              "errors": []
+            },
+            "should render 7 children": {
+              "status": "passed",
+              "errors": []
+            }
+          }
+        }
+      }
+    },
+    "Card": {
+      "n": 4,
+      "passed": 4,
+      "failed": 0,
+      "pending": 0,
+      "tests": {
+        "properly rendered": {
+          "n": 2,
+          "passed": 2,
+          "failed": 0,
+          "pending": 0,
+          "tests": {
+            "should trigger a callback when clicked": {
+              "status": "passed",
+              "errors": []
+            },
+            "should toggle a class when prop changes": {
+              "status": "passed",
+              "errors": []
+            }
+          }
+        },
+        "improperly rendered": {
+          "n": 2,
+          "passed": 2,
+          "failed": 0,
+          "pending": 0,
+          "tests": {
+            "should render one child": {
+              "status": "passed",
+              "errors": []
+            },
+            "should render two children": {
+              "status": "passed",
+              "errors": []
+            }
+          }
+        }
+      }
+    },
+    "Info": {
+      "n": 2,
+      "passed": 2,
+      "failed": 0,
+      "pending": 0,
+      "tests": {
+        "should handle click events": {
+          "status": "passed",
+          "errors": []
+        },
+        "should change state based on props": {
+          "status": "passed",
+          "errors": []
+        }
+      }
+    },
     "Canvas": {
       "n": 23,
       "passed": 23,
       "failed": 0,
       "pending": 0,
       "tests": {
+        "will render a scene": {
+          "status": "passed",
+          "errors": []
+        },
+        "will render an animation": {
+          "status": "passed",
+          "errors": []
+        },
+        "Helpers": {
+          "n": 6,
+          "passed": 6,
+          "failed": 0,
+          "pending": 0,
+          "tests": {
+            "Clear": {
+              "status": "passed",
+              "errors": []
+            },
+            "FilledRect": {
+              "status": "passed",
+              "errors": []
+            },
+            "BorderedRect": {
+              "status": "passed",
+              "errors": []
+            },
+            "Rect": {
+              "status": "passed",
+              "errors": []
+            },
+            "Arc": {
+              "status": "passed",
+              "errors": []
+            },
+            "Circle": {
+              "status": "passed",
+              "errors": []
+            }
+          }
+        },
         "Context": {
           "n": 15,
           "passed": 15,
@@ -103,182 +275,10 @@
               }
             }
           }
-        },
-        "Helpers": {
-          "n": 6,
-          "passed": 6,
-          "failed": 0,
-          "pending": 0,
-          "tests": {
-            "Clear": {
-              "status": "passed",
-              "errors": []
-            },
-            "FilledRect": {
-              "status": "passed",
-              "errors": []
-            },
-            "BorderedRect": {
-              "status": "passed",
-              "errors": []
-            },
-            "Rect": {
-              "status": "passed",
-              "errors": []
-            },
-            "Arc": {
-              "status": "passed",
-              "errors": []
-            },
-            "Circle": {
-              "status": "passed",
-              "errors": []
-            }
-          }
-        },
-        "will render a scene": {
-          "status": "passed",
-          "errors": []
-        },
-        "will render an animation": {
-          "status": "passed",
-          "errors": []
         }
       }
     },
-    "GitHubProfile": {
-      "n": 3,
-      "passed": 3,
-      "failed": 0,
-      "pending": 0,
-      "tests": {
-        "will silently handle errors": {
-          "status": "passed",
-          "errors": []
-        },
-        "will load some github profile info when given a username prop": {
-          "status": "passed",
-          "errors": []
-        },
-        "changes state when updated with new props": {
-          "status": "passed",
-          "errors": []
-        }
-      }
-    },
-    "Card": {
-      "n": 4,
-      "passed": 4,
-      "failed": 0,
-      "pending": 0,
-      "tests": {
-        "properly rendered": {
-          "n": 2,
-          "passed": 2,
-          "failed": 0,
-          "pending": 0,
-          "tests": {
-            "should trigger a callback when clicked": {
-              "status": "passed",
-              "errors": []
-            },
-            "should toggle a class when prop changes": {
-              "status": "passed",
-              "errors": []
-            }
-          }
-        },
-        "improperly rendered": {
-          "n": 2,
-          "passed": 2,
-          "failed": 0,
-          "pending": 0,
-          "tests": {
-            "should render one child": {
-              "status": "passed",
-              "errors": []
-            },
-            "should render two children": {
-              "status": "passed",
-              "errors": []
-            }
-          }
-        }
-      }
-    },
-    "Cube": {
-      "n": 8,
-      "passed": 8,
-      "failed": 0,
-      "pending": 0,
-      "tests": {
-        "properly rendered": {
-          "n": 2,
-          "passed": 2,
-          "failed": 0,
-          "pending": 0,
-          "tests": {
-            "should trigger a callback when clicked": {
-              "status": "passed",
-              "errors": []
-            },
-            "should change a class when prop changes": {
-              "status": "passed",
-              "errors": []
-            }
-          }
-        },
-        "improperly rendered": {
-          "n": 6,
-          "passed": 6,
-          "failed": 0,
-          "pending": 0,
-          "tests": {
-            "should render 1 children": {
-              "status": "passed",
-              "errors": []
-            },
-            "should render 2 children": {
-              "status": "passed",
-              "errors": []
-            },
-            "should render 3 children": {
-              "status": "passed",
-              "errors": []
-            },
-            "should render 4 children": {
-              "status": "passed",
-              "errors": []
-            },
-            "should render 5 children": {
-              "status": "passed",
-              "errors": []
-            },
-            "should render 7 children": {
-              "status": "passed",
-              "errors": []
-            }
-          }
-        }
-      }
-    },
-    "Info": {
-      "n": 2,
-      "passed": 2,
-      "failed": 0,
-      "pending": 0,
-      "tests": {
-        "should handle click events": {
-          "status": "passed",
-          "errors": []
-        },
-        "should change state based on props": {
-          "status": "passed",
-          "errors": []
-        }
-      }
-    },
-    "ClickDecorator": {
+    "StateDecorator": {
       "n": 2,
       "passed": 2,
       "failed": 0,
@@ -294,7 +294,7 @@
         }
       }
     },
-    "StateDecorator": {
+    "ClickDecorator": {
       "n": 2,
       "passed": 2,
       "failed": 0,
@@ -326,22 +326,6 @@
         }
       }
     },
-    "Toggle": {
-      "n": 2,
-      "passed": 2,
-      "failed": 0,
-      "pending": 0,
-      "tests": {
-        "should handle click events": {
-          "status": "passed",
-          "errors": []
-        },
-        "should change state based on props": {
-          "status": "passed",
-          "errors": []
-        }
-      }
-    },
     "Spinner": {
       "n": 3,
       "passed": 3,
@@ -357,6 +341,22 @@
           "errors": []
         },
         "should not cover a component with a spinner": {
+          "status": "passed",
+          "errors": []
+        }
+      }
+    },
+    "Toggle": {
+      "n": 2,
+      "passed": 2,
+      "failed": 0,
+      "pending": 0,
+      "tests": {
+        "should handle click events": {
+          "status": "passed",
+          "errors": []
+        },
+        "should change state based on props": {
           "status": "passed",
           "errors": []
         }
