@@ -11,21 +11,26 @@ class Column extends Component {
   }
 
   state = {
-    animating: true
+    animating: true,
+    prevValue: 0,
+  }
+
+  shouldComponentUpdate ({ value }) {
+    return value !== this.state.prevValue;
   }
 
   componentWillReceiveProps () {
     this.setState({ animating: true });
   }
 
-  handleTransitionEnd = ({ target }) => setTimeout(() => this.setState({ animating: false }), 250);
+  handleTransitionEnd = ({ target }) => setTimeout(() => this.setState({ animating: false, prevValue: this.props.value }), 250);
 
   /**
    * for a given column index, calucate the distance of travel to the new display digit
    *
    */
   calculateDistance = ({ value, size } = this.props, { animating } = this.state) => -(
-    value + (animating ? 10 : 0)
+    value + (animating ? (value ? 10 : 20) : 0)
   ) * size;
 
   /**
@@ -49,11 +54,11 @@ class Column extends Component {
     return digits;
   };
 
-  render () {console.log(this.calculateDistance() / this.props.size);
+  render () {
     return (
       <div className={`column${ this.state.animating ? ' animating' : ''}`} style={{ transform: `translateY(${this.calculateDistance()}px)`, transitionDelay: `${50 * this.props.place}ms`}} onTransitionEnd={this.handleTransitionEnd}>
         {
-          this.renderDigits(20)
+          this.renderDigits(21)
         }
       </div>
     )
@@ -78,16 +83,19 @@ export default class Odometer extends PureComponent {
 
   state = {
     value: '',
-    animating: [],
+    prevValue: '',
   }
 
   componentWillReceiveProps ({ value, digits }, init = false) {
     if (init || (value !== this.props.value)) {
-      this.setState({ value: this.stringify(value, digits), animating: Array(digits).fill(true) })
+      this.setState({
+        value: this.stringify(value, digits),
+        prevValue: this.stringify(this.state.value, digits)
+      });
     }
   }
 
-  componentDidMount () { this.componentWillReceiveProps(this.props, true); }
+  componentDidMount () { this.componentWillReceiveProps(this.props, true) }
 
   /**
    * make the value into a string, front padded with zeros
@@ -101,12 +109,13 @@ export default class Odometer extends PureComponent {
    * @param {number} c - number of columns to render
    * @return {Node} - multiple column nodes
    * */
-  renderColumns = (c = 7) => {
+  renderColumns = (c = this.props.digits) => {
     const columns = [];
-    for (let i = 0; i < c; ++i)
+    for (let i = 0; i < Math.max(c, this.state.value.length); ++i) {
       columns.push((
         <Column key={i} place={6 - i} value={Number(this.state.value[i] || 0)} size={this.props.size} />
       ));
+    }
     return columns;
   };
 

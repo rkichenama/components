@@ -10,13 +10,13 @@ export default class extends React.PureComponent {
 
   componentDidMount () {
     setInterval(() => this.setState(({ value }) =>
-    ({ value: ++value /* Math.ceil(Math.random() * 9999999) */ })), 2500);
+    ({ value: Math.ceil(Math.random() * 9999999) })), 1000);
   }
 
   render () {
     return (
       <Stage style={{ flexBasis: '80%', '--glyph': '96px' }}>
-        <Odometer digits={1} size={96} value={this.state.value}/>
+        <Odometer size={96} value={this.state.value}/>
       </Stage>
     );
   }
