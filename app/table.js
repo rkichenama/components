@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Markdown from './markdown';
 import Catcher from './error';
 import translateProp from './translateProp';
+import translateParams from './translateParams';
 
 const DefaultValues = {
   [`''`]: 'empty string',
@@ -60,11 +61,22 @@ const renderForColumn = (column, value) => {
     ( /list/i.test(type) && renderList(value) ) ||
     ( /table/i.test(type) && renderTable(value) ) ||
     ( /props/i.test(type) && renderPropColumn(value) ) ||
+    ( /params/i.test(type) && renderParamsColumn(value) ) ||
     figureOutBest(name, value) // string
   );
 };
 
 const renderPropColumn = value => translateProp(value);
+const renderParamsColumn = value => {
+  const v = Array.isArray(value) ? value : [ value ];
+  return (
+    <Catcher>
+      <ul className='unstyled'>
+      { v.map(translateParams).map(renderListItem) }
+      </ul>
+    </Catcher>
+  );
+};
 
 const renderNumber = (value, percent) => (
   <Catcher><div className='text-right'>{ percent ? `${ Number(value).toFixed(2) }%` : value }</div></Catcher>

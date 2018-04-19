@@ -79,10 +79,9 @@ class Content extends PureComponent {
                     'name', {
                       name: 'modifiers', type: 'list'
                     }, {
-                      name: 'params', type: 'table'
-                    },
-                    {
-                      name: 'returns', type: 'table'
+                      name: 'params', type: 'params'
+                    },{
+                      name: 'returns', type: 'params'
                     }, {
                       name: 'docblock', type: 'markdown'
                     },

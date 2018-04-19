@@ -7,7 +7,7 @@ const randBetween = (ceil, floor = 0) => floor + randUnder(ceil);
 const randStr = () => Math.random().toString(36).replace(/[^a-z]+/g, '').substring(0,4);
 const generateDemoTree = (depth, max = randBetween(100000, 10)) => {
   if (depth <= 0) { return [] }
-  return Array(randUnder(3)).fill(0)
+  return Array(randUnder(5)).fill(0)
     .map((_, i) => {
       const size = randBetween(max, 10);
       return {
@@ -17,7 +17,7 @@ const generateDemoTree = (depth, max = randBetween(100000, 10)) => {
       }
     });
 };
-const depth = 15;
+const depth = 10;
 
 export default class extends React.PureComponent {
   state = {

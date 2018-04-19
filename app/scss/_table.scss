@@ -54,3 +54,7 @@ table {
     text-transform: capitalize;
   }
 }
+
+.data-type { color: var(--clr-accent); }
+.variable-name { color: var(--clr-highlight); }
+.variable-desc { color: #808080 }
