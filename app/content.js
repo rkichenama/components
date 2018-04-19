@@ -35,7 +35,7 @@ class Content extends PureComponent {
   render () {
     const { props: { data, location: { pathname }, status }} = this;
     const doc = data[pathname.substring(1)] || false;
-    
+
     let k = 0;
 
     return (
@@ -68,7 +68,7 @@ class Content extends PureComponent {
                   <Table {...{columns: [
                     { name: 'required', type: 'bool' },
                     'name',
-                    { name: 'type', type: 'table' },
+                    { name: 'type', type: 'props' },
                     'defaultValue', 'description'
                   ], data: doc.props}} />
                 </section>
