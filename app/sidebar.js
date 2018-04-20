@@ -5,8 +5,17 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 const dictionary = {
+  'Card': ['Containers'],
   'ClickDecorator': ['Decorators'],
+  'Cube': ['Containers'],
+  'GitHubProfile': ['Controls'],
+  'Info': ['Containers'],
+  'Odometer': ['Visualizations'],
+  'ProgressBar': ['Visualizations'],
+  'Spinner': ['Controls'],
   'StateDecorator': ['Decorators'],
+  'Toggle': ['Controls'],
+  'TreeMap': ['Visualizations'],
 };
 const keys = Object.keys(dictionary);
 
@@ -36,7 +45,7 @@ class Folder extends PureComponent {
     );
   }
 }
- 
+
 const createObjectPath = (obj, path, component) => {
   if (path.length) {
     const fldr = path.shift();
@@ -122,10 +131,8 @@ class Sidebar extends PureComponent {
   }
 }
 
-const mapStateToProps = ({ keys: components }) => ({
-  components
-});
-
 export default withRouter(connect(
-  mapStateToProps
+  ({ keys: components }) => ({
+    components
+  })
 )(Sidebar));

@@ -32,7 +32,8 @@ $glyphHeight: 48px;
     }
 
     &.animating {
-      transition: transform .5s ease-out;
+      transition: transform .5s;
+      transition-timing-function: cubic-bezier(1, 0, 0, 1);
     }
   }
 }
