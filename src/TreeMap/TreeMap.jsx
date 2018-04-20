@@ -20,14 +20,13 @@ export default class TreeMap extends Component {
       size: PropTypes.number,
       name: PropTypes.string,
       tree: PropTypes.array
-    })),
+    })).isRequired,
     className: PropTypes.string,
     style: PropTypes.object,
   }
 
   static defaultProps = {
     depth: 1,
-    tree: [],
     className: '',
     style: {},
   }

@@ -2,8 +2,8 @@
   "meta": {
     "failed": 0,
     "passed": 51,
-    "pending": 0,
-    "n": 51
+    "pending": 1,
+    "n": 52
   },
   "tests": {
     "GitHubProfile": {
@@ -222,22 +222,6 @@
         }
       }
     },
-    "Info": {
-      "n": 2,
-      "passed": 2,
-      "failed": 0,
-      "pending": 0,
-      "tests": {
-        "should handle click events": {
-          "status": "passed",
-          "errors": []
-        },
-        "should change state based on props": {
-          "status": "passed",
-          "errors": []
-        }
-      }
-    },
     "Card": {
       "n": 4,
       "passed": 4,
@@ -278,6 +262,22 @@
         }
       }
     },
+    "Toggle": {
+      "n": 2,
+      "passed": 2,
+      "failed": 0,
+      "pending": 0,
+      "tests": {
+        "should handle click events": {
+          "status": "passed",
+          "errors": []
+        },
+        "should change state based on props": {
+          "status": "passed",
+          "errors": []
+        }
+      }
+    },
     "ProgressBar": {
       "n": 2,
       "passed": 2,
@@ -294,7 +294,23 @@
         }
       }
     },
-    "StateDecorator": {
+    "Info": {
+      "n": 2,
+      "passed": 2,
+      "failed": 0,
+      "pending": 0,
+      "tests": {
+        "should handle click events": {
+          "status": "passed",
+          "errors": []
+        },
+        "should change state based on props": {
+          "status": "passed",
+          "errors": []
+        }
+      }
+    },
+    "ClickDecorator": {
       "n": 2,
       "passed": 2,
       "failed": 0,
@@ -310,7 +326,7 @@
         }
       }
     },
-    "ClickDecorator": {
+    "StateDecorator": {
       "n": 2,
       "passed": 2,
       "failed": 0,
@@ -346,18 +362,14 @@
         }
       }
     },
-    "Toggle": {
-      "n": 2,
-      "passed": 2,
+    "TreeMap": {
+      "n": 1,
+      "passed": 0,
       "failed": 0,
-      "pending": 0,
+      "pending": 1,
       "tests": {
-        "should handle click events": {
-          "status": "passed",
-          "errors": []
-        },
-        "should change state based on props": {
-          "status": "passed",
+        "should render a treemap": {
+          "status": "pending",
           "errors": []
         }
       }

@@ -839,12 +839,8 @@
               }
             }
           },
-          "required": false,
+          "required": true,
           "description": "",
-          "defaultValue": {
-            "value": "[]",
-            "computed": false
-          },
           "name": "tree"
         },
         {
