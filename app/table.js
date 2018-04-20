@@ -72,7 +72,7 @@ const renderParamsColumn = value => {
   return (
     <Catcher>
       <ul className='unstyled'>
-      { v.map(translateParams).map(renderListItem) }
+        { v.map(translateParams).map(renderListItem) }
       </ul>
     </Catcher>
   );

@@ -1,3 +1,5 @@
+@import "./fonts/fira_code.css";
+
 table {
   // width: 100%;
 
@@ -54,6 +56,10 @@ table {
     text-transform: capitalize;
   }
 }
+
+.data-type,
+.variable-name,
+.variable-desc { font-family: 'Fira Code'; font-size: .8em }
 
 .data-type { color: var(--clr-accent); }
 .variable-name { color: var(--clr-highlight); }
