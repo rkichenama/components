@@ -21,11 +21,14 @@ $glyphHeight: 48px;
     transform: translateY(0);
     margin-left: 4px;
 
+    & + .column .digit {
+      border-left: 1px solid black;
+    }
+
     .digit {
       text-align: center;
       height: var(--glyph, $glyphHeight);
       padding: 0 4px;
-      border-left: 1px solid black;
       -webkit-text-stroke: 2px black;
       text-stroke: 2px black;
       // color: transparent;
