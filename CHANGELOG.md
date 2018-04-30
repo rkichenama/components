@@ -28,6 +28,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 * Updated ProgressBar to accept `value` prop to be an array of values
 * Implemented a Union type to translate propTypes to be more readable
 * Implemented custom column render for function parameters and return values
+* Update Cube transitions to be more 3d
 
 ## [1.0.1] - 2018-03-01
 ### Changed

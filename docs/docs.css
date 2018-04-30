@@ -72,11 +72,14 @@ canvas.canvas {
 @supports not (display: grid) {
   .card {
     margin: 4px; } }
+body {
+  --cube-square: 96px; }
+
 .cube {
   position: relative;
   perspective: 100vw;
-  width: 96px;
-  height: 96px; }
+  width: var(--cube-square, 96px);
+  height: var(--cube-square, 96px); }
   .cube.front .flip {
     transform: rotateX(0deg) rotateY(0deg); }
   .cube.back .flip {
@@ -111,18 +114,17 @@ canvas.canvas {
     justify-content: center;
     align-items: center; }
   .cube .front {
-    z-index: 2;
-    transform: rotateY(0deg); }
+    transform: translateZ(calc(var(--cube-square, $cube-square) / +2)) rotateY(0deg); }
   .cube .back {
-    transform: rotateY(180deg); }
+    transform: translateZ(calc(var(--cube-square, $cube-square) / -2)) rotateY(180deg); }
   .cube .left {
-    transform: rotateY(-90deg); }
+    transform: translateX(calc(var(--cube-square, $cube-square) / -2)) rotateY(-90deg); }
   .cube .right {
-    transform: rotateY(90deg); }
+    transform: translateX(calc(var(--cube-square, $cube-square) / +2)) rotateY(90deg); }
   .cube .top {
-    transform: rotateX(90deg); }
+    transform: translateY(calc(var(--cube-square, $cube-square) / -2)) rotateX(90deg); }
   .cube .bottom {
-    transform: rotateX(-90deg); }
+    transform: translateY(calc(var(--cube-square, $cube-square) / +2)) rotateX(-90deg); }
 
 @supports not (display: grid) {
   .cube {
@@ -170,7 +172,8 @@ canvas.canvas {
       -webkit-text-stroke: 2px black;
       text-stroke: 2px black; }
     .odometer .column.animating {
-      transition: transform .5s ease-out; }
+      transition: transform .5s;
+      transition-timing-function: cubic-bezier(1, 0, 0, 1); }
 .status-progress {
   position: relative;
   display: flex;
@@ -562,6 +565,21 @@ table th {
   text-align: center;
   font-weight: normal;
   text-transform: capitalize; }
+
+.data-type,
+.variable-name,
+.variable-desc {
+  font-family: 'Fira Code';
+  font-size: .8em; }
+
+.data-type {
+  color: var(--clr-accent); }
+
+.variable-name {
+  color: var(--clr-highlight); }
+
+.variable-desc {
+  color: #808080; }
 
 p {
   margin: 0;
