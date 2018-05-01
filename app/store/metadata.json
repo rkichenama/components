@@ -176,6 +176,26 @@
       "displayName": "ClickDecorator",
       "methods": [
         {
+          "name": "getNext",
+          "docblock": "@returns {Object} - { next, allValues }",
+          "modifiers": [],
+          "params": [
+            {
+              "name": "list"
+            },
+            {
+              "name": "current"
+            }
+          ],
+          "returns": {
+            "description": "{ next, allValues }",
+            "type": {
+              "name": "Object"
+            }
+          },
+          "description": null
+        },
+        {
           "name": "handleClickEvent",
           "docblock": "internal click event handler\n@param {Event} evt - a click event",
           "modifiers": [],
@@ -208,6 +228,18 @@
           "required": true,
           "description": "the list of values to loop through",
           "name": "values"
+        },
+        {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "flag to determine whether the values should be sequential or random",
+          "defaultValue": {
+            "value": "true",
+            "computed": false
+          },
+          "name": "seq"
         }
       ],
       "filename": "src/ClickDecorator/ClickDecorator.jsx"
@@ -674,7 +706,28 @@
     "StateDecorator": {
       "description": "This render prop HOC iterates over a list of values, pushing the current to the given component prop\nand moving it to the end of the list, endlessly looping with no user interaction.",
       "displayName": "StateDecorator",
-      "methods": [],
+      "methods": [
+        {
+          "name": "getNext",
+          "docblock": "@returns {Object} - { next, allValues }",
+          "modifiers": [],
+          "params": [
+            {
+              "name": "list"
+            },
+            {
+              "name": "current"
+            }
+          ],
+          "returns": {
+            "description": "{ next, allValues }",
+            "type": {
+              "name": "Object"
+            }
+          },
+          "description": null
+        }
+      ],
       "props": [
         {
           "type": {
@@ -703,6 +756,18 @@
           "required": true,
           "description": "the list of values to loop through",
           "name": "values"
+        },
+        {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "flag to determine whether the values should be sequential or random",
+          "defaultValue": {
+            "value": "true",
+            "computed": false
+          },
+          "name": "seq"
         }
       ],
       "filename": "src/StateDecorator/StateDecorator.jsx"

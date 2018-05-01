@@ -10,9 +10,9 @@ const centered = {
 export default class extends React.Component {
   render () {
     return (
-      <Stage>
+      <Stage style={{ height: '200px' }}>
         <RandomUsers count={6} component={results => (
-          <ClickDecorator values={['front', 'back', 'left', 'right', 'top', 'bottom']} component={face => (
+          <ClickDecorator seq={false} values={['front', 'back', 'left', 'right', 'top', 'bottom']} component={face => (
             <Cube face={face}>
               {
                 results.map(({ name, picture }, u) => (

@@ -10,7 +10,7 @@ const centered = {
 export default class extends React.Component {
   render () {
     return (
-      <Stage>
+      <Stage style={{ height: '200px' }}>
         <RandomUsers count={60} component={users => users.reduce(
           (t, c, i) => {
             if (i % 6) { t[t.length - 1].push(c) }
