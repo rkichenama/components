@@ -44,7 +44,7 @@ export default class TreeMap extends Component {
     totalSize = totalSize = tree.reduce((t, { size }) => (t + size), 0)
   ) => tree.map(({ name, size, tree}) => {
     const basis = (size / totalSize * 100);
-    return basis > 5 ? (
+    return basis > 1 ? (
       <article
         key={name}
         alt={name}

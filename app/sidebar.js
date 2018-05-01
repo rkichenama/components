@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Catcher from './error';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
@@ -69,7 +68,7 @@ const List = (subtree, currentPage, handleClick) => (
             <Item key={i} lbl={key} onClick={e => handleClick(e, key)} className={
               currentPage === key ? 'active' : null
             } />
-          )
+          );
         }
       })
     }
