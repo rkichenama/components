@@ -25,7 +25,7 @@ export default class Demo extends PureComponent {
             <Component key={0} />
           </Catcher>
         </div>
-        <Highlighter key={1} language='javascript' {...{ style }} showLineNumbers wrapLines>
+        <Highlighter key={1} language='jsx' {...{ style }} showLineNumbers wrapLines>
           { source }
         </Highlighter>
       </div>

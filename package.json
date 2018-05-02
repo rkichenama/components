@@ -65,7 +65,7 @@
     "react-markdown": "^3.3.0",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
-    "react-syntax-highlighter": "^7.0.2",
+    "react-syntax-highlighter": "^7.0.3",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
     "sass-loader": "^6.0.6",
