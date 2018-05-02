@@ -44,7 +44,7 @@ const handlers = {
     if (Array.isArray(list)) {
       result = <span>[ {
         list
-          .map(({ value }, i) => <span key={i}><span className='variable-name'>{value}</span>, </span>)
+          .map(({ value }, i) => <span key={i}><span className='variable-name'>{value}</span>,<br /></span>)
       } ]</span>;
     } else {
       result = <span>computed from <span className='data-type'>{list}</span></span>;
@@ -53,10 +53,10 @@ const handlers = {
   },
   // 'oneOfType'
   union: list => <span>
-    one of [ {
+    one of [<br />{
       list
         .map(
-          ({ name, value, ...others }, i) => <span key={i}>{handlers[name](value, others)}, </span>
+          ({ name, value, ...others }, i) => <span key={i}>{handlers[name](value, others)},<br /></span>
         )
     } ]
   </span>,

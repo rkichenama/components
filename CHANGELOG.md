@@ -22,6 +22,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 * Toggle - A horizontal toggle component
 * TreeMap - A flexbox based alternating row / column chart of relative nesting sizes
 * Odometer - A vertically scrolling counter with variable with and css animations
+* MenuBar - A navigation bar that allows or right aligned minimization
 ### Changed
 * add `title` prop to ProgressBar
 * updated packages
@@ -31,6 +32,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 * Update Cube transitions to be more 3d
 * Add randomness to current decorators, State and Click
 * Revive dice Cube example
+* tweak easing for Cube
+
 
 ## [1.0.1] - 2018-03-01
 ### Changed

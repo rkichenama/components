@@ -492,6 +492,76 @@
       ],
       "filename": "src/Info/Info.jsx"
     },
+    "MenuBar": {
+      "description": "MenuBar",
+      "displayName": "MenuBar",
+      "methods": [
+        {
+          "name": "renderItems",
+          "docblock": "@return {Object} - the component children each wrapped with a list item\n@memberof MenuBar",
+          "modifiers": [],
+          "params": [],
+          "returns": {
+            "description": "the component children each wrapped with a list item",
+            "type": {
+              "name": "Object"
+            }
+          },
+          "description": null
+        },
+        {
+          "name": "handleMoreClick",
+          "docblock": "toggles the open state of the More menu\n@param {Event} evt",
+          "modifiers": [],
+          "params": [
+            {
+              "name": "evt",
+              "description": null,
+              "type": {
+                "name": "Event"
+              }
+            }
+          ],
+          "returns": null,
+          "description": "toggles the open state of the More menu"
+        }
+      ],
+      "props": [
+        {
+          "type": {
+            "name": "union",
+            "value": [
+              {
+                "name": "number"
+              },
+              {
+                "name": "func"
+              }
+            ]
+          },
+          "required": false,
+          "description": "number of items to show in the primary row",
+          "defaultValue": {
+            "value": "4",
+            "computed": false
+          },
+          "name": "maxDisplay"
+        },
+        {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "flag for whether the more menu should be initially open",
+          "defaultValue": {
+            "value": "false",
+            "computed": false
+          },
+          "name": "initOpen"
+        }
+      ],
+      "filename": "src/MenuBar/MenuBar.jsx"
+    },
     "Odometer": {
       "description": "An odometer that would display a positive numer ina rolling fashion",
       "displayName": "Odometer",
@@ -943,6 +1013,7 @@
     "Cube",
     "GitHubProfile",
     "Info",
+    "MenuBar",
     "Odometer",
     "ProgressBar",
     "Spinner",

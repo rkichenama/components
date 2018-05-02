@@ -6,42 +6,6 @@
     "n": 53
   },
   "tests": {
-    "StateDecorator": {
-      "n": 3,
-      "passed": 3,
-      "failed": 0,
-      "pending": 0,
-      "tests": {
-        "sequence": {
-          "n": 2,
-          "passed": 2,
-          "failed": 0,
-          "pending": 0,
-          "tests": {
-            "should push down the next value to component": {
-              "status": "passed",
-              "errors": []
-            },
-            "should change saved values list": {
-              "status": "passed",
-              "errors": []
-            }
-          }
-        },
-        "random": {
-          "n": 1,
-          "passed": 1,
-          "failed": 0,
-          "pending": 0,
-          "tests": {
-            "should not change the order of the items in state": {
-              "status": "passed",
-              "errors": []
-            }
-          }
-        }
-      }
-    },
     "GitHubProfile": {
       "n": 3,
       "passed": 3,
@@ -58,6 +22,18 @@
         },
         "changes state when updated with new props": {
           "status": "passed",
+          "errors": []
+        }
+      }
+    },
+    "TreeMap": {
+      "n": 1,
+      "passed": 0,
+      "failed": 0,
+      "pending": 1,
+      "tests": {
+        "should render a treemap": {
+          "status": "pending",
           "errors": []
         }
       }
@@ -118,22 +94,6 @@
         }
       }
     },
-    "ProgressBar": {
-      "n": 2,
-      "passed": 2,
-      "failed": 0,
-      "pending": 0,
-      "tests": {
-        "should have zero value": {
-          "status": "passed",
-          "errors": []
-        },
-        "should changes value on props": {
-          "status": "passed",
-          "errors": []
-        }
-      }
-    },
     "Canvas": {
       "n": 23,
       "passed": 23,
@@ -147,6 +107,38 @@
         "will render an animation": {
           "status": "passed",
           "errors": []
+        },
+        "Helpers": {
+          "n": 6,
+          "passed": 6,
+          "failed": 0,
+          "pending": 0,
+          "tests": {
+            "Clear": {
+              "status": "passed",
+              "errors": []
+            },
+            "FilledRect": {
+              "status": "passed",
+              "errors": []
+            },
+            "BorderedRect": {
+              "status": "passed",
+              "errors": []
+            },
+            "Rect": {
+              "status": "passed",
+              "errors": []
+            },
+            "Arc": {
+              "status": "passed",
+              "errors": []
+            },
+            "Circle": {
+              "status": "passed",
+              "errors": []
+            }
+          }
         },
         "Context": {
           "n": 15,
@@ -239,82 +231,6 @@
               }
             }
           }
-        },
-        "Helpers": {
-          "n": 6,
-          "passed": 6,
-          "failed": 0,
-          "pending": 0,
-          "tests": {
-            "Clear": {
-              "status": "passed",
-              "errors": []
-            },
-            "FilledRect": {
-              "status": "passed",
-              "errors": []
-            },
-            "BorderedRect": {
-              "status": "passed",
-              "errors": []
-            },
-            "Rect": {
-              "status": "passed",
-              "errors": []
-            },
-            "Arc": {
-              "status": "passed",
-              "errors": []
-            },
-            "Circle": {
-              "status": "passed",
-              "errors": []
-            }
-          }
-        }
-      }
-    },
-    "ClickDecorator": {
-      "n": 2,
-      "passed": 2,
-      "failed": 0,
-      "pending": 0,
-      "tests": {
-        "should push down the next value to component": {
-          "status": "passed",
-          "errors": []
-        },
-        "should change saved values list": {
-          "status": "passed",
-          "errors": []
-        }
-      }
-    },
-    "Info": {
-      "n": 2,
-      "passed": 2,
-      "failed": 0,
-      "pending": 0,
-      "tests": {
-        "should handle click events": {
-          "status": "passed",
-          "errors": []
-        },
-        "should change state based on props": {
-          "status": "passed",
-          "errors": []
-        }
-      }
-    },
-    "TreeMap": {
-      "n": 1,
-      "passed": 0,
-      "failed": 0,
-      "pending": 1,
-      "tests": {
-        "should render a treemap": {
-          "status": "pending",
-          "errors": []
         }
       }
     },
@@ -358,6 +274,74 @@
         }
       }
     },
+    "StateDecorator": {
+      "n": 3,
+      "passed": 3,
+      "failed": 0,
+      "pending": 0,
+      "tests": {
+        "sequence": {
+          "n": 2,
+          "passed": 2,
+          "failed": 0,
+          "pending": 0,
+          "tests": {
+            "should push down the next value to component": {
+              "status": "passed",
+              "errors": []
+            },
+            "should change saved values list": {
+              "status": "passed",
+              "errors": []
+            }
+          }
+        },
+        "random": {
+          "n": 1,
+          "passed": 1,
+          "failed": 0,
+          "pending": 0,
+          "tests": {
+            "should not change the order of the items in state": {
+              "status": "passed",
+              "errors": []
+            }
+          }
+        }
+      }
+    },
+    "Info": {
+      "n": 2,
+      "passed": 2,
+      "failed": 0,
+      "pending": 0,
+      "tests": {
+        "should handle click events": {
+          "status": "passed",
+          "errors": []
+        },
+        "should change state based on props": {
+          "status": "passed",
+          "errors": []
+        }
+      }
+    },
+    "Toggle": {
+      "n": 2,
+      "passed": 2,
+      "failed": 0,
+      "pending": 0,
+      "tests": {
+        "should handle click events": {
+          "status": "passed",
+          "errors": []
+        },
+        "should change state based on props": {
+          "status": "passed",
+          "errors": []
+        }
+      }
+    },
     "Spinner": {
       "n": 3,
       "passed": 3,
@@ -378,17 +362,33 @@
         }
       }
     },
-    "Toggle": {
+    "ClickDecorator": {
       "n": 2,
       "passed": 2,
       "failed": 0,
       "pending": 0,
       "tests": {
-        "should handle click events": {
+        "should push down the next value to component": {
           "status": "passed",
           "errors": []
         },
-        "should change state based on props": {
+        "should change saved values list": {
+          "status": "passed",
+          "errors": []
+        }
+      }
+    },
+    "ProgressBar": {
+      "n": 2,
+      "passed": 2,
+      "failed": 0,
+      "pending": 0,
+      "tests": {
+        "should have zero value": {
+          "status": "passed",
+          "errors": []
+        },
+        "should changes value on props": {
           "status": "passed",
           "errors": []
         }

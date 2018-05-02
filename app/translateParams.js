@@ -8,7 +8,7 @@ const CapitalCase = str => str
   .join(' ');
 
 const process = ({
-  name, description = false, type: { name: kind = 'Object' } = {}
+  name, description = false, type: { name: kind = 'no value' } = {}
 }) => (
   <span>
     <span className='data-type'>({ CapitalCase(kind) })&nbsp;</span>
