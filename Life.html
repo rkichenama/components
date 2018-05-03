@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Conway's Game of Life</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--link rel="stylesheet" type="text/css" media="screen" href="main.css" /-->
+  <script src="./Life.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body > section:not(#board) {
+      width: 100%;
+      max-width: 1000px;
+      margin: auto;
+      text-align: center;
+    }
+    h1 { margin: .5em 0 1em 0; text-align: center; }
+    ul { max-width: 40vw; margin-left: auto; margin-right: auto; text-align: left; }
+    #controls section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #controls section > * + * {
+      margin-left: 6px;
+    }
+    #controls section + section {
+      margin-top: 4px;
+    }
+    #board {
+      display: grid;
+      margin: 1em auto 0;
+      width: 40vw;
+      height: 40vw;
+      grid-template-rows: repeat(12, 1fr);
+      grid-template-columns: repeat(12, 1fr);
+    }
+    #board input[type="checkbox"] {
+      margin: -1px 0 0 -1px;
+      -webkit-appearance: none;
+      appearance: none;
+      background-color: white;
+      border: 1px solid gray;
+      outline: none;
+      animation: death .1s;
+    }
+    #board input[type="checkbox"]:focus,
+    #board input[type="checkbox"]:active {
+      box-shadow: inset 0 0 6px blueviolet;
+    }
+    #board input[type="checkbox"]:checked {
+      background-color: black;
+      animation: birth .1s;
+    }
+    button,
+    .button {
+      display: inline-block;
+      font: inherit;
+      color: white;
+      font-weight: bold;
+      text-shadow: 1px 1px 0px black;
+      padding: .3em .5em;
+      background-image: linear-gradient(to top, #000, transparent 20%, #fff 95%);
+      background-color: #369;
+      background-blend-mode: overlay;
+      outline: none;
+    }
+    #toggle-auto {
+      position:absolute;
+      clip: rect(0, 0, 0, 0);
+    }
+    button:active,
+    #toggle-auto:checked + .button {
+      background-image: linear-gradient(to bottom, #000, transparent 20%, #fff 95%);
+    }
+    button:disabled {
+      background-color: darkslategray;
+    }
+    article {
+      min-height: 1em;
+    }
+
+    @-webkit-keyframes birth {
+      75% {
+        background-color: rgb(0, 255, 0);
+      }
+    }
+
+    @-webkit-keyframes death {
+      25% {
+        background-color: red;
+      }
+    }
+
+    @keyframes birth {
+      75% {
+        background-color: rgb(0, 255, 0);
+      }
+    }
+
+    @keyframes death {
+      25% {
+        background-color: red;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Conway's Game of Life</h1>
+  <section id="controls">
+    <section>
+      <button type="button" id="clear">Clear</button>
+      <button type="button" id="next">Next</button>
+      <input type="checkbox" id="toggle-auto">
+      <label class="button" id="auto" for="toggle-auto">Autoplay</label>
+    </section>
+    <section>
+      <button type="button" id="rand">Randomize</button>
+      <input type="range" min="5" max="50" value="24" id="size">
+    </section>
+  </section>
+  <section id="board">
+  </section>
+  <section id="generations">
+    <article></article>
+  </section>
+  <section>
+    <h2>Notes</h2>
+    <ul>
+      <li>
+        I would like for there to be a way to preselect oscillators centered in the largest possible field
+      </li>
+    </ul>
+  </section>
+  <script>
+    var $ = (selector, container = document) => container.querySelector(selector);
+    var $$ = (selector, container = document) => [...container.querySelectorAll(selector)];
+    (() => {
+      const { random, floor } = Math;
+      let size = 24;
+      let board = [];
+      const asBin = () => board.map(row => row.map(checkbox => +checkbox.checked));
+      const osc = () => {
+        clearBoard();
+        const center = floor(size / 2);
+        [
+          {x: 2, y: 1},
+          {x: 2, y: 6},
+          {x: 3, y: 1},
+          {x: 3, y: 6},
+          {x: 4, y: 1},
+          {x: 4, y: 6},
+          {x: 1, y: 2},
+          {x: 6, y: 2},
+          {x: 1, y: 3},
+          {x: 6, y: 3},
+          {x: 1, y: 4},
+          {x: 6, y: 4},
+        ].forEach(({x, y}) => {
+          board[center + y][center + x].checked = true;
+          board[center + y][center - x].checked = true;
+          board[center - y][center + x].checked = true;
+          board[center - y][center - x].checked = true;
+        });
+      };
+      const randB = () => {
+        if (random() > .9) {
+          return osc();
+        }
+        board.forEach(row => row.forEach(checkbox => {
+          checkbox.checked = (random() > .7);
+        }));
+      }
+      let interval, tfn;
+      // listeners
+      const nextFrame = evt => {
+        const life = new Life(asBin());
+        life.next().game.forEach((row, y) => {
+          row.forEach((cell, x) => {
+            board[y][x].checked = !!cell;
+          })
+        });
+      };
+      const togglePlay = ($next, $toggle, $clear, $gens, $rand) => evt => {
+        const checked = evt.target.checked;
+        $next.disabled = checked;
+        $clear.disabled = checked;
+        $rand.disabled = checked;
+        if (checked) {
+          const life = new Life(asBin());
+          let generations = 0;
+          interval = setInterval(() => {
+            life.next().game.forEach((row, y) => {
+              row.forEach((cell, x) => {
+                board[y][x].checked = !!cell;
+              })
+            });
+            $gens.innerText = `${++generations} generations`;
+          }, 1000 / 8);
+        } else {
+          $gens.innerText = '';
+          interval && clearInterval(interval);
+        }
+      };
+      const clearBoard = evt => {
+        board.forEach(row => row.forEach(checkbox => {checkbox.checked = false}));
+      };
+      const arrowMoves = evt => {
+        if (/input/i.test(evt.target.tagName)) {
+          const current = evt.target;
+          switch (true) {
+            case /arrowup/i.test(evt.key):
+              board[((current.coords[0] - 1 + size) % size)][current.coords[1]].focus();
+              break;
+            case /arrowdown/i.test(evt.key):
+              board[((current.coords[0] + 1 + size) % size)][current.coords[1]].focus();
+              break;
+            case /arrowleft/i.test(evt.key):
+              board[current.coords[0]][((current.coords[1] - 1 + size) % size)].focus();
+              break;
+            case /arrowright/i.test(evt.key):
+              board[current.coords[0]][((current.coords[1] + 1 + size) % size)].focus();
+              break;
+            default: return;
+          }
+        }
+      };
+      const setup = s => {
+        // elementes
+        const
+          $board = $('#board'),
+          $next = $('#next'),
+          $toggle = $('#toggle-auto'),
+          $clear = $('#clear'),
+          $rand = $('#rand'),
+          $gens = $('article')
+        ;
+        const grid = document.createDocumentFragment();
+        board = [];
+        for (let y = 0; y < s; y++) {
+          board[y] = [];
+          for (let x = 0; x < s; x++) {
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.coords = [y, x];
+            board[y][x] = checkbox;
+            grid.appendChild(checkbox);
+          }
+        }
+        $board.style['grid-template-rows'] = $('#board').style['grid-template-columns'] = `repeat(${s}, 1fr)`;
+        $board.innerHTML = '';
+        $board.appendChild(grid);
+        // cursor move in board
+        $board.addEventListener('keydown', arrowMoves);
+
+        $next.addEventListener('click', nextFrame);
+        tfn = togglePlay($next, $toggle, $clear, $gens, $rand);
+        $toggle.addEventListener('change', tfn);
+        $clear.addEventListener('click', clearBoard)
+      };
+
+      $('#rand').addEventListener('click', randB);
+
+      $('#size').addEventListener('change', evt => {
+        size = Number(evt.target.value);
+        interval && clearInterval(interval);
+        $('#clear').click();
+        $('#board').removeEventListener('keydown', arrowMoves)
+        $('#next').removeEventListener('click', nextFrame)
+        $('#toggle-auto').removeEventListener('change', tfn)
+        $('#clear').removeEventListener('click', clearBoard)
+        $('#toggle-auto').checked = false;
+        $$('button[disabled]').forEach(btn => { btn.disabled = false });
+        $('article').innerText = '';
+        setup(size);
+      })
+
+      setup(size);
+    })();
+  </script>
+</body>
+
+</html>
