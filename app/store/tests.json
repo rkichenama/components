@@ -6,37 +6,6 @@
     "n": 53
   },
   "tests": {
-<<<<<<< HEAD
-    "ProgressBar": {
-      "n": 2,
-      "passed": 2,
-      "failed": 0,
-      "pending": 0,
-      "tests": {
-        "should have zero value": {
-          "status": "passed",
-          "errors": []
-        },
-        "should changes value on props": {
-          "status": "passed",
-          "errors": []
-        }
-      }
-    },
-    "TreeMap": {
-      "n": 1,
-      "passed": 0,
-      "failed": 0,
-      "pending": 1,
-      "tests": {
-        "should render a treemap": {
-          "status": "pending",
-          "errors": []
-        }
-      }
-    },
-=======
->>>>>>> Icon
     "GitHubProfile": {
       "n": 3,
       "passed": 3,
@@ -57,8 +26,6 @@
         }
       }
     },
-<<<<<<< HEAD
-=======
     "TreeMap": {
       "n": 1,
       "passed": 0,
@@ -127,7 +94,6 @@
         }
       }
     },
->>>>>>> Icon
     "Canvas": {
       "n": 23,
       "passed": 23,
@@ -141,41 +107,6 @@
         "will render an animation": {
           "status": "passed",
           "errors": []
-<<<<<<< HEAD
-=======
-        },
-        "Helpers": {
-          "n": 6,
-          "passed": 6,
-          "failed": 0,
-          "pending": 0,
-          "tests": {
-            "Clear": {
-              "status": "passed",
-              "errors": []
-            },
-            "FilledRect": {
-              "status": "passed",
-              "errors": []
-            },
-            "BorderedRect": {
-              "status": "passed",
-              "errors": []
-            },
-            "Rect": {
-              "status": "passed",
-              "errors": []
-            },
-            "Arc": {
-              "status": "passed",
-              "errors": []
-            },
-            "Circle": {
-              "status": "passed",
-              "errors": []
-            }
-          }
->>>>>>> Icon
         },
         "Context": {
           "n": 15,
@@ -268,158 +199,38 @@
               }
             }
           }
-        }
-      }
-    },
-    "Card": {
-      "n": 4,
-      "passed": 4,
-      "failed": 0,
-      "pending": 0,
-      "tests": {
-        "properly rendered": {
-          "n": 2,
-          "passed": 2,
-          "failed": 0,
-          "pending": 0,
-          "tests": {
-            "should trigger a callback when clicked": {
-              "status": "passed",
-              "errors": []
-            },
-            "should toggle a class when prop changes": {
-              "status": "passed",
-              "errors": []
-            }
-          }
         },
-        "improperly rendered": {
-          "n": 2,
-          "passed": 2,
-          "failed": 0,
-          "pending": 0,
-          "tests": {
-            "should render one child": {
-              "status": "passed",
-              "errors": []
-            },
-            "should render two children": {
-              "status": "passed",
-              "errors": []
-            }
-          }
-        }
-      }
-    },
-    "StateDecorator": {
-      "n": 3,
-      "passed": 3,
-      "failed": 0,
-      "pending": 0,
-      "tests": {
-        "sequence": {
-          "n": 2,
-          "passed": 2,
-          "failed": 0,
-          "pending": 0,
-          "tests": {
-            "should push down the next value to component": {
-              "status": "passed",
-              "errors": []
-            },
-            "should change saved values list": {
-              "status": "passed",
-              "errors": []
-            }
-          }
-        },
-        "random": {
-          "n": 1,
-          "passed": 1,
-          "failed": 0,
-          "pending": 0,
-          "tests": {
-            "should not change the order of the items in state": {
-              "status": "passed",
-              "errors": []
-            }
-          }
-        }
-      }
-    },
-<<<<<<< HEAD
-    "Cube": {
-      "n": 8,
-      "passed": 8,
-      "failed": 0,
-      "pending": 0,
-      "tests": {
-        "properly rendered": {
-          "n": 2,
-          "passed": 2,
-          "failed": 0,
-          "pending": 0,
-          "tests": {
-            "should trigger a callback when clicked": {
-              "status": "passed",
-              "errors": []
-            },
-            "should change a class when prop changes": {
-              "status": "passed",
-              "errors": []
-            }
-          }
-        },
-        "improperly rendered": {
+        "Helpers": {
           "n": 6,
           "passed": 6,
           "failed": 0,
           "pending": 0,
           "tests": {
-            "should render 1 children": {
+            "Clear": {
               "status": "passed",
               "errors": []
             },
-            "should render 2 children": {
+            "FilledRect": {
               "status": "passed",
               "errors": []
             },
-            "should render 3 children": {
+            "BorderedRect": {
               "status": "passed",
               "errors": []
             },
-            "should render 4 children": {
+            "Rect": {
               "status": "passed",
               "errors": []
             },
-            "should render 5 children": {
+            "Arc": {
               "status": "passed",
               "errors": []
             },
-            "should render 7 children": {
+            "Circle": {
               "status": "passed",
               "errors": []
             }
           }
-=======
-    "Spinner": {
-      "n": 3,
-      "passed": 3,
-      "failed": 0,
-      "pending": 0,
-      "tests": {
-        "should pass to a component pruned props": {
-          "status": "passed",
-          "errors": []
-        },
-        "should cover a component with a spinner": {
-          "status": "passed",
-          "errors": []
-        },
-        "should not cover a component with a spinner": {
-          "status": "passed",
-          "errors": []
->>>>>>> Icon
         }
       }
     },
@@ -439,63 +250,6 @@
         }
       }
     },
-<<<<<<< HEAD
-    "StateDecorator": {
-      "n": 3,
-      "passed": 3,
-      "failed": 0,
-      "pending": 0,
-      "tests": {
-        "sequence": {
-          "n": 2,
-          "passed": 2,
-          "failed": 0,
-          "pending": 0,
-          "tests": {
-            "should push down the next value to component": {
-              "status": "passed",
-              "errors": []
-            },
-            "should change saved values list": {
-              "status": "passed",
-              "errors": []
-            }
-          }
-        },
-        "random": {
-          "n": 1,
-          "passed": 1,
-          "failed": 0,
-          "pending": 0,
-          "tests": {
-            "should not change the order of the items in state": {
-              "status": "passed",
-              "errors": []
-            }
-          }
-        }
-      }
-    },
-    "Info": {
-=======
-    "ClickDecorator": {
->>>>>>> Icon
-      "n": 2,
-      "passed": 2,
-      "failed": 0,
-      "pending": 0,
-      "tests": {
-        "should push down the next value to component": {
-          "status": "passed",
-          "errors": []
-        },
-        "should change saved values list": {
-          "status": "passed",
-          "errors": []
-        }
-      }
-    },
-<<<<<<< HEAD
     "Card": {
       "n": 4,
       "passed": 4,
@@ -536,26 +290,74 @@
         }
       }
     },
-    "ClickDecorator": {
-=======
-    "Info": {
->>>>>>> Icon
+    "StateDecorator": {
+      "n": 3,
+      "passed": 3,
+      "failed": 0,
+      "pending": 0,
+      "tests": {
+        "sequence": {
+          "n": 2,
+          "passed": 2,
+          "failed": 0,
+          "pending": 0,
+          "tests": {
+            "should push down the next value to component": {
+              "status": "passed",
+              "errors": []
+            },
+            "should change saved values list": {
+              "status": "passed",
+              "errors": []
+            }
+          }
+        },
+        "random": {
+          "n": 1,
+          "passed": 1,
+          "failed": 0,
+          "pending": 0,
+          "tests": {
+            "should not change the order of the items in state": {
+              "status": "passed",
+              "errors": []
+            }
+          }
+        }
+      }
+    },
+    "ProgressBar": {
       "n": 2,
       "passed": 2,
       "failed": 0,
       "pending": 0,
       "tests": {
-        "should push down the next value to component": {
+        "should have zero value": {
           "status": "passed",
           "errors": []
         },
-        "should change saved values list": {
+        "should changes value on props": {
           "status": "passed",
           "errors": []
         }
       }
     },
-<<<<<<< HEAD
+    "Info": {
+      "n": 2,
+      "passed": 2,
+      "failed": 0,
+      "pending": 0,
+      "tests": {
+        "should handle click events": {
+          "status": "passed",
+          "errors": []
+        },
+        "should change state based on props": {
+          "status": "passed",
+          "errors": []
+        }
+      }
+    },
     "Spinner": {
       "n": 3,
       "passed": 3,
@@ -571,19 +373,22 @@
           "errors": []
         },
         "should not cover a component with a spinner": {
-=======
-    "Toggle": {
+          "status": "passed",
+          "errors": []
+        }
+      }
+    },
+    "ClickDecorator": {
       "n": 2,
       "passed": 2,
       "failed": 0,
       "pending": 0,
       "tests": {
-        "should handle click events": {
+        "should push down the next value to component": {
           "status": "passed",
           "errors": []
         },
-        "should change state based on props": {
->>>>>>> Icon
+        "should change saved values list": {
           "status": "passed",
           "errors": []
         }
