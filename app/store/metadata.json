@@ -385,6 +385,58 @@
       ],
       "filename": "src/GitHubProfile/GitHubProfile.jsx"
     },
+    "Icon": {
+      "description": "An Icon wrapper",
+      "displayName": "Icon",
+      "methods": [],
+      "props": [
+        {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "",
+          "defaultValue": {
+            "value": "'thumbs-up'",
+            "computed": false
+          },
+          "name": "name"
+        },
+        {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "",
+          "defaultValue": {
+            "value": "''",
+            "computed": false
+          },
+          "name": "className"
+        },
+        {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "",
+          "defaultValue": {
+            "value": "null",
+            "computed": false
+          },
+          "name": "ariaLabel"
+        },
+        {
+          "defaultValue": {
+            "value": "{}",
+            "computed": false
+          },
+          "required": false,
+          "name": "style"
+        }
+      ],
+      "filename": "src/Icon/Icon.jsx"
+    },
     "Info": {
       "description": "Intended as a replacement for the Details / Summary pair, duplicating the ease of a cross browser collapsible element.\n\nTODO: rewrite as a render prop",
       "displayName": "Info",
@@ -1012,6 +1064,7 @@
     "ClickDecorator",
     "Cube",
     "GitHubProfile",
+    "Icon",
     "Info",
     "MenuBar",
     "Odometer",
