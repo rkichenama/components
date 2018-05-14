@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "hygen": "^1.5.9",
     "upath": "1.0.5",
     "webpack-dev-server": "2.9.7"
   },
