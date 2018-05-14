@@ -14,6 +14,7 @@ const dynSvg = name => {
     return null;
   }
 }
+
 /**
  * An Icon wrapper
  */

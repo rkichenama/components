@@ -16,6 +16,7 @@ export default class extends React.PureComponent {
                 <Icon style={{ width: '1.0em', height: '1.0em' }} {...{ name }}/>
                 <Icon style={{ width: '1.5em', height: '1.5em' }} {...{ name }}/>
                 <Icon style={{ width: '2.0em', height: '2.0em' }} {...{ name }}/>
+                <Icon style={{ width: '2.5em', height: '2.0em' }} {...{ name }}/>
               </section>
               <section>{ name }</section>
             </div>
