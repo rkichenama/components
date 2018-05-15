@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Table from './table';
-import { Chart } from 'react-google-charts';
+// import { Chart } from 'react-google-charts';
 
 export const statsShape = {
   n: PropTypes.number,

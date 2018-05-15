@@ -28,7 +28,6 @@
   "dependencies": {
     "axios": "^0.18.0",
     "hygen": "^1.5.9",
-    "upath": "1.0.5",
     "webpack-dev-server": "2.9.7"
   },
   "devDependencies": {
@@ -74,6 +73,7 @@
     "sass-loader": "^6.0.6",
     "style-loader": "^0.19.1",
     "uglifyjs-webpack-plugin": "^1.2.3",
+    "upath": "1.0.5",
     "url-loader": "^0.6.2",
     "webpack": "^3.10.0"
   }

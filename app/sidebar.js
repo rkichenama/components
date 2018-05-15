@@ -3,19 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-const dictionary = {
-  'Card': ['Containers'],
-  'ClickDecorator': ['Decorators'],
-  'Cube': ['Containers'],
-  'GitHubProfile': ['Controls'],
-  'Info': ['Containers'],
-  'Odometer': ['Visualizations'],
-  'ProgressBar': ['Visualizations'],
-  'Spinner': ['Controls'],
-  'StateDecorator': ['Decorators'],
-  'Toggle': ['Controls'],
-  'TreeMap': ['Visualizations'],
-};
+import dictionary from './dictionary';
 const keys = Object.keys(dictionary);
 
 const Item = ({lbl, onClick, className}) => (
