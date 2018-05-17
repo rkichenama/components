@@ -77,15 +77,26 @@ module.exports = {
       },
     ],
   },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          name: 'vendor',
+          test: /[\\/]node_modules[\\/]/,
+          chunks: 'all',
+        },
+      },
+    },
+  },
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks: Infinity,
-    }),
-    new webpack.SourceMapDevToolPlugin({
-      filename: '[name].js.map',
-      exclude: ['vendor.js']
-    }),
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   name: 'vendor',
+    //   minChunks: Infinity,
+    // }),
+    // new webpack.SourceMapDevToolPlugin({
+    //   filename: '[name].js.map',
+    //   exclude: ['vendor.js']
+    // }),
   ],
   resolve: {
     alias: {
@@ -101,4 +112,5 @@ module.exports = {
     net: 'empty',
     tls: 'empty'
   },
+  mode: 'development',
 };
