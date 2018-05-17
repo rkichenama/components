@@ -1,4 +1,9 @@
 # TODO
+* Upgrade
+  * convert webpack config from 3.x to 4.x
+  * use webpack-serve instead of dev server
+    * use waitpage
+  * restructure build steps?
 * export all components into flat npm package
 * demos with 'knobs'
   * need to work off propTypes for component, already available through doc-gen
