@@ -26,14 +26,13 @@
     "test:watch": "jest --watch --config=./config/jest.json --reporters 'default' --coverageReporters 'text' --color"
   },
   "dependencies": {
-    "axios": "^0.18.0",
-    "hygen": "^1.5.9",
-    "webpack-dev-server": "3.1.4"
+    "axios": "^0.18.0"
   },
   "devDependencies": {
     "ansi-to-html": "^0.6.4",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
+    "babel-jest": "^22.4.3",
     "babel-loader": "^7.1.4",
     "babel-plugin-transform-async-to-generator": "^6.24.1",
     "babel-plugin-transform-class-properties": "^6.24.1",
@@ -49,6 +48,7 @@
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.11",
     "html-webpack-plugin": "^3.2.0",
+    "hygen": "^1.5.9",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^22.4.3",
     "jest-canvas-mock": "^1.0.2",
@@ -64,7 +64,6 @@
     "react": "^16.3.2",
     "react-docgen": "^2.20.1",
     "react-dom": "^16.3.2",
-    "react-google-charts": "^1.6.0",
     "react-markdown": "^3.3.2",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
