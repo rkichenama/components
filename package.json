@@ -17,7 +17,7 @@
     "clear": "del-cli './docs/*' '!./docs/media'",
     "prebuild": "npm run clear ; npm run test ; true",
     "build": "webpack --config ./config/webpack-prod.config.js",
-    "dev:server": "webpack-dev-server --config ./config/webpack-devl.config.js --open --color",
+    "dev:server": "webpack-serve --config ./config/webpack-devl.config.js --open --color",
     "metadata:build": "node doc-gen.js",
     "metadata:watch": "chokidar './src/**/*.{js|jsx|md}' './app/examples/**/*.{js|jsx}' -c 'npm run metadata:build'",
     "dev": "run-p -l metadata:watch dev:server test:watchAll",
