@@ -89,14 +89,10 @@ module.exports = {
     },
   },
   plugins: [
-    // new webpack.optimize.CommonsChunkPlugin({
-    //   name: 'vendor',
-    //   minChunks: Infinity,
-    // }),
-    // new webpack.SourceMapDevToolPlugin({
-    //   filename: '[name].js.map',
-    //   exclude: ['vendor.js']
-    // }),
+    new webpack.SourceMapDevToolPlugin({
+      filename: '[name].js.map',
+      exclude: ['vendor.js']
+    }),
   ],
   resolve: {
     alias: {

@@ -7,12 +7,12 @@ const webpackServeWaitpage = require('webpack-serve-waitpage');
 
 config.serve = {
   hot: true,
-
+  clipboard: false,
   add: (app, middleware, options) => {
     app.use(webpackServeWaitpage(options, {
-      title: 'Development Server (Dev)',
+      title: 'development',
       theme: 'dark'
-    })); // * Be sure to pass the options argument from the arguments
+    }));
   }
 };
 

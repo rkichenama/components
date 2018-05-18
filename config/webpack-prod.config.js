@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 // const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 config.devServer = {
   contentBase: './doc'
@@ -23,6 +24,27 @@ config.module.rules
     ];
   });
 
+config.optimization.minimizer = [
+  new UglifyJSPlugin({
+    uglifyOptions: {
+      compress: {
+        warnings: false,
+        'reduce_vars': false
+      },
+      output: {
+        comments: false
+      }
+    },
+    sourceMap: true,
+    parallel: true,
+  }),
+  new OptimizeCSSAssetsPlugin({
+    cssProcessorOptions: {
+
+    },
+  }),
+];
+
 config.plugins = [
   new webpack.DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify('production')
@@ -41,19 +63,6 @@ config.plugins = [
       removeComments: true,
     },
     // excludeChunks: [],
-  }),
-  new UglifyJSPlugin({
-    uglifyOptions: {
-      compress: {
-        warnings: false,
-        'reduce_vars': false
-      },
-      output: {
-        comments: false
-      }
-    },
-    sourceMap: true,
-    parallel: true,
   }),
   // new ExtractTextPlugin('[name].css'),
   new MiniCssExtractPlugin({
