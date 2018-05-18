@@ -16,40 +16,40 @@ $font-sm: $font * .8;
 $font-lg: $font * 2;
 
 body {
-  --clr-overlay: transparentize(#808080, .75);
-  
-  &.dev {
-    --clr-white: $white;
-    --clr-black: $black;
-    
-    --clr-bg: transparentize(darken($blue, .2), .8);
+  --clr-overlay: #{transparentize(#808080, .75)};
 
-    --clr-accent: mix($white, $red);
-    --clr-highlight: mix($white, $green);
-    --clr-screen: transparentize($black, .75);
-    
-    --clr-btn-bg: mix($white, $indigo);
-    --clr-btn-fg: $white;
-    
-    --fnt-small: $font-sm;
-    --fnt-normal: $font;
-    --fnt-large: $font-lg;
+  &.dev {
+    --clr-white: #{$white};
+    --clr-black: #{$black};
+
+    --clr-bg: #{transparentize(darken($blue, .2), .8)};
+
+    --clr-accent: #{mix($white, $red)};
+    --clr-highlight: #{mix($white, $green)};
+    --clr-screen: #{transparentize($black, .75)};
+
+    --clr-btn-bg: #{mix($white, $indigo)};
+    --clr-btn-fg: #{$white};
+
+    --fnt-small: #{$font-sm};
+    --fnt-normal: #{$font};
+    --fnt-large: #{$font-lg};
   }
   &.prod {
-    --clr-white: $black;
-    --clr-black: $white;
-    
-    --clr-bg: transparentize(lighten($blue, .25), .8);
+    --clr-white: #{$black};
+    --clr-black: #{$white};
 
-    --clr-accent: $green;
-    --clr-highlight: $blue;
-    --clr-screen: transparentize($white, .75);
-    
-    --clr-btn-bg: $white;
-    --clr-btn-fg: $blue;
-    
-    --fnt-small: $font-sm;
-    --fnt-normal: $font;
-    --fnt-large: $font-lg;
+    --clr-bg: #{transparentize(lighten($blue, .25), .8)};
+
+    --clr-accent: #{$green};
+    --clr-highlight: #{$blue};
+    --clr-screen: #{transparentize($white, .75)};
+
+    --clr-btn-bg: #{$white};
+    --clr-btn-fg: #{$blue};
+
+    --fnt-small: #{$font-sm};
+    --fnt-normal: #{$font};
+    --fnt-large: #{$font-lg};
   }
 }
