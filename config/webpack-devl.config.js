@@ -1,7 +1,20 @@
 const config = require('./webpack-base.config');
 const webpack = require('webpack');
-const NpmInstallPlugin = require('npm-install-webpack-plugin');
+// const NpmInstallPlugin = require('npm-install-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const webpackServeWaitpage = require('webpack-serve-waitpage');
+
+config.serve = {
+  hot: true,
+  clipboard: false,
+  add: (app, middleware, options) => {
+    app.use(webpackServeWaitpage(options, {
+      title: 'development',
+      theme: 'dark'
+    }));
+  }
+};
 
 config.devServer = {
   contentBase: './docs'
@@ -16,10 +29,10 @@ config.module.rules
 
 config.plugins = [
   ...config.plugins,
-  new NpmInstallPlugin({
-    dev: false,
-    quiet: true,
-  }),
+  // new NpmInstallPlugin({
+  //   dev: false,
+  //   quiet: true,
+  // }),
   new HtmlWebpackPlugin({
     title: '(dev) Components',
     bodyCls: 'dev',
@@ -34,7 +47,9 @@ config.plugins = [
     },
     // excludeChunks: [],
   }),
-  new webpack.HotModuleReplacementPlugin(),
+  // new webpack.HotModuleReplacementPlugin(),
 ];
-console.log(JSON.stringify(config.resolve));
+
+config.mode = 'development';
+
 module.exports = config;
