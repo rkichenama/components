@@ -7,16 +7,6 @@ module.exports = {
     docs: [
       './app/index.js',
     ],
-    vendor: [
-      'react-dom',
-      'react-markdown',
-      'react-redux',
-      'react-router-dom',
-      'react-syntax-highlighter',
-      'react',
-      'redux-thunk',
-      'redux',
-    ],
   },
   output: {
     filename: '[name].js',
@@ -88,6 +78,12 @@ module.exports = {
       },
     },
   },
+  performance: {
+    hints: 'warning',
+    maxEntrypointSize: 2000000, // 2MB
+    maxAssetSize: 1000000, // 1MB
+    assetFilter: file => file.endsWith('.js')
+  },
   plugins: [
     new webpack.SourceMapDevToolPlugin({
       filename: '[name].js.map',
@@ -106,7 +102,7 @@ module.exports = {
   node: {
     fs: 'empty',
     net: 'empty',
-    tls: 'empty'
+    tls: 'empty',
   },
   mode: 'development',
 };

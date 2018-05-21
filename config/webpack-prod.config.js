@@ -40,7 +40,7 @@ config.optimization.minimizer = [
   }),
   new OptimizeCSSAssetsPlugin({
     cssProcessorOptions: {
-
+      discardComments: { removeAll: true },
     },
   }),
 ];

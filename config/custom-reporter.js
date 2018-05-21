@@ -2,25 +2,32 @@ const fs = require('fs');
 const path = require('path');
 
 const createObjectPath = (obj, path, value) => {
+  let returnValue = '';
   if (path.length) {
     const suite = path.shift();
-    if (!obj[suite]) { obj[suite] = { n: 0, passed: 0, failed: 0, pending: 0, tests: {} } }
+    if (!obj[suite]) {
+      obj[suite] = { n: 0, passed: 0, failed: 0, pending: 0, tests: {} };
+    }
     obj[suite].n++;
     const status = createObjectPath(obj[suite].tests, path, value);
     obj[suite][status]++;
-    return status;
+    returnValue = status;
   } else {
     const { title, failureMessages: errors, status } = value;
-    obj[title] = { status, errors: errors.map(err => err.toString().replace(
-      /[\u001b\u009b][[()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-ORZcf-nqry=><]/g,
-      ''
-    )) };
-    return status;
+    obj[title] = {
+      status,
+      errors: errors.map(err => err.toString().replace(
+        /[\u001b\u009b][[()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-ORZcf-nqry=><]/g, // eslint-disable-line no-control-regex
+        ''
+      ))
+    };
+    returnValue = status;
   }
+  return returnValue;
 };
 
 class MyCustomReporter {
-  onRunComplete(contexts, aggregate) {
+  onRunComplete (contexts, aggregate) {
     const {
       numFailedTests,
       numPassedTests,
@@ -47,9 +54,9 @@ class MyCustomReporter {
         failed: numFailedTests,
         passed: numPassedTests,
         pending: numPendingTests,
-        n: numTotalTests,
+        n: numTotalTests
       },
-      tests,
+      tests
     };
     fs.writeFileSync(path.join(process.cwd(), 'app/store/tests.json'), JSON.stringify(json, null, 2), { encoding: 'UTF-8' });
     // aggregate.snapshot ?
