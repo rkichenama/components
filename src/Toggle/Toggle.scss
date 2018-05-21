@@ -4,10 +4,10 @@ $switch-color: white;
 $track-color: rgba(0, 0, 0, .2);
 
 ::root {
-  --toggle-track-padding: $padding;
-  --toggle-animation-duration: $duration;
-  --toggle-switch-color: $switch-color;
-  --toggle-track-color: $track-color;
+  --toggle-track-padding: #{$padding};
+  --toggle-animation-duration: #{$duration};
+  --toggle-switch-color: #{$switch-color};
+  --toggle-track-color: #{$track-color};
 }
 
 .toggle {

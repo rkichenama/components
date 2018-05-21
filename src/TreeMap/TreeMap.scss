@@ -3,9 +3,9 @@ $treemap-bg-hover: rgba(0, 0, 0, 1);
 $treemap-border-color: white;
 
 body {
-  --treemap-bg-color: $treemap-bg-color;
-  --treemap-bg-hover: $treemap-bg-hover;
-  --treemap-border-color: $treemap-border-color;
+  --treemap-bg-color: #{$treemap-bg-color};
+  --treemap-bg-hover: #{$treemap-bg-hover};
+  --treemap-border-color: #{$treemap-border-color};
 }
 
 .tree-map {
@@ -44,6 +44,7 @@ body {
         justify-content: center;
         white-space: nowrap;
         background-color: var(--treemap-bg-hover, $treemap-bg-hover);
+        color: var(--treemap-border-color, $treemap-border-color);
       }
     }
     // &:before {

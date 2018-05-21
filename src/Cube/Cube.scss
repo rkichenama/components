@@ -1,7 +1,7 @@
 $cube-square: 96px;
 
 body {
-  --cube-square: $cube-square;
+  --cube-square: #{$cube-square};
 }
 
 .cube {

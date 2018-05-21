@@ -1,6 +1,6 @@
 $glyphHeight: 48px;
 ::root {
-  --glpyh: 48px;
+  --glpyh: #{$glyphHeight};
 }
 
 .odometer {

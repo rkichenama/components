@@ -3,7 +3,7 @@ $glyphSize: 48px;
 .rrk-spinner {
   position: relative;
   min-height: $glyphSize * 2;
-  --shade-color: transparentize(#fff, .6);
+  --shade-color: #{transparentize(#fff, .6)};
   --spinner-color: white;
   --spinner-shaodw: black;
 
