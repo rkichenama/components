@@ -1,11 +1,11 @@
 # TODO
-* demos with 'knobs'
-  * need to work off propTypes for component, already available through doc-gen
-    * is connected to store
-  * uses above to dynamically create 'prop form' for demo
-  * acts as render prop HOC
 
 # DONE
+* ~~demos with 'knobs'~~
+  * ~~need to work off propTypes for component, already available through doc-gen~~
+    * ~~is connected to store~~
+  * ~~uses above to dynamically create 'prop form' for demo~~
+  * ~~acts as render prop HOC~~
 * ~~export all components into flat npm package~~
 * ~~Upgrade 18 May 2018~~
   * ~~convert webpack config from 3.x to 4.x~~

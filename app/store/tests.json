@@ -6,30 +6,6 @@
     "n": 56
   },
   "tests": {
-    "TreeMap": {
-      "n": 1,
-      "passed": 0,
-      "failed": 0,
-      "pending": 1,
-      "tests": {
-        "should render a treemap": {
-          "status": "pending",
-          "errors": []
-        }
-      }
-    },
-    "MenuBar": {
-      "n": 1,
-      "passed": 0,
-      "failed": 0,
-      "pending": 1,
-      "tests": {
-        "should have a test": {
-          "status": "pending",
-          "errors": []
-        }
-      }
-    },
     "Info": {
       "n": 2,
       "passed": 2,
@@ -46,59 +22,47 @@
         }
       }
     },
-    "Spinner": {
+    "TreeMap": {
+      "n": 1,
+      "passed": 0,
+      "failed": 0,
+      "pending": 1,
+      "tests": {
+        "should render a treemap": {
+          "status": "pending",
+          "errors": []
+        }
+      }
+    },
+    "GitHubProfile": {
       "n": 3,
       "passed": 3,
       "failed": 0,
       "pending": 0,
       "tests": {
-        "should pass to a component pruned props": {
+        "will silently handle errors": {
           "status": "passed",
           "errors": []
         },
-        "should cover a component with a spinner": {
+        "will load some github profile info when given a username prop": {
           "status": "passed",
           "errors": []
         },
-        "should not cover a component with a spinner": {
+        "changes state when updated with new props": {
           "status": "passed",
           "errors": []
         }
       }
     },
-    "StateDecorator": {
-      "n": 3,
-      "passed": 3,
+    "MenuBar": {
+      "n": 1,
+      "passed": 0,
       "failed": 0,
-      "pending": 0,
+      "pending": 1,
       "tests": {
-        "sequence": {
-          "n": 2,
-          "passed": 2,
-          "failed": 0,
-          "pending": 0,
-          "tests": {
-            "should push down the next value to component": {
-              "status": "passed",
-              "errors": []
-            },
-            "should change saved values list": {
-              "status": "passed",
-              "errors": []
-            }
-          }
-        },
-        "random": {
-          "n": 1,
-          "passed": 1,
-          "failed": 0,
-          "pending": 0,
-          "tests": {
-            "should not change the order of the items in state": {
-              "status": "passed",
-              "errors": []
-            }
-          }
+        "should have a test": {
+          "status": "pending",
+          "errors": []
         }
       }
     },
@@ -242,6 +206,62 @@
         }
       }
     },
+    "StateDecorator": {
+      "n": 3,
+      "passed": 3,
+      "failed": 0,
+      "pending": 0,
+      "tests": {
+        "sequence": {
+          "n": 2,
+          "passed": 2,
+          "failed": 0,
+          "pending": 0,
+          "tests": {
+            "should push down the next value to component": {
+              "status": "passed",
+              "errors": []
+            },
+            "should change saved values list": {
+              "status": "passed",
+              "errors": []
+            }
+          }
+        },
+        "random": {
+          "n": 1,
+          "passed": 1,
+          "failed": 0,
+          "pending": 0,
+          "tests": {
+            "should not change the order of the items in state": {
+              "status": "passed",
+              "errors": []
+            }
+          }
+        }
+      }
+    },
+    "Spinner": {
+      "n": 3,
+      "passed": 3,
+      "failed": 0,
+      "pending": 0,
+      "tests": {
+        "should pass to a component pruned props": {
+          "status": "passed",
+          "errors": []
+        },
+        "should cover a component with a spinner": {
+          "status": "passed",
+          "errors": []
+        },
+        "should not cover a component with a spinner": {
+          "status": "passed",
+          "errors": []
+        }
+      }
+    },
     "Odometer": {
       "n": 1,
       "passed": 0,
@@ -251,46 +271,6 @@
         "should have a test": {
           "status": "pending",
           "errors": []
-        }
-      }
-    },
-    "Card": {
-      "n": 4,
-      "passed": 4,
-      "failed": 0,
-      "pending": 0,
-      "tests": {
-        "properly rendered": {
-          "n": 2,
-          "passed": 2,
-          "failed": 0,
-          "pending": 0,
-          "tests": {
-            "should trigger a callback when clicked": {
-              "status": "passed",
-              "errors": []
-            },
-            "should toggle a class when prop changes": {
-              "status": "passed",
-              "errors": []
-            }
-          }
-        },
-        "improperly rendered": {
-          "n": 2,
-          "passed": 2,
-          "failed": 0,
-          "pending": 0,
-          "tests": {
-            "should render one child": {
-              "status": "passed",
-              "errors": []
-            },
-            "should render two children": {
-              "status": "passed",
-              "errors": []
-            }
-          }
         }
       }
     },
@@ -362,17 +342,57 @@
         }
       }
     },
-    "ProgressBar": {
+    "Card": {
+      "n": 4,
+      "passed": 4,
+      "failed": 0,
+      "pending": 0,
+      "tests": {
+        "properly rendered": {
+          "n": 2,
+          "passed": 2,
+          "failed": 0,
+          "pending": 0,
+          "tests": {
+            "should trigger a callback when clicked": {
+              "status": "passed",
+              "errors": []
+            },
+            "should toggle a class when prop changes": {
+              "status": "passed",
+              "errors": []
+            }
+          }
+        },
+        "improperly rendered": {
+          "n": 2,
+          "passed": 2,
+          "failed": 0,
+          "pending": 0,
+          "tests": {
+            "should render one child": {
+              "status": "passed",
+              "errors": []
+            },
+            "should render two children": {
+              "status": "passed",
+              "errors": []
+            }
+          }
+        }
+      }
+    },
+    "ClickDecorator": {
       "n": 2,
       "passed": 2,
       "failed": 0,
       "pending": 0,
       "tests": {
-        "should have zero value": {
+        "should push down the next value to component": {
           "status": "passed",
           "errors": []
         },
-        "should changes value on props": {
+        "should change saved values list": {
           "status": "passed",
           "errors": []
         }
@@ -394,37 +414,17 @@
         }
       }
     },
-    "ClickDecorator": {
+    "ProgressBar": {
       "n": 2,
       "passed": 2,
       "failed": 0,
       "pending": 0,
       "tests": {
-        "should push down the next value to component": {
+        "should have zero value": {
           "status": "passed",
           "errors": []
         },
-        "should change saved values list": {
-          "status": "passed",
-          "errors": []
-        }
-      }
-    },
-    "GitHubProfile": {
-      "n": 3,
-      "passed": 3,
-      "failed": 0,
-      "pending": 0,
-      "tests": {
-        "will silently handle errors": {
-          "status": "passed",
-          "errors": []
-        },
-        "will load some github profile info when given a username prop": {
-          "status": "passed",
-          "errors": []
-        },
-        "changes state when updated with new props": {
+        "should changes value on props": {
           "status": "passed",
           "errors": []
         }
