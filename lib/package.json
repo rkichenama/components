@@ -1,0 +1,37 @@
+{
+  "name": "rk-componnets",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rkichenama/components.git"
+  },
+  "author": "Richard Kichenama <rkichenama@gmail.com>",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/rkichenama/components/issues"
+  },
+  "homepage": "https://github.comrkichenama/components#readme",
+  "peerDependencies": {
+    "prop-types": ">=15.6.0",
+    "react": ">=16.0.0",
+    "react-dom": ">=16.0.0",
+    "axios":
+  },
+  "semistandard": {
+    "ignore": [
+      "lib/**",
+      "**/util/svgAssets.js"
+    ],
+    "globals": [
+      "jasmine",
+      "beforeEach",
+      "afterEach",
+      "describe",
+      "it",
+      "fit",
+      "expect",
+      "spyOn"
+    ]
+  }
+}
