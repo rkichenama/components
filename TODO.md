@@ -1,5 +1,4 @@
 # TODO
-* export all components into flat npm package
 * demos with 'knobs'
   * need to work off propTypes for component, already available through doc-gen
     * is connected to store
@@ -7,6 +6,7 @@
   * acts as render prop HOC
 
 # DONE
+* ~~export all components into flat npm package~~
 * ~~Upgrade 18 May 2018~~
   * ~~convert webpack config from 3.x to 4.x~~
   * ~~use webpack-serve instead of dev server~~
