@@ -1,12 +1,17 @@
-const path = require('path');
+const { promisify } = require('util');
+const fs = require('fs');
+const writeFile = promisify(fs.writeFile);
+// const appendFile = promisify(fs.appendFile);
+const { resolve, relative, basename, join } = require('path');
 const walk = require('./walk');
 const config = require('./webpack-base.config');
 const webpack = require('webpack');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const { generateFromFile } = require('react-to-typescript-definitions');
 
-const rootFolder = path.resolve(__dirname, '../');
+const rootFolder = resolve(__dirname, '../');
 
 config.module.rules
   .filter(({ test }) => test && test.test('.css'))
@@ -58,20 +63,38 @@ config.externals = [
   'prop-types',
   'axios',
 ]; // everything that would have been in the vendor bundle
-config.output.path = path.join(rootFolder, '/lib/');
+config.output.path = join(rootFolder, '/lib/');
 config.output.library = 'rk-components';
 config.output.libraryTarget = 'commonjs2';
 
+const defineModule = async (name, filepath) => {
+  await writeFile(`lib/${name}.d.ts`, generateFromFile(null, filepath, { topLevelModule: true }));
+};
+
+const writeIndexesCurry = () => {
+  const index = fs.createWriteStream('lib/index.js', { flags: 'a' });
+  const definitions = fs.createWriteStream('lib/index.d.ts', { flags: 'a' });
+  return name => {
+    index.write(`module.exports.${name} = require('./lib/${name}').default;\n`);
+    definitions.write(`import ${name} from 'lib/${name}'; export var ${name};\n`);
+  };
+};
+
 module.exports = async () => {
-  const components = await walk(path.join(rootFolder, 'src'), file => /\.jsx$/.test(file));
+  const components = await walk(join(rootFolder, 'src'), file => /\.jsx$/.test(file));
+  const writeIndexes = writeIndexesCurry();
+  const definitions = [];
 
   config.entry = components.reduce((entries, component) => {
-    const name = path.basename(component, '.jsx');
-    const folder = path.relative(rootFolder, component);
-    entries[name] = [ `./${ folder }` ];
-    entries.index.push(`./${ folder }`);
+    const name = basename(component, '.jsx');
+    const folder = relative(rootFolder, component);
+    entries[name] = [ `./${folder}` ];
+    definitions.push(defineModule(name, folder));
+    writeIndexes(name);
     return entries;
-  }, { index: [] });
+  }, { });
+
+  await Promise.all(definitions);
 
   return config;
 };
