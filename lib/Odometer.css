@@ -1,0 +1,31 @@
+::root {
+  --glpyh: 48px; }
+
+.odometer {
+  height: var(--glyph, 48px);
+  overflow: hidden;
+  padding: 0 8px;
+  border-radius: 6px;
+  box-shadow: 0 0 12px black, inset 0 0 calc(var(--glyph) / 4) black;
+  display: flex;
+  justify-content: flex-end; }
+  .odometer .column {
+    overflow: visible;
+    font-size: var(--glyph, 48px);
+    line-height: 1;
+    transform: translateY(0);
+    margin-left: 4px; }
+    .odometer .column + .column .digit {
+      border-left: 1px solid black; }
+    .odometer .column .digit {
+      text-align: center;
+      height: var(--glyph, 48px);
+      padding: 0 4px;
+      -webkit-text-stroke: 2px black;
+      text-stroke: 2px black; }
+    .odometer .column.animating {
+      transition: transform .5s;
+      transition-timing-function: cubic-bezier(1, 0, 0, 1); }
+
+
+/*# sourceMappingURL=Odometer.js.map*/
