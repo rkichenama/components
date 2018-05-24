@@ -61,7 +61,9 @@ const figure = ({ type, name, defaultValue: { value: defValue = '' } = {} }) => 
 
 class Knobs extends PureComponent {
   static propTypes = {
-    /** */
+    /** The 'displayName' for the component. Needs to be specified because prod mangles component ids */
+    name: PropTypes.string.isRequired,
+    /** the metadata for the specific component */
     component: PropTypes.shape({
       description: PropTypes.string,
       displayName: PropTypes.string,
@@ -83,7 +85,7 @@ class Knobs extends PureComponent {
         })
       )
     }).isRequired,
-    /** */
+    //
     children: PropTypes.element.isRequired,
     style: PropTypes.object,
     className: PropTypes.string,
@@ -144,7 +146,7 @@ class Knobs extends PureComponent {
 };
 
 export default connect(
-  ({ components }, { children: { type : { name } } }) => ({
+  ({ components }, { name  }) => ({
     component: components[name]
   })
 )(Knobs);

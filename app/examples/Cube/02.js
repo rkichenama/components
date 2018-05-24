@@ -7,7 +7,7 @@ const faces = ['front', 'back', 'left', 'right', 'top', 'bottom'];
 export default class extends PureComponent {
   render () {
     return (
-      <Knobs>
+      <Knobs name='Cube'>
         <Cube>
           {
             faces.map((face, u) => (

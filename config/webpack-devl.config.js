@@ -6,6 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpackServeWaitpage = require('webpack-serve-waitpage');
 
 config.serve = {
+  contentBase: './docs',
   hot: true,
   clipboard: false,
   add: (app, middleware, options) => {
@@ -18,7 +19,7 @@ config.serve = {
 };
 
 config.devServer = {
-  contentBase: './docs'
+  contentBase: require('path').resolve(__dirname, './docs')
 };
 
 config.module.rules
@@ -46,7 +47,7 @@ config.plugins = [
       minifyJS: true,
       removeComments: true,
     },
-    // excludeChunks: [],
+    excludeChunks: [ 'worker' ],
   }),
   // new webpack.HotModuleReplacementPlugin(),
 ];

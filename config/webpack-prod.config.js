@@ -62,7 +62,7 @@ config.plugins = [
       minifyJS: true,
       removeComments: true,
     },
-    // excludeChunks: [],
+    excludeChunks: [ 'worker' ],
   }),
   // new ExtractTextPlugin('[name].css'),
   new MiniCssExtractPlugin({

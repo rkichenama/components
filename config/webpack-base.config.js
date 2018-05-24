@@ -4,9 +4,7 @@ const webpack = require('webpack');
 module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: {
-    docs: [
-      './app/index.js',
-    ],
+    docs: [ './app/index.js' ],
   },
   output: {
     filename: '[name].js',
