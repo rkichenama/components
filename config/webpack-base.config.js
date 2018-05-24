@@ -62,7 +62,7 @@ module.exports = {
         test: /\.s?css$/,
         use: [
           { loader: 'css-loader' },
-          { loader: 'sass-loader' },
+          { loader: 'sass-loader', options: { outputStyle: 'compressed' } },
         ]
       },
     ],

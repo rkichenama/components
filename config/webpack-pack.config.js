@@ -66,6 +66,7 @@ config.externals = [
 config.output.path = join(rootFolder, '/lib/');
 config.output.library = 'rk-components';
 config.output.libraryTarget = 'commonjs2';
+config.performance.hints = false;
 
 const defineModule = async (name, filepath) => {
   await writeFile(`lib/${name}.d.ts`, generateFromFile(null, filepath, { topLevelModule: true }));

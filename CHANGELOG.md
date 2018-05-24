@@ -23,6 +23,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 * TreeMap - A flexbox based alternating row / column chart of relative nesting sizes
 * Odometer - A vertically scrolling counter with variable with and css animations
 * MenuBar - A navigation bar that allows or right aligned minimization
+* Icon - A container for svg and single div icons
+* [feature] Library Build! - `/lib/` to hold an export of each component as a top level module
+* [feature] Knobs! - a wrapper (HOC `Stage`) that will read component metadata to create a form for props
 ### Changed
 * add `title` prop to ProgressBar
 * updated packages
