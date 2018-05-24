@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="IE=Edge,chrome=1"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="refresh" content="1"/>
+  <title><%= title %></title>
+  <style>
+    body {
+      background: #131313;
+      color: #ccc;
+      padding-left: 12px;
+      padding-right: 12px;
+      font-size: 18px;
+      font-family: "Noto Mono", "Fira Code";
+    }
+    code {
+      display: block;
+      background: #333;
+      padding: 20px;
+    }
+    .message { color: yellow; }
+    .modules { color: cyan; }
+    .active { color: lightgreen; }
+    .last { color: #008bc5; }
+    <% for (var i = 0 ; i < progress.length ; i++) { %>
+    .loader--<%= i %> {
+      margin-top: 20px;
+    }
+    .loader--<%= i %> circle {
+      fill: transparent;
+      stroke-width: 10px;
+      stroke-dasharray: 250;
+      transform: rotateZ(-90deg);
+      transform-origin: center center;
+    }
+    .loader--<%= i %> circle.progress {
+      stroke: #008bc5; /* Celebration Blue */
+      stroke-dashoffset: <%= -250 + Math.round(-250 * progress[i][0]) %>;
+    }
+    .loader--<%= i %> circle.bar {
+      stroke: #3b3c3c; /* Limo Leather */
+    }
+    .loader--<%= i %> text {
+      text-align: center;
+      font-size: 20px;
+      fill: white;
+    }
+    <% } %>
+    .betterTable {
+      display: flex;
+      align-items: stretch;
+    }
+    .betterTable > svg {
+      flex-grow: 0;
+      flex-shrink: 0;
+    }
+    .betterTable > code {
+      flex-grow: 1;
+      flex-shrink: 1;
+    }
+    .version {
+      color: cyan;
+    }
+    a, a:link, a:visited {
+      color: orangered;
+    }
+    a:active, a:hover {
+      color: magenta;
+    }
+    h1 {
+      color: #cc1313;
+    }
+  </style>
+</head>
+<body>
+  <h1>Development Server</h1>
+  <p>Using:</p>
+  <ul>
+    <li><b>webpack</b> <span class="version">v<%= webpackVersion %></span></li>
+    <li><b>webpack-serve</b> <span class="version">v<%= webpackServeVersion %></span></li>
+  </ul>
+  <p>Redirecting to <a id="url" href="#"></a></p>
+  <script>var u = document.getElementById('url'); u.href = location.href; u.innerText = location.href;</script>
+  <%
+  for (var i = 0 ; i < progress.length ; i++) {
+    var percent = Math.round(100 * progress[i][0]);
+  %>
+  <div class="betterTable">
+    <svg class="loader--<%= i %>" height="100" width="100">
+      <circle class="bar" cx="50" cy="50" r="40"></circle>
+      <circle class="progress" cx="50" cy="50" r="40"></circle>
+      <text x="53" y="55" text-anchor="middle"><%= percent %>%</text>
+    </svg>
+    <code>
+      <div class="message"><%= progress[i][1] || '' %></div>
+      <div class="modules"><%= progress[i][2] || '' %></div>
+      <div class="active"><%= progress[i][3] || '' %></div>
+      <% for (var m = 4 ; m < progress[i].length; m++) { %>
+      <div class="last"><%= progress[i][m] || '' %></div>
+      <% } %>
+    </code>
+  </div>
+  <% } %>
+</body>
+</html>

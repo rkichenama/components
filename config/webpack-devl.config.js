@@ -1,5 +1,5 @@
 const config = require('./webpack-base.config');
-const webpack = require('webpack');
+// const webpack = require('webpack');
 // const NpmInstallPlugin = require('npm-install-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -11,7 +11,8 @@ config.serve = {
   add: (app, middleware, options) => {
     app.use(webpackServeWaitpage(options, {
       title: 'development',
-      theme: 'dark'
+      disableWhenValid: false,
+      template: require('fs').readFileSync(require('path').resolve(__dirname, 'kichenama.ejs'), 'utf8'),
     }));
   }
 };
@@ -51,5 +52,6 @@ config.plugins = [
 ];
 
 config.mode = 'development';
+config.performance.hints = false;
 
 module.exports = config;
