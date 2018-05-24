@@ -1,4 +1,6 @@
-const CACHE_NAME = 'rk-components';
+
+/* global caches self fetch */
+const CACHE_NAME = `rk-components-1.1.0`;
 const cached = [
   'fonts/FiraCode-Regular.ttf',
   'fonts/FiraCode-Bold.eot',
@@ -16,6 +18,7 @@ const cached = [
   'fonts/FiraCode-Light.ttf',
   'fonts/FiraCode-Light.woff',
   'fonts/FiraCode-Light.woff2',
+  'media/favicon.ico',
 ];
 
 self.addEventListener('install', event => {
@@ -28,7 +31,19 @@ self.addEventListener('install', event => {
   );
 });
 
-// self.addEventListener('activate', () => {});
+self.addEventListener('activate', event => {
+  event.waitUntil(
+    caches.keys()
+      .then(cacheNames => Promise.all(
+        cacheNames.map(cacheName => {
+          if (cacheName !== CACHE_NAME) {
+            console.log(`Deleting out of date cache: ${cacheName}`);
+            return caches.delete(cacheName);
+          }
+        })
+      ))
+  );
+});
 
 self.addEventListener('fetch', event => {
   event.respondWith(
