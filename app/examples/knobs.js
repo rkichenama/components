@@ -62,14 +62,34 @@ const figure = ({ type, name, defaultValue: { value: defValue = '' } = {} }) => 
 class Knobs extends PureComponent {
   static propTypes = {
     /** */
-    components: PropTypes.object.isRequired,
+    component: PropTypes.shape({
+      description: PropTypes.string,
+      displayName: PropTypes.string,
+      filename: PropTypes.string,
+      methods: PropTypes.arrayOf(PropTypes.object),
+      props: PropTypes.arrayOf(
+        PropTypes.shape({
+          defaultValue: PropTypes.shape({
+            computed: PropTypes.bool,
+            value: PropTypes.string,
+          }),
+          description: PropTypes.string,
+          name: PropTypes.string.isRequired,
+          required: PropTypes.bool,
+          type: PropTypes.shape({
+            name: PropTypes.string,
+            value: PropTypes.any,
+          })
+        })
+      )
+    }).isRequired,
     /** */
     children: PropTypes.element.isRequired,
     style: PropTypes.object,
     className: PropTypes.string,
   }
 
-  figureOutValue = this.props.components[this.props.children.type.name].props
+  figureOutValue = this.props.component.props
     .filter(({ name }) => !/^(children|className)$/i.test(name))
     .filter(({ type: { name }}) => !/^func/.test(name))
     .reduce((keys, prop) => Object.assign(keys, { [prop.name]: figure(prop) }), {})
@@ -124,5 +144,7 @@ class Knobs extends PureComponent {
 };
 
 export default connect(
-  ({ components }) => ({ components })
+  ({ components }, { children: { type : { name } } }) => ({
+    component: components[name]
+  })
 )(Knobs);

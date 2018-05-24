@@ -7,4 +7,31 @@
 .knobs {
   @extend .stage;
   align-items: stretch;
+
+  .knob {
+    + .knob {
+      margin-top: 3px;
+    }
+
+    label, li {
+      display: block;
+      position: relative;
+    }
+
+    input{
+      &[type="checkbox"],
+      &[type="text"] {
+        float: right;
+        clear: right;
+      }
+      &[type="radio"] {
+        height: 1em;
+        width: 1em;
+      }
+      &[type="text"] {
+        width: 60%;
+        height: 1.8em;
+      }
+    }
+  }
 }
