@@ -3,12 +3,6 @@ import PropTypes from 'prop-types';
 
 import './TreeMap.scss';
 
-const TreeNode = PropTypes.shape({
-  size: PropTypes.number,
-  name: PropTypes.string,
-  tree: PropTypes.array
-});
-
 /**
  * My interpretation of a treemap
  */
