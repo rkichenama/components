@@ -6,18 +6,26 @@
     "n": 56
   },
   "tests": {
-    "Info": {
-      "n": 2,
-      "passed": 2,
+    "MenuBar": {
+      "n": 1,
+      "passed": 0,
       "failed": 0,
-      "pending": 0,
+      "pending": 1,
       "tests": {
-        "should handle click events": {
-          "status": "passed",
+        "encountered a declaration exception": {
+          "status": "pending",
           "errors": []
-        },
-        "should change state based on props": {
-          "status": "passed",
+        }
+      }
+    },
+    "Icon": {
+      "n": 1,
+      "passed": 0,
+      "failed": 0,
+      "pending": 1,
+      "tests": {
+        "encountered a declaration exception": {
+          "status": "pending",
           "errors": []
         }
       }
@@ -28,7 +36,19 @@
       "failed": 0,
       "pending": 1,
       "tests": {
-        "should render a treemap": {
+        "encountered a declaration exception": {
+          "status": "pending",
+          "errors": []
+        }
+      }
+    },
+    "Odometer": {
+      "n": 1,
+      "passed": 0,
+      "failed": 0,
+      "pending": 1,
+      "tests": {
+        "encountered a declaration exception": {
           "status": "pending",
           "errors": []
         }
@@ -107,18 +127,6 @@
               "errors": []
             }
           }
-        }
-      }
-    },
-    "MenuBar": {
-      "n": 1,
-      "passed": 0,
-      "failed": 0,
-      "pending": 1,
-      "tests": {
-        "should have a test": {
-          "status": "pending",
-          "errors": []
         }
       }
     },
@@ -262,70 +270,18 @@
         }
       }
     },
-    "Spinner": {
-      "n": 3,
-      "passed": 3,
+    "ClickDecorator": {
+      "n": 2,
+      "passed": 2,
       "failed": 0,
       "pending": 0,
       "tests": {
-        "should pass to a component pruned props": {
+        "should push down the next value to component": {
           "status": "passed",
           "errors": []
         },
-        "should cover a component with a spinner": {
+        "should change saved values list": {
           "status": "passed",
-          "errors": []
-        },
-        "should not cover a component with a spinner": {
-          "status": "passed",
-          "errors": []
-        }
-      }
-    },
-    "StateDecorator": {
-      "n": 3,
-      "passed": 3,
-      "failed": 0,
-      "pending": 0,
-      "tests": {
-        "sequence": {
-          "n": 2,
-          "passed": 2,
-          "failed": 0,
-          "pending": 0,
-          "tests": {
-            "should push down the next value to component": {
-              "status": "passed",
-              "errors": []
-            },
-            "should change saved values list": {
-              "status": "passed",
-              "errors": []
-            }
-          }
-        },
-        "random": {
-          "n": 1,
-          "passed": 1,
-          "failed": 0,
-          "pending": 0,
-          "tests": {
-            "should not change the order of the items in state": {
-              "status": "passed",
-              "errors": []
-            }
-          }
-        }
-      }
-    },
-    "Odometer": {
-      "n": 1,
-      "passed": 0,
-      "failed": 0,
-      "pending": 1,
-      "tests": {
-        "should have a test": {
-          "status": "pending",
           "errors": []
         }
       }
@@ -370,45 +326,37 @@
         }
       }
     },
-    "ProgressBar": {
-      "n": 2,
-      "passed": 2,
+    "Spinner": {
+      "n": 3,
+      "passed": 3,
       "failed": 0,
       "pending": 0,
       "tests": {
-        "should have zero value": {
+        "should pass to a component pruned props": {
           "status": "passed",
           "errors": []
         },
-        "should changes value on props": {
+        "should cover a component with a spinner": {
+          "status": "passed",
+          "errors": []
+        },
+        "should not cover a component with a spinner": {
           "status": "passed",
           "errors": []
         }
       }
     },
-    "Icon": {
-      "n": 1,
-      "passed": 0,
-      "failed": 0,
-      "pending": 1,
-      "tests": {
-        "should have a test": {
-          "status": "pending",
-          "errors": []
-        }
-      }
-    },
-    "ClickDecorator": {
+    "Info": {
       "n": 2,
       "passed": 2,
       "failed": 0,
       "pending": 0,
       "tests": {
-        "should push down the next value to component": {
+        "should handle click events": {
           "status": "passed",
           "errors": []
         },
-        "should change saved values list": {
+        "should change state based on props": {
           "status": "passed",
           "errors": []
         }
@@ -425,6 +373,58 @@
           "errors": []
         },
         "should change state based on props": {
+          "status": "passed",
+          "errors": []
+        }
+      }
+    },
+    "StateDecorator": {
+      "n": 3,
+      "passed": 3,
+      "failed": 0,
+      "pending": 0,
+      "tests": {
+        "sequence": {
+          "n": 2,
+          "passed": 2,
+          "failed": 0,
+          "pending": 0,
+          "tests": {
+            "should push down the next value to component": {
+              "status": "passed",
+              "errors": []
+            },
+            "should change saved values list": {
+              "status": "passed",
+              "errors": []
+            }
+          }
+        },
+        "random": {
+          "n": 1,
+          "passed": 1,
+          "failed": 0,
+          "pending": 0,
+          "tests": {
+            "should not change the order of the items in state": {
+              "status": "passed",
+              "errors": []
+            }
+          }
+        }
+      }
+    },
+    "ProgressBar": {
+      "n": 2,
+      "passed": 2,
+      "failed": 0,
+      "pending": 0,
+      "tests": {
+        "should have zero value": {
+          "status": "passed",
+          "errors": []
+        },
+        "should changes value on props": {
           "status": "passed",
           "errors": []
         }

@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import React, { PureComponent } from 'react';
 import { Knobs } from '../';
 import Cube from 'components/Cube/Cube';
@@ -19,3 +20,4 @@ export default class extends PureComponent {
     );
   }
 }
+/* eslint-enable react/display-name */

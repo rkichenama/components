@@ -1,6 +1,4 @@
 const config = require('./webpack-base.config');
-// const webpack = require('webpack');
-// const NpmInstallPlugin = require('npm-install-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const webpackServeWaitpage = require('webpack-serve-waitpage');

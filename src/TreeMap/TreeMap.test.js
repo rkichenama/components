@@ -19,6 +19,6 @@ const generateDemoTree = (depth, max = randBetween(100000, 10)) => {
 };
 const depth = 10;
 
-describe('TreeMap', () => {
+xdescribe('TreeMap', () => {
   it('should render a treemap');
 });

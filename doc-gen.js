@@ -29,7 +29,6 @@ const walk = (dir, cond) => new Promise((resolve, reject, files = []) => {
 
 const srcFldr = path.join(__dirname, 'src');
 const storeJson = path.join(__dirname, 'app/store/metadata.json');
-const id = x => { console.log(x); return x; }
 
 /*
 search the local src directory for all the jsx files. assumed to be Components
@@ -41,8 +40,8 @@ walk(
   .then(jsxs => (// run them through react-gendoc
     jsxs.reduce((obj, filename) => {
       const metadata = reactDocs.parse(fs.readFileSync(filename).toString());
-      if(metadata.props) {
-        metadata.props = Object.keys(metadata.props).map((name) => ({
+      if (metadata.props) {
+        metadata.props = Object.keys(metadata.props).map(name => ({
           ...(metadata.props[name]),
           name,
         }));

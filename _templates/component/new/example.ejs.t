@@ -1,6 +1,7 @@
 ---
 to: app/examples/<%= h.PascalCase(name) %>/<% if (locals.ex) { -%><%= h.mixedCase(locals.ex) %><% } else { -%>01<% } %>.js
 ---
+/* eslint-disable react/display-name */
 import React, { PureComponent } from 'react';
 import { Stage } from '../';
 import <%= h.PascalCase(name) %> from 'components/<%= h.PascalCase(name) %>/<%= h.PascalCase(name) %>';
@@ -17,3 +18,4 @@ export default class extends PureComponent {
     );
   }
 }
+/* eslint-enable react/display-name */
