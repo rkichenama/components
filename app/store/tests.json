@@ -270,22 +270,6 @@
         }
       }
     },
-    "ClickDecorator": {
-      "n": 2,
-      "passed": 2,
-      "failed": 0,
-      "pending": 0,
-      "tests": {
-        "should push down the next value to component": {
-          "status": "passed",
-          "errors": []
-        },
-        "should change saved values list": {
-          "status": "passed",
-          "errors": []
-        }
-      }
-    },
     "Card": {
       "n": 4,
       "passed": 4,
@@ -326,6 +310,22 @@
         }
       }
     },
+    "ProgressBar": {
+      "n": 2,
+      "passed": 2,
+      "failed": 0,
+      "pending": 0,
+      "tests": {
+        "should have zero value": {
+          "status": "passed",
+          "errors": []
+        },
+        "should changes value on props": {
+          "status": "passed",
+          "errors": []
+        }
+      }
+    },
     "Spinner": {
       "n": 3,
       "passed": 3,
@@ -346,7 +346,7 @@
         }
       }
     },
-    "Info": {
+    "Toggle": {
       "n": 2,
       "passed": 2,
       "failed": 0,
@@ -362,7 +362,7 @@
         }
       }
     },
-    "Toggle": {
+    "Info": {
       "n": 2,
       "passed": 2,
       "failed": 0,
@@ -414,17 +414,17 @@
         }
       }
     },
-    "ProgressBar": {
+    "ClickDecorator": {
       "n": 2,
       "passed": 2,
       "failed": 0,
       "pending": 0,
       "tests": {
-        "should have zero value": {
+        "should push down the next value to component": {
           "status": "passed",
           "errors": []
         },
-        "should changes value on props": {
+        "should change saved values list": {
           "status": "passed",
           "errors": []
         }
