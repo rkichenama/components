@@ -507,6 +507,18 @@
         },
         {
           "type": {
+            "name": "object"
+          },
+          "required": false,
+          "description": "",
+          "defaultValue": {
+            "value": "{}",
+            "computed": false
+          },
+          "name": "style"
+        },
+        {
+          "type": {
             "name": "bool"
           },
           "required": false,

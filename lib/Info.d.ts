@@ -7,6 +7,7 @@ export interface InfoProps {
     title?: any;
     children?: any;
     className?: string;
+    style?: Object;
     /**
      * toggles whether the caret should be on the right if present and/or true
      */

@@ -20,6 +20,7 @@ export default class Info extends PureComponent {
     title: RenderableType,
     children: RenderableType,
     className: PropTypes.string,
+    style: PropTypes.object,
     /** toggles whether the caret should be on the right if present and/or true */
     right: PropTypes.bool,
     /**
@@ -35,6 +36,7 @@ export default class Info extends PureComponent {
   };
 
   static defaultProps = {
+    style: {},
     className: '',
     right: false,
     open: false,
@@ -72,16 +74,16 @@ export default class Info extends PureComponent {
 
   render () {
     const {
-      props: { title, children, right, className },
+      props: { title, children, right, className, style },
       state: { open },
     } = this;
     return (
-      <article className={`information${open ? ' open': ''} ${className}`}>
+      <article className={`information${open ? ' open': ''} ${className}`} style={style}>
         <header className={ right ? 'right' : 'left' } onClick={this.handleToggleClick}>
           { title || 'Info'}
         </header>
         <section>
-          { children }
+          { open ? children : null }
         </section>
       </article>
     );
