@@ -61,7 +61,7 @@ const List = (subtree, currentPage, handleClick) => (
       })
     }
   </ul>
-)
+);
 
 class Sidebar extends PureComponent {
 

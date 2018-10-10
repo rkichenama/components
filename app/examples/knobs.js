@@ -41,7 +41,7 @@ const figure = ({ type, name, defaultValue: { value: defValue = '' } = {} }) => 
             ))
           }
         </ul>
-      )
+      );
       break;
     case 'string':
       value = strValue(value);
@@ -56,7 +56,7 @@ const figure = ({ type, name, defaultValue: { value: defValue = '' } = {} }) => 
       );
       break;
   }
-  return { input, value }
+  return { input, value };
 };
 
 class Knobs extends PureComponent {
@@ -108,7 +108,7 @@ class Knobs extends PureComponent {
       {
         [target.name]: this.figureOutValue[target.name](target).value
       }
-    ))
+    ));
   }
 
   renderKnob = name => {
@@ -143,7 +143,7 @@ class Knobs extends PureComponent {
       </div>
     );
   }
-};
+}
 
 export default connect(
   ({ components }, { name  }) => ({

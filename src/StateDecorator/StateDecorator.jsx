@@ -71,7 +71,7 @@ export default class StateDecorator extends Decorator {
           this.setState(() => {
             const { next: value, allValues: values } = this.getNext();
             return { value, values };
-          })
+          });
         },
         this.props.delay
       );

@@ -6,7 +6,7 @@ export const curry = (fn, arity = fn.length) => {
     }
     let params = [...args];
     return (...args) => curried(...[...params, ...args]);
-  }
+  };
   return curried;
 };
 /* create a function that melds from right to left */

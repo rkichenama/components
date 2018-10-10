@@ -8,7 +8,7 @@ export const statsShape = {
   passed: PropTypes.number,
   failed: PropTypes.number,
   pending: PropTypes.number,
-}
+};
 
 export default class Stats extends PureComponent {
   static propTypes = statsShape;

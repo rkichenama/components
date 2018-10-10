@@ -14,7 +14,7 @@ const generateDemoTree = (depth, max = randBetween(100000, 10)) => {
         size,
         name: randStr(),
         tree: generateDemoTree(depth - 1, size),
-      }
+      };
     });
 };
 const depth = 3;
@@ -29,7 +29,7 @@ export default class extends React.PureComponent {
       interval: setInterval(() => {
         this.setState({ data: generateDemoTree(depth) });
       }, 1200)
-    })
+    });
   }
   componentWillUnmount () { clearInterval(this.state.interval) }
   render () {

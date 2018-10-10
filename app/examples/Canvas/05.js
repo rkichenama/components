@@ -56,7 +56,7 @@ function FrameFactory (startingPoints, endingPoints, drawFn, frames = 60) {
   return Array(frames + 1).fill(false).map((_, f) => (
     drawFn(easings.inOut.quad(f, startingPoints, changes, frames))
   ));
-};
+}
 
 let X = sideX, Y = sideY, Z = 2 * .612 * Y;
 const bottom = shiftCoords(center, {x: 0, y: Z});

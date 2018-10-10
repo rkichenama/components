@@ -106,7 +106,7 @@ storiesOf('Containers/Deck', module)
               <div>This is some content Back</div>
             </FlippingCard>
           </Deck>
-        )
+        );
       }
     )
   )
@@ -120,7 +120,7 @@ storiesOf('Containers/Deck', module)
           (<span key={4}>4</span>),
           (<span key={5}>5</span>),
           (<span key={6}>6</span>)
-        ]
+        ];
         return (
           <Deck>
             <ClickingCube>{faces}</ClickingCube>
@@ -130,7 +130,7 @@ storiesOf('Containers/Deck', module)
             <ClickingCube>{faces}</ClickingCube>
             <FlippingCube>{faces}</FlippingCube>
           </Deck>
-        )
+        );
       }
     )
   )

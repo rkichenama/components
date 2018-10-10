@@ -23,4 +23,4 @@ module.exports = username => request(`https://github.com/${username}`)
     const data = { avatar, name, contributions, history };
     console.log(data);
     // console.log($('.js-contribution-graph > .f4').text());
-  })
+  });

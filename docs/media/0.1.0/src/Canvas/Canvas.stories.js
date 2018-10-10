@@ -38,7 +38,7 @@ class Saver extends Component {
     this.state = {
       x: 13, y: 7, w: 40, h: 40,
       avail: false, dx: 1, dy: 1
-    }
+    };
 
     this.animate = this.animate.bind(this);
   }
@@ -47,12 +47,12 @@ class Saver extends Component {
     this.animate();
   }
   animate () {
-    if (!this.state.avail) { return; }
+    if (!this.state.avail) { return }
 
     let {x, y, dx, dy, w, h} = this.state;
 
-    if (x < 0 || x > (300 - w - Math.abs(dx))) { dx *= -1; }
-    if (y < 0 || y > (300 - h - Math.abs(dy))) { dy *= -1; }
+    if (x < 0 || x > (300 - w - Math.abs(dx))) { dx *= -1 }
+    if (y < 0 || y > (300 - h - Math.abs(dy))) { dy *= -1 }
 
     [x, y] = [x + dx, y + dy];
 
@@ -87,8 +87,8 @@ const polygon = (sides, center = center, size = 75) => ({context}) => {
       y: -size * Math.cos(angle)
     }));
   }
-  context.stroke().fill().end()
-}
+  context.stroke().fill().end();
+};
 
 let silly = Array(360).fill(false)
   .map((_, s) => polygon(Number.parseInt(s / 10) + 2));
@@ -125,7 +125,7 @@ The data should be a list of draw actions to be performed within the canvas cont
               g.addColorStop(1.00, '#ff0000');
               context
                 .style.stroke('black')
-                .style.fill(g)
+                .style.fill(g);
             },
           ]}
           sequence={[
@@ -155,7 +155,7 @@ class D extends Component {
         ...Array(4).fill(false)
           .map((_, s) => polygon(s + 2)),
       ]
-    }
+    };
   }
   componentDidUpdate ({sides}) {
     if (sides !== this.props.sides) {
@@ -163,7 +163,7 @@ class D extends Component {
         Clear(),
         ({context}) => {
           context
-          .style.stroke('black')
+          .style.stroke('black');
         },
         ...Array(Number(this.props.sides)).fill(false)
         .map((_, s) => polygon(s + 2)),

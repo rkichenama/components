@@ -9,7 +9,7 @@ import { renderN } from '../shared/util';
   ['dropComponent', 'dropTextComponent'],
   {// component is always null when hovering stateless components.
     drop (props, monitor, component) {
-      if (monitor.didDrop()) { return; }
+      if (monitor.didDrop()) { return }
       const { setRenderComponent } = component;
       return { setRenderComponent };
     },

@@ -31,6 +31,6 @@ export default class Demos extends PureComponent {
           )
         }
       </section>
-    )
+    );
   }
 }
