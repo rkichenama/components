@@ -4,7 +4,7 @@
       return r.map(function (c) {
         return c;
       });
-    })
+    });
   }
 
   function Life (field) {
@@ -29,7 +29,7 @@
         ].reduce(function (sum, cell) {
           return sum + +!!cell;
         }, 0);
-      }
+      };
     },
     get game() {
       return copyBoard(this.board);
@@ -41,7 +41,7 @@
       this.board = this.board.map(function (row, y) {
         return row.map(function (cell, x) {
           var count = neighbors(y, x);
-          if (!!cell) {
+          if (cell) {
             if (count < 2 || count > 3) {
               return 0;
             }
@@ -49,7 +49,7 @@
             return 1;
           }
           return cell;
-        })
+        });
       });
 
       return this;

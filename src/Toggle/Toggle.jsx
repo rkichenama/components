@@ -46,7 +46,7 @@ export default class Toggle extends PureComponent {
   handleClick = () => {
     this.setState(({ value }) => ({ value: !value }), () => {
       this.props.onValueChange(this.state.value);
-    })
+    });
   }
 
   render () {
@@ -60,4 +60,4 @@ export default class Toggle extends PureComponent {
       </div>
     );
   }
-};
+}
