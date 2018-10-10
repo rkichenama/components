@@ -10,9 +10,9 @@ import Image from './Image';
 @DragSource(
   'dropComponent',
   {
-    beginDrag (props) { return { }; },
+    beginDrag (props) { return { } },
     endDrag (props, monitor, component) {
-      if (!monitor.didDrop()) { return; }
+      if (!monitor.didDrop()) { return }
       // const source = monitor.getItem();
       const { setRenderComponent } = monitor.getDropResult();
       const { comp } = props;
@@ -61,9 +61,9 @@ class Text extends Component {
 const TextSource = DragSource(
   'dropTextComponent',
   {
-    beginDrag (props) { return { }; },
+    beginDrag (props) { return { } },
     endDrag (props, monitor, component) {
-      if (!monitor.didDrop()) { return; }
+      if (!monitor.didDrop()) { return }
       // const source = monitor.getItem();
       const { setRenderComponent } = monitor.getDropResult();
       const { comp } = props;

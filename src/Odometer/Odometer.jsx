@@ -61,7 +61,7 @@ class Column extends Component {
           this.renderDigits(21)
         }
       </div>
-    )
+    );
   }
 }
 

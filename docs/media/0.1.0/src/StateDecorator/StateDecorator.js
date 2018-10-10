@@ -12,11 +12,11 @@ const base = (flag, values = []) => compose(
   withState('sdValues', 'sdSetValues', values),
   withState('sdInterval', 'sdSetInterval', false)
 );
-const Wrapper = WrappedComponent => (p) => {
-  const props = Object.keys(p).filter(key => !/^sd.*(Flag|Values|Interval|Event)/.test(key)).reduce((t, c) => { t[c] = p[c]; return t; }, {});
+const Wrapper = WrappedComponent => p => {
+  const props = Object.keys(p).filter(key => !/^sd.*(Flag|Values|Interval|Event)/.test(key)).reduce((t, c) => { t[c] = p[c]; return t }, {});
   return (
     <WrappedComponent {...props} />
-  )
+  );
 };
 
 const StateDecorator = (flag, values, delay = 5000) => WrappedComponent => {
@@ -45,7 +45,7 @@ const StateDecorator = (flag, values, delay = 5000) => WrappedComponent => {
     )(
       Wrapper(WrappedComponent)
     )
-  )
+  );
 };
 
 export default StateDecorator;
@@ -74,5 +74,5 @@ export const ClickDecorator = (flag, values) => WrappedComponent => {
     )(
       Wrapper(WrappedComponent)
     )
-  )
+  );
 };

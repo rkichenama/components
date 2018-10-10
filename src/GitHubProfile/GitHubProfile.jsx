@@ -31,7 +31,7 @@ export default class GitHubProfile extends PureComponent {
    * @param {Object} props - component props
    * @param {string} props.username - the github username to pull
    */
-  fetchUserInfo = async (props) => {
+  fetchUserInfo = async props => {
     const { username } = props;
     try {
       let {
@@ -89,4 +89,4 @@ export default class GitHubProfile extends PureComponent {
       </div>
     );
   }
-};
+}

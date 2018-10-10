@@ -13,7 +13,7 @@ export default class ErrorBoundary extends PureComponent {
   }
 
   render () {
-    
+
     return this.state.error ? (
       <Info className='errorMessage' title={ this.state.error.toString() } open>
         <pre>

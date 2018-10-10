@@ -43,7 +43,7 @@ export default class extends React.Component {
             g.addColorStop(1.00, '#ff0000');
             context
               .style.stroke('black')
-              .style.fill(g)
+              .style.fill(g);
           },
         ]} sequence={[
           ...seq,

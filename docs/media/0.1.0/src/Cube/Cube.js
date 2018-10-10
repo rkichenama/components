@@ -17,7 +17,7 @@ const Cube = ({children, onClick, face, className}) => {
       </div>
     </div>
   );
-}
+};
 
 const firstLetter = str => `${str[0].toUpperCase()}${str.slice(1)}`;
 const faces = [
@@ -44,7 +44,7 @@ Cube.defaultProps = {
   onClick: noop,
   face: 'front',
   className: ''
-}
+};
 
 
 export default Cube;

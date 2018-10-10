@@ -7,7 +7,7 @@ export default class Markdown extends PureComponent {
   static propTypes = {
     source: PropTypes.string.isRequired,
   }
-  
+
   render() {
     const { props: { source: src }} = this;
     // remove jsdoc config from markdown source

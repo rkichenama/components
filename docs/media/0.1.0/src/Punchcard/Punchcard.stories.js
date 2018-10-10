@@ -8,8 +8,8 @@ import { action } from '@storybook/addon-actions';
 const randoms = [];
 const Randomize = () => {
   const randoms = [];
-  for(let d = 0; d < 24; d++) {
-    for(let w = 0; w < 7; w++) {
+  for (let d = 0; d < 24; d++) {
+    for (let w = 0; w < 7; w++) {
       !randoms[w] && (randoms[w] = []);
       randoms[w][d] = Math.random() > .45 ? true : false;
     }
@@ -32,7 +32,7 @@ class Container extends Component {
           action('updated actives')();
         });
       }, 2500)
-    })
+    });
   }
   componentWillUnmount () {
     this.state.interval && clearInterval(this.state.interval);

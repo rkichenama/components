@@ -45,7 +45,7 @@ const enhance = compose(
     username: ''
   }),
   withHandlers({
-    fetchUserInfo: ({username}) => async (component) => {
+    fetchUserInfo: ({username}) => async component => {
       try {
         let {
           data: {avatar_url, name, html_url, location}

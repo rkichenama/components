@@ -25,7 +25,7 @@ stories.add('with knobs',
         <span>5</span>
         <span>6</span>
       </Cube>
-    )
+    );
   }
 );
 
@@ -42,6 +42,6 @@ stories.add('auto',
         <Die value={4} />
         <Die value={3} />
       </Cubed>
-    )
+    );
   }
 );

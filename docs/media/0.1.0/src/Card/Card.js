@@ -14,7 +14,7 @@ const Card = ({children, onClick, flipped, className}) => {
       </div>
     </div>
   );
-}
+};
 
 Card.propTypes = {
   children: PropTypes.node.isRequired,
@@ -29,6 +29,6 @@ Card.defaultProps = {
   flipped: false,
   onClick: noop,
   className: ''
-}
+};
 
 export default Card;

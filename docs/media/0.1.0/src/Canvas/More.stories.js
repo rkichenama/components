@@ -183,4 +183,4 @@ stories
         box(sideX * (.2), sideY * (.2)),
       ]}/>
     )
-  )
+  );

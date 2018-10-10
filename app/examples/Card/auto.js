@@ -6,15 +6,14 @@ import Card from 'components/Card/Card';
 
 const centered = {
   display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%'
-}
+};
 export default class extends React.Component {
   render () {
     return (
       <Stage>
         <RandomUsers count={20} component={users => users.reduce(
           (t, c, i) => {
-            if (i % 2) { t[t.length - 1].push(c) }
-            else { t.push([c]) }
+            if (i % 2) { t[t.length - 1].push(c) } else { t.push([c]) }
             return t;
           }, []
         ).map((results, r) => (

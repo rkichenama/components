@@ -14,10 +14,10 @@ const walk = (dir, cond, done) => {
   let results = [];
 
   readdir(dir, function (err, list) {
-    if (err) { return done(err, results); }
+    if (err) { return done(err, results) }
 
     (function next () {
-      if (!list.length) { return done(null, results); }
+      if (!list.length) { return done(null, results) }
 
       // pull next entry from this directory
       let entry = join(dir, list.shift());
@@ -31,7 +31,7 @@ const walk = (dir, cond, done) => {
           });
         } else {
           // add to results if meets condition
-          if (cond(entry)) { results.push(entry); }
+          if (cond(entry)) { results.push(entry) }
           next();
         }
       });

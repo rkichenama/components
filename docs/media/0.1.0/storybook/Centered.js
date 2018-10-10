@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Centered = (story) => (
+const Centered = story => (
   <div className='centered'>
     <div>
       {story.children || story()}

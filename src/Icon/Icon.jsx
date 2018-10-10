@@ -13,7 +13,7 @@ const dynSvg = name => {
   } catch (e) {
     return null;
   }
-}
+};
 
 /**
  * An Icon wrapper

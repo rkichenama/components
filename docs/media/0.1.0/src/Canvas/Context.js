@@ -4,25 +4,25 @@ export default canvas => {
   const firstPixel = { x: 0, y: 0 };
   const lastPixel = { x: width, y: height };
   const ctx = {
-    clear: () => { ctx.rect.clear(0, 0, width, height); return ctx; },
+    clear: () => { ctx.rect.clear(0, 0, width, height); return ctx },
     rect: {
-      clear: (x = 0, y = 0, w = width, h = height) => { context.clearRect(x, y, w, h); return ctx; },
-      fill: ({x, y, w, h}) => { context.fillRect(x, y, w, h); return ctx; },
-      stroke: ({x, y, w, h}) => { context.strokeRect(x, y, w, h); return ctx; },
+      clear: (x = 0, y = 0, w = width, h = height) => { context.clearRect(x, y, w, h); return ctx },
+      fill: ({x, y, w, h}) => { context.fillRect(x, y, w, h); return ctx },
+      stroke: ({x, y, w, h}) => { context.strokeRect(x, y, w, h); return ctx },
     },
     style: {
-      fill: style => { context.fillStyle = style; return ctx; },
-      stroke: style => { context.strokeStyle = style; return ctx; },
+      fill: style => { context.fillStyle = style; return ctx },
+      stroke: style => { context.strokeStyle = style; return ctx },
     },
-    paint: () => { context.fill(); return ctx; },
+    paint: () => { context.fill(); return ctx },
     fill: () => ctx.paint(),
-    outline: () => { context.stroke(); return ctx; },
+    outline: () => { context.stroke(); return ctx },
     stroke: () => ctx.outline(),
-    begin: () => { context.beginPath(); return ctx; },
-    arc: ({x, y}, r, {from, to}) => { context.arc(x, y, r, from, to); return ctx; },
-    moveTo: ({x, y}) => { context.moveTo(x, y); return ctx; },
-    lineTo: ({x, y}) => { context.lineTo(x, y); return ctx; },
-    end: () => { context.closePath(); return ctx; },
+    begin: () => { context.beginPath(); return ctx },
+    arc: ({x, y}, r, {from, to}) => { context.arc(x, y, r, from, to); return ctx },
+    moveTo: ({x, y}) => { context.moveTo(x, y); return ctx },
+    lineTo: ({x, y}) => { context.lineTo(x, y); return ctx },
+    end: () => { context.closePath(); return ctx },
     // not chainable
     gradient: {
       // add your own color stops
