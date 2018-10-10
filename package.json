@@ -99,5 +99,13 @@
     "webpack-command": "^0.2.0",
     "webpack-serve": "^1.0.2",
     "webpack-serve-waitpage": "^1.0.0"
-  }
+  },
+  "eslintIgnore": [
+    "**/__mocks__/",
+    "app/",
+    "node_modules/",
+    ".circleci/",
+    "docs/",
+    "lib/"
+  ]
 }
