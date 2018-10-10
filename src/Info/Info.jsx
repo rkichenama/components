@@ -47,9 +47,11 @@ export default class Info extends PureComponent {
     open: false,
   };
 
-  componentWillMount () { this.preloadOpenState() }
+  /* eslint-disable-next-line camelcase */
+  UNSAFE_componentWillMount () { this.preloadOpenState() }
 
-  componentWillReceiveProps (props) { this.preloadOpenState(props) }
+  /* eslint-disable-next-line camelcase */
+  UNSAFE_componentWillReceiveProps (props) { this.preloadOpenState(props) }
 
   /**
    * if an open prop is given, use it to load into state

@@ -36,7 +36,8 @@ export default class Canvas extends Component {
     animating: false,
   }
 
-  componentWillReceiveProps ({scene, sequence}) {
+  /* eslint-disable-next-line camelcase */
+  UNSAFE_componentWillReceiveProps ({scene, sequence}) {
     if (
       (sequence !== this.props.sequence) ||
       (scene !== this.props.scene)
@@ -70,7 +71,7 @@ export default class Canvas extends Component {
   stopAnimating = () => {
     if (this.state.animating) {
       cancelAnimationFrame(this.state.animating);
-      this.state.animating = false;
+      this.state.animating = false; /* eslint-disable-line react/no-direct-mutation-state */
     }
   }
 
@@ -90,10 +91,10 @@ export default class Canvas extends Component {
         step(args);
         // set up animation
         sequence = [...rest, step];
-        this.state.animating = requestAnimationFrame(doAnim);
+        this.state.animating = requestAnimationFrame(doAnim); /* eslint-disable-line react/no-direct-mutation-state */
       }
     };
-    this.state.animating = requestAnimationFrame(doAnim);
+    this.state.animating = requestAnimationFrame(doAnim); /* eslint-disable-line react/no-direct-mutation-state */
   }
 
   render () {

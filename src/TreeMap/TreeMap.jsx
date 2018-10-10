@@ -57,7 +57,7 @@ export default class TreeMap extends Component {
       props: { depth, tree, className, style }
     } = this;
     if (!tree.length || depth > 12) { return null }
-    const totalSize = tree.reduce((t, { size }) => (t + size), 0);
+    // const totalSize = tree.reduce((t, { size }) => (t + size), 0);
     return (
       <div
         className={`tree-map ${className}`}

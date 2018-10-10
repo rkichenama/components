@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
@@ -53,7 +54,8 @@ export default class GitHubProfile extends PureComponent {
     }
   }
 
-  componentWillUpdate ({ username }) {
+  /* eslint-disable-next-line camelcase */
+  UNSAFE_componentWillUpdate ({ username }) {
     if (username !== this.props.username) {
       this.setState({
         avatar_url: false,

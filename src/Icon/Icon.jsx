@@ -22,7 +22,8 @@ export default class Icon extends React.Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
     className: PropTypes.string,
-    ariaLabel: PropTypes.string
+    ariaLabel: PropTypes.string,
+    style: PropTypes.object,
   };
 
   static defaultProps = {

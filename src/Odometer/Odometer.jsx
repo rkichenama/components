@@ -19,11 +19,12 @@ class Column extends Component {
     return value !== this.state.prevValue;
   }
 
-  componentWillReceiveProps () {
+  /* eslint-disable-next-line camelcase */
+  UNSAFE_componentWillReceiveProps () {
     this.setState({ animating: true });
   }
 
-  handleTransitionEnd = ({ target }) => setTimeout(() => this.setState({ animating: false, prevValue: this.props.value }), 250);
+  handleTransitionEnd = () => setTimeout(() => this.setState({ animating: false, prevValue: this.props.value }), 250);
 
   /**
    * for a given column index, calucate the distance of travel to the new display digit
@@ -86,7 +87,8 @@ export default class Odometer extends PureComponent {
     prevValue: '',
   }
 
-  componentWillReceiveProps ({ value, digits }, init = false) {
+  /* eslint-disable-next-line camelcase */
+  UNSAFE_componentWillReceiveProps ({ value, digits }, init = false) {
     if (init || (value !== this.props.value)) {
       this.setState({
         value: this.stringify(value, digits),

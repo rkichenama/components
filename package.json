@@ -33,7 +33,7 @@
     "test:ci": "jest --config=./config/jest.json --runInBand --ci",
     "test:watchAll": "jest --watchAll --config=./config/jest.json --color",
     "test:watch": "jest --watch --config=./config/jest.json --reporters 'default' --coverageReporters 'text' --color",
-    "lint": "eslint ./src --color"
+    "lint": "eslint --ext .jsx,.js src/ --color"
   },
   "dependencies": {
     "axios": "^0.18.0",

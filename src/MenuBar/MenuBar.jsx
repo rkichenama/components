@@ -15,7 +15,8 @@ export default class MenuBar extends Component {
       PropTypes.func
     ]),
     /** flag for whether the more menu should be initially open */
-    initOpen: PropTypes.bool
+    initOpen: PropTypes.bool,
+    children: PropTypes.node
   }
 
   static defaultProps = {

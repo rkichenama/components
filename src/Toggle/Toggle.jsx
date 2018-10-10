@@ -29,9 +29,11 @@ export default class Toggle extends PureComponent {
     value: false,
   }
 
-  componentWillMount () { this.preloadValue() }
+  /* eslint-disable-next-line camelcase */
+  UNSAFE_componentWillMount () { this.preloadValue() }
 
-  componentWillReceiveProps (props) { this.preloadValue(props) }
+  /* eslint-disable-next-line camelcase */
+  UNSAFE_componentWillReceiveProps (props) { this.preloadValue(props) }
 
   /**
    * use the value prop to load into statepreloadValue
