@@ -30,6 +30,7 @@
     "dev:server": "webpack-serve --config ./config/webpack-devl.config.js --open --color",
     "dev": "run-p -l metadata:watch dev:server test:watchAll",
     "test": "jest --config=./config/jest.json",
+    "test:ci": "jest --config=./config/jest.json --runInBand --ci",
     "test:watchAll": "jest --watchAll --config=./config/jest.json --color",
     "test:watch": "jest --watch --config=./config/jest.json --reporters 'default' --coverageReporters 'text' --color"
   },

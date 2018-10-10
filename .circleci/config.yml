@@ -27,6 +27,10 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
       # run tests!
-      - run: yarn test
+      - run:
+          name: Run tests with JUnit
+          command: yarn test:ci
+          environment:
+            JEST_JUNIT_OUTPUT: "app/store/junit/results.xml"
       - store_test_results:
           path: app/store
