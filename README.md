@@ -1,4 +1,6 @@
 # components
+[![CircleCI](https://circleci.com/gh/rkichenama/components/tree/develop.svg?style=svg)](https://circleci.com/gh/rkichenama/components/tree/develop)
+[![CodeFactor](https://www.codefactor.io/repository/github/rkichenama/components/badge)](https://www.codefactor.io/repository/github/rkichenama/components)
 
 A library of reusable React components with a documentation app which features documentation, coverage, test results, and examples.
 
