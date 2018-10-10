@@ -11,26 +11,26 @@ const Types = [
   ACTION_C,
 ];
 
-const Reducer = Union(types);
+const Reducer = Union(Types);
 
 /**
  * @param {Object} [state={}]
  * @param {Object} { type, payload, error }
  * @returns state reflecting changes from action
  */
-const reducer = (state = {}, { type, payload, error }) => {
+export default (state = {}, { type, payload, error }) => {
   if (Types.some(known => known === type)) {
     return Reducer[type]({ state, error, payload }).match({
       [ACTION_A]: ({ state }) => state,
       [ACTION_B]: ({ state, payload }) => ({ ...state, ...payload }),
       [ACTION_B]: ({ error }) => ({ ...error }),
-    })
+    });
   } else {
     return state;
   }
-}
+};
 
 // action creators
-export const actionA = _ => ({ type: ACTION_A });
+export const actionA = () => ({ type: ACTION_A });
 export const actionB = payload => ({ type: ACTION_B, payload });
 export const actionC = error => ({ type: ACTION_C, error });

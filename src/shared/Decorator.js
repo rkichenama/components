@@ -15,9 +15,10 @@ export default class Decorator extends PureComponent {
     };
   }
 
-  componentWillMount () {
+  /* eslint-disable-next-line */
+  UNSAFE_componentWillMount () {
     const [n, ...v] = this.props.values;
-    this.state.value = n;
-    this.state.values = [...v, n];
+    this.state.value = n; /* eslint-disable-line react/no-direct-mutation-state */
+    this.state.values = [...v, n]; /* eslint-disable-line react/no-direct-mutation-state */
   }
 }

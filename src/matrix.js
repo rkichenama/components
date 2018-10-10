@@ -1,4 +1,4 @@
-const Proxifier = (array, helpers = {}) => (
+export const Proxifier = (array, helpers = {}) => (
   new Proxy(array, {
     get (target, key, proxy) {
       if (Object.keys(helpers).includes(key)) {
@@ -15,13 +15,13 @@ const Proxifier = (array, helpers = {}) => (
   })
 );
 
-const dotProduct = (a, b) => {
+export const dotProduct = (a, b) => {
   if (a[0].length !== b.length) { throw new Error('Unable to multiply') }
   const columns = b[0].length;
-  return a.map((left, r) => {
+  return a.map(left => {
     let row = [];
     for (let c = 0; c < columns; c++) {
-      let v = left.reduce((t, l, i) => t + (l * b[i][c]), 0)
+      let v = left.reduce((t, l, i) => t + (l * b[i][c]), 0);
       row.push(v);
     }
     return row;

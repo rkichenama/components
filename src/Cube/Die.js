@@ -1,14 +1,15 @@
-import React, { Component, Children } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import './Die.scss';
 
 const Dots = (n => {
   const dots = [];
-  for (let i = 0; i < n; i++)
+  for (let i = 0; i < n; i++) {
     dots[i] = (
       <div className='dot' key={i} />
     );
+  }
   return dots;
 })(9);
 

@@ -3,12 +3,12 @@ import { pipe } from '../shared/functions';
 export const Clear = () => props => {
   props.context.clear();
   return props;
-}
+};
 
 /* no stroke but fill */
 export const FilledRect = (coords, color = 'transparent') => props => {
   const { context } = props;
-  if (color) { context.style.fill(color).paint(); }
+  if (color) { context.style.fill(color).paint() }
   context.rect.fill(coords);
   return props;
 };
@@ -16,7 +16,7 @@ export const FilledRect = (coords, color = 'transparent') => props => {
 /* with stroke no fill*/
 export const BorderedRect = (coords, border = 'transparent') => props => {
   const { context } = props;
-  if (border) { context.style.stroke(border); }
+  if (border) { context.style.stroke(border) }
   context.rect.stroke(coords);
   return props;
 };
@@ -37,8 +37,8 @@ export const Arc = (center, radius, curve, color, border) => props => {
   // grad.addColorStop(.5, 'rgba(0,0,255,.2)');
   // grad.addColorStop(1, 'rgba(255,0,0,.1)');
   // context.style.fill(grad).paint();
-  if (color) { context.style.fill(color).paint(); }
-  if (border) { context.style.stroke(border); }
+  if (color) { context.style.fill(color).paint() }
+  if (border) { context.style.stroke(border) }
   context.end();
   return props;
 };

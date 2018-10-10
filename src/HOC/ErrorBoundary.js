@@ -6,7 +6,11 @@ import './ErrorBoundary.scss';
 export default class ErrorBoundary extends Component {
   state = { error: false };
 
-  componentDidCatch (error, info) {
+  static propTypes ={
+    children: PropTypes.node
+  }
+
+  componentDidCatch (error/* , info */) {
     this.setState({ error }, () => {
       // do internally after error caught.
     });

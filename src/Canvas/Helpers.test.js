@@ -29,7 +29,7 @@ describe('Canvas', () => {
         radial: jest.fn(() => 'fake'),
       },
     };
-    
+
     it('Clear', () => {
       let ret = Clear()({context});
       expect(context.clear).toHaveBeenCalled();
@@ -93,7 +93,7 @@ describe('Canvas', () => {
         curve = { from: 0, to: 2 * Math.PI },
         color = 'blue', border = 'orange';
       let ret = Circle(center, radius, color, border)({ context });
-  
+
       expect(context.begin).toHaveBeenCalled();
       expect(context.arc).toHaveBeenCalledWith(center, radius, curve);
       expect(context.style.fill).toHaveBeenCalledWith(color);

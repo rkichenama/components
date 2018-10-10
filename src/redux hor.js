@@ -30,5 +30,5 @@ export default reducer => {
     _state.future = []; // remove future states since this action breaks history
     _state.present = present;
     return present;
-  }
-}
+  };
+};

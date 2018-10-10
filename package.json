@@ -32,10 +32,19 @@
     "test": "jest --config=./config/jest.json",
     "test:ci": "jest --config=./config/jest.json --runInBand --ci",
     "test:watchAll": "jest --watchAll --config=./config/jest.json --color",
-    "test:watch": "jest --watch --config=./config/jest.json --reporters 'default' --coverageReporters 'text' --color"
+    "test:watch": "jest --watch --config=./config/jest.json --reporters 'default' --coverageReporters 'text' --color",
+    "lint": "eslint ./src --color"
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.6.1",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-babel": "^5.2.1",
+    "eslint-plugin-class-property": "^1.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1",
     "jest-junit": "^5.2.0"
   },
   "devDependencies": {

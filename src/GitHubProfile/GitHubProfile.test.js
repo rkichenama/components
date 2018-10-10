@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import axios from 'axios';
+import axios from 'axios'; /* eslint-disable-line */
 import moxios from 'moxios';
 import GitHubProfile from './GitHubProfile';
 
@@ -82,5 +82,5 @@ describe('GitHubProfile', () => {
       });
     });
   });
-  
+
 });

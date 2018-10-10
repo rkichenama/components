@@ -3,8 +3,6 @@ import Context from './Context';
 describe('Canvas', () => {
   describe('Context', () => {
     const context = {
-      fillStyle: false,
-      strokeStyle: false,
       clearRect: jest.fn(() => ('fake')),
       fillRect: jest.fn(() => ('fake')),
       strokeRect: jest.fn(() => ('fake')),

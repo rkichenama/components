@@ -4,8 +4,8 @@ import Spinner from './Spinner';
 
 describe('Spinner', () => {
   class Ex extends React.Component {
-    render () { return (<span />); }
-  };
+    render () { return (<span />) }
+  }
   const props = {
     first: 'primary',
     second: 'secondary',

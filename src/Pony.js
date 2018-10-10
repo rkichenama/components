@@ -1,3 +1,4 @@
+/* global union */
 import React from 'react';
 
 const RemoteData = union([
@@ -23,7 +24,7 @@ const fetchPony = () =>
     }, 500)
   );
 
-class Pony extends React.Component {
+export default class Pony extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -39,10 +40,10 @@ class Pony extends React.Component {
   };
 
   render() {
-    this.state.data.match({
+    return this.state.data.match({
       NotAsked: () => (
         <div>
-          <h1>Press "load"</h1>
+          <h1>Press &quot;load&quot;</h1>
           <button onClick={this.fetchData}>Load!</button>
         </div>
       ),

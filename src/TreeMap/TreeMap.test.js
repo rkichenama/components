@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import { mount } from 'enzyme';
 import TreeMap from './TreeMap';
@@ -14,7 +15,7 @@ const generateDemoTree = (depth, max = randBetween(100000, 10)) => {
         size,
         name: randStr(),
         tree: generateDemoTree(depth - 1, size),
-      }
+      };
     });
 };
 const depth = 10;
