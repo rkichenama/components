@@ -41,9 +41,8 @@ describe('StateDecorator', () => {
       decorated = mount(
         <StateDecorator seq={false} delay={100} values={['aaa', 'bbb']} component={spy} />
       );
-      expect(decorated.state('values')).toEqual(['aaa', 'bbb']);
       jest.runTimersToTime(StateDecorator.instances * 200 + 101);
-      expect(decorated.state('values')).toEqual(['aaa', 'bbb']);
+      expect(decorated.state('values')).toEqual(['bbb', 'aaa']);
     });
   });
 });
