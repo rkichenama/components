@@ -13,10 +13,10 @@
   },
   "homepage": "https://github.comrkichenama/components#readme",
   "peerDependencies": {
+    "axios": "^0.18.0",
     "prop-types": ">=15.6.0",
     "react": ">=16.0.0",
     "react-dom": ">=16.0.0",
-    "axios":
   },
   "semistandard": {
     "ignore": [
