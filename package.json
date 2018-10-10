@@ -34,7 +34,8 @@
     "test:watch": "jest --watch --config=./config/jest.json --reporters 'default' --coverageReporters 'text' --color"
   },
   "dependencies": {
-    "axios": "^0.18.0"
+    "axios": "^0.18.0",
+    "jest-junit": "^5.2.0"
   },
   "devDependencies": {
     "ansi-to-html": "^0.6.4",

@@ -1,0 +1,150 @@
+<testsuites name="Component Tests" tests="56" failures="0" time="5.758">
+  <testsuite name="Info.test.js" errors="0" failures="0" skipped="0" timestamp="2018-10-10T15:31:57" time="0.42" tests="2">
+    <testcase classname="should handle click events" name="should handle click events" time="0.051">
+    </testcase>
+    <testcase classname="should change state based on props" name="should change state based on props" time="0.007">
+    </testcase>
+  </testsuite>
+  <testsuite name="TreeMap.test.js" errors="0" failures="0" skipped="1" timestamp="2018-10-10T15:31:58" time="0.07" tests="1">
+    <testcase classname="encountered a declaration exception" name="encountered a declaration exception" time="0">
+      <skipped/>
+    </testcase>
+  </testsuite>
+  <testsuite name="GitHubProfile.test.js" errors="0" failures="0" skipped="0" timestamp="2018-10-10T15:31:58" time="0.985" tests="3">
+    <testcase classname="will silently handle errors" name="will silently handle errors" time="0.22">
+    </testcase>
+    <testcase classname="will load some github profile info when given a username prop" name="will load some github profile info when given a username prop" time="0.215">
+    </testcase>
+    <testcase classname="changes state when updated with new props" name="changes state when updated with new props" time="0.41">
+    </testcase>
+  </testsuite>
+  <testsuite name="Cube.test.js" errors="0" failures="0" skipped="0" timestamp="2018-10-10T15:31:59" time="0.184" tests="8">
+    <testcase classname="should trigger a callback when clicked" name="should trigger a callback when clicked" time="0.016">
+    </testcase>
+    <testcase classname="should change a class when prop changes" name="should change a class when prop changes" time="0.025">
+    </testcase>
+    <testcase classname="should render 1 children" name="should render 1 children" time="0.01">
+    </testcase>
+    <testcase classname="should render 2 children" name="should render 2 children" time="0.015">
+    </testcase>
+    <testcase classname="should render 3 children" name="should render 3 children" time="0.01">
+    </testcase>
+    <testcase classname="should render 4 children" name="should render 4 children" time="0.007">
+    </testcase>
+    <testcase classname="should render 5 children" name="should render 5 children" time="0.008">
+    </testcase>
+    <testcase classname="should render 7 children" name="should render 7 children" time="0.011">
+    </testcase>
+  </testsuite>
+  <testsuite name="MenuBar.test.js" errors="0" failures="0" skipped="1" timestamp="2018-10-10T15:31:59" time="0.053" tests="1">
+    <testcase classname="encountered a declaration exception" name="encountered a declaration exception" time="0">
+      <skipped/>
+    </testcase>
+  </testsuite>
+  <testsuite name="Canvas.test.js" errors="0" failures="0" skipped="0" timestamp="2018-10-10T15:32:00" time="0.109" tests="2">
+    <testcase classname="will render a scene" name="will render a scene" time="0.022">
+    </testcase>
+    <testcase classname="will render an animation" name="will render an animation" time="0.02">
+    </testcase>
+  </testsuite>
+  <testsuite name="Odometer.test.js" errors="0" failures="0" skipped="1" timestamp="2018-10-10T15:32:00" time="0.046" tests="1">
+    <testcase classname="encountered a declaration exception" name="encountered a declaration exception" time="0">
+      <skipped/>
+    </testcase>
+  </testsuite>
+  <testsuite name="Card.test.js" errors="0" failures="0" skipped="0" timestamp="2018-10-10T15:32:00" time="0.063" tests="4">
+    <testcase classname="should trigger a callback when clicked" name="should trigger a callback when clicked" time="0.007">
+    </testcase>
+    <testcase classname="should toggle a class when prop changes" name="should toggle a class when prop changes" time="0.005">
+    </testcase>
+    <testcase classname="should render one child" name="should render one child" time="0.004">
+    </testcase>
+    <testcase classname="should render two children" name="should render two children" time="0.005">
+    </testcase>
+  </testsuite>
+  <testsuite name="StateDecorator.test.js" errors="0" failures="0" skipped="0" timestamp="2018-10-10T15:32:00" time="0.064" tests="3">
+    <testcase classname="should push down the next value to component" name="should push down the next value to component" time="0.007">
+    </testcase>
+    <testcase classname="should change saved values list" name="should change saved values list" time="0.003">
+    </testcase>
+    <testcase classname="should not change the order of the items in state" name="should not change the order of the items in state" time="0.005">
+    </testcase>
+  </testsuite>
+  <testsuite name="ProgressBar.test.js" errors="0" failures="0" skipped="0" timestamp="2018-10-10T15:32:00" time="0.064" tests="2">
+    <testcase classname="should have zero value" name="should have zero value" time="0.006">
+    </testcase>
+    <testcase classname="should changes value on props" name="should changes value on props" time="0.006">
+    </testcase>
+  </testsuite>
+  <testsuite name="Toggle.test.js" errors="0" failures="0" skipped="0" timestamp="2018-10-10T15:32:00" time="0.059" tests="2">
+    <testcase classname="should handle click events" name="should handle click events" time="0.011">
+    </testcase>
+    <testcase classname="should change state based on props" name="should change state based on props" time="0.004">
+    </testcase>
+  </testsuite>
+  <testsuite name="Spinner.test.js" errors="0" failures="0" skipped="0" timestamp="2018-10-10T15:32:01" time="0.054" tests="3">
+    <testcase classname="should pass to a component pruned props" name="should pass to a component pruned props" time="0.006">
+    </testcase>
+    <testcase classname="should cover a component with a spinner" name="should cover a component with a spinner" time="0.004">
+    </testcase>
+    <testcase classname="should not cover a component with a spinner" name="should not cover a component with a spinner" time="0.004">
+    </testcase>
+  </testsuite>
+  <testsuite name="Icon.test.js" errors="0" failures="0" skipped="1" timestamp="2018-10-10T15:32:01" time="0.044" tests="1">
+    <testcase classname="encountered a declaration exception" name="encountered a declaration exception" time="0">
+      <skipped/>
+    </testcase>
+  </testsuite>
+  <testsuite name="ClickDecorator.test.js" errors="0" failures="0" skipped="0" timestamp="2018-10-10T15:32:01" time="0.056" tests="2">
+    <testcase classname="should push down the next value to component" name="should push down the next value to component" time="0.008">
+    </testcase>
+    <testcase classname="should change saved values list" name="should change saved values list" time="0.004">
+    </testcase>
+  </testsuite>
+  <testsuite name="Helpers.test.js" errors="0" failures="0" skipped="0" timestamp="2018-10-10T15:32:01" time="0.039" tests="6">
+    <testcase classname="Clear" name="Clear" time="0.002">
+    </testcase>
+    <testcase classname="FilledRect" name="FilledRect" time="0.001">
+    </testcase>
+    <testcase classname="BorderedRect" name="BorderedRect" time="0.001">
+    </testcase>
+    <testcase classname="Rect" name="Rect" time="0.002">
+    </testcase>
+    <testcase classname="Arc" name="Arc" time="0.002">
+    </testcase>
+    <testcase classname="Circle" name="Circle" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="Context.test.js" errors="0" failures="0" skipped="0" timestamp="2018-10-10T15:32:01" time="0.052" tests="15">
+    <testcase classname="wraps clearRect via clear" name="wraps clearRect via clear" time="0.002">
+    </testcase>
+    <testcase classname="wraps fill via paint" name="wraps fill via paint" time="0.001">
+    </testcase>
+    <testcase classname="wraps stroke via outline" name="wraps stroke via outline" time="0">
+    </testcase>
+    <testcase classname="wraps beginPath via begin" name="wraps beginPath via begin" time="0.001">
+    </testcase>
+    <testcase classname="wraps closePath via end" name="wraps closePath via end" time="0">
+    </testcase>
+    <testcase classname="wraps moveTo via moveTo" name="wraps moveTo via moveTo" time="0.001">
+    </testcase>
+    <testcase classname="wraps lineTo via lineTo" name="wraps lineTo via lineTo" time="0.001">
+    </testcase>
+    <testcase classname="wraps arc with arc" name="wraps arc with arc" time="0">
+    </testcase>
+    <testcase classname="wraps createLinearGradient with gradient.linear" name="wraps createLinearGradient with gradient.linear" time="0.001">
+    </testcase>
+    <testcase classname="wraps createRadialGradient with gradient.radial" name="wraps createRadialGradient with gradient.radial" time="0">
+    </testcase>
+    <testcase classname="wraps clearRect with rect.clear" name="wraps clearRect with rect.clear" time="0.001">
+    </testcase>
+    <testcase classname="wraps fillRect with rect.fill" name="wraps fillRect with rect.fill" time="0">
+    </testcase>
+    <testcase classname="wraps strokeRect with rect.stroke" name="wraps strokeRect with rect.stroke" time="0.001">
+    </testcase>
+    <testcase classname="wraps fillStyle with style.fill" name="wraps fillStyle with style.fill" time="0">
+    </testcase>
+    <testcase classname="wraps strokeStyle with style.stroke" name="wraps strokeStyle with style.stroke" time="0">
+    </testcase>
+  </testsuite>
+</testsuites>
