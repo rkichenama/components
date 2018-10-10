@@ -16,7 +16,7 @@ export default class Spinner extends PureComponent {
 
   /* eslint-disable-next-line camelcase */
   UNSAFE_componentWillMount () {
-    this.componentWillReceiveProps(this.props);
+    this.UNSAFE_componentWillReceiveProps(this.props);
   }
 
   /* eslint-disable-next-line camelcase */

@@ -97,7 +97,7 @@ export default class Odometer extends PureComponent {
     }
   }
 
-  componentDidMount () { this.componentWillReceiveProps(this.props, true) }
+  componentDidMount () { this.UNSAFE_componentWillReceiveProps(this.props, true) }
 
   /**
    * make the value into a string, front padded with zeros
