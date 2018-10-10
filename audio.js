@@ -23,7 +23,7 @@ function makeDistortionCurve(amount) { // function to make curve shape for disto
     curve[i] = ( 3 + k ) * x * 20 * deg / ( Math.PI + k * Math.abs(x) );
   }
   return curve;
-};
+}
 
 navigator.getUserMedia (
   // constraints - only audio needed for this app
@@ -58,7 +58,7 @@ function visualize(stream) {
   var visualSetting = visualSelect.value;
   console.log(visualSetting);
 
-  if(visualSetting == "sinewave") {
+  if (visualSetting == "sinewave") {
     analyser.fftSize = 2048;
     var bufferLength = analyser.frequencyBinCount; // half the FFT value
     var dataArray = new Uint8Array(bufferLength); // create an array to store the data
@@ -82,12 +82,12 @@ function visualize(stream) {
       var sliceWidth = WIDTH * 1.0 / bufferLength;
       var x = 0;
 
-      for(var i = 0; i < bufferLength; i++) {
+      for (var i = 0; i < bufferLength; i++) {
 
         var v = dataArray[i] / 128.0;
         var y = v * HEIGHT/2;
 
-        if(i === 0) {
+        if (i === 0) {
           canvasCtx.moveTo(x, y);
         } else {
           canvasCtx.lineTo(x, y);
@@ -98,11 +98,11 @@ function visualize(stream) {
 
       canvasCtx.lineTo(canvas.width, canvas.height/2);
       canvasCtx.stroke();
-    };
+    }
 
     draw();
 
-  } else if(visualSetting == "off") {
+  } else if (visualSetting == "off") {
     canvasCtx.clearRect(0, 0, WIDTH, HEIGHT);
     canvasCtx.fillStyle = "red";
     canvasCtx.fillRect(0, 0, WIDTH, HEIGHT);
@@ -117,13 +117,13 @@ function voiceChange() {
   var voiceSetting = voiceSelect.value;
   console.log(voiceSetting);
 
-  if(voiceSetting == "distortion") {
+  if (voiceSetting == "distortion") {
     distortion.curve = makeDistortionCurve(400); // apply distortion to sound using waveshaper node
-  } else if(voiceSetting == "biquad") {
+  } else if (voiceSetting == "biquad") {
     biquadFilter.type = "lowshelf";
     biquadFilter.frequency.value = 1000;
     biquadFilter.gain.value = 25; // apply lowshelf filter to sounds using biquad
-  } else if(voiceSetting == "off") {
+  } else if (voiceSetting == "off") {
     console.log("Voice settings turned off"); // do nothing, as off option was chosen
   }
 
@@ -134,22 +134,22 @@ function voiceChange() {
 visualSelect.onchange = function() {
   window.cancelAnimationFrame(drawVisual);
   visualize(stream);
-}
+};
 
 voiceSelect.onchange = function() {
   voiceChange();
-}
+};
 
 mute.onclick = voiceMute;
 
 function voiceMute() { // toggle to mute and unmute sound
-  if(mute.id == "") {
+  if (mute.id == "") {
     gainNode.gain.value = 0; // gain set to 0 to mute sound
     mute.id = "activated";
     mute.innerHTML = "Unmute";
   } else {
     gainNode.gain.value = 1; // gain set to 1 to unmute sound
-    mute.id = "";    
+    mute.id = "";
     mute.innerHTML = "Mute";
   }
 }
