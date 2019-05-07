@@ -57,6 +57,17 @@ module.exports = {
         },
       },
       { // stylesheets
+        test: /\.module\.s?css$/,
+        use: [
+          { loader: 'css-loader', options: {
+            modules: true,
+            localIdentName: '[local]---[hash:base64:5]',
+            importLoaders: 1
+          } },
+          { loader: 'sass-loader', options: { outputStyle: 'compressed' } },
+        ]
+      },
+      { // stylesheets
         test: /\.s?css$/,
         use: [
           { loader: 'css-loader' },
