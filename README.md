@@ -22,5 +22,5 @@ Project use webpack for build and dev, and jest for testing
   * create a (web|service) worker that will manage memoizing responses from a webhook to trigger the docker service
   * base all test results on promises returned from worker
 * create and use a grid/flexbox layout style framework
-* use css modules in components
+* use (css modules|styled-components) in components
   * customize with custom properties(?)
