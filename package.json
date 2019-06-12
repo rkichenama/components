@@ -14,6 +14,7 @@
   "homepage": "https://github.com/rkichenama/components#readme",
   "main": "index.js",
   "scripts": {
+    "ts": "tsc --build ./tsconfig.json",
     "worker:loader": "babel ./app/loadWorker.js -o ./docs/loader.js --minified",
     "worker:worker": "babel ./app/worker.js -o ./docs/worker.js --minified",
     "worker": "run-p -l worker:*",

@@ -1,4 +1,5 @@
 node_modules/
+dist/
 yarn-error.log
 app/store/jest/
 app/store/*.json

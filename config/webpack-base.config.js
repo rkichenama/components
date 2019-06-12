@@ -5,6 +5,7 @@ module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: {
     docs: [ './app/index.js' ],
+    ts: [ './src/Table/Table.tsx' ],
   },
   output: {
     filename: '[name].js',
