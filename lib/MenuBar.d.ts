@@ -11,6 +11,7 @@ export interface MenuBarProps {
      * flag for whether the more menu should be initially open
      */
     initOpen?: boolean;
+    children?: React.ReactNode;
 }
 
 export default class MenuBar extends React.Component<MenuBarProps, any> {
