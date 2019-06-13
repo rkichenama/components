@@ -5,7 +5,7 @@ import MenuBar from 'components/MenuBar/MenuBar';
 export default class extends React.PureComponent {
   render () {
     return (
-      <Stage style={{ width: '800px', height: '220px', 'align-items': 'flex-start' }}>
+      <Stage style={{ width: '800px', height: '220px', alignItems: 'flex-start' }}>
         <MenuBar {...{ maxDisplay: 4, initOpen: true }}>
           {
             Array(7).fill(0).map((_, k) => (

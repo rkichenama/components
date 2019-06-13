@@ -8,23 +8,25 @@ const CapitalCase = str => str
   .join(' ');
 
 const process = ({
-  name, description = false, type: { name: kind = 'no value' } = {}
-}) => (
-  <span>
-    <span className='data-type'>({ CapitalCase(kind) })&nbsp;</span>
-    {
-      name
-        ? <span className='variable-name'>{ name }&nbsp;</span>
-        : null
-    }
-    {
-      description
-        ? <span className='variable-desc'>{`-> ${description}`}</span>
-        : null
-    }
-  </span>
-);
-
+  name, description = false, type
+}) => {
+  const { name: kind = 'no value' } = (type || {});
+  return (
+    <span>
+      <span className='data-type'>({ CapitalCase(kind) })&nbsp;</span>
+      {
+        name
+          ? <span className='variable-name'>{ name }&nbsp;</span>
+          : null
+      }
+      {
+        description
+          ? <span className='variable-desc'>{`-> ${description}`}</span>
+          : null
+      }
+    </span>
+  );
+}
 export default process;
 
 // quokka test

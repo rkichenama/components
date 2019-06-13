@@ -63,7 +63,7 @@ class Content extends PureComponent {
                   </Catcher>
                 </section>
                 {/* prop table */}
-                {/* <section>
+                <section>
                   <h3>Props</h3>
                   <Table {...{columns: [
                     { name: 'required', type: 'bool' },
@@ -71,22 +71,18 @@ class Content extends PureComponent {
                     { name: 'type', type: 'props' },
                     'defaultValue', 'description'
                   ], data: doc.props}} />
-                </section> */}
+                </section>
                 {/* method table */}
-                {/* <section>
+                <section>
                   <h3>Methods</h3>
                   <Table {...{columns: [
-                    'name', {
-                      name: 'modifiers', type: 'list'
-                    }, {
-                      name: 'params', type: 'params'
-                    },{
-                      name: 'returns', type: 'params'
-                    }, {
-                      name: 'docblock', type: 'markdown'
-                    },
+                    'name',
+                    { name: 'modifiers', type: 'list' },
+                    { name: 'params', type: 'params' },
+                    { name: 'returns', type: 'params' },
+                    { name: 'docblock', type: 'markdown' },
                   ], data: doc.methods}} />
-                </section> */}
+                </section>
                 {/* demos */}
                 <Demos {...doc} key={k++} />
               </Catcher>
