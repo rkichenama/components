@@ -1,19 +1,21 @@
 import React, { createContext, FunctionComponent, useState, useEffect, useContext } from 'react';
 
+
 interface SharedRowCellProps {
-  data: Array<any> | object,
+  data?: Array<any> | object,
   isHeader?: boolean
 }
 interface CellProps extends SharedRowCellProps {
   column: string | number,
 }
-interface RowProps {
+interface RowProps extends SharedRowCellProps {
 }
 interface TableProps {
   data: Array<any[] | object>,
   columns: Array<string | number>,
   rowAttrs?: Function,
-  content: (row: Array<any> | object, column: string | number, isHeader: boolean) => React.Node
+  cellAttrs?: Function,
+  content?: Function
 }
 
 const TableContext = createContext({

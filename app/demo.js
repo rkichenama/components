@@ -1,13 +1,13 @@
 import React, { PureComponent } from 'react';
 
 import Catcher from './error';
-import Highlighter from 'react-syntax-highlighter/prism';
+import { Prism as Highlighter} from 'react-syntax-highlighter';
 
 let style;
 if (process.env.NODE_ENV === 'production') {
-  style = require('react-syntax-highlighter/styles/prism/prism').default;
+  style = require('react-syntax-highlighter/dist/esm/styles/prism').prism;
 } else {
-  style = require('react-syntax-highlighter/styles/prism/okaidia').default;
+  style = require('react-syntax-highlighter/dist/esm/styles/prism').okaidia;
 }
 
 export default class Demo extends PureComponent {

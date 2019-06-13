@@ -68,5 +68,5 @@ config.plugins = [
 ];
 
 config.mode = 'production';
-
+console.error(config.entry);
 module.exports = config;

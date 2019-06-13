@@ -5,7 +5,6 @@ module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: {
     docs: [ './app/index.js' ],
-    ts: [ './src/Table/Table.tsx' ],
   },
   output: {
     filename: '[name].js',
@@ -32,7 +31,7 @@ module.exports = {
           }
         }
       },
-      { // code
+      { // javascript
         test: /\.jsx?$/,
         exclude: /(node_modules)/,
         use: {
@@ -40,29 +39,29 @@ module.exports = {
           options: {
             presets: [
               [
-                'env', {
+                '@babel/preset-env', {
                   'targets': {
                     'browsers': ['last 2 versions', 'safari >= 7'],
                   }
                 }
               ],
-              'react'
+              '@babel/preset-react'
             ],
             plugins: [
-              'transform-class-properties',
-              'transform-object-rest-spread',
-              'transform-runtime',
-              'transform-async-to-generator',
+              '@babel/plugin-proposal-class-properties',
+              '@babel/plugin-syntax-object-rest-spread',
+              '@babel/plugin-transform-runtime',
+              '@babel/plugin-transform-async-to-generator',
             ],
           }
         },
       },
       { //typescript
         test: /\.tsx?$/,
+        exclude: /(node_modules)/,
         use: {
-          loader: 'ts-loader'
-        },
-        exclude: /node_modules/
+          loader: 'awesome-typescript-loader'
+        }
       },
       { // stylesheets
         test: /\.module\.s?css$/,
@@ -113,7 +112,7 @@ module.exports = {
     },
     extensions: [
       '.jsx',
-      '.js',
+      '.js'
     ],
   },
   node: {
@@ -122,4 +121,5 @@ module.exports = {
     tls: 'empty',
   },
   mode: 'development',
+  stats: 'verbose',
 };
