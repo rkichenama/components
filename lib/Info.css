@@ -1,4 +1,0 @@
-.information{border:1px solid}.information,.information>header,.information>section{display:block;position:relative;padding:4px}.information>header:after{position:absolute;top:0;bottom:0;width:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:16px}.information>header.right{padding-right:20px}.information>header.right:after{content:'◑';right:0}.information>header.left{padding-left:20px}.information>header.left:after{content:'◐';left:0}.information>section{padding:6px 4px;display:none}.information.open>header:after{content:'◓'}.information.open>section{display:block}
-
-
-/*# sourceMappingURL=Info.js.map*/
