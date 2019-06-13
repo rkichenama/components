@@ -23,7 +23,7 @@ config.optimization.minimizer = [
   new UglifyJSPlugin({
     uglifyOptions: {
       compress: {
-        warnings: false,
+        // warnings: false,
         'reduce_vars': false
       },
       output: {

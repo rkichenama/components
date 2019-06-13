@@ -120,6 +120,5 @@ module.exports = {
     net: 'empty',
     tls: 'empty',
   },
-  mode: 'development',
-  stats: 'verbose',
+  mode: 'development'
 };
