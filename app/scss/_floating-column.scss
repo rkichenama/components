@@ -1,3 +1,11 @@
+@mixin flavorInfo($color) {
+  .information {
+    border-color: $color;
+  }
+  header:after {
+    color: $color;
+  }
+}
 .floating-column {
   display: block;
   margin: 0 8px;
@@ -8,7 +16,20 @@
     margin: 0 auto;
   }
 
-  > section + section {
+  > section {
     margin-top: 12px;
+
+    &.meta-section:nth-child(even) {
+      @include flavorInfo(magenta);
+    }
+    &.meta-section:nth-child(odd) {
+      @include flavorInfo(yellow);
+    }
+    &.meta-section:nth-child(1) {
+      @include flavorInfo(cyan);
+    }
+    &.meta-section:nth-last-child(2) {
+      @include flavorInfo(#808080);
+    }
   }
 }

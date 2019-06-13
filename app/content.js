@@ -11,6 +11,9 @@ import Demos from './demos';
 import Tests from './tests';
 import Stats from './stats';
 
+import Info from 'components/Info/Info';
+
+
 class Content extends PureComponent {
   static propTypes = {
     data: PropTypes.object.isRequired,
@@ -45,43 +48,45 @@ class Content extends PureComponent {
             doc ? (
               <Catcher>
                 {/* introduction */}
-                <section>
-                  <h1>{doc.displayName}</h1>
-                  <h2>{doc.filename}</h2>
-                  {
-                    doc.description ? (
-                      <Markdown source={doc.description || ''} />
-                    ) : (
-                      <div className='empty-dataset'>no description given</div>
-                    )
-                  }
+                <section className='meta-section'>
+                  <Info title={`${doc.displayName} (${doc.filename})`}>
+                    {
+                      doc.description ? (
+                        <Markdown source={doc.description || ''} />
+                      ) : (
+                        <div className='empty-dataset'>no description given</div>
+                      )
+                    }
+                  </Info>
                 </section>
                 {/* tests table */}
-                <section>
+                <section className='meta-section'>
                   <Catcher>
                     <Tests component={doc.displayName} />
                   </Catcher>
                 </section>
                 {/* prop table */}
-                <section>
-                  <h3>Props</h3>
-                  <Table {...{columns: [
-                    { name: 'required', type: 'bool' },
-                    'name',
-                    { name: 'type', type: 'props' },
-                    'defaultValue', 'description'
-                  ], data: doc.props}} />
+                <section className='meta-section'>
+                  <Info title='Props'>
+                    <Table {...{columns: [
+                      { name: 'required', type: 'bool' },
+                      'name',
+                      { name: 'type', type: 'props' },
+                      'defaultValue', 'description'
+                    ], data: doc.props}} />
+                  </Info>
                 </section>
                 {/* method table */}
-                <section>
-                  <h3>Methods</h3>
-                  <Table {...{columns: [
-                    'name',
-                    { name: 'modifiers', type: 'list' },
-                    { name: 'params', type: 'params' },
-                    { name: 'returns', type: 'params' },
-                    { name: 'docblock', type: 'markdown' },
-                  ], data: doc.methods}} />
+                <section className='meta-section'>
+                  <Info title='Methods'>
+                    <Table {...{columns: [
+                      'name',
+                      { name: 'modifiers', type: 'list' },
+                      { name: 'params', type: 'params' },
+                      { name: 'returns', type: 'params' },
+                      { name: 'docblock', type: 'markdown' },
+                    ], data: doc.methods}} />
+                  </Info>
                 </section>
                 {/* demos */}
                 <Demos {...doc} key={k++} />

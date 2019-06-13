@@ -8,7 +8,7 @@ import './Icon.scss';
 
 const dynSvg = name => {
   try {
-    const source = require('!raw-loader!./svg/' + name + '.svg');
+    const { default: source } = require('!raw-loader!./svg/' + name + '.svg');
     return getSvg(source);
   } catch (e) {
     return null;
