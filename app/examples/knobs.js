@@ -41,7 +41,7 @@ const figure = ({ type, name, defaultValue: { value: defValue = '' } = {} }) => 
             ))
           }
         </ul>
-      )
+      );
       break;
     case 'string':
       value = strValue(value);
@@ -56,7 +56,7 @@ const figure = ({ type, name, defaultValue: { value: defValue = '' } = {} }) => 
       );
       break;
   }
-  return { input, value }
+  return { input, value };
 };
 
 class Knobs extends PureComponent {
@@ -98,7 +98,7 @@ class Knobs extends PureComponent {
 
   state = Object.keys(this.figureOutValue)
     .reduce((state, key) => Object.assign(state, { [key]:  this.figureOutValue[key]().value })
-    , {})
+      , {})
 
   handleChange = prop => evt => {
     const { target } = evt;
@@ -108,7 +108,7 @@ class Knobs extends PureComponent {
       {
         [target.name]: this.figureOutValue[target.name](target).value
       }
-    ))
+    ));
   }
 
   renderKnob = name => {
@@ -131,19 +131,19 @@ class Knobs extends PureComponent {
 
     return (
       <div className={`knobs${className ? ` ${className}` : ''}`}>
-        <div style={{ width: "20%" }}>
+        <div style={{ width: '20%' }}>
           {
             Object.keys(this.figureOutValue)
               .map(renderKnob)
           }
         </div>
-        <div className='stage' style={ Object.assign({}, style, { width: "80%" })}>
+        <div className='stage' style={ Object.assign({}, style, { width: '80%' })}>
           { React.cloneElement(children, state) }
         </div>
       </div>
     );
   }
-};
+}
 
 export default connect(
   ({ components }, { name  }) => ({

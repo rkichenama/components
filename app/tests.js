@@ -63,7 +63,7 @@ class TestsWrapper extends PureComponent {
         <div className='empty-dataset'>Unknown Component</div>
       );
     }
-    
+
     const { tests, coverage } = data[component];
 
     return (

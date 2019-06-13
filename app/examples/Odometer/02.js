@@ -10,7 +10,7 @@ export default class extends React.PureComponent {
 
   componentDidMount () {
     setInterval(() => this.setState(({ value }) =>
-    ({ value: Math.ceil(Math.random() * 9999999) })), 1000);
+      ({ value: Math.ceil(Math.random() * 9999999) })), 1000);
   }
 
   render () {

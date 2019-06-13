@@ -1,4 +1,5 @@
 import React, { Component, createElement } from 'react';
+import PropTypes from 'prop-types';
 
 class Element extends Component {
   render () {
@@ -6,6 +7,10 @@ class Element extends Component {
     return createElement(tag, props, children);
   }
 }
+Element.propTypes = {
+  tag: PropTypes.string,
+  children: PropTypes.node,
+};
 
 const Row = props => (<Element tag='tr' {...props} />);
 const Head = props => (<Element tag='thead' {...props} />);

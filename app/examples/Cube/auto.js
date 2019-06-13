@@ -6,15 +6,14 @@ import Cube from 'components/Cube/Cube';
 
 const centered = {
   display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%'
-}
+};
 export default class extends React.Component {
   render () {
     return (
       <Stage style={{ height: '200px' }}>
         <RandomUsers count={60} component={users => users.reduce(
           (t, c, i) => {
-            if (i % 6) { t[t.length - 1].push(c) }
-            else { t.push([c]) }
+            if (i % 6) { t[t.length - 1].push(c) } else { t.push([c]) }
             return t;
           }, []
         ).map((results, r) => (

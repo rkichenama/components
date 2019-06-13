@@ -6,7 +6,7 @@ import Card from 'components/Card/Card';
 
 const centered = {
   display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%'
-}
+};
 export default class extends React.Component {
   render () {
     return (

@@ -11,7 +11,7 @@ export default class extends React.Component {
     this.state = { username: '' };
   }
 
-  handleOnChange = (evt) => { this.setState({username: evt.currentTarget.value}); };
+  handleOnChange = evt => { this.setState({username: evt.currentTarget.value}) };
 
   render () {
     return (
@@ -25,4 +25,4 @@ export default class extends React.Component {
       </div>
     );
   }
-};
+}

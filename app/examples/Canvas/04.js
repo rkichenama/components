@@ -48,13 +48,13 @@ const T = ({Rx, Ry, Rz}) => ({x, y, z = 0}) => {
   return {
     x: (a * cz) + (b * sz),
     y: (b * cz) - (a * sz),
-  }
+  };
 };
 
 const rad = n => n / 180 * Math.PI;
 
 function squareT ({Rx = 0, Ry = 0, Rz = 0}) {
-  const rotate = T({Rx: rad(Rx), Ry: rad(Ry), Rz: rad(Rz)})
+  const rotate = T({Rx: rad(Rx), Ry: rad(Ry), Rz: rad(Rz)});
   const points = [
     // bottom
     {x: -50 , y: 0, z: -50 * .612},

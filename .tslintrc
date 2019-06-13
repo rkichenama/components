@@ -1,0 +1,73 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "sourceType": "module",
+    "allowImportExportEverywhere": false,
+    "codeFrame": false,
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true,
+    "jasmine": true,
+    "jest": true
+  },
+  "extends": ["eslint:recommended"],
+  "rules": {
+    "arrow-parens": ["warn", "as-needed"],
+    "brace-style": ["warn", "1tbs", {
+      "allowSingleLine": true
+    }],
+    "default-case": ["error", {
+      "commentPattern": "^skip\\sdefault"
+    }],
+    "eol-last": ["warn"],
+    "keyword-spacing": ["warn"],
+    "linebreak-style": ["warn", "unix"],
+    "no-case-declarations": 0,
+    "no-console": ["error", {
+      "allow": ["debug", "info"]
+    }],
+    "no-trailing-spaces": ["warn"],
+    "no-unused-vars": ["error", {
+      "vars": "local",
+      "args": "after-used",
+      "varsIgnorePattern": "React|FunctionComponent|Component|[Ii]gnored|[Uu]sed|_|__",
+      "ignoreRestSiblings": true
+    }],
+    "camelcase": ["warn", {
+      "properties": "always"
+    }],
+    "indent": ["warn", 2, {
+      "VariableDeclarator": 1,
+      "MemberExpression": 1,
+      "SwitchCase": 1
+    }],
+    "quotes": ["error", "single", {
+      "avoidEscape": true,
+      "allowTemplateLiterals": true
+    }],
+    "semi": ["warn", "always", {
+      "omitLastInOneLineBlock": true
+    }],
+    "react/prop-types": ["off"]
+  },
+  "globals": {
+    "afterEach": true,
+    "beforeEach": true,
+    "describe": true,
+    "expect": true,
+    "fit": true,
+    "i18n": true,
+    "it": true,
+    "jasmine": true,
+    "jest": true,
+    "jQuery": true,
+    "lodash": true,
+    "moment": true,
+    "spyOn": true
+  }
+}

@@ -26,7 +26,7 @@ const process = ({
       }
     </span>
   );
-}
+};
 export default process;
 
 // quokka test

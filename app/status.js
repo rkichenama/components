@@ -57,15 +57,15 @@ export default class Status extends PureComponent {
           // tests.hasOwnProperty('tests') ? (
           //   <Status {...(tests.tests)} />
           // ) : (
-            Object.keys(tests).map(test => (
-              tests[test].hasOwnProperty('tests') ? (
-                <Info className='test-suite' key={test} open title={ test }>
-                  <Status {...(tests[test])} />
-                </Info>
-                ) : (
-                <IT {...(tests[test])} title={test} key={test} />
-              )
-            ))
+          Object.keys(tests).map(test => (
+            tests[test].hasOwnProperty('tests') ? (
+              <Info className='test-suite' key={test} open title={ test }>
+                <Status {...(tests[test])} />
+              </Info>
+            ) : (
+              <IT {...(tests[test])} title={test} key={test} />
+            )
+          ))
           // )
         }
       </div>
