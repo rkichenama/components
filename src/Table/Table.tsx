@@ -1,5 +1,8 @@
-import React, { createContext, FunctionComponent, useContext } from 'react';
-
+import React, {
+  createContext,
+  FunctionComponent,
+  useContext
+} from 'react';
 
 interface SharedRowCellProps {
   data?: Array<any> | object,
@@ -8,8 +11,7 @@ interface SharedRowCellProps {
 interface CellProps extends SharedRowCellProps {
   column: string | number,
 }
-interface RowProps extends SharedRowCellProps {
-}
+interface RowProps extends SharedRowCellProps {}
 interface TableProps {
   data: Array<any[] | object>,
   columns: Array<string | number>,
