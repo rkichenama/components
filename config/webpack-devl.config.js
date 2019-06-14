@@ -1,19 +1,6 @@
+// @ts-nocheck
 const config = require('./webpack-base.config');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
-// const webpackServeWaitpage = require('webpack-serve-waitpage');
-
-// config.serve = {
-//   contentBase: './docs',
-//   clipboard: false,
-//   add: (app, middleware, options) => {
-//     app.use(webpackServeWaitpage(options, {
-//       title: 'development',
-//       disableWhenValid: false,
-//       template: require('fs').readFileSync(require('path').resolve(__dirname, 'kichenama.ejs'), 'utf8'),
-//    }));
-// }
-// };
 
 config.devServer = {
   contentBase: require('path').resolve(__dirname, '../docs'),
