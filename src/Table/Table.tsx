@@ -1,24 +1,45 @@
 import React, {
+  Fragment,
   createContext,
   FunctionComponent,
-  useContext
+  useContext,
+  useState
 } from 'react';
 
-interface SharedRowCellProps {
+interface SharedData {
   data?: Array<any> | object,
+}
+interface SharedRowCellProps extends SharedData {
   isHeader?: boolean
 }
 interface CellProps extends SharedRowCellProps {
-  column: string | number,
+  column: string | number
 }
 interface RowProps extends SharedRowCellProps {}
-interface TableProps {
-  data: Array<any[] | object>,
-  columns: Array<string | number>,
+interface CollapseRowProps extends SharedData {
   rowAttrs?: Function,
   cellAttrs?: Function,
-  content?: Function
+  content?: Function,
 }
+interface TableProps extends CollapseRowProps {
+  data: Array<any[] | object>,
+  columns: Array<string | number>,
+  collapse?: CollapseRowProps
+}
+
+const mergeProps: Function = (base, ...props) => {
+  return props.reduce((t, c) => {
+    Object.entries(c)
+      .forEach(([ k, v]) => {
+        if ([ 'className' ].includes(k) && /string/.test(typeof k)) {
+          t[k] = [t[k], v].filter(i => !!i).join(' ');
+        } else {
+          t[k] = v;
+        }
+      });
+    return t;
+  }, base);
+};
 
 const TableContext = createContext({
   data: null,
@@ -36,7 +57,7 @@ const Cell: FunctionComponent<CellProps> = ({
     content = (d: object, c: string, h: boolean) => h ? c : d[c],
     cellAttrs
   } = useContext(TableContext);
-  const attributes = (!isHeader && cellAttrs && cellAttrs(data, column)) || {};
+  const attributes = mergeProps({}, (!isHeader && cellAttrs && cellAttrs(data, column)) || {});
   const value = content(data, column, isHeader);
 
   return (
@@ -46,27 +67,60 @@ const Cell: FunctionComponent<CellProps> = ({
   );
 };
 
-const Row: FunctionComponent<RowProps> = ({
-  isHeader = false, data = {}
+const CollapsingRow: FunctionComponent<CollapseRowProps> = ({
+  data = {}
 }) => {
+  const [ collapsed, setCollapsed ] = useState(false);
   const {
     columns,
-    rowAttrs
+    collapse: { content, rowAttrs, cellAttrs }
   } = useContext(TableContext);
-  const attributes = (!isHeader && rowAttrs && rowAttrs(data)) || {};
+  const rowAttributes = mergeProps({ className: 'collapsable' }, (rowAttrs && rowAttrs(data)) || {});
+  const cellAttributes = mergeProps({ className: 'collapsable-content' }, (cellAttrs && cellAttrs(data)) || {});
 
   return (
-    <tr {...attributes} >
-      { columns.map(column => (<Cell key={column} {...{ isHeader, data, column }} />)) }
+    <tr {...rowAttributes} >
+      <td {...cellAttributes} colspan={columns.length}>
+        { (content && content(data)) || null }
+      </td>
     </tr>
   );
 };
+const Row: FunctionComponent<RowProps> = ({
+  isHeader = false, data = {}
+}) => {
+  const [ collapsed, setCollapsed ] = useState(false);
+  const {
+    columns,
+    rowAttrs,
+    collapse
+  } = useContext(TableContext);
+  const attributes = mergeProps({}, (!isHeader && rowAttrs && rowAttrs(data)) || {});
 
+  return (
+    <Fragment>
+      <tr {...attributes} >
+        { columns.map(column => (<Cell key={column} {...{ isHeader, data, column }} />)) }
+      </tr>
+      {
+        !isHeader && collapse && !collapsed
+          ? (
+            <CollapsingRow {...{ data }} />
+          )
+          : null
+      }
+    </Fragment>
+  );
+};
+
+/**
+ * A component for tables
+ */
 const Table: FunctionComponent<TableProps> = ({
-  data, columns, rowAttrs, cellAttrs, content
+  data, columns, rowAttrs, cellAttrs, content, collapse
 }) => {
   return (
-    <TableContext.Provider value={{ data, columns, rowAttrs, cellAttrs, content }}>
+    <TableContext.Provider value={{ data, columns, rowAttrs, cellAttrs, content, collapse }}>
       <table>
         <thead>
           <Row isHeader />
