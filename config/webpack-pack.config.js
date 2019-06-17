@@ -6,72 +6,15 @@ const writeFile = promisify(fs.writeFile);
 const { resolve, relative, basename, join } = require('path');
 const walk = require('./walk');
 const config = require('./webpack-base.config');
-const webpack = require('webpack');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const { pipe, setProdEnv, addCssExtraction, addMinifiers } = require('./mutators');
 const { generateFromFile } = require('react-to-typescript-definitions');
 
 const rootFolder = resolve(__dirname, '../');
 
-config.module.rules
-  .filter(({ test }) => test && test.test('.css'))
-  .forEach(rule => {
-    let { use } = rule;
-    rule.use = [
-      MiniCssExtractPlugin.loader,
-      ...use
-    ];
-  });
+pipe(setProdEnv, addCssExtraction, addMinifiers)(config);
 
-config.optimization.minimizer = [
-  new UglifyJSPlugin({
-    uglifyOptions: {
-      mangle: {
-        keep_fnames: true,
-      },
-      compress: {
-        warnings: false,
-        'reduce_vars': false
-      },
-      output: {
-        beautify: false,
-        comments: false
-      }
-    },
-    sourceMap: true,
-    parallel: true,
-    test: /\.js($|\?)/i,
-  }),
-  new OptimizeCSSAssetsPlugin({
-    cssProcessorOptions: {
-      discardComments: { removeAll: true },
-    },
-  }),
-];
-
-config.plugins = [
-  new webpack.DefinePlugin({
-    'process.env.NODE_ENV': JSON.stringify('production')
-  }),
-  ...config.plugins,
-  new MiniCssExtractPlugin({
-    filename: '[name].css'
-  }),
-];
-
-config.mode = 'production';
 config.target = 'web';
-config.optimization = undefined;
-config.externals = [
-  'react',
-  'react-dom',
-  'prop-types',
-  'axios',
-]; // everything that would have been in the vendor bundle
 config.output.path = join(rootFolder, '/lib/');
-config.output.library = 'rk-components';
-// config.output.libraryTarget = 'commonjs2';
 config.performance.hints = false;
 
 const defineModule = async (name, filepath) => {
