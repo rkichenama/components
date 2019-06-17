@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const reactDocs = require('react-docgen');
+const reactTsDocs = require('react-docgen-typescript');
 
 /*
   recursively go through the given directory and collect a listing of all files
@@ -30,16 +31,23 @@ const walk = (dir, cond) => new Promise((resolve, reject, files = []) => {
 const srcFldr = path.join(__dirname, 'src');
 const storeJson = path.join(__dirname, 'app/store/metadata.json');
 
+const tsParserOptions = {};
+
 /*
 search the local src directory for all the jsx files. assumed to be Components
 */
 walk(
   srcFldr,
-  file => /\.jsx$/.test(file)
+  file => /\.(j|t)sx$/.test(file)
 )
   .then(jsxs => (// run them through react-gendoc
     jsxs.reduce((obj, filename) => {
-      const metadata = reactDocs.parse(fs.readFileSync(filename).toString());
+      const source = fs.readFileSync(filename).toString();
+      const metadata = /\.tsx?$/i.test(filename)
+        ? reactTsDocs
+          .withCustomConfig('./tsconfig.json')
+          .parse(filename)[0]
+        : reactDocs.parse(source);
       if (metadata.props) {
         metadata.props = Object.keys(metadata.props).map(name => ({
           ...(metadata.props[name]),
@@ -47,10 +55,16 @@ walk(
         }));
       }
       // if there is a readme.md file parallel to the component, then load it as the description
-      const readme = path.join(__dirname, filename.replace(`${metadata.displayName}.jsx`, 'readme.md'));
+      const readme = path.join(__dirname, path.dirname(filename), 'readme.md');
       if (fs.existsSync(readme)) {
         metadata.description = fs.readFileSync(readme).toString();
       }
+
+      obj[ metadata.displayName || path.basename(filename).split('.')[0] ] = {
+        ...metadata,
+        filename,
+      };
+      return obj;
 
       return {
         ...obj,

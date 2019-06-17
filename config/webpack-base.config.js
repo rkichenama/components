@@ -32,7 +32,7 @@ module.exports = {
           }
         }
       },
-      { // javascript
+      { // javascript and typescript
         test: /\.jsx?$/,
         exclude: /(node_modules)/,
         use: {
@@ -44,7 +44,10 @@ module.exports = {
         test: /\.tsx?$/,
         exclude: /(node_modules)/,
         use: {
-          loader: 'awesome-typescript-loader'
+          loader: 'awesome-typescript-loader',
+          options: {
+            transpileOnly: true
+          }
         }
       },
       { // stylesheets

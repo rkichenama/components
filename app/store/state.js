@@ -24,7 +24,7 @@ const parseCoverageReport = (obj, k = Object.keys(obj)) => ({
 });
 
 const normalizeCoverageResults = key => {
-  const match = new RegExp(`${key}/${key}.jsx$`);
+  const match = new RegExp(`${key}/${key}.(j|t)sx$`);
   coveredFiles
     .filter(file => match.test(file))
     .map(f => coverage[f])

@@ -30,6 +30,11 @@
   "collectCoverage": true,
   "collectCoverageFrom": [
     "**/*.jsx",
+    "**/*.tsx",
     "!**/node_modules/**"
-  ]
+  ],
+  "transform": {
+    "^.+\\.jsx?$": "babel-jest",
+    "^.+\\.tsx?$": "ts-jest"
+  }
 }

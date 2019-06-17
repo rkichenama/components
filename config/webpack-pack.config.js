@@ -27,16 +27,21 @@ config.module.rules
 config.optimization.minimizer = [
   new UglifyJSPlugin({
     uglifyOptions: {
+      mangle: {
+        keep_fnames: true,
+      },
       compress: {
         warnings: false,
         'reduce_vars': false
       },
       output: {
+        beautify: false,
         comments: false
       }
     },
     sourceMap: true,
     parallel: true,
+    test: /\.js($|\?)/i,
   }),
   new OptimizeCSSAssetsPlugin({
     cssProcessorOptions: {
@@ -66,7 +71,7 @@ config.externals = [
 ]; // everything that would have been in the vendor bundle
 config.output.path = join(rootFolder, '/lib/');
 config.output.library = 'rk-components';
-config.output.libraryTarget = 'commonjs2';
+// config.output.libraryTarget = 'commonjs2';
 config.performance.hints = false;
 
 const defineModule = async (name, filepath) => {
@@ -83,15 +88,20 @@ const writeIndexesCurry = () => {
 };
 
 module.exports = async () => {
-  const components = await walk(join(rootFolder, 'src'), file => /\.jsx$/.test(file));
+  const components = await walk(
+    join(rootFolder, 'src'),
+    file =>  /\.(j|t)sx$/.test(file) && !/\.[tT]est\./.test(file)
+  );
   const writeIndexes = writeIndexesCurry();
   const definitions = [];
 
   config.entry = components.reduce((entries, component) => {
-    const name = basename(component, '.jsx');
+    const name = basename(component).split('.')[0];
     const folder = relative(rootFolder, component);
     entries[name] = [ `./${folder}` ];
-    definitions.push(defineModule(name, folder));
+    if (/\.jsx$/.test(component)) {
+      definitions.push(defineModule(name, folder));
+    }
     writeIndexes(name);
     return entries;
   }, { });
