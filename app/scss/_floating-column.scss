@@ -10,6 +10,7 @@
   display: block;
   margin: 0 8px;
   padding: 8px;
+  grid-gap: 6px;
 
   @media screen and (min-width: 1200px) {
     max-width: 1200px;
@@ -17,8 +18,6 @@
   }
 
   > section {
-    margin-top: 12px;
-
     &.meta-section:nth-child(even) {
       @include flavorInfo(magenta);
     }

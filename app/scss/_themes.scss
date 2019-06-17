@@ -11,22 +11,22 @@ $blue: #008080;
 $indigo: #520080;
 $violet: #800080;
 
-$font: 14px;
-$font-sm: $font * .8;
+$font: 16px;
+$font-sm: $font * 0.8;
 $font-lg: $font * 2;
 
 body {
-  --clr-overlay: #{transparentize(#808080, .75)};
+  --clr-overlay: #{transparentize(#808080, 0.75)};
 
   &.dev {
     --clr-white: #{$white};
     --clr-black: #{$black};
 
-    --clr-bg: #{transparentize(darken($blue, .2), .8)};
+    --clr-bg: #{transparentize(darken($blue, 0.2), 0.8)};
 
     --clr-accent: #{mix($white, $red)};
     --clr-highlight: #{mix($white, $green)};
-    --clr-screen: #{transparentize($black, .75)};
+    --clr-screen: #{transparentize($black, 0.75)};
 
     --clr-btn-bg: #{mix($white, $indigo)};
     --clr-btn-fg: #{$white};
@@ -39,11 +39,11 @@ body {
     --clr-white: #{$black};
     --clr-black: #{$white};
 
-    --clr-bg: #{transparentize(lighten($blue, .25), .8)};
+    --clr-bg: #{transparentize(lighten($blue, 0.25), 0.8)};
 
     --clr-accent: #{$green};
     --clr-highlight: #{$blue};
-    --clr-screen: #{transparentize($white, .75)};
+    --clr-screen: #{transparentize($white, 0.75)};
 
     --clr-btn-bg: #{$white};
     --clr-btn-fg: #{$blue};

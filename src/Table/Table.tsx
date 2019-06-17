@@ -10,8 +10,11 @@ const {
 import './Table.scss';
 
 interface BasicProps {
+  /** the css class attribute */
   className?: string,
+  /** the css style attribute */
   style?: object,
+  /** the id attribute */
   id?: string
 }
 interface SharedData extends BasicProps {
@@ -27,14 +30,19 @@ interface RowProps extends SharedRowCellProps {
   isEven?: boolean
 }
 interface CollapseRowProps extends SharedData {
+  /** function to render attributes for the table rows */
   rowAttrs?: Function,
+  /** function to render attributes for the table cells */
   cellAttrs?: Function,
+  /** function to render the content of the table cells */
   content?: Function,
 }
 interface TableProps extends BasicProps, CollapseRowProps {
   /** the actual data displayed in the table */
   data: Array<object>,
+  /** field names or indices for columnar data */
   columns: Array<string | number>,
+  /** data config for collapsable rows */
   collapse?: CollapseRowProps
 }
 

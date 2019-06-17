@@ -1,0 +1,29 @@
+.table-element.data-table2 {
+  &,
+  th {
+    border: 3px solid white;
+  }
+
+  .table-row {
+    td {
+      border: 3px solid orange;
+
+      &:not(:last-child) {
+        border-right-width: 0;
+      }
+      &:not(:first-child) {
+        border-left-width: 0;
+      }
+    }
+
+    &.collapsable td {
+      padding: 6px;
+    }
+  }
+
+  .collapsable-content {
+    background-color: hsla(220, 100%, 20%, 0.4);
+    max-height: 4em;
+    overflow-y: auto;
+  }
+}

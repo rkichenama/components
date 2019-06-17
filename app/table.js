@@ -242,7 +242,7 @@ export default class Table extends PureComponent {
     const width = full ? { width: '100%' } : {};
 
     return (
-      <table {...width}>
+      <table className='demos' {...width}>
         { renderHeaderRow(columns) }
         <tbody>
           {

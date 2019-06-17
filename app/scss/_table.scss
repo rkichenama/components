@@ -1,6 +1,6 @@
-@import "./fonts/fira_code.css";
+@import './fonts/fira_code.css';
 
-table {
+table.demos {
   // width: 100%;
 
   th,
@@ -40,7 +40,6 @@ table {
       text-align: center;
       font-weight: bold;
     }
-
   }
 
   tbody th {
@@ -50,7 +49,7 @@ table {
 
   th {
     border: 1px solid var(--clr-white);
-    background-color: transparentize(#000000, .6);
+    background-color: transparentize(#000000, 0.6);
     text-align: center;
     font-weight: normal;
     text-transform: capitalize;
@@ -59,8 +58,17 @@ table {
 
 .data-type,
 .variable-name,
-.variable-desc { font-family: 'Fira Code'; font-size: .8em }
+.variable-desc {
+  font-family: 'Fira Code';
+  font-size: 0.8em;
+}
 
-.data-type { color: var(--clr-accent); }
-.variable-name { color: var(--clr-highlight); }
-.variable-desc { color: #808080 }
+.data-type {
+  color: var(--clr-accent);
+}
+.variable-name {
+  color: var(--clr-highlight);
+}
+.variable-desc {
+  color: #808080;
+}

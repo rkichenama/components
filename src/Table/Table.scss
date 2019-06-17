@@ -2,22 +2,16 @@
   &-element {
     width: 100%;
 
-    .collapsable {
-      &-content {
-        padding: 4px 8px;
-      }
+    .collapsable-content {
+      padding: 4px 8px;
     }
-
   }
 
-  &-row {
-    &.banded {
-      background-color: hsla(0, 0%, 50%, 0.2);
-    }
+  &-row.banded {
+    background-color: hsla(0, 0%, 50%, 0.2);
   }
 
   &-cell {
     padding: 2px 4px;
   }
 }
-

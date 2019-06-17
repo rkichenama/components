@@ -99,7 +99,9 @@ module.exports = {
     },
     extensions: [
       '.jsx',
-      '.js'
+      '.tsx',
+      '.js',
+      '.ts'
     ],
   },
   node: {
