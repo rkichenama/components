@@ -31,21 +31,19 @@ const walk = (dir, cond) => new Promise((resolve, reject, files = []) => {
 const srcFldr = path.join(__dirname, 'src');
 const storeJson = path.join(__dirname, 'app/store/metadata.json');
 
-const tsParserOptions = {};
-
 /*
 search the local src directory for all the jsx files. assumed to be Components
 */
 walk(
   srcFldr,
-  file => /\.(j|t)sx$/.test(file)
+  file => /\.(j|t)sx$/.test(file) && !/\.[tT]est\./.test(file)
 )
   .then(jsxs => (// run them through react-gendoc
     jsxs.reduce((obj, filename) => {
       const source = fs.readFileSync(filename).toString();
       const metadata = /\.tsx?$/i.test(filename)
         ? reactTsDocs
-          .withCustomConfig('./tsconfig.json')
+          .withCustomConfig('./tsconfig.json', undefined)
           .parse(filename)[0]
         : reactDocs.parse(source);
       if (metadata.props) {
@@ -65,14 +63,6 @@ walk(
         filename,
       };
       return obj;
-
-      return {
-        ...obj,
-        [metadata.displayName]: {
-          ...metadata,
-          filename,
-        },
-      };
     }, {})
   ))
   .then(components => {// normalize the data

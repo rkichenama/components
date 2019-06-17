@@ -1,10 +1,11 @@
-@import "./fonts/fira_code.css";
+@import './fonts/fira_code.css';
 
 /* overrides for Syntax-Highlighter */
 pre {
   padding: 0 !important;
 }
-pre, pre > code {
+pre,
+pre > code {
   font-family: 'Fira Code' !important;
   font-size: var(--fnt-small, 13px) !important;
   line-height: 1.2 !important;
@@ -15,4 +16,15 @@ pre > code:not(:last-child) {
   text-align: right !important;
   padding-right: 5px !important;
   padding-left: 5px !important;
+}
+
+p,
+li {
+  > code {
+    display: inline-block;
+    font-family: 'Fira Code';
+    padding: 0px 4px;
+    background-color: var(--clr-overlay);
+    color: var(--clr-accent);
+  }
 }

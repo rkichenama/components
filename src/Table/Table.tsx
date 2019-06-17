@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as PropTypes from 'prop-types';
 const {
   Fragment,
   createContext,
@@ -31,7 +32,8 @@ interface CollapseRowProps extends SharedData {
   content?: Function,
 }
 interface TableProps extends BasicProps, CollapseRowProps {
-  data: Array<any[] | object>,
+  /** the actual data displayed in the table */
+  data: Array<object>,
   columns: Array<string | number>,
   collapse?: CollapseRowProps
 }
@@ -134,9 +136,6 @@ Row.defaultProps = {
   isEven: false
 };
 
-/**
- * A component for tables
- */
 const Table: React.StatelessComponent<TableProps> = ({
   data, columns, rowAttrs, cellAttrs, content, collapse,
   id, className, style
