@@ -1,6 +1,6 @@
 import React from 'react';
 import { Stage } from '../';
-import Spinner from 'components/Spinner/Spinner.jsx';
+import Spinner from 'components/Spinner/Spinner';
 
 const Dummy = props => (
   <pre style={{ minHeight: '44px', backgroundColor: 'rgba(0, 0, 0, 0.6)', color: 'white' }}>

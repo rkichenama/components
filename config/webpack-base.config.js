@@ -98,10 +98,10 @@ module.exports = {
       components: path.resolve(__dirname, '../src/'),
     },
     extensions: [
-      '.jsx',
       '.tsx',
-      '.js',
-      '.ts'
+      '.jsx',
+      '.ts',
+      '.js'
     ],
   },
   node: {

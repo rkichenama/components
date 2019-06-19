@@ -1,6 +1,6 @@
 import React from 'react';
 import { Stage } from '../';
-import Spinner from 'components/Spinner/Spinner.jsx';
+import Spinner from 'components/Spinner/Spinner';
 import StateDecorator from 'components/StateDecorator/StateDecorator';
 
 const Dummy = props => (
