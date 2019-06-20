@@ -1,3 +1,6 @@
+export { RKLibrary } from './library.d';
+// export RKLibrary;
+
 const mergeStringKeyValues: string[] = [ 'className' ];
 
 export const mergeProps = (base, ...attributes: object[]): (object | never) => {
@@ -21,17 +24,3 @@ export const mergeProps = (base, ...attributes: object[]): (object | never) => {
     });
   return result;
 };
-
-const o = { 'className': 'sparta'};
-const p = { 'className': 'sparta1', 'cortana': true};
-const r = { 'className': 'sparta1', 'cortana': 45 };
-
-let a;
-a = mergeProps( o, p, r );
-a;
-a = mergeProps( o, p );
-a;
-// a = mergeProps( o );
-// a = mergeProps();
-// a;
-// a;
