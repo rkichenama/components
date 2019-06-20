@@ -1,6 +1,6 @@
 import React from 'react';
 import StateDecorator from 'components/StateDecorator/StateDecorator';
-import Icon from 'components/Icon/Icon.jsx';
+import Icon from 'components/Icon/Icon';
 
 const svgs = require.context('../../../src/Icon/svg/', false, /^\.\/.*\.svg/)
   .keys().map(k => /\/([\s\S]*?)\./.exec(k)[1]);

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Stage } from '../';
 
-import Odometer from 'components/Odometer/Odometer.jsx';
+import Odometer from 'components/Odometer/Odometer';
 
 export default class extends React.PureComponent {
   state = {

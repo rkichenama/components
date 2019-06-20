@@ -1,6 +1,6 @@
 import React from 'react';
 import { Stage } from '../';
-import Toggle from 'components/Toggle/Toggle.jsx';
+import Toggle from 'components/Toggle/Toggle';
 
 export default class extends React.PureComponent {
   state = {

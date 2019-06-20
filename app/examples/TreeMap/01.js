@@ -1,6 +1,6 @@
 import React from 'react';
 import { Stage } from '../';
-import TreeMap from 'components/TreeMap/TreeMap.jsx';
+import TreeMap from 'components/TreeMap/TreeMap';
 
 const randUnder = ceil => Math.ceil(Math.random() * ceil);
 const randBetween = (ceil, floor = 0) => floor + randUnder(ceil);
