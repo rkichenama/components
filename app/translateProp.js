@@ -12,7 +12,10 @@ const identities = [
   'array',
   'symbol',
   'node',
-  'element'
+  'element',
+  'Function',
+  'ReactNode',
+  'boolean'
 ].reduce((defs, fn) => ({
   ...defs,
   [fn]: () => <span className='data-type'>{ fn[0].toUpperCase() + fn.slice(1) }</span>

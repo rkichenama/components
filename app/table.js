@@ -6,7 +6,9 @@ import translateProp from './translateProp';
 import translateParams from './translateParams';
 
 const DefaultValues = {
+  '': 'empty string',
   [`''`]: 'empty string',
+  [`""`]: 'empty string',
   ['[]']: 'empty array',
   ['{}']: 'empty object',
   ['() => {}']: 'noop',
@@ -88,8 +90,14 @@ const renderBoolean = value => (
   value ? <span style={{color: 'var(--clr-accent, #900)'}}>✔</span> : null
 );
 const renderDefaultValue = value => {
-  const v = (value && value.value) || (<i>none</i>);
-  return (Object.keys(DefaultValues).includes(v)) ? (<i>{DefaultValues[v]}</i>) : v;
+  const v = value !== null || value !== undefined
+    ? /object/.test(typeof value)
+      ? value.value
+      : value
+    : 'none';
+  return (
+    <i>{DefaultValues[v] || v}</i>
+  );
 };
 const renderListItem = (value, index) => (
   <li key={index}>{ value }</li>

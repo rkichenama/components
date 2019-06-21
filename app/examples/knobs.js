@@ -4,60 +4,66 @@ import { connect } from 'react-redux';
 
 const strValue = str => str.replace(/^['"`]/, '').replace(/['"`]$/, '');
 
-const figure = ({ type, name, defaultValue: { value: defValue = '' } = {} }) => (
-  { value = defValue, checked = /true/i.test(value) } = {}, handleChange = () => {}
-) => {
-  let input;
-  switch (type.name) {
-    case 'bool':
-      value = checked;
-      input = (
-        <input
-          type='checkbox'
-          name={name}
-          checked={value}
-          onChange={handleChange({ type, name })}
-        />
-      );
-      break;
-    case 'enum':
-      value = strValue(value);
-      input = (
-        <ul className='unstyled'>
-          {
-            type.value.map(({ value: v, key = strValue(v)}) => (
-              <li key={key}>
-                <label>
-                  <input
-                    type='radio'
-                    name={name}
-                    value={key}
-                    checked={ key === value}
-                    onChange={handleChange({ type, name })}
-                  />
-                  { key }
-                </label>
-              </li>
-            ))
-          }
-        </ul>
-      );
-      break;
-    case 'string':
-      value = strValue(value);
-    default:
-      input = (
-        <input
-          type='text'
-          name={name}
-          value={value}
-          onChange={handleChange({ type, name })}
-        />
-      );
-      break;
-  }
-  return { input, value };
-};
+const figure = ({ type, name, defaultValue }) => {
+  const { value: defValue = '' } = defaultValue !== null
+    ? defaultValue
+    : {};
+  return (
+    { value = defValue, checked = /true/i.test(value) } = {}, handleChange = () => {}
+  ) => {
+    let input;
+    switch (type.name) {
+      case 'bool':
+      case 'boolean':
+        value = checked;
+        input = (
+          <input
+            type='checkbox'
+            name={name}
+            checked={value}
+            onChange={handleChange({ type, name })}
+          />
+        );
+        break;
+      case 'enum':
+        value = strValue(value);
+        input = (
+          <ul className='unstyled'>
+            {
+              type.value.map(({ value: v, key = strValue(v)}) => (
+                <li key={key}>
+                  <label>
+                    <input
+                      type='radio'
+                      name={name}
+                      value={key}
+                      checked={ key === value}
+                      onChange={handleChange({ type, name })}
+                    />
+                    { key }
+                  </label>
+                </li>
+              ))
+            }
+          </ul>
+        );
+        break;
+      case 'string':
+        value = strValue(value);
+      default:
+        input = (
+          <input
+            type='text'
+            name={name}
+            value={value}
+            onChange={handleChange({ type, name })}
+          />
+        );
+        break;
+    }
+    return { input, value };
+  };
+}
 
 class Knobs extends PureComponent {
   static propTypes = {
@@ -92,8 +98,8 @@ class Knobs extends PureComponent {
   }
 
   figureOutValue = this.props.component.props
-    .filter(({ name }) => !/^(children|className)$/i.test(name))
-    .filter(({ type: { name }}) => !/^func/.test(name))
+    .filter(({ name }) => !/^(children|className|style)$/i.test(name))
+    .filter(({ type: { name }}) => !/^func/i.test(name))
     .reduce((keys, prop) => Object.assign(keys, { [prop.name]: figure(prop) }), {})
 
   state = Object.keys(this.figureOutValue)
@@ -137,7 +143,7 @@ class Knobs extends PureComponent {
               .map(renderKnob)
           }
         </div>
-        <div className='stage' style={ Object.assign({}, style, { width: '80%' })}>
+        <div className='stage' style={ Object.assign({}, style, { width: '80%', padding: '0 4px' })}>
           { React.cloneElement(children, state) }
         </div>
       </div>
