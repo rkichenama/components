@@ -56,7 +56,7 @@ config.plugins.push({
 module.exports = async () => {
   const components = await walk(
     join(rootFolder, 'src'),
-    file =>  /\.(jsx|tsx|ts)$/.test(file) && !/\.[tT]est\./.test(file)
+    file => /\.(jsx|tsx|ts)$/.test(file) && !/\.[tT]est\./.test(file) && !/library/.test(file)
   );
   const writeIndexes = writeIndexesCurry();
   const definitions = [];

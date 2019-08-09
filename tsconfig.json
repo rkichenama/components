@@ -23,6 +23,8 @@
     "./node_modules/**/*",
     "./lib/**/*",
     "./dist/**/*",
-    "./docs/**/*"
+    "./docs/**/*",
+    "library.d.ts",
+    "library.ts"
   ]
 }

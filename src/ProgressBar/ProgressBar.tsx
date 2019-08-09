@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { RKLibrary } from '../library.d';
-import { mergeProps } from '../library';
+import { RKLibrary, mergeProps } from '../library';
 import './ProgressBar.scss';
 
 interface ProgressBarProps extends RKLibrary.StylingProps {

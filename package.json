@@ -21,7 +21,7 @@
     "clear:lib": "del-cli './lib/*' '!./lib/package.json'",
     "clear:doc": "del-cli './docs/*' '!./docs/media'",
     "clear": "run-p -l clear:*",
-    "metadata:build": "node doc-gen.js",
+    "metadata:build": "node doc-gen.js --scripts-prepend-node-path",
     "prebuild": "run-s -l clear test metadata:build ; true",
     "make:pre": "webpack --config ./config/webpack-pre.config.js",
     "build:worker": "run-p -l worker:*",

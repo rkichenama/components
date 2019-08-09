@@ -7,57 +7,36 @@ const {
 } = React;
 
 import './Table.scss';
+import { RKLibrary, mergeProps } from '../library';
 
-interface BasicProps {
-  /** the css class attribute */
-  className?: string,
-  /** the css style attribute */
-  style?: object,
-  /** the id attribute */
-  id?: string
-}
-interface SharedData extends BasicProps {
-  data?: Array<any> | object,
+interface SharedData extends RKLibrary.StylingProps {
+  data?: Array<any> | object;
 }
 interface SharedRowCellProps extends SharedData {
-  isHeader?: boolean
+  isHeader?: boolean;
 }
 interface CellProps extends SharedRowCellProps {
-  column: string | number
+  column: string | number;
 }
 interface RowProps extends SharedRowCellProps {
-  isEven?: boolean
+  isEven?: boolean;
 }
 interface CollapseRowProps extends SharedData {
   /** function to render attributes for the table rows */
-  rowAttrs?: Function,
+  rowAttrs?: Function;
   /** function to render attributes for the table cells */
-  cellAttrs?: Function,
+  cellAttrs?: Function;
   /** function to render the content of the table cells */
-  content?: Function,
+  content?: Function;
 }
-interface TableProps extends BasicProps, CollapseRowProps {
+interface TableProps extends RKLibrary.StylingProps, CollapseRowProps {
   /** the actual data displayed in the table */
-  data: Array<object>,
+  data: Array<object>;
   /** field names or indices for columnar data */
-  columns: Array<string | number>,
+  columns: Array<string | number>;
   /** data config for collapsable rows */
-  collapse?: CollapseRowProps
+  collapse?: CollapseRowProps;
 }
-
-const mergeProps: Function = (base, ...props) => {
-  return props.reduce((t, c) => {
-    Object.entries(c)
-      .forEach(([ k, v]) => {
-        if ([ 'className' ].includes(k) && /string/.test(typeof k)) {
-          t[k] = [t[k], v].filter(i => !!i).join(' ');
-        } else {
-          t[k] = v;
-        }
-      });
-    return t;
-  }, base);
-};
 
 const TableContext = createContext({
   data: null,
@@ -68,19 +47,20 @@ const TableContext = createContext({
 } as TableProps);
 
 const Cell: React.StatelessComponent<CellProps> = ({ isHeader, column, data }) => {
-  const TagName = `t${(isHeader && 'h') || 'd'}`;
   const {
     content = (d: object, c: string, h: boolean) => h ? c : d[c],
     cellAttrs
   } = useContext(TableContext);
   const className = 'table-cell';
-  const attributes = mergeProps({ className }, (!isHeader && cellAttrs && cellAttrs(data, column)) || {});
-  const value = content(data, column, isHeader);
+  const attributes = mergeProps(
+    { className },
+    (!isHeader && cellAttrs && cellAttrs(data, column)) || {},
+    { children: content(data, column, isHeader) }
+  );
 
-  return (
-    <TagName {...attributes} >
-      { value }
-    </TagName>
+  return React.createElement(
+    `t${(isHeader && 'h') || 'd'}`,
+    attributes
   );
 };
 Cell.defaultProps = {

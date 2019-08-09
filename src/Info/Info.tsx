@@ -21,8 +21,6 @@ interface InfoProps extends RKLibrary.StylingProps {
 
 /**
  * Intended as a replacement for the Details / Summary pair, duplicating the ease of a cross browser collapsible element.
- *
- * TODO: rewrite as a render prop
  */
 const Info: React.StatelessComponent<InfoProps> = ({
   title, children, right, className, style, onStateChanged, open: initiallyOpen

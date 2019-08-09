@@ -1,16 +1,14 @@
 import * as React from 'react';
-
-export interface SpinnerProps {
+import './Spinner.scss';
+interface BasicProps {
+    className?: string;
+    style?: object;
+    id?: string;
+}
+interface SpinnerProps extends BasicProps {
+    for: React.ComponentClass<any, any>;
+    test: Function;
     blockingClass?: string;
-    for: (...args: any[])=>any;
-    /**
-     * function that, if result is true, will show spinner
-     */
-    test: (...args: any[])=>any;
 }
-
-export default class Spinner extends React.PureComponent<SpinnerProps, any> {
-    render(): JSX.Element;
-
-}
-
+declare const Spinner: React.StatelessComponent<SpinnerProps>;
+export default Spinner;

@@ -7,15 +7,19 @@ import Union from './Union';
 const identities = [
   'any',
   'number',
+  'number[]',
   'string',
+  'string[]',
   'object',
+  'object[]',
   'array',
   'symbol',
   'node',
   'element',
   'Function',
   'ReactNode',
-  'boolean'
+  'boolean',
+  'boolean[]'
 ].reduce((defs, fn) => ({
   ...defs,
   [fn]: () => <span className='data-type'>{ fn[0].toUpperCase() + fn.slice(1) }</span>

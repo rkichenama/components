@@ -1,5 +1,13 @@
-export { RKLibrary } from './library.d';
-// export RKLibrary;
+export declare namespace RKLibrary {
+  interface StylingProps {
+    /** the css class attribute */
+    className?: string,
+    /** the css style attribute */
+    style?: object,
+    /** the id attribute */
+    id?: string
+  }
+}
 
 const mergeStringKeyValues: string[] = [ 'className' ];
 

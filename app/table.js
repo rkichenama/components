@@ -6,13 +6,13 @@ import translateProp from './translateProp';
 import translateParams from './translateParams';
 
 const DefaultValues = {
-  '': 'empty string',
-  [`''`]: 'empty string',
-  [`""`]: 'empty string',
-  ['[]']: 'empty array',
-  ['{}']: 'empty object',
-  ['() => {}']: 'noop',
-  ['() => { }']: 'noop',
+  '': <span>&ldquo;&rdquo;</span>,
+  [`''`]: <span>&ldquo;&rdquo;</span>,
+  [`""`]: <span>&ldquo;&rdquo;</span>,
+  ['[]']: <span>[]</span>,
+  ['{}']: <span>{`{}`}</span>,
+  ['() => {}']: <span>{`() => {}`}</span>,
+  ['() => { }']: <span>{`() => {}`}</span>,
 };
 
 const figureOutBest = (name, value) => {
@@ -254,13 +254,17 @@ export default class Table extends PureComponent {
         { renderHeaderRow(columns) }
         <tbody>
           {
-            rows.length ? rows.map(row) : (
-              <tr>
-                <td colSpan={columns.length} className='empty-table-state'>
-                  no data available
-                </td>
-              </tr>
-            )
+            rows.length
+              ? rows.sort(
+                ({name: a}, {name: b}) => a.toLowerCase().localeCompare(b.toLowerCase())
+              ).map(row)
+              : (
+                <tr>
+                  <td colSpan={columns.length} className='empty-table-state'>
+                    no data available
+                  </td>
+                </tr>
+              )
           }
         </tbody>
       </table>
