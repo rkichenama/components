@@ -10,5 +10,6 @@ import Odometer from 'lib/Odometer'; export var Odometer;
 import ProgressBar from 'lib/ProgressBar'; export var ProgressBar;
 import Spinner from 'lib/Spinner'; export var Spinner;
 import StateDecorator from 'lib/StateDecorator'; export var StateDecorator;
+import Table from 'lib/Table'; export var Table;
 import Toggle from 'lib/Toggle'; export var Toggle;
 import TreeMap from 'lib/TreeMap'; export var TreeMap;

@@ -1,4 +1,0 @@
-.status-progress{position:relative;display:flex;width:100%;height:32px;padding:6px;background-color:rgba(255,255,255,0.4);overflow:hidden}.status-progress-text,.status-progress-bar{display:flex;align-items:center;justify-content:center;overflow:hidden}.status-progress-text{position:absolute;top:0;left:0;bottom:0;right:0;flex-direction:column;color:white;text-shadow:-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;z-index:2}.status-progress-bar{position:relative;flex:1;overflow:hidden;z-index:1}.status-progress-bar-value{background-color:purple;width:100%;height:100%;transform:translateX(-100%)}
-
-
-/*# sourceMappingURL=ProgressBar.js.map*/

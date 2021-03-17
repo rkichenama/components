@@ -1,0 +1,228 @@
+import React, { FC, useRef, useLayoutEffect, useMemo } from 'react';
+
+export const Context2D = (canvas: HTMLCanvasElement) => {
+  const { width, height } = canvas.getBoundingClientRect();
+  const ctx = canvas.getContext('2d');
+  const firstPixel = { x: 0, y: 0 };
+  const lastPixel = { x: width, y: height };
+  const context2d = {
+    clear: () => { context2d.rect.clear(0, 0, width, height); return ctx },
+    rect: {
+      clear: (x = 0, y = 0, w = width, h = height) => { ctx.clearRect(x, y, w, h); return ctx },
+      fill: ({x, y, w, h}) => { ctx.fillRect(x, y, w, h); return ctx },
+      stroke: ({x, y, w, h}) => { ctx.strokeRect(x, y, w, h); return ctx },
+    },
+    style: {
+      fill: style => { ctx.fillStyle = style; return ctx },
+      stroke: style => { ctx.strokeStyle = style; return ctx },
+    },
+    paint: () => { ctx.fill(); return ctx },
+    fill: () => context2d.paint(),
+    outline: () => { ctx.stroke(); return ctx },
+    stroke: () => context2d.outline(),
+    begin: () => { ctx.beginPath(); return ctx },
+    arc: ({x, y}, r, {from, to}) => { ctx.arc(x, y, r, from, to); return ctx },
+    moveTo: ({x, y}) => { ctx.moveTo(x, y); return ctx },
+    lineTo: ({x, y}) => { ctx.lineTo(x, y); return ctx },
+    end: () => { ctx.closePath(); return ctx },
+    // not chainable
+    gradient: {
+      // add your own color stops
+      linear: ({x: x1, y: y1} = firstPixel, {x: x2, y: y2} = lastPixel) => ctx.createLinearGradient(x1, y1, x2, y2),
+      radial: ({x: x1, y: y1} = firstPixel, r1 = Math.min(width, height) / 2, {x: x2, y: y2} = lastPixel, r2 = Math.min(width, height) / 2) => ctx.createRadialGradient(x1, y1, r1, x2, y2, r2),
+    },
+  };
+  return context2d;
+};
+
+
+interface CanvasProps {
+  className?: string,
+  id?: string,
+  style?: React.CSSProperties,
+  width?: number,
+  height?: number,
+  /**
+   * An array of functions that will draw within the canvas intially after render. See __animation function__ for details
+   */
+  scene?: Function[],
+  /**
+   * An array of functions that will draw within the canvas in a looping sequence where each slide function is drawn after the complete scene array. See __animation function__ for details
+   */
+  sequence?: Function[],
+}
+
+const animateCanvas = (canvas: HTMLCanvasElement) => (
+  scene: CanvasProps['scene'] = [], sequence: CanvasProps['sequence'] = []
+) => {
+  const parameters = {
+    ctx: Context2D(canvas)
+  };
+
+  const draw = () => {
+    // draw the scene
+    scene.forEach(layer => layer(parameters));
+    // do the next animation step
+    if (sequence.length) {
+      let [step, ...rest] = sequence;
+      step(parameters);
+      // set up animation
+      sequence = [...rest, step];
+      canvas.setAttribute('data-raf', window.requestAnimationFrame(draw).toString());
+    }
+  };
+  canvas.setAttribute('data-raf', window.requestAnimationFrame(draw).toString());
+};
+const stopCanvas = (canvas: HTMLCanvasElement) => () => {
+  window.cancelAnimationFrame(Number(canvas.getAttribute('data-raf')));
+};
+
+const Canvas: FC<CanvasProps> = ({
+  className, id, style,
+  width = 320, height = 240,
+  scene = [], sequence = []
+}) => {
+  const canvas = useRef();
+
+  const [ animate, stop ] = useMemo(() => ([
+    animateCanvas(canvas.current),
+    stopCanvas(canvas.current)
+  ]), [ canvas.current ]);
+  useLayoutEffect(() => {
+    animate(scene, sequence);
+
+    return () => { stopCanvas(canvas.current) };
+  }, [ scene, sequence, canvas.current ]);
+  return (
+    <canvas {...{
+      width, height, style,
+      ref: canvas,
+      className: `canvas ${className}`
+    }} />
+  );
+};
+
+export default Canvas;
+
+const pipe = (...fns) => x => fns.reduce((val, fn) => (fn(val)), x);
+const Clear = () => props => {
+  props.ctx.clear();
+  return props;
+};
+/* no stroke but fill */
+const FilledRect = (coords, color = 'transparent') => props => {
+  const { ctx } = props;
+  if (color) { ctx.style.fill(color).paint() }
+  ctx.rect.fill(coords);
+  return props;
+};
+/* with stroke no fill*/
+const BorderedRect = (coords, border = 'transparent') => props => {
+  const { ctx } = props;
+  if (border) { ctx.style.stroke(border) }
+  ctx.rect.stroke(coords);
+  return props;
+};
+const Rect = (coord, border, color) => props => {
+  return pipe(
+    FilledRect(coord, color),
+    BorderedRect(coord, border)
+  )(props);
+};
+const Arc = (center, radius, curve, color, border) => props => {
+  const { ctx } = props;
+  ctx.begin();
+  ctx.arc(center, radius, curve);
+  if (color) { ctx.style.fill(color).paint() }
+  if (border) { ctx.style.stroke(border) }
+  ctx.end();
+  return props;
+};
+const Circle = (center, radius, color, border) => props => {
+  return Arc(center, radius, { from: 0, to: 2 * Math.PI }, color, border)(props);
+};
+
+export const Helpers = {
+  Clear,
+  FilledRect,
+  BorderedRect,
+  Rect,
+  Arc,
+  Circle,
+
+  /*
+    TEXT
+      fillText()
+      strokeText()
+      measureText()
+
+      font
+      textAlign
+      textBaseline
+      direction
+
+    lineWidth
+    lineCap
+    lineJoin
+    miterLimit
+    getLineDash()
+    setLineDash()
+    lineDashOffset
+
+
+    GRADIENTS
+      createLinearGradient()
+      createRadialGradient()
+      createPattern()
+
+    shadowBlur
+    shadowColor
+    shadowOffsetX
+    shadowOffsetY
+
+    beginPath()
+    closePath()
+    moveTo()
+    lineTo()
+    bezierCurveTo()
+    quadraticCurveTo()
+    arc()
+    arcTo()
+    ellipse()
+    rect()
+
+    fill()
+    stroke()
+    drawFocusIfNeeded()
+    scrollPathIntoView()
+    clip()
+    isPointInPath()
+    isPointInStroke()
+
+    currentTransform
+    rotate()
+    scale()
+    translate()
+    transform()
+    setTransform()
+    resetTransform()
+
+    globalAlpha
+    globalCompositeOperation
+
+    drawImage()
+
+    createImageData()
+    getImageData()
+    putImageData()
+
+    imageSmoothingEnabled
+
+    save()
+    restore()
+
+    addHitRegion()
+    removeHitRegion()
+    clearHitRegions()
+  */
+}

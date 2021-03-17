@@ -6,7 +6,6 @@ const { resolve, relative, basename, join } = require('path');
 const walk = require('./walk');
 const config = require('./webpack-base.config');
 const webpack = require('webpack');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const { generateFromFile } = require('react-to-typescript-definitions');
@@ -24,19 +23,6 @@ config.module.rules
   });
 
 config.optimization.minimizer = [
-  new UglifyJSPlugin({
-    uglifyOptions: {
-      compress: {
-        warnings: false,
-        'reduce_vars': false
-      },
-      output: {
-        comments: false
-      }
-    },
-    sourceMap: true,
-    parallel: true,
-  }),
   new OptimizeCSSAssetsPlugin({
     cssProcessorOptions: {
       discardComments: { removeAll: true },

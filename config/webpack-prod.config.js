@@ -1,7 +1,6 @@
 const config = require('./webpack-base.config');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
@@ -20,19 +19,6 @@ config.module.rules
   });
 
 config.optimization.minimizer = [
-  new UglifyJSPlugin({
-    uglifyOptions: {
-      compress: {
-        warnings: false,
-        'reduce_vars': false
-      },
-      output: {
-        comments: false
-      }
-    },
-    sourceMap: true,
-    parallel: true,
-  }),
   new OptimizeCSSAssetsPlugin({
     cssProcessorOptions: {
       discardComments: { removeAll: true },

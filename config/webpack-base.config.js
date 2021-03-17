@@ -35,25 +35,25 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /(node_modules)/,
         use: {
-          loader: 'babel-loader',
-          options: {
-            presets: [
-              [
-                'env', {
-                  'targets': {
-                    'browsers': ['last 2 versions', 'safari >= 7'],
-                  }
-                }
-              ],
-              'react'
-            ],
-            plugins: [
-              'transform-class-properties',
-              'transform-object-rest-spread',
-              'transform-runtime',
-              'transform-async-to-generator',
-            ],
-          }
+          loader: 'ts-loader',
+          // options: {
+          //   presets: [
+          //     [
+          //       'env', {
+          //         'targets': {
+          //           'browsers': ['last 2 versions', 'safari >= 7'],
+          //         }
+          //       }
+          //     ],
+          //     'react'
+          //   ],
+          //   plugins: [
+          //     'transform-class-properties',
+          //     'transform-object-rest-spread',
+          //     'transform-runtime',
+          //     'transform-async-to-generator',
+          //   ],
+          // }
         },
       },
       { // stylesheets
@@ -107,11 +107,6 @@ module.exports = {
       '.jsx',
       '.js',
     ],
-  },
-  node: {
-    fs: 'empty',
-    net: 'empty',
-    tls: 'empty',
   },
   mode: 'development',
 };

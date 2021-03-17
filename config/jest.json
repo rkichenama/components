@@ -17,8 +17,8 @@
     ]
   ],
   "moduleNameMapper": {
-    "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/config/mocks/fileTransformer.js",
-    "\\.(css|less|sass|scss)$": "identity-obj-proxy"
+    "^.+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/config/mocks/fileTransformer.js",
+    "^.+\\.(css|less|scss)$": "identity-obj-proxy"
   },
   "setupFiles": [
     "jest-canvas-mock",
@@ -31,5 +31,8 @@
   "collectCoverageFrom": [
     "**/*.jsx",
     "!**/node_modules/**"
-  ]
+  ],
+  "transform": {
+    "^.+\\.(ts|tsx|js|jsx)$": "babel-jest"
+  }
 }
